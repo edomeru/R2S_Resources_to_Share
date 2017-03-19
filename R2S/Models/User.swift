@@ -22,7 +22,6 @@ class User: Object {
     dynamic var mobileNumber = ""
     dynamic var password = ""
     dynamic var status = ""
-    let roles = List<UserRole>()
     dynamic var createdDate = ""
     dynamic var updatedDate = ""
     dynamic var deletedDate = ""

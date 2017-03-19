@@ -62,7 +62,7 @@ extension LoginViewController: LoginViewDelegate {
     }
     
     func registerButtonPressed(sender: AnyObject) {
-        self.performSegue(withIdentifier: Constants.segue.loginToRegister, sender: self)
+        
     }
     
     func forgotPasswordButtonPressed(sender: AnyObject) {

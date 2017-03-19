@@ -38,7 +38,7 @@ class Utility {
     }
     
     class func getHeadersWithAuth() -> HTTPHeaders {
-        let username = UserHelper.getUsername()!
+        let username = UserHelper.getEmail()!
         let password = UserHelper.getPassword()!
         let loginString = String(format: "%@:%@", username, password)
         let loginData = loginString.data(using: String.Encoding.utf8)!

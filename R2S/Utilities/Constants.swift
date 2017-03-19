@@ -26,6 +26,12 @@ class Constants {
             static let forgot = api.baseUrl + "/forgot"
             static let forgotCode = api.baseUrl + "/forgot/code"
         }
+        
+        // MARK: - Category
+        struct category {
+            static let base = api.baseUrl + "/categories"
+            static let subCategory = category.base + "/{id}/subcategories"
+        }
     }
     
     // MARK: - Xib Names
@@ -33,9 +39,15 @@ class Constants {
         static let login = "LoginView"
         static let register = "RegisterView"
         static let homeView = "HomeView"
+        static let resourceView = "ResourceView"
         
         // TableView Cell
-        static let featuredCell = "FeaturedTableViewCell"
+        static let featuredTableCell = "FeaturedTableViewCell"
+        static let categoryTableCell = "CategoryTableViewCell"
+        
+        // CollectionView Cell
+        static let categoryCollectionCell = "CategoryCollectionViewCell"
+        static let subcategoryCollectionCell = "SubCategoryCollectionViewCell"
         
         // Scroll views
         static let featuredCarouselItem = "FeaturedCarouselItemView"
@@ -51,12 +63,16 @@ class Constants {
         static let transparentWhite = "77FFFFFF"
         static let black = "000000"
         static let charade = "282B35"
+        static let athensGray = "F0EFF5"
+        static let electricBlue = "168EE2"
     }
     
     // MARK: - Segue Identifiers
     struct segue {
+        static let welcomeToLogin = "WelcomeToLoginSegue"
+        static let welcomeToRegister = "WelcomeToRegisterSegue"
         static let loginToHome = "LoginToHomeSegue"
-        static let loginToRegister = "LoginToRegister"
+        static let homeToResourceSegue = "HomeToResourceSegue"
     }
 }
 

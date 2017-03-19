@@ -54,11 +54,6 @@ class UserService {
                 user.createdDate = jsonData["created_date"].stringValue
                 user.updatedDate = jsonData["updated_date"].stringValue
                 user.deletedDate = jsonData["deleted_date"].stringValue
-                for role in jsonData["roles"].arrayValue {
-                    let userRole = UserRole()
-                    userRole.name = role.stringValue
-                    user.roles.append(userRole)
-                }
                 KeychainWrapper.standard.set(password, forKey: "password")
                 
                 let defaults = UserDefaults.standard

@@ -9,15 +9,15 @@
 import UIKit
 
 extension UITextField {
-    func textFieldAddBottomBorder(textField: UITextField, borderValue: CGFloat, borderColor: String) {
+    func addBottomBorder(borderValue: CGFloat, borderColor: String) {
         let border = CALayer()
         let width = borderValue
         border.borderColor = UIColor(hex: borderColor).cgColor
-        border.frame = CGRect(x: 0, y: textField.frame.size.height - width, width:  textField.frame.size.width, height: textField.frame.size.height)
+        border.frame = CGRect(x: 0, y: self.frame.size.height - width, width: self.frame.size.width, height: self.frame.size.height)
         
         border.borderWidth = width
-        textField.layer.addSublayer(border)
-        textField.layer.masksToBounds = true
+        self.layer.addSublayer(border)
+        self.layer.masksToBounds = true
     }
     
     func setKBType(type: UIKeyboardType) {

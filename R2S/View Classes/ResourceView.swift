@@ -9,5 +9,6 @@
 import UIKit
 
 class ResourceView: BaseUIView {
-    @IBOutlet weak var subCategoryCollectionView: UICollectionView!
+    @IBOutlet weak var subcategoryCollectionView: UICollectionView!
+    @IBOutlet weak var resourcesCollectionView: UICollectionView!
 }

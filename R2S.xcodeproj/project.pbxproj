@@ -205,9 +205,9 @@
 				B99151AF1E77F55600949529 /* BaseViewController.swift */,
 				B99151B11E77F67E00949529 /* LoginViewController.swift */,
 				B9E2677D1E79416A00BB9900 /* RegisterViewController.swift */,
+				B9E267B41E7BAE2600BB9900 /* ResourceViewController.swift */,
 				B9E267DA1E7D467800BB9900 /* WelcomeViewController.swift */,
 				B9E267831E7A363B00BB9900 /* Tab Bar */,
-				B9E267B41E7BAE2600BB9900 /* ResourceViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";

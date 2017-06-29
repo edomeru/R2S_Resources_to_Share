@@ -33,7 +33,7 @@ class RegisterViewController: BaseViewController {
     // MARK: - Private Functions
     private func initUILayout() {
         self.registerView = self.loadFromNibNamed(nibNamed: Constants.xib.register) as! RegisterView
-        self.view = self.registerView
+        self.view.addSubview(self.registerView)
         self.title = "Registration"
         self.registerView.delegate = self
         self.registerView.firstNameTextField.delegate = self
@@ -50,7 +50,7 @@ class RegisterViewController: BaseViewController {
     }
     
     private func configureNavBar() {
-        self.navigationItem.hidesBackButton = true
+        self.navigationItem.hidesBackButton = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }
@@ -61,10 +61,7 @@ extension RegisterViewController: RegisterViewDelegate {
         self.registerView.endEditing(true)
         self.validator.validate(self)
     }
-    
-    func cancelButtonPressed(sender: AnyObject) {
-        _ = navigationController?.popViewController(animated: true)
-    }
+
 }
 
 // MARK: - ValidationDelegate
@@ -97,8 +94,19 @@ extension RegisterViewController: ValidationDelegate {
     
     func validationFailed(_ errors: [(Validatable, ValidationError)]) {
         for (field, _) in errors {
-            if let field = field as? UITextField {
-                field.addBorder(width: 1.0, color: UIColor.red.cgColor)
+            if let field =  field as? UITextField {
+                switch field {
+                case self.registerView.firstNameTextField:
+                    self.registerView.firstNameBorderView.backgroundColor = UIColor.red
+                case self.registerView.lastNameTextField:
+                    self.registerView.lastNameBorderView.backgroundColor = UIColor.red
+                case self.registerView.emailTextField:
+                    self.registerView.emailBorderView.backgroundColor = UIColor.red
+                case self.registerView.passwordTextField:
+                    self.registerView.passwordBorderView.backgroundColor = UIColor.red
+                default:
+                    print("default")
+                }
             }
         }
     }
@@ -107,7 +115,17 @@ extension RegisterViewController: ValidationDelegate {
 // MARK: - UITextFieldDelegate
 extension RegisterViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.addBorder(width: 0.0, radius: 0.0)
-        self.activeTextField = textField
+        switch textField {
+        case self.registerView.firstNameTextField:
+            self.registerView.firstNameBorderView.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
+        case self.registerView.lastNameTextField:
+            self.registerView.lastNameBorderView.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
+        case self.registerView.emailTextField:
+            self.registerView.emailBorderView.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
+        case self.registerView.passwordTextField:
+            self.registerView.passwordBorderView.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
+        default:
+            print("default")
+        }
     }
 }

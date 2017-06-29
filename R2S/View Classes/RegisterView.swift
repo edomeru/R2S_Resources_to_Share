@@ -10,7 +10,6 @@ import UIKit
 import M13Checkbox
 
 protocol RegisterViewDelegate: class {
-    func cancelButtonPressed(sender: AnyObject)
     func registerButtonPressed(sender: AnyObject)
 }
 
@@ -22,13 +21,12 @@ class RegisterView: BaseUIView {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var subscribeCheckbox: M13Checkbox!
+    @IBOutlet weak var firstNameBorderView: UIView!
+    @IBOutlet weak var lastNameBorderView: UIView!
+    @IBOutlet weak var emailBorderView: UIView!
+    @IBOutlet weak var passwordBorderView: UIView!
     
-    @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var registerButton: UIButton!
-    
-    @IBAction func cancelButtonPressed(_ sender: AnyObject) {
-        delegate?.cancelButtonPressed(sender: sender)
-    }
     
     @IBAction func registerButtonPressed(_ sender: AnyObject) {
         delegate?.registerButtonPressed(sender: sender)

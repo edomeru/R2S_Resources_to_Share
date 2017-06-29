@@ -31,6 +31,17 @@ class CategoryService {
                         newCategory.imageUrl = category["image_url"].stringValue
                         newCategory.status = category["status"].stringValue
                         newCategory.isSelected = false
+                        for (_, subcategory):(String, JSON) in category["subcategories"] {
+                            let newSubcategory = Subcategory()
+                            newSubcategory.id = subcategory["id"].intValue
+                            newSubcategory.name = subcategory["name"].stringValue
+                            newSubcategory.descriptionText = subcategory["description"].stringValue
+                            newSubcategory.imageUrl = subcategory["image_url"].stringValue
+                            newSubcategory.status = subcategory["status"].stringValue
+                            newSubcategory.isSelected = false
+                            newSubcategory.parentCategory = newCategory
+                            newCategory.subcategories.append(newSubcategory)
+                        }
                         CategoryDao.add(newCategory)
                     }
                 } else {
@@ -62,6 +73,21 @@ class CategoryService {
     static func clearSelectedCategories(_ categories: Results<Category>) {
         for category in categories {
             CategoryDao.edit(category, keys: ["isSelected"], values: [false])
+        }
+    }
+    
+    static func getSubcategoriesBy(categoryId: Int) -> Results<Subcategory> {
+        let subcategories = SubcategoryDao.getSubcategoriesBy(categoryId: categoryId)
+        return subcategories
+    }
+    
+    static func selectSubategory(_ subcategory: Subcategory) {
+        SubcategoryDao.edit(subcategory, keys: ["isSelected"], values: [true])
+    }
+    
+    static func clearSelectedSubcategories(_ subcategories: Results<Subcategory>) {
+        for subcategory in subcategories {
+            SubcategoryDao.edit(subcategory, keys: ["isSelected"], values: [false])
         }
     }
 }

@@ -8,14 +8,23 @@
 
 import UIKit
 
+protocol WelcomeViewDelegate: class {
+    func loginButtonPressed(sender: AnyObject)
+    func signupButtonPressed(sender: AnyObject)
+}
+
 class WelcomeView: BaseUIView {
+    weak var delegate: WelcomeViewDelegate?
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var signupButton: UIButton!
+    
+    @IBAction func loginButtonPressed(_ sender: AnyObject) {
+        delegate?.loginButtonPressed(sender: sender)
     }
-    */
 
+    @IBAction func signupButtonPressed(_ sender: AnyObject) {
+        delegate?.signupButtonPressed(sender: sender)
+    }
+    
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gyt-qp-uPB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gyt-qp-uPB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -23,7 +23,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DP4-DK-3C9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2164" y="-19"/>
+            <point key="canvasLocation" x="-2154" y="-40"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="sez-2T-Kdr">
@@ -38,15 +38,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="zbJ-OO-h6m"/>
+                    <navigationItem key="navigationItem" id="zbJ-OO-h6m">
+                        <barButtonItem key="backBarButtonItem" title=" " id="LD1-2k-pxN"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="ERd-af-B5X" kind="show" identifier="WelcomeToLoginSegue" id="RFT-Ct-ddh"/>
                         <segue destination="eWo-7N-AbH" kind="show" identifier="WelcomeToRegisterSegue" id="Coe-c6-lId"/>
+                        <segue destination="fm7-mE-T4Z" kind="show" identifier="WelcomeToHomeSegue" animates="NO" id="xPI-oA-IOK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sfi-bF-vuN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1417" y="-18"/>
+            <point key="canvasLocation" x="-1418" y="-40"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="2WY-wb-Oge">
@@ -61,14 +64,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" id="KRn-t3-19U"/>
+                    <navigationItem key="navigationItem" id="KRn-t3-19U">
+                        <barButtonItem key="backBarButtonItem" title=" " id="La6-vt-EbN"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="fm7-mE-T4Z" kind="show" identifier="LoginToHomeSegue" animates="NO" id="Gng-5l-VT9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RKK-Jh-ak7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-687" y="-18"/>
+            <point key="canvasLocation" x="-682" y="708"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="sz1-Yx-9Iw">
@@ -110,7 +115,7 @@
         <!--Resource View Controller-->
         <scene sceneID="Q7u-xO-vsR">
             <objects>
-                <viewController id="Q5K-h3-mWc" customClass="ResourceViewController" customModule="R2S" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Q5K-h3-mWc" customClass="ResourceViewController" customModule="R2S" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4Mq-1a-s9P"/>
                         <viewControllerLayoutGuide type="bottom" id="Gll-5C-51a"/>
@@ -139,6 +144,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Share" image="ic_add_box" id="Kb6-Ra-NiW"/>
+                    <navigationItem key="navigationItem" id="o4w-lg-biB">
+                        <barButtonItem key="backBarButtonItem" title=" " id="wFb-XF-V5O"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N9v-4F-Bxo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -185,7 +193,7 @@
         <!--Home-->
         <scene sceneID="E7T-OR-7V4">
             <objects>
-                <viewController id="aeq-tH-lZA" customClass="HomeViewController" customModule="R2S" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="aeq-tH-lZA" customClass="HomeViewController" customModule="R2S" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DQj-YU-jwc"/>
                         <viewControllerLayoutGuide type="bottom" id="NQJ-lw-41n"/>
@@ -193,9 +201,12 @@
                     <view key="view" contentMode="scaleToFill" id="trI-mA-vab">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.93725490196078431" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="ic_home" id="asJ-lZ-fxF"/>
+                    <navigationItem key="navigationItem" id="V8h-tJ-ffN">
+                        <barButtonItem key="backBarButtonItem" title=" " id="h5v-7v-uhB"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="Q5K-h3-mWc" kind="show" identifier="HomeToResourceSegue" id="sxH-e5-hhl"/>
                     </connections>
@@ -233,4 +244,7 @@
         <image name="ic_notifications" width="24" height="24"/>
         <image name="ic_person" width="24" height="24"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="xPI-oA-IOK"/>
+    </inferredMetricsTieBreakers>
 </document>

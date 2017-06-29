@@ -10,4 +10,6 @@ import UIKit
 
 class SubCategoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var subcategoryLabel: UILabel!
+    @IBOutlet weak var categoryUnderlineView: UIView!
+
 }

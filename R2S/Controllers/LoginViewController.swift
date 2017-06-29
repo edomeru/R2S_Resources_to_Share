@@ -21,9 +21,6 @@ class LoginViewController: BaseViewController {
         
         self.initUILayout()
         self.setupValidator()
-        if UserManager.sharedInstance.isLoggedIn! {
-            self.performSegue(withIdentifier: Constants.segue.loginToHome, sender: self)
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -37,7 +34,8 @@ class LoginViewController: BaseViewController {
     // MARK: - Private Functions
     private func initUILayout() {
         self.loginView = self.loadFromNibNamed(nibNamed: Constants.xib.login) as! LoginView
-        self.view = self.loginView
+        self.loginView.frame = CGRect(x: 0, y: Constants.navbarHeight, width: self.loginView.frame.width, height: self.loginView.frame.height)
+        self.view.addSubview(self.loginView)
         self.loginView.delegate = self
         self.loginView.emailTextField.delegate = self
         self.loginView.passwordTextField.delegate = self
@@ -49,8 +47,9 @@ class LoginViewController: BaseViewController {
     }
     
     private func configureNavBar() {
-        self.navigationItem.hidesBackButton = true
-        self.navigationController?.setNavigationBarHidden(true, animated: true)
+        self.title = "Login"
+        self.navigationItem.hidesBackButton = false
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }
 
@@ -59,10 +58,6 @@ extension LoginViewController: LoginViewDelegate {
     func loginButtonPressed(sender: AnyObject) {
         self.loginView.endEditing(true)
         self.validator.validate(self)
-    }
-    
-    func registerButtonPressed(sender: AnyObject) {
-        
     }
     
     func forgotPasswordButtonPressed(sender: AnyObject) {
@@ -94,7 +89,14 @@ extension LoginViewController: ValidationDelegate {
     func validationFailed(_ errors: [(Validatable, ValidationError)]) {
         for (field, _) in errors {
             if let field =  field as? UITextField {
-                field.addBorder(width: 1.0, color: UIColor.red.cgColor, radius: 4.0)
+                switch field {
+                case self.loginView.emailTextField:
+                    self.loginView.emailBorderView.backgroundColor = UIColor.red
+                case self.loginView.passwordTextField:
+                    self.loginView.passwordBorderView.backgroundColor = UIColor.red
+                default:
+                    print("default")
+                }
             }
         }
     }
@@ -103,7 +105,13 @@ extension LoginViewController: ValidationDelegate {
 // MARK: - UITextFieldDelegate
 extension LoginViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.addBorder(width: 0.0, radius: 0.0)
-        self.activeTextField = textField
+        switch textField {
+        case self.loginView.emailTextField:
+            self.loginView.emailBorderView.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
+        case self.loginView.passwordTextField:
+            self.loginView.passwordBorderView.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
+        default:
+            print("default")
+        }
     }
 }

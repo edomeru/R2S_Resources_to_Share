@@ -12,6 +12,12 @@ import SwiftKeychainWrapper
 import RealmSwift
 
 class UserService {
+    /////////////////////////////////////////////////////////////
+    //
+    //      Network / API Related Services
+    //
+    /////////////////////////////////////////////////////////////
+
     static func register(_ user: User, onCompletion: @escaping (Int?, String?) -> Void) {
         var message = ""
         var params: [String: AnyObject] = [:]

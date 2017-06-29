@@ -11,9 +11,10 @@ import Realm
 import RealmSwift
 
 class SubcategoryDao {
-    static func getSubcategories() -> Results<Subcategory> {
+    static func getSubcategoriesBy(categoryId: Int) -> Results<Subcategory> {
         let realm = try! Realm()
-        let subcategories = realm.objects(Subcategory.self)
+        let predicate = NSPredicate(format: "parentCategory.id = %d", categoryId)
+        let subcategories = realm.objects(Subcategory.self).filter(predicate)
         return subcategories
     }
     
@@ -31,27 +32,27 @@ class SubcategoryDao {
         }
     }
     
-    static func edit(_ category: Category, keys: [String], values: [Any?]) {
+    static func edit(_ subcategory: Subcategory, keys: [String], values: [Any?]) {
         let realm = try! Realm()
         for item in 0..<keys.count {
             try! realm.write {
-                category.setValue(values[item], forKey: keys[item])
+                subcategory.setValue(values[item], forKey: keys[item])
             }
         }
     }
     
-    static func delete(_ category: Category) {
+    static func delete(_ subcategory: Subcategory) {
         let realm = try! Realm()
         try! realm.write {
-            realm.delete(category)
+            realm.delete(subcategory)
         }
     }
     
     static func deleteAll() {
         let realm = try! Realm()
         try! realm.write {
-            let categories = realm.objects(Category.self)
-            realm.delete(categories)
+            let subcategories = realm.objects(Subcategory.self)
+            realm.delete(subcategories)
         }
     }
 }

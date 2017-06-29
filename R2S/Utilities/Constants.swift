@@ -6,11 +6,11 @@
 //  Copyright © 2017 Total Integrated Resources. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class Constants {
     
-    static let companyId = 12
+    static let navbarHeight = CGFloat(64.0)
     
     // MARK: - API Endpoints
     struct api {
@@ -36,10 +36,11 @@ class Constants {
     
     // MARK: - Xib Names
     struct xib {
+        static let welcome = "WelcomeView"
         static let login = "LoginView"
         static let register = "RegisterView"
-        static let homeView = "HomeView"
-        static let resourceView = "ResourceView"
+        static let home = "HomeView"
+        static let resource = "ResourceView"
         
         // TableView Cell
         static let featuredTableCell = "FeaturedTableViewCell"
@@ -65,12 +66,16 @@ class Constants {
         static let charade = "282B35"
         static let athensGray = "F0EFF5"
         static let electricBlue = "168EE2"
+        static let charcoal = "414340"
+        static let astralBlue = "3A6994"
+        static let grayUnderline = "9E9E9E"
     }
     
     // MARK: - Segue Identifiers
     struct segue {
         static let welcomeToLogin = "WelcomeToLoginSegue"
         static let welcomeToRegister = "WelcomeToRegisterSegue"
+        static let welcomeToHome = "WelcomeToHomeSegue"
         static let loginToHome = "LoginToHomeSegue"
         static let homeToResourceSegue = "HomeToResourceSegue"
     }

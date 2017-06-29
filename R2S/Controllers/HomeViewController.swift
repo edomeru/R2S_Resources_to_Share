@@ -26,6 +26,7 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.refreshData()
+        self.configureNavBar()
         // Do any additional setup after loading the view.
     }
 
@@ -40,13 +41,37 @@ class HomeViewController: BaseViewController {
         self.screenWidth = screenSize.width
         self.screenHeight = screenSize.height
 
-        self.homeView = self.loadFromNibNamed(nibNamed: Constants.xib.homeView) as! HomeView
-        self.view = self.homeView
+        self.homeView = self.loadFromNibNamed(nibNamed: Constants.xib.home) as! HomeView
+        self.homeView.frame = CGRect(x: 0.0, y: Constants.navbarHeight, width: self.homeView.frame.width, height: self.homeView.frame.height)
+        self.view.addSubview(self.homeView)
         
         self.homeView.homeTableView.register(UINib(nibName: Constants.xib.featuredTableCell, bundle: nil), forCellReuseIdentifier: "FeaturedTableCell")
         self.homeView.homeTableView.register(UINib(nibName: Constants.xib.categoryTableCell, bundle: nil), forCellReuseIdentifier: "CategoryTableCell")
         self.homeView.homeTableView.delegate = self
         self.homeView.homeTableView.dataSource = self
+    }
+    
+    private func configureNavBar() {
+        self.navigationItem.hidesBackButton = true
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        let cartButton = MIBadgeButton()
+        let cartImage = UIImage(named: "ic_exit_to_app")
+        cartButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        cartButton.setImage(cartImage, for: .normal)
+        cartButton.badgeEdgeInsets = UIEdgeInsetsMake(15, 0, 0, 0)
+        cartButton.addTarget(self, action: #selector(self.cartButtonPressed), for: .touchUpInside)
+        let barButton = UIBarButtonItem.init(customView: cartButton)
+        self.tabBarController!.navigationItem.rightBarButtonItem = barButton
+    }
+    
+    func cartButtonPressed() {
+        _ = self.navigationController?.popToRootViewController(animated: true)
+        CategoryDao.deleteAll()
+        SubcategoryDao.deleteAll()
+        let defaults = UserDefaults.standard
+        defaults.set(false, forKey: "isLoggedIn")
     }
     
     private func refreshData() {
@@ -55,18 +80,19 @@ class HomeViewController: BaseViewController {
         activityIndicator.activityIndicatorViewStyle = .gray
         activityIndicator.center = self.view.center
         activityIndicator.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
-        activityIndicator.color = UIColor(hex: Constants.color.primaryDark)
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
         self.view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
         CategoryService.fetchCategories { (statusCode, message) in
             if statusCode == 200 {
-                activityIndicator.stopAnimating()
                 self.categories = CategoryService.getCategories()
                 CategoryService.clearSelectedCategories(self.categories)
-                self.initUILayout()
-                self.homeView.homeTableView.reloadData()
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                    activityIndicator.stopAnimating()
+                    self.initUILayout()
+                    self.homeView.homeTableView.reloadData()
+                })
             } else {
                 self.categories = CategoryService.getCategories()
                 CategoryService.clearSelectedCategories(self.categories)
@@ -74,11 +100,6 @@ class HomeViewController: BaseViewController {
                 Utility.showAlert(title: "Error", message: message!, targetController: self)
             }
         }
-        activityIndicator.stopAnimating()
-        self.categories = CategoryService.getCategories()
-        CategoryService.clearSelectedCategories(self.categories)
-        self.initUILayout()
-        self.homeView.homeTableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -103,7 +124,7 @@ extension HomeViewController: UITableViewDelegate {
             return 180.0
         case 1:
             let categoryCount = ceil(Double(self.categories.count / 2))
-            let itemHeight = (screenWidth / 2) - 7
+            let itemHeight = (screenWidth / 2)
             let heightForRow = CGFloat(categoryCount) * itemHeight
             return heightForRow
         default:
@@ -157,18 +178,17 @@ extension HomeViewController: UITableViewDataSource {
             case 1:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryTableCell", for: indexPath as IndexPath) as! CategoryTableViewCell
                 cell.categoryCollectionViewCell.register(UINib(nibName: Constants.xib.categoryCollectionCell, bundle: nil), forCellWithReuseIdentifier: "CategoryCollectionCell")
+                cell.categoryCollectionViewCell.delegate =  self
+                cell.categoryCollectionViewCell.dataSource = self
                 
                 let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
                 layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-                print((screenWidth / 2) - 11)
                 layout.itemSize = CGSize(width: (screenWidth / 2) - 11, height: ((screenWidth / 2) - 11) - 11)
                 layout.minimumInteritemSpacing = 6
                 layout.minimumLineSpacing = 6
                 cell.categoryCollectionViewCell.collectionViewLayout = layout
                 cell.categoryCollectionViewCell.isScrollEnabled = false
-                
-                cell.categoryCollectionViewCell.delegate =  self
-                cell.categoryCollectionViewCell.dataSource = self
+                cell.categoryCollectionViewCell.reloadData()
                 return cell
             default:
                 return UITableViewCell()
@@ -181,7 +201,6 @@ extension HomeViewController: UITableViewDataSource {
 // MARK: UICollectionViewDelegate
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(indexPath.item)
         selectedCategoryId = self.categories[indexPath.item].id
         self.performSegue(withIdentifier: Constants.segue.homeToResourceSegue, sender: self)
     }

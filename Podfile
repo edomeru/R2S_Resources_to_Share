@@ -9,6 +9,7 @@ target 'R2S' do
   pod 'KMPlaceholderTextView', '~> 1.3.0'
   pod 'Alamofire', '~> 4.0'
   pod 'SwiftyJSON'
+  pod 'SwiftyJSONRealmObject'
   pod 'GoogleMaps'
   pod 'M13Checkbox'
   pod 'Kingfisher'
@@ -22,5 +23,5 @@ target 'R2S' do
   pod 'SwiftSpinner'
   pod 'SwiftKeychainWrapper'
   pod 'DropDown'
-  pod 'AMScrollingNavbar'
+  pod 'AMScrollingNavbar', '3.2.0'
 end

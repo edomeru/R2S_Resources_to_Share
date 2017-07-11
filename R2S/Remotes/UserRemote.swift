@@ -21,4 +21,5 @@ class UserRemote {
             onCompletion(jsonData, statusCode)
         })
     }
+    
 }

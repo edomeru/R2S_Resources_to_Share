@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C4506E31F1DFE290026E8E9 /* TransactionDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4506E21F1DFE290026E8E9 /* TransactionDao.swift */; };
+		2C5B06251F18C886002C09B8 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B06241F18C886002C09B8 /* Transaction.swift */; };
+		2C5B06271F18C94B002C09B8 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B06261F18C94B002C09B8 /* Resource.swift */; };
+		2C63EF0B1F027520003573A7 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C63EF0A1F027520003573A7 /* AccountViewController.swift */; };
+		2C63EF0D1F027530003573A7 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C63EF0C1F027530003573A7 /* AccountView.swift */; };
+		2C63EF101F027541003573A7 /* AccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C63EF0E1F027541003573A7 /* AccountView.xib */; };
+		2C63EF111F027541003573A7 /* ActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C63EF0F1F027541003573A7 /* ActivityView.xib */; };
+		2C8BCC4F1F1325900064DD87 /* TransactionRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8BCC4E1F1325900064DD87 /* TransactionRemote.swift */; };
+		2C8BCC511F132D0C0064DD87 /* TransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8BCC501F132D0C0064DD87 /* TransactionService.swift */; };
+		2C93C0CD1F0F9659009B7179 /* ResourceCollectionViewCell copy.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C93C0CC1F0F9659009B7179 /* ResourceCollectionViewCell copy.xib */; };
+		2CF06DD11EFBF0E30073C844 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF06DD01EFBF0E30073C844 /* ActivityViewController.swift */; };
+		2CF06DD31EFBF1090073C844 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF06DD21EFBF1090073C844 /* ActivityView.swift */; };
 		548A6074C3188468E31693E6 /* Pods_R2S.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E60C07BE5101947A43207D /* Pods_R2S.framework */; };
 		B99151AB1E77F38300949529 /* ApiRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99151AA1E77F38300949529 /* ApiRequestManager.swift */; };
 		B99151AD1E77F48500949529 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99151AC1E77F48500949529 /* NetworkManager.swift */; };
@@ -86,6 +98,18 @@
 /* Begin PBXFileReference section */
 		23814817D62CF9D3116467B7 /* Pods-R2S.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R2S.debug.xcconfig"; path = "Pods/Target Support Files/Pods-R2S/Pods-R2S.debug.xcconfig"; sourceTree = "<group>"; };
 		26E60C07BE5101947A43207D /* Pods_R2S.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_R2S.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C4506E21F1DFE290026E8E9 /* TransactionDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionDao.swift; path = Dao/TransactionDao.swift; sourceTree = "<group>"; };
+		2C5B06241F18C886002C09B8 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Transaction.swift; path = Models/Transaction.swift; sourceTree = "<group>"; };
+		2C5B06261F18C94B002C09B8 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Resource.swift; path = Models/Resource.swift; sourceTree = "<group>"; };
+		2C63EF0A1F027520003573A7 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountViewController.swift; path = Controllers/AccountViewController.swift; sourceTree = "<group>"; };
+		2C63EF0C1F027530003573A7 /* AccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountView.swift; path = "View Classes/AccountView.swift"; sourceTree = "<group>"; };
+		2C63EF0E1F027541003573A7 /* AccountView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccountView.xib; path = Xibs/AccountView.xib; sourceTree = "<group>"; };
+		2C63EF0F1F027541003573A7 /* ActivityView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityView.xib; path = Xibs/ActivityView.xib; sourceTree = "<group>"; };
+		2C8BCC4E1F1325900064DD87 /* TransactionRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionRemote.swift; path = Remotes/TransactionRemote.swift; sourceTree = "<group>"; };
+		2C8BCC501F132D0C0064DD87 /* TransactionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionService.swift; path = Services/TransactionService.swift; sourceTree = "<group>"; };
+		2C93C0CC1F0F9659009B7179 /* ResourceCollectionViewCell copy.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "ResourceCollectionViewCell copy.xib"; path = "Xibs/ResourceCollectionViewCell copy.xib"; sourceTree = "<group>"; };
+		2CF06DD01EFBF0E30073C844 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityViewController.swift; path = Controllers/ActivityViewController.swift; sourceTree = "<group>"; };
+		2CF06DD21EFBF1090073C844 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityView.swift; path = "View Classes/ActivityView.swift"; sourceTree = "<group>"; };
 		33DE7660843E508F233330F3 /* Pods-R2S.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R2S.release.xcconfig"; path = "Pods/Target Support Files/Pods-R2S/Pods-R2S.release.xcconfig"; sourceTree = "<group>"; };
 		B99151AA1E77F38300949529 /* ApiRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiRequestManager.swift; path = Utilities/ApiRequestManager.swift; sourceTree = "<group>"; };
 		B99151AC1E77F48500949529 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = Utilities/NetworkManager.swift; sourceTree = "<group>"; };
@@ -246,6 +270,8 @@
 		B9E2675E1E78E9DB00BB9900 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2C5B06261F18C94B002C09B8 /* Resource.swift */,
+				2C5B06241F18C886002C09B8 /* Transaction.swift */,
 				B9E267651E78ED7B00BB9900 /* User.swift */,
 				B9E267AA1E7B945700BB9900 /* Category.swift */,
 				B9E267BE1E7BB7EF00BB9900 /* Subcategory.swift */,
@@ -256,6 +282,7 @@
 		B9E2675F1E78EA3F00BB9900 /* Dao */ = {
 			isa = PBXGroup;
 			children = (
+				2C4506E21F1DFE290026E8E9 /* TransactionDao.swift */,
 				B9E267631E78ED0000BB9900 /* UserDao.swift */,
 				B9E267B01E7B94F800BB9900 /* CategoryDao.swift */,
 				B9E267C01E7BB84900BB9900 /* SubcategoryDao.swift */,
@@ -278,6 +305,7 @@
 		B9E267611E78EA6E00BB9900 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				2C8BCC501F132D0C0064DD87 /* TransactionService.swift */,
 				B9E267791E7914A200BB9900 /* UserService.swift */,
 				B9E267AC1E7B94D900BB9900 /* CategoryService.swift */,
 			);
@@ -287,6 +315,7 @@
 		B9E267621E78EA7500BB9900 /* Remotes */ = {
 			isa = PBXGroup;
 			children = (
+				2C8BCC4E1F1325900064DD87 /* TransactionRemote.swift */,
 				B9E267711E78F7A500BB9900 /* UserRemote.swift */,
 				B9E267B21E7B950600BB9900 /* CategoryRemote.swift */,
 			);
@@ -298,6 +327,8 @@
 			children = (
 				B9E267C21E7D416400BB9900 /* HomeTabBarViewController.swift */,
 				B9E267C31E7D416500BB9900 /* HomeViewController.swift */,
+				2CF06DD01EFBF0E30073C844 /* ActivityViewController.swift */,
+				2C63EF0A1F027520003573A7 /* AccountViewController.swift */,
 			);
 			name = "Tab Bar";
 			sourceTree = "<group>";
@@ -306,6 +337,8 @@
 			isa = PBXGroup;
 			children = (
 				B9E267CA1E7D41A500BB9900 /* HomeView.swift */,
+				2CF06DD21EFBF1090073C844 /* ActivityView.swift */,
+				2C63EF0C1F027530003573A7 /* AccountView.swift */,
 			);
 			name = "Tab Bar";
 			sourceTree = "<group>";
@@ -314,6 +347,8 @@
 			isa = PBXGroup;
 			children = (
 				B9E267D41E7D41E700BB9900 /* HomeView.xib */,
+				2C63EF0F1F027541003573A7 /* ActivityView.xib */,
+				2C63EF0E1F027541003573A7 /* AccountView.xib */,
 			);
 			name = "Tab Bar";
 			sourceTree = "<group>";
@@ -364,6 +399,7 @@
 		B9E267A71E7AC74600BB9900 /* CollectionView Cell */ = {
 			isa = PBXGroup;
 			children = (
+				2C93C0CC1F0F9659009B7179 /* ResourceCollectionViewCell copy.xib */,
 				B9E267D01E7D41CA00BB9900 /* CategoryCollectionViewCell.xib */,
 				B9E267BA1E7BAF9500BB9900 /* SubCategoryCollectionViewCell.xib */,
 			);
@@ -557,12 +593,15 @@
 				B9E267D31E7D41D700BB9900 /* FeaturedCarouselItemView.xib in Resources */,
 				B9E267D51E7D41E700BB9900 /* HomeView.xib in Resources */,
 				B9FE3FEE1E77E32A003CDE74 /* Assets.xcassets in Resources */,
+				2C63EF101F027541003573A7 /* AccountView.xib in Resources */,
 				B99151BA1E77F71200949529 /* LoginView.xib in Resources */,
+				2C63EF111F027541003573A7 /* ActivityView.xib in Resources */,
 				B9E267D81E7D41F500BB9900 /* CategoryTableViewCell.xib in Resources */,
 				B9E267D11E7D41CA00BB9900 /* CategoryCollectionViewCell.xib in Resources */,
 				B9FE3FEC1E77E32A003CDE74 /* Main.storyboard in Resources */,
 				B9E267B91E7BAEC400BB9900 /* ResourceView.xib in Resources */,
 				B9E267BB1E7BAF9500BB9900 /* SubCategoryCollectionViewCell.xib in Resources */,
+				2C93C0CD1F0F9659009B7179 /* ResourceCollectionViewCell copy.xib in Resources */,
 				B9E267DF1E7D490100BB9900 /* WelcomeView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -638,29 +677,38 @@
 			files = (
 				B9E267B51E7BAE2600BB9900 /* ResourceViewController.swift in Sources */,
 				B9E267DB1E7D467800BB9900 /* WelcomeViewController.swift in Sources */,
+				2C5B06251F18C886002C09B8 /* Transaction.swift in Sources */,
 				B9E267C91E7D419500BB9900 /* FeaturedCarouselItemView.swift in Sources */,
 				B9E267641E78ED0000BB9900 /* UserDao.swift in Sources */,
+				2C8BCC4F1F1325900064DD87 /* TransactionRemote.swift in Sources */,
 				B9E2677E1E79416A00BB9900 /* RegisterViewController.swift in Sources */,
 				B9E2676A1E78F72F00BB9900 /* UIColor.swift in Sources */,
 				B9E267781E79145F00BB9900 /* Reachability.swift in Sources */,
 				B9E267B11E7B94F800BB9900 /* CategoryDao.swift in Sources */,
 				B9E267BF1E7BB7EF00BB9900 /* Subcategory.swift in Sources */,
 				B9E267AB1E7B945700BB9900 /* Category.swift in Sources */,
+				2C63EF0B1F027520003573A7 /* AccountViewController.swift in Sources */,
 				B9E267681E78F71D00BB9900 /* String.swift in Sources */,
 				B99151AD1E77F48500949529 /* NetworkManager.swift in Sources */,
+				2C4506E31F1DFE290026E8E9 /* TransactionDao.swift in Sources */,
 				B99151B71E77F6E300949529 /* LoginView.swift in Sources */,
 				B99151B01E77F55600949529 /* BaseViewController.swift in Sources */,
 				B9E267CB1E7D41A500BB9900 /* HomeView.swift in Sources */,
 				B9E267C11E7BB84900BB9900 /* SubcategoryDao.swift in Sources */,
 				B9E267C71E7D418300BB9900 /* CategoryCollectionViewCell.swift in Sources */,
+				2C5B06271F18C94B002C09B8 /* Resource.swift in Sources */,
 				B9E267721E78F7A500BB9900 /* UserRemote.swift in Sources */,
 				B9E267801E79419900BB9900 /* RegisterView.swift in Sources */,
 				B99151AB1E77F38300949529 /* ApiRequestManager.swift in Sources */,
 				B99151B21E77F67E00949529 /* LoginViewController.swift in Sources */,
 				B9FE3FE71E77E32A003CDE74 /* AppDelegate.swift in Sources */,
 				B9E267B71E7BAEA600BB9900 /* ResourceView.swift in Sources */,
+				2C63EF0D1F027530003573A7 /* AccountView.swift in Sources */,
 				B9E2676E1E78F76900BB9900 /* UITextField.swift in Sources */,
+				2C8BCC511F132D0C0064DD87 /* TransactionService.swift in Sources */,
 				B9E267701E78F78000BB9900 /* UIView.swift in Sources */,
+				2CF06DD11EFBF0E30073C844 /* ActivityViewController.swift in Sources */,
+				2CF06DD31EFBF1090073C844 /* ActivityView.swift in Sources */,
 				B99151B51E77F6C600949529 /* BaseUIView.swift in Sources */,
 				B9E267B31E7B950600BB9900 /* CategoryRemote.swift in Sources */,
 				B9E2676C1E78F75100BB9900 /* UITableView.swift in Sources */,

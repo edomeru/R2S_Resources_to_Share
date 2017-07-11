@@ -10,13 +10,28 @@ import Foundation
 import SwiftyJSON
 import RealmSwift
 
-class CategoryService {
+class TransactionService {
     /////////////////////////////////////////////////////////////
     //
     //      Network / API Related Services
     //
     /////////////////////////////////////////////////////////////
     
+    static func fetchTransactions(onCompletion: @escaping(Int?, String?) -> Void){
+        var message = ""
+        TransactionRemote.fetchAll(onCompletion: { jsonData, statusCode in
+            DispatchQueue.global(qos: .background).async{
+                if statusCode == 200{
+                    message = ""
+                    for (_, transaction):(String, JSON) in jsonData {
+//                        print (transaction);
+//                        print("hi")
+                    }
+                    print (jsonData)
+                }
+            }
+        })
+    }
     static func fetchCategories(onCompletion: @escaping (Int?, String?) -> Void) {
         var message = ""
         CategoryRemote.fetchAll(onCompletion: { jsonData, statusCode in

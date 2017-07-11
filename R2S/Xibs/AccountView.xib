@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="lFf-Cv-WNb" customClass="AccountView" customModule="R2S" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVk-Qq-d8g">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aT0-8f-wch" userLabel="Content View">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DJ Khaled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3r-5F-wMo">
+                                    <rect key="frame" x="110" y="29.5" width="78" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="dj_khaled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jws-Hg-5OH">
+                                    <rect key="frame" x="110" y="55.5" width="72" height="21"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add_box" translatesAutoresizingMaskIntoConstraints="NO" id="aO9-8C-BlY">
+                                    <rect key="frame" x="20" y="10" width="80" height="80"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="80" id="RQN-zc-0Bb"/>
+                                        <constraint firstAttribute="height" constant="80" id="djm-Xk-Hmc"/>
+                                    </constraints>
+                                </imageView>
+                                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="oQu-xR-omU">
+                                    <rect key="frame" x="10" y="100" width="355" height="557"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </tableView>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="Jws-Hg-5OH" firstAttribute="leading" secondItem="aO9-8C-BlY" secondAttribute="trailing" constant="10" id="3Ra-NZ-uxJ"/>
+                                <constraint firstItem="aO9-8C-BlY" firstAttribute="leading" secondItem="aT0-8f-wch" secondAttribute="leading" constant="20" id="6eS-sb-5Yx"/>
+                                <constraint firstItem="oQu-xR-omU" firstAttribute="top" secondItem="aO9-8C-BlY" secondAttribute="bottom" constant="10" id="AIT-pM-tE8"/>
+                                <constraint firstItem="oQu-xR-omU" firstAttribute="leading" secondItem="aT0-8f-wch" secondAttribute="leading" constant="10" id="Cdk-Lz-KKJ"/>
+                                <constraint firstAttribute="bottom" secondItem="oQu-xR-omU" secondAttribute="bottom" constant="10" id="D4N-NV-Q0R"/>
+                                <constraint firstItem="s3r-5F-wMo" firstAttribute="leading" secondItem="aO9-8C-BlY" secondAttribute="trailing" constant="10" id="EUY-9O-T4I"/>
+                                <constraint firstItem="aO9-8C-BlY" firstAttribute="top" secondItem="aT0-8f-wch" secondAttribute="top" constant="10" id="Nal-9e-Mk2"/>
+                                <constraint firstItem="s3r-5F-wMo" firstAttribute="centerY" secondItem="aO9-8C-BlY" secondAttribute="centerY" constant="-10" id="Rgy-PT-7Za"/>
+                                <constraint firstAttribute="trailing" secondItem="oQu-xR-omU" secondAttribute="trailing" constant="10" id="cRk-kf-Woh"/>
+                                <constraint firstItem="Jws-Hg-5OH" firstAttribute="top" secondItem="s3r-5F-wMo" secondAttribute="bottom" constant="5" id="rTu-Nl-PKb"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="aT0-8f-wch" secondAttribute="bottom" id="5Qb-7t-8aj"/>
+                        <constraint firstItem="aT0-8f-wch" firstAttribute="top" secondItem="FVk-Qq-d8g" secondAttribute="top" id="I9w-fF-5jC"/>
+                        <constraint firstItem="aT0-8f-wch" firstAttribute="leading" secondItem="FVk-Qq-d8g" secondAttribute="leading" id="Sat-ZC-LZC"/>
+                        <constraint firstAttribute="trailing" secondItem="aT0-8f-wch" secondAttribute="trailing" id="fd5-2E-L3e"/>
+                    </constraints>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="0.94117647059999998" green="0.93725490199999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="aT0-8f-wch" firstAttribute="height" secondItem="lFf-Cv-WNb" secondAttribute="height" id="ILJ-Ik-KJd"/>
+                <constraint firstAttribute="bottom" secondItem="FVk-Qq-d8g" secondAttribute="bottom" id="JFH-XW-63M"/>
+                <constraint firstItem="aT0-8f-wch" firstAttribute="width" secondItem="lFf-Cv-WNb" secondAttribute="width" id="JYD-oL-LHK"/>
+                <constraint firstItem="FVk-Qq-d8g" firstAttribute="leading" secondItem="lFf-Cv-WNb" secondAttribute="leading" id="SW4-mg-MtU"/>
+                <constraint firstAttribute="trailing" secondItem="FVk-Qq-d8g" secondAttribute="trailing" id="aWL-kC-Szw"/>
+                <constraint firstItem="FVk-Qq-d8g" firstAttribute="top" secondItem="lFf-Cv-WNb" secondAttribute="top" id="vi5-4l-jGa"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <point key="canvasLocation" x="47.5" y="-16.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_add_box" width="24" height="24"/>
+    </resources>
+</document>

@@ -85,7 +85,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
-  - AMScrollingNavbar
+  - AMScrollingNavbar (= 3.2.0)
   - DropDown
   - FacebookCore
   - FacebookLogin
@@ -136,7 +136,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 225d40532489835a034b8f4e2c9c87fbf4f615a2
   FirebaseInstanceID: 2d0518b1378fe9d685ef40cbdd63d2fdc1125339
   FSCalendar: 574388d70778c22719eed9341653e1743b345573
-  Google: 813c467362eabc11385f5a5cc9ad0cb651a58f4e
+  Google: cd92fab98f800f509da88c1e0c570275713bc9d5
   GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
   GoogleSignIn: d7ad83f13480e1f30453471d00d19b5293ac46af
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
@@ -155,6 +155,6 @@ SPEC CHECKSUMS:
   SwiftValidator: 25ded5ca1f10c05adf57f6ac82a72d28ac8d91af
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: d65ab5d0a4f0d91fa7fc0c4fbc7319d97a6a5079
+PODFILE CHECKSUM: 6ee6b66c3a7dfc9333cf71ff632406003244aa2a
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.1.0.rc.2

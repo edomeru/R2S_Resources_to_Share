@@ -16,6 +16,7 @@ class Constants {
     struct api {
         static let baseUrl = "http://api.r2s.tirsolutions.com/resources-to-share/api"
         
+        
         // MARK: - User
         struct user {
             static let base = api.baseUrl + "/users"
@@ -25,13 +26,22 @@ class Constants {
             static let changePassword = user.base + "/{username}/password"
             static let forgot = api.baseUrl + "/forgot"
             static let forgotCode = api.baseUrl + "/forgot/code"
+        
+            
+            // MARK: - Transaction
+            static let transactions = base + "/{id}/transactions"
+            static let transaction = transactions + "/{transaction_id}"
+            static let transaction_reject = transaction + "/reject"
+            static let transaction_complete = transaction + "/complete"
+            static let transaction_rate = transaction + "/rate"
         }
         
         // MARK: - Category
         struct category {
             static let base = api.baseUrl + "/categories"
-            static let subCategory = category.base + "/{id}/subcategories"
+            static let subCategory = base + "/{id}/subcategories"
         }
+        
     }
     
     // MARK: - Xib Names
@@ -39,8 +49,10 @@ class Constants {
         static let welcome = "WelcomeView"
         static let login = "LoginView"
         static let register = "RegisterView"
-        static let home = "HomeView"
-        static let resource = "ResourceView"
+        static let homeView = "HomeView"
+        static let activityView = "ActivityView"
+        static let accountView = "AccountView"
+        static let resourceView = "ResourceView"
         
         // TableView Cell
         static let featuredTableCell = "FeaturedTableViewCell"

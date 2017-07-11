@@ -27,7 +27,9 @@ class HomeViewController: BaseViewController {
         super.viewDidLoad()
         self.refreshData()
         self.configureNavBar()
+        
         // Do any additional setup after loading the view.
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -41,7 +43,7 @@ class HomeViewController: BaseViewController {
         self.screenWidth = screenSize.width
         self.screenHeight = screenSize.height
 
-        self.homeView = self.loadFromNibNamed(nibNamed: Constants.xib.home) as! HomeView
+        self.homeView = self.loadFromNibNamed(nibNamed: Constants.xib.homeView) as! HomeView
         self.homeView.frame = CGRect(x: 0.0, y: Constants.navbarHeight, width: self.homeView.frame.width, height: self.homeView.frame.height)
         self.view.addSubview(self.homeView)
         
@@ -215,11 +217,25 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionCell", for: indexPath) as! CategoryCollectionViewCell
         cell.categoryLabel.text = self.categories[indexPath.item].name
+        
+//        print (self.categories[indexPath.item])
+        
         let imageUrl = self.categories[indexPath.item].imageUrl
         cell.categoryImageView.kf.indicatorType = .activity
-        let url = URL(string: imageUrl)
-        cell.categoryImageView.kf.setImage(with: url, options: [.transition(.fade(0.2))])
-        cell.categoryImageView.bounds = view.frame.insetBy(dx: 10.0, dy: 10.0);
+        
+        if (imageUrl == ""){
+            let url = URL(string: "http://theblackpanthers.com/s/photogallery/img/no-image-available.jpg")
+            cell.categoryImageView.kf.setImage(with: url, options: [.transition(.fade(0.2))])
+            cell.categoryImageView.bounds = view.frame.insetBy(dx: 10.0, dy: 10.0);
+        }
+        else{
+            let url = URL(string: imageUrl)
+            cell.categoryImageView.kf.setImage(with: url, options: [.transition(.fade(0.2))])
+            cell.categoryImageView.bounds = view.frame.insetBy(dx: 10.0, dy: 10.0);
+        }
+        
+        
+        
         return cell
     }
 }

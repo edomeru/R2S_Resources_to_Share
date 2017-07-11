@@ -14,10 +14,14 @@ class WelcomeViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.initUILayout()
         if UserManager.sharedInstance.isLoggedIn! {
             self.performSegue(withIdentifier: Constants.segue.welcomeToHome, sender: self)
         }
+
+        // Do any additional setup after loading the view.
+//        self.performSegue(withIdentifier: Constants.segue.welcomeToLogin, sender: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {

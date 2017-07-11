@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gyt-qp-uPB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gyt-qp-uPB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,7 +13,7 @@
         <scene sceneID="5gd-tc-SuB">
             <objects>
                 <navigationController id="gyt-qp-uPB" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="V3o-gx-w46">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V3o-gx-w46">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -155,7 +155,7 @@
         <!--Activity-->
         <scene sceneID="8Jv-Eb-Xk0">
             <objects>
-                <viewController id="eKi-rf-Y3v" sceneMemberID="viewController">
+                <viewController id="eKi-rf-Y3v" customClass="ActivityViewController" customModule="R2S" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Atf-u4-OJ6"/>
                         <viewControllerLayoutGuide type="bottom" id="cgH-JF-DhE"/>
@@ -169,12 +169,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="STx-My-eQb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1054" y="709"/>
+            <point key="canvasLocation" x="-201" y="1057"/>
         </scene>
         <!--Me-->
         <scene sceneID="LFv-gX-3F4">
             <objects>
-                <viewController id="HWt-XA-9Dc" sceneMemberID="viewController">
+                <viewController id="HWt-XA-9Dc" customClass="AccountViewController" customModule="R2S" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Oft-Xr-KNS"/>
                         <viewControllerLayoutGuide type="bottom" id="J6l-b9-czC"/>
@@ -184,11 +184,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Me" image="ic_person" id="SJ3-WQ-dSs"/>
+                    <tabBarItem key="tabBarItem" title="Me" image="ic_person" id="SJ3-WQ-dSs" customClass="Anyway"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="by0-9X-XqV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1054" y="1397"/>
+            <point key="canvasLocation" x="545" y="1057"/>
         </scene>
         <!--Home-->
         <scene sceneID="E7T-OR-7V4">

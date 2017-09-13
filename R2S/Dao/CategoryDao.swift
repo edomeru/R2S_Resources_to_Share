@@ -1,5 +1,5 @@
 //
-//  TransactionDao.swift
+//  CategoryDao.swift
 //  R2S
 //
 //  Created by Earth Maniebo on 17/3/17.
@@ -10,48 +10,48 @@ import Foundation
 import Realm
 import RealmSwift
 
-class TransactionDao {
-    static func getTransactions() -> Results<Transaction> {
+class CategoryDao {
+    static func getCategories() -> Results<Category> {
         let realm = try! Realm()
-        let transactions = realm.objects(Transaction.self)
-        return transactions
+        let categories = realm.objects(Category.self)
+        return categories
     }
     
-    static func getOneBy(transactionId: Int) -> Transaction? {
+    static func getOneBy(categoryId: Int) -> Category? {
         let realm = try! Realm()
-        let predicate = NSPredicate(format: "id = %d", transactionId)
-        let transaction = realm.objects(Transaction.self).filter(predicate).first
-        return transaction
+        let predicate = NSPredicate(format: "id = %d", categoryId)
+        let category = realm.objects(Category.self).filter(predicate).first
+        return category
     }
     
-    static func add(_ Transaction: Transaction) {
+    static func add(_ category: Category) {
         let realm = try! Realm()
         try! realm.write {
-            realm.add(Transaction, update: true)
+            realm.add(category, update: true)
         }
     }
     
-    static func edit(_ Transaction: Transaction, keys: [String], values: [Any?]) {
+    static func edit(_ category: Category, keys: [String], values: [Any?]) {
         let realm = try! Realm()
         for item in 0..<keys.count {
             try! realm.write {
-                Transaction.setValue(values[item], forKey: keys[item])
+                category.setValue(values[item], forKey: keys[item])
             }
         }
     }
     
-    static func delete(_ Transaction: Transaction) {
+    static func delete(_ category: Category) {
         let realm = try! Realm()
         try! realm.write {
-            realm.delete(Transaction)
+            realm.delete(category)
         }
     }
     
     static func deleteAll() {
         let realm = try! Realm()
         try! realm.write {
-            let transactions = realm.objects(Transaction.self)
-            realm.delete(transactions)
+            let categories = realm.objects(Category.self)
+            realm.delete(categories)
         }
     }
 }

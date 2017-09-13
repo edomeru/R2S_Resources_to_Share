@@ -33,7 +33,8 @@ class RegisterViewController: BaseViewController {
     // MARK: - Private Functions
     private func initUILayout() {
         self.registerView = self.loadFromNibNamed(nibNamed: Constants.xib.register) as! RegisterView
-        self.view.addSubview(self.registerView)
+        self.view = self.registerView
+            
         self.title = "Registration"
         self.registerView.delegate = self
         self.registerView.firstNameTextField.delegate = self

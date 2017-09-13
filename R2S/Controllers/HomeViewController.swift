@@ -45,7 +45,8 @@ class HomeViewController: BaseViewController {
 
         self.homeView = self.loadFromNibNamed(nibNamed: Constants.xib.homeView) as! HomeView
         self.homeView.frame = CGRect(x: 0.0, y: Constants.navbarHeight, width: self.homeView.frame.width, height: self.homeView.frame.height)
-        self.view.addSubview(self.homeView)
+//        self.view.addSubview(self.homeView)
+        self.view = self.homeView
         
         self.homeView.homeTableView.register(UINib(nibName: Constants.xib.featuredTableCell, bundle: nil), forCellReuseIdentifier: "FeaturedTableCell")
         self.homeView.homeTableView.register(UINib(nibName: Constants.xib.categoryTableCell, bundle: nil), forCellReuseIdentifier: "CategoryTableCell")

@@ -14,8 +14,9 @@ class Constants {
     
     // MARK: - API Endpoints
     struct api {
-        static let baseUrl = "http://api.r2s.tirsolutions.com/resources-to-share/api"
+//        static let baseUrl = "http://api.r2s.tirsolutions.com/resources-to-share/api"
         
+        static let baseUrl =  "http://stagingapi.r2s.tirsolutions.com/resources-to-share-stg/api"
         
         // MARK: - User
         struct user {
@@ -26,7 +27,6 @@ class Constants {
             static let changePassword = user.base + "/{username}/password"
             static let forgot = api.baseUrl + "/forgot"
             static let forgotCode = api.baseUrl + "/forgot/code"
-        
             
             // MARK: - Transaction
             static let transactions = base + "/{id}/transactions"

@@ -35,7 +35,9 @@ class LoginViewController: BaseViewController {
     private func initUILayout() {
         self.loginView = self.loadFromNibNamed(nibNamed: Constants.xib.login) as! LoginView
         self.loginView.frame = CGRect(x: 0, y: Constants.navbarHeight, width: self.loginView.frame.width, height: self.loginView.frame.height)
-        self.view.addSubview(self.loginView)
+        self.view = self.loginView
+        
+        
         self.loginView.delegate = self
         self.loginView.emailTextField.delegate = self
         self.loginView.passwordTextField.delegate = self

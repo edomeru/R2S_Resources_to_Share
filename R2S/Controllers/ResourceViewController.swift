@@ -40,9 +40,12 @@ class ResourceViewController: BaseViewController {
         self.subcategories = CategoryService.getSubcategoriesBy(categoryId: self.selectedCategoryId)
         CategoryService.clearSelectedSubcategories(self.subcategories)
         CategoryService.selectSubategory(self.subcategories[0])
+        
         self.resourceView = self.loadFromNibNamed(nibNamed: Constants.xib.resourceView) as! ResourceView
-        self.resourceView.frame = CGRect(x: 0, y: Constants.navbarHeight, width: self.resourceView.frame.width, height: self.resourceView.frame.height)
+        self.resourceView.frame = CGRect(x: 0, y: Constants.navbarHeight, width: self.view.frame.width, height: self.view.frame.height)
+    
         self.view.addSubview(self.resourceView)
+        
         self.resourceView.subcategoryCollectionView.register(UINib(nibName: Constants.xib.subcategoryCollectionCell, bundle: nil), forCellWithReuseIdentifier: "SubcategoryCollectionCell")
         self.resourceView.subcategoryCollectionView.delegate = self
         self.resourceView.subcategoryCollectionView.dataSource = self
@@ -50,6 +53,7 @@ class ResourceViewController: BaseViewController {
         if let flowLayout = self.resourceView.subcategoryCollectionView.collectionViewLayout as? UICollectionViewFlowLayout { flowLayout.estimatedItemSize = CGSize(width: 1, height: 1)
         }
         self.resourceView.subcategoryCollectionView.reloadData()
+        
     }
     
     private func configureNavBar() {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C087D371F26110C00AC3921 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C087D361F26110C00AC3921 /* Image.swift */; };
 		2C4506E31F1DFE290026E8E9 /* TransactionDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C4506E21F1DFE290026E8E9 /* TransactionDao.swift */; };
 		2C5B06251F18C886002C09B8 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B06241F18C886002C09B8 /* Transaction.swift */; };
 		2C5B06271F18C94B002C09B8 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C5B06261F18C94B002C09B8 /* Resource.swift */; };
@@ -98,6 +99,7 @@
 /* Begin PBXFileReference section */
 		23814817D62CF9D3116467B7 /* Pods-R2S.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R2S.debug.xcconfig"; path = "Pods/Target Support Files/Pods-R2S/Pods-R2S.debug.xcconfig"; sourceTree = "<group>"; };
 		26E60C07BE5101947A43207D /* Pods_R2S.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_R2S.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C087D361F26110C00AC3921 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Image.swift; path = Models/Image.swift; sourceTree = "<group>"; };
 		2C4506E21F1DFE290026E8E9 /* TransactionDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionDao.swift; path = Dao/TransactionDao.swift; sourceTree = "<group>"; };
 		2C5B06241F18C886002C09B8 /* Transaction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Transaction.swift; path = Models/Transaction.swift; sourceTree = "<group>"; };
 		2C5B06261F18C94B002C09B8 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Resource.swift; path = Models/Resource.swift; sourceTree = "<group>"; };
@@ -270,6 +272,7 @@
 		B9E2675E1E78E9DB00BB9900 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2C087D361F26110C00AC3921 /* Image.swift */,
 				2C5B06261F18C94B002C09B8 /* Resource.swift */,
 				2C5B06241F18C886002C09B8 /* Transaction.swift */,
 				B9E267651E78ED7B00BB9900 /* User.swift */,
@@ -703,6 +706,7 @@
 				B99151B21E77F67E00949529 /* LoginViewController.swift in Sources */,
 				B9FE3FE71E77E32A003CDE74 /* AppDelegate.swift in Sources */,
 				B9E267B71E7BAEA600BB9900 /* ResourceView.swift in Sources */,
+				2C087D371F26110C00AC3921 /* Image.swift in Sources */,
 				2C63EF0D1F027530003573A7 /* AccountView.swift in Sources */,
 				B9E2676E1E78F76900BB9900 /* UITextField.swift in Sources */,
 				2C8BCC511F132D0C0064DD87 /* TransactionService.swift in Sources */,

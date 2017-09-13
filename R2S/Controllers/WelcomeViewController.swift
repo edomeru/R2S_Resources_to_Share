@@ -35,7 +35,8 @@ class WelcomeViewController: BaseViewController {
     // MARK: - Private Functions
     private func initUILayout() {
         self.welcomeView = self.loadFromNibNamed(nibNamed: Constants.xib.welcome) as! WelcomeView
-        self.view.addSubview(self.welcomeView)
+//        self.view.addSubview(self.welcomeView)
+        self.view = self.welcomeView
         self.welcomeView.delegate = self
     }
 

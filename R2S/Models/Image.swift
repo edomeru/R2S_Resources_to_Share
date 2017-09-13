@@ -9,5 +9,7 @@
 import Foundation
 import RealmSwift
 
-class Resource: Object {
+class Image: Object {
+    dynamic var imageFull = ""
+    dynamic var image = ""
 }

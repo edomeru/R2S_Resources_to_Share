@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gyt-qp-uPB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gyt-qp-uPB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -93,7 +92,7 @@
             </objects>
             <point key="canvasLocation" x="-1418" y="708"/>
         </scene>
-        <!--Groups-->
+        <!--Inbox-->
         <scene sceneID="UFE-aT-wbo">
             <objects>
                 <viewController id="rZ9-28-Hvh" sceneMemberID="viewController">
@@ -106,16 +105,16 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Groups" image="ic_group" id="FT6-9j-dIe"/>
+                    <tabBarItem key="tabBarItem" title="Inbox" image="ic_email" id="FT6-9j-dIe"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U53-7J-fpz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1420" y="-1473"/>
         </scene>
-        <!--Resource View Controller-->
+        <!--Browse View Controller-->
         <scene sceneID="Q7u-xO-vsR">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Q5K-h3-mWc" customClass="ResourceViewController" customModule="R2S" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Q5K-h3-mWc" customClass="BrowseViewController" customModule="R2S" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4Mq-1a-s9P"/>
                         <viewControllerLayoutGuide type="bottom" id="Gll-5C-51a"/>
@@ -239,7 +238,7 @@
     </scenes>
     <resources>
         <image name="ic_add_box" width="24" height="24"/>
-        <image name="ic_group" width="24" height="24"/>
+        <image name="ic_email" width="24" height="24"/>
         <image name="ic_home" width="24" height="24"/>
         <image name="ic_notifications" width="24" height="24"/>
         <image name="ic_person" width="24" height="24"/>

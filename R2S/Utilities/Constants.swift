@@ -52,15 +52,17 @@ class Constants {
         static let homeView = "HomeView"
         static let activityView = "ActivityView"
         static let accountView = "AccountView"
-        static let resourceView = "ResourceView"
+        static let browseView = "BrowseView"
         
         // TableView Cell
         static let featuredTableCell = "FeaturedTableViewCell"
         static let categoryTableCell = "CategoryTableViewCell"
+        static let resourceTableCell = "ResourceTableViewCell"
         
         // CollectionView Cell
         static let categoryCollectionCell = "CategoryCollectionViewCell"
         static let subcategoryCollectionCell = "SubCategoryCollectionViewCell"
+
         
         // Scroll views
         static let featuredCarouselItem = "FeaturedCarouselItemView"

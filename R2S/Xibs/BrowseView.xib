@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ResourceView" customModule="R2S" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="BrowseView" customModule="R2S" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -28,29 +27,24 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="moh-g8-NKM">
-                    <rect key="frame" x="0.0" y="53" width="375" height="614"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="siv-r5-qo4">
+                    <rect key="frame" x="0.0" y="45" width="375" height="622"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="oKL-jh-te4">
-                        <size key="itemSize" width="50" height="50"/>
-                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                    </collectionViewFlowLayout>
-                </collectionView>
+                </tableView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="moh-g8-NKM" secondAttribute="bottom" id="DFv-Ve-rGf"/>
+                <constraint firstItem="siv-r5-qo4" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3oQ-sN-Mcq"/>
                 <constraint firstItem="aSk-BD-tRy" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="5" id="F5f-dK-Pzx"/>
                 <constraint firstAttribute="trailing" secondItem="aSk-BD-tRy" secondAttribute="trailing" constant="5" id="JG3-Gt-MhQ"/>
-                <constraint firstItem="moh-g8-NKM" firstAttribute="top" secondItem="aSk-BD-tRy" secondAttribute="bottom" constant="8" id="d8M-oS-P1B"/>
+                <constraint firstItem="siv-r5-qo4" firstAttribute="top" secondItem="aSk-BD-tRy" secondAttribute="bottom" id="JLg-N6-qhk"/>
                 <constraint firstItem="aSk-BD-tRy" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="5" id="k4x-pd-nc3"/>
-                <constraint firstItem="moh-g8-NKM" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="oKQ-cD-Aoh"/>
-                <constraint firstAttribute="trailing" secondItem="moh-g8-NKM" secondAttribute="trailing" id="yKl-FO-UTW"/>
+                <constraint firstAttribute="bottom" secondItem="siv-r5-qo4" secondAttribute="bottom" id="uEJ-bM-ZZX"/>
+                <constraint firstAttribute="trailing" secondItem="siv-r5-qo4" secondAttribute="trailing" id="xBt-Qm-FZ6"/>
             </constraints>
             <connections>
-                <outlet property="subcategoryCollectionView" destination="aSk-BD-tRy" id="eVd-ma-IQa"/>
+                <outlet property="resourceTableView" destination="siv-r5-qo4" id="l9W-wc-snr"/>
+                <outlet property="subcategoryCollectionView" destination="aSk-BD-tRy" id="an8-IS-blD"/>
             </connections>
             <point key="canvasLocation" x="-681.5" y="-36.5"/>
         </view>

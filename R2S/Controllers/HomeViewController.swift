@@ -109,7 +109,7 @@ class HomeViewController: BaseViewController {
         if let identifier = segue.identifier {
             switch identifier {
             case Constants.segue.homeToResourceSegue:
-                let destinationVC = segue.destination as! ResourceViewController
+                let destinationVC = segue.destination as! BrowseViewController
                 destinationVC.selectedCategoryId = selectedCategoryId
                 destinationVC.selectedCategoryName = CategoryDao.getOneBy(categoryId: selectedCategoryId)?.name
             default:
@@ -234,8 +234,6 @@ extension HomeViewController: UICollectionViewDataSource {
             cell.categoryImageView.kf.setImage(with: url, options: [.transition(.fade(0.2))])
             cell.categoryImageView.bounds = view.frame.insetBy(dx: 10.0, dy: 10.0);
         }
-        
-        
         
         return cell
     }

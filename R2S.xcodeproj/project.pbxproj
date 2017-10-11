@@ -15,9 +15,12 @@
 		2C63EF0D1F027530003573A7 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C63EF0C1F027530003573A7 /* AccountView.swift */; };
 		2C63EF101F027541003573A7 /* AccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C63EF0E1F027541003573A7 /* AccountView.xib */; };
 		2C63EF111F027541003573A7 /* ActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C63EF0F1F027541003573A7 /* ActivityView.xib */; };
+		2C658A581F87770A009A18A9 /* TransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C658A571F87770A009A18A9 /* TransactionTableViewCell.xib */; };
+		2C658A5A1F877746009A18A9 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C658A591F877746009A18A9 /* TransactionTableViewCell.swift */; };
 		2C8BCC4F1F1325900064DD87 /* TransactionRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8BCC4E1F1325900064DD87 /* TransactionRemote.swift */; };
 		2C8BCC511F132D0C0064DD87 /* TransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8BCC501F132D0C0064DD87 /* TransactionService.swift */; };
-		2C93C0CD1F0F9659009B7179 /* ResourceCollectionViewCell copy.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C93C0CC1F0F9659009B7179 /* ResourceCollectionViewCell copy.xib */; };
+		2C93C0CD1F0F9659009B7179 /* ResourceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C93C0CC1F0F9659009B7179 /* ResourceTableViewCell.xib */; };
+		2CD0FD321F84D31D000C8E89 /* ResourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CD0FD311F84D31D000C8E89 /* ResourceTableViewCell.swift */; };
 		2CF06DD11EFBF0E30073C844 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF06DD01EFBF0E30073C844 /* ActivityViewController.swift */; };
 		2CF06DD31EFBF1090073C844 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF06DD21EFBF1090073C844 /* ActivityView.swift */; };
 		548A6074C3188468E31693E6 /* Pods_R2S.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E60C07BE5101947A43207D /* Pods_R2S.framework */; };
@@ -49,9 +52,9 @@
 		B9E267AD1E7B94D900BB9900 /* CategoryService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E267AC1E7B94D900BB9900 /* CategoryService.swift */; };
 		B9E267B11E7B94F800BB9900 /* CategoryDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E267B01E7B94F800BB9900 /* CategoryDao.swift */; };
 		B9E267B31E7B950600BB9900 /* CategoryRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E267B21E7B950600BB9900 /* CategoryRemote.swift */; };
-		B9E267B51E7BAE2600BB9900 /* ResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E267B41E7BAE2600BB9900 /* ResourceViewController.swift */; };
-		B9E267B71E7BAEA600BB9900 /* ResourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E267B61E7BAEA600BB9900 /* ResourceView.swift */; };
-		B9E267B91E7BAEC400BB9900 /* ResourceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9E267B81E7BAEC400BB9900 /* ResourceView.xib */; };
+		B9E267B51E7BAE2600BB9900 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E267B41E7BAE2600BB9900 /* BrowseViewController.swift */; };
+		B9E267B71E7BAEA600BB9900 /* BrowseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E267B61E7BAEA600BB9900 /* BrowseView.swift */; };
+		B9E267B91E7BAEC400BB9900 /* BrowseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9E267B81E7BAEC400BB9900 /* BrowseView.xib */; };
 		B9E267BB1E7BAF9500BB9900 /* SubCategoryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9E267BA1E7BAF9500BB9900 /* SubCategoryCollectionViewCell.xib */; };
 		B9E267BD1E7BAFF800BB9900 /* SubCategoryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E267BC1E7BAFF800BB9900 /* SubCategoryCollectionViewCell.swift */; };
 		B9E267BF1E7BB7EF00BB9900 /* Subcategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9E267BE1E7BB7EF00BB9900 /* Subcategory.swift */; };
@@ -107,9 +110,12 @@
 		2C63EF0C1F027530003573A7 /* AccountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AccountView.swift; path = "View Classes/AccountView.swift"; sourceTree = "<group>"; };
 		2C63EF0E1F027541003573A7 /* AccountView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccountView.xib; path = Xibs/AccountView.xib; sourceTree = "<group>"; };
 		2C63EF0F1F027541003573A7 /* ActivityView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityView.xib; path = Xibs/ActivityView.xib; sourceTree = "<group>"; };
+		2C658A571F87770A009A18A9 /* TransactionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TransactionTableViewCell.xib; path = Xibs/TransactionTableViewCell.xib; sourceTree = "<group>"; };
+		2C658A591F877746009A18A9 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionTableViewCell.swift; path = "View Classes/TransactionTableViewCell.swift"; sourceTree = "<group>"; };
 		2C8BCC4E1F1325900064DD87 /* TransactionRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionRemote.swift; path = Remotes/TransactionRemote.swift; sourceTree = "<group>"; };
 		2C8BCC501F132D0C0064DD87 /* TransactionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionService.swift; path = Services/TransactionService.swift; sourceTree = "<group>"; };
-		2C93C0CC1F0F9659009B7179 /* ResourceCollectionViewCell copy.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = "ResourceCollectionViewCell copy.xib"; path = "Xibs/ResourceCollectionViewCell copy.xib"; sourceTree = "<group>"; };
+		2C93C0CC1F0F9659009B7179 /* ResourceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ResourceTableViewCell.xib; path = Xibs/ResourceTableViewCell.xib; sourceTree = "<group>"; };
+		2CD0FD311F84D31D000C8E89 /* ResourceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceTableViewCell.swift; path = "View Classes/ResourceTableViewCell.swift"; sourceTree = "<group>"; };
 		2CF06DD01EFBF0E30073C844 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityViewController.swift; path = Controllers/ActivityViewController.swift; sourceTree = "<group>"; };
 		2CF06DD21EFBF1090073C844 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityView.swift; path = "View Classes/ActivityView.swift"; sourceTree = "<group>"; };
 		33DE7660843E508F233330F3 /* Pods-R2S.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R2S.release.xcconfig"; path = "Pods/Target Support Files/Pods-R2S/Pods-R2S.release.xcconfig"; sourceTree = "<group>"; };
@@ -141,9 +147,9 @@
 		B9E267AC1E7B94D900BB9900 /* CategoryService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryService.swift; path = Services/CategoryService.swift; sourceTree = "<group>"; };
 		B9E267B01E7B94F800BB9900 /* CategoryDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryDao.swift; path = Dao/CategoryDao.swift; sourceTree = "<group>"; };
 		B9E267B21E7B950600BB9900 /* CategoryRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CategoryRemote.swift; path = Remotes/CategoryRemote.swift; sourceTree = "<group>"; };
-		B9E267B41E7BAE2600BB9900 /* ResourceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceViewController.swift; path = Controllers/ResourceViewController.swift; sourceTree = "<group>"; };
-		B9E267B61E7BAEA600BB9900 /* ResourceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceView.swift; path = "View Classes/ResourceView.swift"; sourceTree = "<group>"; };
-		B9E267B81E7BAEC400BB9900 /* ResourceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ResourceView.xib; path = Xibs/ResourceView.xib; sourceTree = "<group>"; };
+		B9E267B41E7BAE2600BB9900 /* BrowseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BrowseViewController.swift; path = Controllers/BrowseViewController.swift; sourceTree = "<group>"; };
+		B9E267B61E7BAEA600BB9900 /* BrowseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BrowseView.swift; path = "View Classes/BrowseView.swift"; sourceTree = "<group>"; };
+		B9E267B81E7BAEC400BB9900 /* BrowseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BrowseView.xib; path = Xibs/BrowseView.xib; sourceTree = "<group>"; };
 		B9E267BA1E7BAF9500BB9900 /* SubCategoryCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SubCategoryCollectionViewCell.xib; path = Xibs/SubCategoryCollectionViewCell.xib; sourceTree = "<group>"; };
 		B9E267BC1E7BAFF800BB9900 /* SubCategoryCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SubCategoryCollectionViewCell.swift; path = "View Classes/SubCategoryCollectionViewCell.swift"; sourceTree = "<group>"; };
 		B9E267BE1E7BB7EF00BB9900 /* Subcategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subcategory.swift; path = Models/Subcategory.swift; sourceTree = "<group>"; };
@@ -211,6 +217,55 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		2C658A561F877698009A18A9 /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				2CF06DD01EFBF0E30073C844 /* ActivityViewController.swift */,
+			);
+			name = Activity;
+			sourceTree = "<group>";
+		};
+		2CD0FD2E1F84C981000C8E89 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B9E267CA1E7D41A500BB9900 /* HomeView.swift */,
+				B9E267B61E7BAEA600BB9900 /* BrowseView.swift */,
+				2C658A591F877746009A18A9 /* TransactionTableViewCell.swift */,
+				2CD0FD311F84D31D000C8E89 /* ResourceTableViewCell.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		2CD0FD2F1F84C9AB000C8E89 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B9E267C31E7D416500BB9900 /* HomeViewController.swift */,
+				B9E267B41E7BAE2600BB9900 /* BrowseViewController.swift */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		2CD0FD301F84CD97000C8E89 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				B9E267D41E7D41E700BB9900 /* HomeView.xib */,
+				B9E267B81E7BAEC400BB9900 /* BrowseView.xib */,
+				B9E267D61E7D41F500BB9900 /* CategoryTableViewCell.xib */,
+				B9E267D71E7D41F500BB9900 /* FeaturedTableViewCell.xib */,
+				2C93C0CC1F0F9659009B7179 /* ResourceTableViewCell.xib */,
+			);
+			name = Home;
+			sourceTree = "<group>";
+		};
+		2CDA9E411F8B469E00B40B9A /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				2C63EF0F1F027541003573A7 /* ActivityView.xib */,
+				2C658A571F87770A009A18A9 /* TransactionTableViewCell.xib */,
+			);
+			name = Activity;
+			sourceTree = "<group>";
+		};
 		B99151A91E77F2B900949529 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -231,7 +286,6 @@
 				B99151AF1E77F55600949529 /* BaseViewController.swift */,
 				B99151B11E77F67E00949529 /* LoginViewController.swift */,
 				B9E2677D1E79416A00BB9900 /* RegisterViewController.swift */,
-				B9E267B41E7BAE2600BB9900 /* ResourceViewController.swift */,
 				B9E267DA1E7D467800BB9900 /* WelcomeViewController.swift */,
 				B9E267831E7A363B00BB9900 /* Tab Bar */,
 			);
@@ -244,7 +298,6 @@
 				B99151B41E77F6C600949529 /* BaseUIView.swift */,
 				B99151B61E77F6E300949529 /* LoginView.swift */,
 				B9E2677F1E79419900BB9900 /* RegisterView.swift */,
-				B9E267B61E7BAEA600BB9900 /* ResourceView.swift */,
 				B9E267DC1E7D48D600BB9900 /* WelcomeView.swift */,
 				B9E267A41E7AC70200BB9900 /* CollectionView Cells */,
 				B9E267971E7A86C100BB9900 /* Scroll Views */,
@@ -259,12 +312,10 @@
 			children = (
 				B99151B91E77F71200949529 /* LoginView.xib */,
 				B9E267811E79421000BB9900 /* RegisterView.xib */,
-				B9E267B81E7BAEC400BB9900 /* ResourceView.xib */,
 				B9E267DE1E7D490100BB9900 /* WelcomeView.xib */,
 				B9E267A71E7AC74600BB9900 /* CollectionView Cell */,
 				B9E267961E7A86B800BB9900 /* Scroll Views */,
 				B9E2678D1E7A7A4E00BB9900 /* Tab Bar */,
-				B9E267901E7A842000BB9900 /* TableView Cells */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -329,8 +380,8 @@
 			isa = PBXGroup;
 			children = (
 				B9E267C21E7D416400BB9900 /* HomeTabBarViewController.swift */,
-				B9E267C31E7D416500BB9900 /* HomeViewController.swift */,
-				2CF06DD01EFBF0E30073C844 /* ActivityViewController.swift */,
+				2CD0FD2F1F84C9AB000C8E89 /* Home */,
+				2C658A561F877698009A18A9 /* Activity */,
 				2C63EF0A1F027520003573A7 /* AccountViewController.swift */,
 			);
 			name = "Tab Bar";
@@ -339,7 +390,7 @@
 		B9E2678A1E7A7A1B00BB9900 /* Tab Bar */ = {
 			isa = PBXGroup;
 			children = (
-				B9E267CA1E7D41A500BB9900 /* HomeView.swift */,
+				2CD0FD2E1F84C981000C8E89 /* Home */,
 				2CF06DD21EFBF1090073C844 /* ActivityView.swift */,
 				2C63EF0C1F027530003573A7 /* AccountView.swift */,
 			);
@@ -349,20 +400,11 @@
 		B9E2678D1E7A7A4E00BB9900 /* Tab Bar */ = {
 			isa = PBXGroup;
 			children = (
-				B9E267D41E7D41E700BB9900 /* HomeView.xib */,
-				2C63EF0F1F027541003573A7 /* ActivityView.xib */,
+				2CD0FD301F84CD97000C8E89 /* Home */,
+				2CDA9E411F8B469E00B40B9A /* Activity */,
 				2C63EF0E1F027541003573A7 /* AccountView.xib */,
 			);
 			name = "Tab Bar";
-			sourceTree = "<group>";
-		};
-		B9E267901E7A842000BB9900 /* TableView Cells */ = {
-			isa = PBXGroup;
-			children = (
-				B9E267D61E7D41F500BB9900 /* CategoryTableViewCell.xib */,
-				B9E267D71E7D41F500BB9900 /* FeaturedTableViewCell.xib */,
-			);
-			name = "TableView Cells";
 			sourceTree = "<group>";
 		};
 		B9E267931E7A846600BB9900 /* TableView Cells */ = {
@@ -402,7 +444,6 @@
 		B9E267A71E7AC74600BB9900 /* CollectionView Cell */ = {
 			isa = PBXGroup;
 			children = (
-				2C93C0CC1F0F9659009B7179 /* ResourceCollectionViewCell copy.xib */,
 				B9E267D01E7D41CA00BB9900 /* CategoryCollectionViewCell.xib */,
 				B9E267BA1E7BAF9500BB9900 /* SubCategoryCollectionViewCell.xib */,
 			);
@@ -435,6 +476,10 @@
 			isa = PBXGroup;
 			children = (
 				B9FE3FE61E77E32A003CDE74 /* AppDelegate.swift */,
+				B9FE3FED1E77E32A003CDE74 /* Assets.xcassets */,
+				B9FE3FF21E77E32A003CDE74 /* Info.plist */,
+				B9FE3FEF1E77E32A003CDE74 /* LaunchScreen.storyboard */,
+				B9FE3FEA1E77E32A003CDE74 /* Main.storyboard */,
 				B99151AE1E77F51500949529 /* Controllers */,
 				B9E267611E78EA6E00BB9900 /* Services */,
 				B9E267621E78EA7500BB9900 /* Remotes */,
@@ -444,10 +489,6 @@
 				B99151B81E77F6FA00949529 /* Xibs */,
 				B9E267601E78EA6300BB9900 /* Extensions */,
 				B99151A91E77F2B900949529 /* Utilities */,
-				B9FE3FED1E77E32A003CDE74 /* Assets.xcassets */,
-				B9FE3FF21E77E32A003CDE74 /* Info.plist */,
-				B9FE3FEF1E77E32A003CDE74 /* LaunchScreen.storyboard */,
-				B9FE3FEA1E77E32A003CDE74 /* Main.storyboard */,
 			);
 			path = R2S;
 			sourceTree = "<group>";
@@ -550,7 +591,7 @@
 				TargetAttributes = {
 					B9FE3FE21E77E32A003CDE74 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 85ZHA47WTJ;
+						DevelopmentTeam = U363493FZ8;
 						ProvisioningStyle = Automatic;
 					};
 					B9FE3FF61E77E32B003CDE74 = {
@@ -599,12 +640,13 @@
 				2C63EF101F027541003573A7 /* AccountView.xib in Resources */,
 				B99151BA1E77F71200949529 /* LoginView.xib in Resources */,
 				2C63EF111F027541003573A7 /* ActivityView.xib in Resources */,
+				2C658A581F87770A009A18A9 /* TransactionTableViewCell.xib in Resources */,
 				B9E267D81E7D41F500BB9900 /* CategoryTableViewCell.xib in Resources */,
 				B9E267D11E7D41CA00BB9900 /* CategoryCollectionViewCell.xib in Resources */,
 				B9FE3FEC1E77E32A003CDE74 /* Main.storyboard in Resources */,
-				B9E267B91E7BAEC400BB9900 /* ResourceView.xib in Resources */,
+				B9E267B91E7BAEC400BB9900 /* BrowseView.xib in Resources */,
 				B9E267BB1E7BAF9500BB9900 /* SubCategoryCollectionViewCell.xib in Resources */,
-				2C93C0CD1F0F9659009B7179 /* ResourceCollectionViewCell copy.xib in Resources */,
+				2C93C0CD1F0F9659009B7179 /* ResourceTableViewCell.xib in Resources */,
 				B9E267DF1E7D490100BB9900 /* WelcomeView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -678,7 +720,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B9E267B51E7BAE2600BB9900 /* ResourceViewController.swift in Sources */,
+				2CD0FD321F84D31D000C8E89 /* ResourceTableViewCell.swift in Sources */,
+				B9E267B51E7BAE2600BB9900 /* BrowseViewController.swift in Sources */,
 				B9E267DB1E7D467800BB9900 /* WelcomeViewController.swift in Sources */,
 				2C5B06251F18C886002C09B8 /* Transaction.swift in Sources */,
 				B9E267C91E7D419500BB9900 /* FeaturedCarouselItemView.swift in Sources */,
@@ -701,11 +744,12 @@
 				B9E267C71E7D418300BB9900 /* CategoryCollectionViewCell.swift in Sources */,
 				2C5B06271F18C94B002C09B8 /* Resource.swift in Sources */,
 				B9E267721E78F7A500BB9900 /* UserRemote.swift in Sources */,
+				2C658A5A1F877746009A18A9 /* TransactionTableViewCell.swift in Sources */,
 				B9E267801E79419900BB9900 /* RegisterView.swift in Sources */,
 				B99151AB1E77F38300949529 /* ApiRequestManager.swift in Sources */,
 				B99151B21E77F67E00949529 /* LoginViewController.swift in Sources */,
 				B9FE3FE71E77E32A003CDE74 /* AppDelegate.swift in Sources */,
-				B9E267B71E7BAEA600BB9900 /* ResourceView.swift in Sources */,
+				B9E267B71E7BAEA600BB9900 /* BrowseView.swift in Sources */,
 				2C087D371F26110C00AC3921 /* Image.swift in Sources */,
 				2C63EF0D1F027530003573A7 /* AccountView.swift in Sources */,
 				B9E2676E1E78F76900BB9900 /* UITextField.swift in Sources */,
@@ -881,8 +925,9 @@
 			baseConfigurationReference = 23814817D62CF9D3116467B7 /* Pods-R2S.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 85ZHA47WTJ;
+				DEVELOPMENT_TEAM = U363493FZ8;
 				INFOPLIST_FILE = R2S/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tirsolutions.R2S;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -895,8 +940,9 @@
 			baseConfigurationReference = 33DE7660843E508F233330F3 /* Pods-R2S.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 85ZHA47WTJ;
+				DEVELOPMENT_TEAM = U363493FZ8;
 				INFOPLIST_FILE = R2S/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.tirsolutions.R2S;
 				PRODUCT_NAME = "$(TARGET_NAME)";

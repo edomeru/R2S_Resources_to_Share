@@ -27,7 +27,8 @@ class TransactionService {
 //                        print (transaction);
 //                        print("hi")
                     }
-                    print (jsonData)
+//                    print (jsonData)
+                    print(jsonData.count)
                 }
             }
         })

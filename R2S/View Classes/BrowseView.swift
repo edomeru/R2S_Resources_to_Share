@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ResourceView: BaseUIView {
+class BrowseView: BaseUIView {
     @IBOutlet weak var subcategoryCollectionView: UICollectionView!
-    @IBOutlet weak var resourcesCollectionView: UICollectionView!
+
+    @IBOutlet weak var resourceTableView: UITableView!
 }

@@ -41,10 +41,6 @@ class AccountViewController: BaseViewController {
 
         self.accountView = self.loadFromNibNamed(nibNamed: Constants.xib.accountView) as! AccountView
         self.view = self.accountView
-        
-        setupSegmentedControl()
-    }
-    private func setupSegmentedControl(){
     }
     
     private func refreshData() {
@@ -83,7 +79,7 @@ class AccountViewController: BaseViewController {
         if let identifier = segue.identifier {
             switch identifier {
             case Constants.segue.homeToResourceSegue:
-                let destinationVC = segue.destination as! ResourceViewController
+                let destinationVC = segue.destination as! BrowseViewController
                 destinationVC.selectedCategoryId = selectedCategoryId
                 destinationVC.selectedCategoryName = CategoryDao.getOneBy(categoryId: selectedCategoryId)?.name
             default:

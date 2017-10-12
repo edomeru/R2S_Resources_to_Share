@@ -15,10 +15,8 @@ target 'R2S' do
   pod 'Kingfisher'
   pod 'RealmSwift'
   pod 'FSCalendar'
-  pod 'FacebookCore'
-  pod 'FacebookLogin'
-  pod 'FacebookShare'
   pod 'Google/SignIn'
+
   pod 'NVActivityIndicatorView'
   pod 'SwiftSpinner'
   pod 'SwiftKeychainWrapper'

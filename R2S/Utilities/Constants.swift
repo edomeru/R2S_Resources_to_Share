@@ -35,6 +35,8 @@ class Constants {
             static let transaction_complete = transaction + "/complete"
             static let transaction_rate = transaction + "/rate"
             
+             // MARK: - Resources
+            static let  wishlist = base + "/{id}/wishlists"
             // MARK: - Resources
             static let resources =  base + "/{id}/resources";
             

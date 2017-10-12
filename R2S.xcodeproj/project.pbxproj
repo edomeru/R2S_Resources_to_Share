@@ -26,6 +26,7 @@
 		548A6074C3188468E31693E6 /* Pods_R2S.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E60C07BE5101947A43207D /* Pods_R2S.framework */; };
 		9B456F311F8F541E001F4C32 /* FavoritesDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B456F301F8F541E001F4C32 /* FavoritesDao.swift */; };
 		9B456F371F8F638D001F4C32 /* ResourceRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B456F361F8F638D001F4C32 /* ResourceRemote.swift */; };
+		9B456F391F8F6C32001F4C32 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B456F381F8F6C32001F4C32 /* Favorites.swift */; };
 		9BC70F221F8E247600D8CCED /* ResourceDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC70F211F8E247600D8CCED /* ResourceDao.swift */; };
 		9BC70F241F8E34FC00D8CCED /* ResourceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC70F231F8E34FC00D8CCED /* ResourceService.swift */; };
 		B99151AB1E77F38300949529 /* ApiRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99151AA1E77F38300949529 /* ApiRequestManager.swift */; };
@@ -125,6 +126,7 @@
 		33DE7660843E508F233330F3 /* Pods-R2S.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R2S.release.xcconfig"; path = "Pods/Target Support Files/Pods-R2S/Pods-R2S.release.xcconfig"; sourceTree = "<group>"; };
 		9B456F301F8F541E001F4C32 /* FavoritesDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesDao.swift; path = Dao/FavoritesDao.swift; sourceTree = "<group>"; };
 		9B456F361F8F638D001F4C32 /* ResourceRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceRemote.swift; path = Remotes/ResourceRemote.swift; sourceTree = "<group>"; };
+		9B456F381F8F6C32001F4C32 /* Favorites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Favorites.swift; path = Models/Favorites.swift; sourceTree = "<group>"; };
 		9BC70F211F8E247600D8CCED /* ResourceDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceDao.swift; path = Dao/ResourceDao.swift; sourceTree = "<group>"; };
 		9BC70F231F8E34FC00D8CCED /* ResourceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceService.swift; path = Services/ResourceService.swift; sourceTree = "<group>"; };
 		B99151AA1E77F38300949529 /* ApiRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiRequestManager.swift; path = Utilities/ApiRequestManager.swift; sourceTree = "<group>"; };
@@ -337,6 +339,7 @@
 				B9E267651E78ED7B00BB9900 /* User.swift */,
 				B9E267AA1E7B945700BB9900 /* Category.swift */,
 				B9E267BE1E7BB7EF00BB9900 /* Subcategory.swift */,
+				9B456F381F8F6C32001F4C32 /* Favorites.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -777,6 +780,7 @@
 				B9E2676C1E78F75100BB9900 /* UITableView.swift in Sources */,
 				B9E267C41E7D416500BB9900 /* HomeTabBarViewController.swift in Sources */,
 				B9E267871E7A57DF00BB9900 /* UserManager.swift in Sources */,
+				9B456F391F8F6C32001F4C32 /* Favorites.swift in Sources */,
 				B9E267761E790FEE00BB9900 /* UserHelper.swift in Sources */,
 				B9E267DD1E7D48D600BB9900 /* WelcomeView.swift in Sources */,
 				B9E2677A1E7914A200BB9900 /* UserService.swift in Sources */,

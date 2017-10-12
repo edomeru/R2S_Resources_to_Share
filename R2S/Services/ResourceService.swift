@@ -23,26 +23,27 @@ class ResourceService {
         ResourceRemote.get(onCompletion: { jsonData, statusCode in
             DispatchQueue.global(qos: .background).async{
                 if statusCode == 200{
-                    message = ""
-                    for (_, resource):(String, JSON) in jsonData {
-                        let newResource = Resource()
-                        newResource.id = resource["id"].intValue
-                        newResource.resourceCode = resource["resourceCode"].stringValue
-                        newResource.snapshotCode = resource["snapshotCode"].stringValue
-                        newResource.imageUrl = resource["image_url"].stringValue
-                        newResource.createdDate = resource["createdDate"].stringValue
-                        newResource.resourceRate = resource["resourceRate"].stringValue
-                        newResource.name = resource["name"].stringValue
-                        newResource.descriptionText = resource["descriptionText"].stringValue
-                        newResource.account = resource["account"].stringValue
-                        newResource.price = resource["price"].stringValue
-                        newResource.quantity = resource["quantity"].stringValue
-                        newResource.status = resource["status"].stringValue
-                        newResource.location = resource["location"].stringValue
-                        
-                        ResourceDao.add(newResource)
-                        
-                    }
+                    print("\(jsonData)" + "LOOB")
+//                    message = ""
+//                    for (_, resource):(String, JSON) in jsonData {
+//                        let newResource = Resource()
+//                        newResource.id = resource["id"].intValue
+//                        newResource.resourceCode = resource["resourceCode"].stringValue
+//                        newResource.snapshotCode = resource["snapshotCode"].stringValue
+//                        newResource.imageUrl = resource["image_url"].stringValue
+//                        newResource.createdDate = resource["createdDate"].stringValue
+//                        newResource.resourceRate = resource["resourceRate"].stringValue
+//                        newResource.name = resource["name"].stringValue
+//                        newResource.descriptionText = resource["descriptionText"].stringValue
+//                        newResource.account = resource["account"].stringValue
+//                        newResource.price = resource["price"].stringValue
+//                        newResource.quantity = resource["quantity"].stringValue
+//                        newResource.status = resource["status"].stringValue
+//                        newResource.location = resource["location"].stringValue
+//                        
+//                        ResourceDao.add(newResource)
+//                        
+//                    }
                 } else {
                     message = jsonData["message"].stringValue
                 }
@@ -130,5 +131,75 @@ class ResourceService {
         })
     }
 
+    static func addToFavorites(resource_id: Int, params: [String: AnyObject], onCompletion: @escaping (Int?, String?) -> Void) {
+        var message = ""
+        ResourceRemote.addToFavorites(resource_id: "\(resource_id)", params : params , onCompletion: { jsonData, statusCode in
+            DispatchQueue.global(qos: .background).async {
+                if statusCode == 200 {
+                    message = ""
+                    for (_, resource):(String, JSON) in jsonData {
+                        let newResource = Resource()
+                        newResource.id = resource["id"].intValue
+                        newResource.resourceCode = resource["resourceCode"].stringValue
+                        newResource.snapshotCode = resource["snapshotCode"].stringValue
+                        newResource.imageUrl = resource["image_url"].stringValue
+                        newResource.createdDate = resource["createdDate"].stringValue
+                        newResource.resourceRate = resource["resourceRate"].stringValue
+                        newResource.name = resource["name"].stringValue
+                        newResource.descriptionText = resource["descriptionText"].stringValue
+                        newResource.account = resource["account"].stringValue
+                        newResource.price = resource["price"].stringValue
+                        newResource.quantity = resource["quantity"].stringValue
+                        newResource.status = resource["status"].stringValue
+                        newResource.location = resource["location"].stringValue
+                      
+                        ResourceDao.add(newResource)
+                    }
+                } else {
+                    message = jsonData["message"].stringValue
+                }
+            }
+            
+            DispatchQueue.main.async {
+                onCompletion(statusCode, message)
+            }
+        })
+    }
+
+    
+    static func createResource(resource_id: Int, params: [String: AnyObject], onCompletion: @escaping (Int?, String?) -> Void) {
+        var message = ""
+        UserRemote.createResource(resource_id: "\(resource_id)", params : params , onCompletion: { jsonData, statusCode in
+            DispatchQueue.global(qos: .background).async {
+                if statusCode == 200 {
+                    message = ""
+                    for (_, resource):(String, JSON) in jsonData {
+                        let newResource = Resource()
+                        newResource.id = resource["id"].intValue
+                        newResource.resourceCode = resource["resourceCode"].stringValue
+                        newResource.snapshotCode = resource["snapshotCode"].stringValue
+                        newResource.imageUrl = resource["image_url"].stringValue
+                        newResource.createdDate = resource["createdDate"].stringValue
+                        newResource.resourceRate = resource["resourceRate"].stringValue
+                        newResource.name = resource["name"].stringValue
+                        newResource.descriptionText = resource["descriptionText"].stringValue
+                        newResource.account = resource["account"].stringValue
+                        newResource.price = resource["price"].stringValue
+                        newResource.quantity = resource["quantity"].stringValue
+                        newResource.status = resource["status"].stringValue
+                        newResource.location = resource["location"].stringValue
+                        
+                        ResourceDao.add(newResource)
+                    }
+                } else {
+                    message = jsonData["message"].stringValue
+                }
+            }
+            
+            DispatchQueue.main.async {
+                onCompletion(statusCode, message)
+            }
+        })
+    }
     
 }

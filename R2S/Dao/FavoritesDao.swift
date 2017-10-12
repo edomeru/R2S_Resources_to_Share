@@ -12,4 +12,15 @@ import RealmSwift
 class FavoritesDao {
     
     
+    static func isFavorite(id: Int) -> Bool? {
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "id = %d", id)
+        let user = realm.objects(Favorites.self).filter(predicate).first
+        if ((user) != nil){
+            return true
+        }
+        
+        return false
+    }
+    
 }

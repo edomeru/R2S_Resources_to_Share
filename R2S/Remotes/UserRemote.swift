@@ -22,4 +22,16 @@ class UserRemote {
         })
     }
     
+    static func resources(id: String, onCompletion: @escaping (JSON, Int?) -> Void) {
+        ApiRequestManager.sharedInstance.doGetRequest(urlString: Constants.api.user.resources, headers: Utility.getHeaders(), onCompletion: { jsonData, statusCode in
+            onCompletion(jsonData, statusCode)
+        })
+    }
+    
+    static func favorites(id: String, onCompletion: @escaping (JSON, Int?) -> Void) {
+        ApiRequestManager.sharedInstance.doGetRequest(urlString: Constants.api.user.favorites, headers: Utility.getHeaders(), onCompletion: { jsonData, statusCode in
+            onCompletion(jsonData, statusCode)
+        })
+    }
+    
 }

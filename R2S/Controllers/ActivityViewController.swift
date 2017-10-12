@@ -102,12 +102,12 @@ class ActivityViewController: BaseViewController {
 }
 
 
-// MARK: - UITableViewDelegate
-extension ActivityViewController: UITableViewDelegate{
-    
-}
-
-// MARK: - UITableViewDataSource
-extension ActivityViewController: UITableViewDataSource{
-    
-}
+//// MARK: - UITableViewDelegate
+//extension ActivityViewController: UITableViewDelegate{
+//    
+//}
+//
+//// MARK: - UITableViewDataSource
+//extension ActivityViewController: UITableViewDataSource{
+//    
+//}

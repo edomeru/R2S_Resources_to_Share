@@ -82,6 +82,9 @@ PODS:
   - SwiftSpinner (1.1.0)
   - SwiftValidator (4.0.0)
   - SwiftyJSON (3.1.4)
+  - SwiftyJSONRealmObject (1.0.0):
+    - RealmSwift
+    - SwiftyJSON
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
@@ -104,6 +107,7 @@ DEPENDENCIES:
   - SwiftSpinner
   - SwiftValidator (from `https://github.com/jpotts18/SwiftValidator.git`, branch `master`)
   - SwiftyJSON
+  - SwiftyJSONRealmObject
 
 EXTERNAL SOURCES:
   MIBadgeButton-Swift:
@@ -154,7 +158,8 @@ SPEC CHECKSUMS:
   SwiftSpinner: c03815614599b91eea46594bd52ba742849d0414
   SwiftValidator: 25ded5ca1f10c05adf57f6ac82a72d28ac8d91af
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
+  SwiftyJSONRealmObject: ab791e57876b1e0041463291b97a378e90a3fa9f
 
-PODFILE CHECKSUM: 6ee6b66c3a7dfc9333cf71ff632406003244aa2a
+PODFILE CHECKSUM: ddeb2b4e6d7365af4e82d7c22615f1091eb2b4e5
 
-COCOAPODS: 1.1.0.rc.2
+COCOAPODS: 1.2.1

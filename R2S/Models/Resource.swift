@@ -53,11 +53,11 @@ class Resource: Object {
 
     dynamic var name = ""
     dynamic var descriptionText = ""
-    dynamic var account = ""
     dynamic var price = ""
     dynamic var quantity = ""
     dynamic var status = ""
     dynamic var location: Location?
+    dynamic var account: Account?
     
     override static func primaryKey() -> String? {
         return "id"

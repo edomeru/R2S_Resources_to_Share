@@ -23,7 +23,7 @@ class ResourceService {
         ResourceRemote.get(onCompletion: { jsonData, statusCode in
             DispatchQueue.global(qos: .background).async{
                 if statusCode == 200{
-                  print("JSONDATA" + "\(jsonData)"  )
+                 // print("JSONDATA" + "\(jsonData)"  )
                     message = ""
                     for (_, resource):(String, JSON) in jsonData {
                         let newResource = Resource()
@@ -35,7 +35,7 @@ class ResourceService {
                         newResource.resourceRate = resource["resource_rate"].stringValue
                         newResource.name = resource["name"].stringValue
                         newResource.descriptionText = resource["description"].stringValue
-                        newResource.account = resource["account"].stringValue
+                       
                         newResource.price = resource["price"].stringValue
                         newResource.quantity = resource["quantity"].stringValue
                         newResource.status = resource["status"].stringValue
@@ -62,12 +62,46 @@ class ResourceService {
                         
                         newResource.location = location
 
+                        
+                        //Account
+                        let accnt = resource["account"]
+                        let account = Account()
+                        account.seller_rating = accnt["seller_rating"].stringValue
+                        account.status = accnt["status"].stringValue
+                        
+                        account.birth_date = accnt["birth_date"].stringValue
+                        account.landline_number = accnt["landline_number"].stringValue
+                        account.created_date = accnt["created_date"].stringValue
+                        
+                        account.mobile_number = accnt["mobile_number"].stringValue
+                        account.updated_date = accnt["updated_date"].stringValue
+                        account.last_name = accnt["last_name"].stringValue
+
+                        account.is_subscribed = accnt["is_subscribed"].boolValue
+                        account.id = accnt["id"].intValue
+                        account.email = accnt["email"].stringValue
+                        account.account_id = accnt["account_id"].stringValue
+                        account.deleted_date = accnt["deleted_date"].stringValue
+                        account.first_name = accnt["first_name"].stringValue
+                        account.buyer_rating = accnt["buyer_rating"].intValue
+                        account.image_url = accnt["image_url"].stringValue
+                        
+                        //Images
+                        if accnt["roles"] != nil{
+                            for (_, role):(String, JSON) in accnt["roles"] {
+//                                let roles = Roles()
+//                                
+//                                account.roles.append((role as? Roles)!)
+                            }
+                        }
+                        newResource.account = account
+                        
                         // show realm database file
                         //print(Realm.Configuration.defaultConfiguration.fileURL!)
 
                         
                         ResourceDao.add(newResource)
-                         //print("LOOB" + "\(newResource)"  )
+                         print("LOOB" + "\(newResource)"  )
                     }
                 } else {
                     message = jsonData["message"].stringValue
@@ -97,7 +131,7 @@ class ResourceService {
                         newResource.resourceRate = resource["resourceRate"].stringValue
                         newResource.name = resource["name"].stringValue
                         newResource.descriptionText = resource["descriptionText"].stringValue
-                        newResource.account = resource["account"].stringValue
+                       
                         newResource.price = resource["price"].stringValue
                         newResource.quantity = resource["quantity"].stringValue
                         newResource.status = resource["status"].stringValue
@@ -134,7 +168,7 @@ class ResourceService {
                         newResource.resourceRate = resource["resourceRate"].stringValue
                         newResource.name = resource["name"].stringValue
                         newResource.descriptionText = resource["descriptionText"].stringValue
-                        newResource.account = resource["account"].stringValue
+                        
                         newResource.price = resource["price"].stringValue
                         newResource.quantity = resource["quantity"].stringValue
                         newResource.status = resource["status"].stringValue
@@ -172,7 +206,7 @@ class ResourceService {
                         newResource.resourceRate = resource["resourceRate"].stringValue
                         newResource.name = resource["name"].stringValue
                         newResource.descriptionText = resource["descriptionText"].stringValue
-                        newResource.account = resource["account"].stringValue
+                        
                         newResource.price = resource["price"].stringValue
                         newResource.quantity = resource["quantity"].stringValue
                         newResource.status = resource["status"].stringValue
@@ -208,7 +242,7 @@ class ResourceService {
                         newResource.resourceRate = resource["resourceRate"].stringValue
                         newResource.name = resource["name"].stringValue
                         newResource.descriptionText = resource["descriptionText"].stringValue
-                        newResource.account = resource["account"].stringValue
+                        
                         newResource.price = resource["price"].stringValue
                         newResource.quantity = resource["quantity"].stringValue
                         newResource.status = resource["status"].stringValue

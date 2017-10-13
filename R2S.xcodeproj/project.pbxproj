@@ -30,6 +30,11 @@
 		9BC70F221F8E247600D8CCED /* ResourceDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC70F211F8E247600D8CCED /* ResourceDao.swift */; };
 		9BC70F241F8E34FC00D8CCED /* ResourceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC70F231F8E34FC00D8CCED /* ResourceService.swift */; };
 		9BD8341A1F9076EE0049066E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD834191F9076EE0049066E /* Location.swift */; };
+		9BD8341C1F90CBC80049066E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD8341B1F90CBC80049066E /* Account.swift */; };
+		9BD8341E1F90CD600049066E /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD8341D1F90CD600049066E /* Company.swift */; };
+		9BD834201F90D2DD0049066E /* BuyerReviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD8341F1F90D2DD0049066E /* BuyerReviews.swift */; };
+		9BD834221F90D4E20049066E /* SellerReviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD834211F90D4E20049066E /* SellerReviews.swift */; };
+		9BD834241F90E0A00049066E /* Roles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD834231F90E0A00049066E /* Roles.swift */; };
 		B99151AB1E77F38300949529 /* ApiRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99151AA1E77F38300949529 /* ApiRequestManager.swift */; };
 		B99151AD1E77F48500949529 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99151AC1E77F48500949529 /* NetworkManager.swift */; };
 		B99151B01E77F55600949529 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99151AF1E77F55600949529 /* BaseViewController.swift */; };
@@ -131,6 +136,11 @@
 		9BC70F211F8E247600D8CCED /* ResourceDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceDao.swift; path = Dao/ResourceDao.swift; sourceTree = "<group>"; };
 		9BC70F231F8E34FC00D8CCED /* ResourceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceService.swift; path = Services/ResourceService.swift; sourceTree = "<group>"; };
 		9BD834191F9076EE0049066E /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Models/Location.swift; sourceTree = "<group>"; };
+		9BD8341B1F90CBC80049066E /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = Models/Account.swift; sourceTree = "<group>"; };
+		9BD8341D1F90CD600049066E /* Company.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Company.swift; path = Models/Company.swift; sourceTree = "<group>"; };
+		9BD8341F1F90D2DD0049066E /* BuyerReviews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BuyerReviews.swift; path = Models/BuyerReviews.swift; sourceTree = "<group>"; };
+		9BD834211F90D4E20049066E /* SellerReviews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellerReviews.swift; sourceTree = "<group>"; };
+		9BD834231F90E0A00049066E /* Roles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Roles.swift; sourceTree = "<group>"; };
 		B99151AA1E77F38300949529 /* ApiRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiRequestManager.swift; path = Utilities/ApiRequestManager.swift; sourceTree = "<group>"; };
 		B99151AC1E77F48500949529 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = Utilities/NetworkManager.swift; sourceTree = "<group>"; };
 		B99151AF1E77F55600949529 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Controllers/BaseViewController.swift; sourceTree = "<group>"; };
@@ -343,6 +353,11 @@
 				B9E267BE1E7BB7EF00BB9900 /* Subcategory.swift */,
 				9B456F381F8F6C32001F4C32 /* Favorites.swift */,
 				9BD834191F9076EE0049066E /* Location.swift */,
+				9BD8341B1F90CBC80049066E /* Account.swift */,
+				9BD8341D1F90CD600049066E /* Company.swift */,
+				9BD8341F1F90D2DD0049066E /* BuyerReviews.swift */,
+				9BD834211F90D4E20049066E /* SellerReviews.swift */,
+				9BD834231F90E0A00049066E /* Roles.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -743,13 +758,16 @@
 				B9E267DB1E7D467800BB9900 /* WelcomeViewController.swift in Sources */,
 				2C5B06251F18C886002C09B8 /* Transaction.swift in Sources */,
 				B9E267C91E7D419500BB9900 /* FeaturedCarouselItemView.swift in Sources */,
+				9BD8341C1F90CBC80049066E /* Account.swift in Sources */,
 				B9E267641E78ED0000BB9900 /* UserDao.swift in Sources */,
+				9BD834201F90D2DD0049066E /* BuyerReviews.swift in Sources */,
 				2C8BCC4F1F1325900064DD87 /* TransactionRemote.swift in Sources */,
 				B9E2677E1E79416A00BB9900 /* RegisterViewController.swift in Sources */,
 				B9E2676A1E78F72F00BB9900 /* UIColor.swift in Sources */,
 				B9E267781E79145F00BB9900 /* Reachability.swift in Sources */,
 				B9E267B11E7B94F800BB9900 /* CategoryDao.swift in Sources */,
 				9B456F311F8F541E001F4C32 /* FavoritesDao.swift in Sources */,
+				9BD834221F90D4E20049066E /* SellerReviews.swift in Sources */,
 				B9E267BF1E7BB7EF00BB9900 /* Subcategory.swift in Sources */,
 				9B456F371F8F638D001F4C32 /* ResourceRemote.swift in Sources */,
 				B9E267AB1E7B945700BB9900 /* Category.swift in Sources */,
@@ -778,6 +796,7 @@
 				B9E267701E78F78000BB9900 /* UIView.swift in Sources */,
 				2CF06DD11EFBF0E30073C844 /* ActivityViewController.swift in Sources */,
 				2CF06DD31EFBF1090073C844 /* ActivityView.swift in Sources */,
+				9BD834241F90E0A00049066E /* Roles.swift in Sources */,
 				B99151B51E77F6C600949529 /* BaseUIView.swift in Sources */,
 				B9E267B31E7B950600BB9900 /* CategoryRemote.swift in Sources */,
 				B9E2676C1E78F75100BB9900 /* UITableView.swift in Sources */,
@@ -797,6 +816,7 @@
 				B9E267AD1E7B94D900BB9900 /* CategoryService.swift in Sources */,
 				9BD8341A1F9076EE0049066E /* Location.swift in Sources */,
 				B9E267BD1E7BAFF800BB9900 /* SubCategoryCollectionViewCell.swift in Sources */,
+				9BD8341E1F90CD600049066E /* Company.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

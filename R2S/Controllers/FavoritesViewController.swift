@@ -12,41 +12,41 @@ import SwiftSpinner
 import Kingfisher
 import MIBadgeButton_Swift
 
-class AccountViewController: BaseViewController {
-
-    var accountView = AccountView()
+class FavoritesViewController: BaseViewController {
+    
+    var favoritesView = FavoritesView()
     
     var screenSize: CGRect!
     var screenWidth: CGFloat!
     var screenHeight: CGFloat!
     var categories: Results<Category>!
     var selectedCategoryId: Int!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUILayout()
         // Do any additional setup after loading the view.
         
         
-
+        
         // DO some shit here
         
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Private Functions
     private func initUILayout() {
         self.screenSize = UIScreen.main.bounds
         self.screenWidth = screenSize.width
         self.screenHeight = screenSize.height
-
-        self.accountView = self.loadFromNibNamed(nibNamed: Constants.xib.accountView) as! AccountView
-        self.view = self.accountView
+        
+        self.favoritesView = self.loadFromNibNamed(nibNamed: Constants.xib.favoritesView) as! FavoritesView
+        self.view = self.favoritesView
     }
     
     private func refreshData() {
@@ -60,25 +60,25 @@ class AccountViewController: BaseViewController {
         activityIndicator.hidesWhenStopped = true
         self.view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
-//        CategoryService.fetchCategories { (statusCode, message) in
-//            if statusCode == 200 {
-//                activityIndicator.stopAnimating()
-//                self.categories = CategoryService.getCategories()
-//                CategoryService.clearSelectedCategories(self.categories)
-//                self.initUILayout()
-//                self.homeView.homeTableView.reloadData()
-//            } else {
-//                self.categories = CategoryService.getCategories()
-//                CategoryService.clearSelectedCategories(self.categories)
-//                self.initUILayout()
-//                Utility.showAlert(title: "Error", message: message!, targetController: self)
-//            }
-//        }
-//        activityIndicator.stopAnimating()
-//        self.categories = CategoryService.getCategories()
-//        CategoryService.clearSelectedCategories(self.categories)
-//        self.initUILayout()
-//        self.homeView.homeTableView.reloadData()
+        //        CategoryService.fetchCategories { (statusCode, message) in
+        //            if statusCode == 200 {
+        //                activityIndicator.stopAnimating()
+        //                self.categories = CategoryService.getCategories()
+        //                CategoryService.clearSelectedCategories(self.categories)
+        //                self.initUILayout()
+        //                self.homeView.homeTableView.reloadData()
+        //            } else {
+        //                self.categories = CategoryService.getCategories()
+        //                CategoryService.clearSelectedCategories(self.categories)
+        //                self.initUILayout()
+        //                Utility.showAlert(title: "Error", message: message!, targetController: self)
+        //            }
+        //        }
+        //        activityIndicator.stopAnimating()
+        //        self.categories = CategoryService.getCategories()
+        //        CategoryService.clearSelectedCategories(self.categories)
+        //        self.initUILayout()
+        //        self.homeView.homeTableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

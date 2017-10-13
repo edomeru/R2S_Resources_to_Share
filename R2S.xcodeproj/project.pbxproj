@@ -16,7 +16,13 @@
 		2C63EF101F027541003573A7 /* AccountView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C63EF0E1F027541003573A7 /* AccountView.xib */; };
 		2C63EF111F027541003573A7 /* ActivityView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C63EF0F1F027541003573A7 /* ActivityView.xib */; };
 		2C658A581F87770A009A18A9 /* TransactionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C658A571F87770A009A18A9 /* TransactionTableViewCell.xib */; };
-		2C658A5A1F877746009A18A9 /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C658A591F877746009A18A9 /* TransactionTableViewCell.swift */; };
+		2C89E9571F90C2600002700E /* TransactionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C89E9561F90C2600002700E /* TransactionTableViewCell.swift */; };
+		2C89E95C1F90CF920002700E /* FavoritesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C89E95A1F90CF920002700E /* FavoritesView.xib */; };
+		2C89E95D1F90CF920002700E /* WishlistView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C89E95B1F90CF920002700E /* WishlistView.xib */; };
+		2C89E9611F90D22A0002700E /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C89E95F1F90D22A0002700E /* FavoritesViewController.swift */; };
+		2C89E9621F90D22A0002700E /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C89E9601F90D22A0002700E /* WishlistViewController.swift */; };
+		2C89E9661F90D2510002700E /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C89E9641F90D2510002700E /* FavoritesView.swift */; };
+		2C89E9671F90D2510002700E /* WishlistView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C89E9651F90D2510002700E /* WishlistView.swift */; };
 		2C8BCC4F1F1325900064DD87 /* TransactionRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8BCC4E1F1325900064DD87 /* TransactionRemote.swift */; };
 		2C8BCC511F132D0C0064DD87 /* TransactionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8BCC501F132D0C0064DD87 /* TransactionService.swift */; };
 		2C93C0CD1F0F9659009B7179 /* ResourceTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C93C0CC1F0F9659009B7179 /* ResourceTableViewCell.xib */; };
@@ -111,7 +117,13 @@
 		2C63EF0E1F027541003573A7 /* AccountView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = AccountView.xib; path = Xibs/AccountView.xib; sourceTree = "<group>"; };
 		2C63EF0F1F027541003573A7 /* ActivityView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ActivityView.xib; path = Xibs/ActivityView.xib; sourceTree = "<group>"; };
 		2C658A571F87770A009A18A9 /* TransactionTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TransactionTableViewCell.xib; path = Xibs/TransactionTableViewCell.xib; sourceTree = "<group>"; };
-		2C658A591F877746009A18A9 /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionTableViewCell.swift; path = "View Classes/TransactionTableViewCell.swift"; sourceTree = "<group>"; };
+		2C89E9561F90C2600002700E /* TransactionTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionTableViewCell.swift; path = "View Classes/TransactionTableViewCell.swift"; sourceTree = "<group>"; };
+		2C89E95A1F90CF920002700E /* FavoritesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FavoritesView.xib; path = Xibs/FavoritesView.xib; sourceTree = "<group>"; };
+		2C89E95B1F90CF920002700E /* WishlistView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WishlistView.xib; path = Xibs/WishlistView.xib; sourceTree = "<group>"; };
+		2C89E95F1F90D22A0002700E /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesViewController.swift; path = Controllers/FavoritesViewController.swift; sourceTree = "<group>"; };
+		2C89E9601F90D22A0002700E /* WishlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishlistViewController.swift; path = Controllers/WishlistViewController.swift; sourceTree = "<group>"; };
+		2C89E9641F90D2510002700E /* FavoritesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesView.swift; path = "View Classes/FavoritesView.swift"; sourceTree = "<group>"; };
+		2C89E9651F90D2510002700E /* WishlistView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishlistView.swift; path = "View Classes/WishlistView.swift"; sourceTree = "<group>"; };
 		2C8BCC4E1F1325900064DD87 /* TransactionRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionRemote.swift; path = Remotes/TransactionRemote.swift; sourceTree = "<group>"; };
 		2C8BCC501F132D0C0064DD87 /* TransactionService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionService.swift; path = Services/TransactionService.swift; sourceTree = "<group>"; };
 		2C93C0CC1F0F9659009B7179 /* ResourceTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ResourceTableViewCell.xib; path = Xibs/ResourceTableViewCell.xib; sourceTree = "<group>"; };
@@ -225,12 +237,47 @@
 			name = Activity;
 			sourceTree = "<group>";
 		};
+		2C89E9581F90C2680002700E /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				2CF06DD21EFBF1090073C844 /* ActivityView.swift */,
+				2C89E9561F90C2600002700E /* TransactionTableViewCell.swift */,
+			);
+			name = Activity;
+			sourceTree = "<group>";
+		};
+		2C89E9591F90CF6B0002700E /* Nav Bar */ = {
+			isa = PBXGroup;
+			children = (
+				2C89E95A1F90CF920002700E /* FavoritesView.xib */,
+				2C89E95B1F90CF920002700E /* WishlistView.xib */,
+			);
+			name = "Nav Bar";
+			sourceTree = "<group>";
+		};
+		2C89E95E1F90D21C0002700E /* Nav Bar */ = {
+			isa = PBXGroup;
+			children = (
+				2C89E95F1F90D22A0002700E /* FavoritesViewController.swift */,
+				2C89E9601F90D22A0002700E /* WishlistViewController.swift */,
+			);
+			name = "Nav Bar";
+			sourceTree = "<group>";
+		};
+		2C89E9631F90D2330002700E /* Nav Bar */ = {
+			isa = PBXGroup;
+			children = (
+				2C89E9641F90D2510002700E /* FavoritesView.swift */,
+				2C89E9651F90D2510002700E /* WishlistView.swift */,
+			);
+			name = "Nav Bar";
+			sourceTree = "<group>";
+		};
 		2CD0FD2E1F84C981000C8E89 /* Home */ = {
 			isa = PBXGroup;
 			children = (
 				B9E267CA1E7D41A500BB9900 /* HomeView.swift */,
 				B9E267B61E7BAEA600BB9900 /* BrowseView.swift */,
-				2C658A591F877746009A18A9 /* TransactionTableViewCell.swift */,
 				2CD0FD311F84D31D000C8E89 /* ResourceTableViewCell.swift */,
 			);
 			name = Home;
@@ -287,6 +334,7 @@
 				B99151B11E77F67E00949529 /* LoginViewController.swift */,
 				B9E2677D1E79416A00BB9900 /* RegisterViewController.swift */,
 				B9E267DA1E7D467800BB9900 /* WelcomeViewController.swift */,
+				2C89E95E1F90D21C0002700E /* Nav Bar */,
 				B9E267831E7A363B00BB9900 /* Tab Bar */,
 			);
 			name = Controllers;
@@ -301,6 +349,7 @@
 				B9E267DC1E7D48D600BB9900 /* WelcomeView.swift */,
 				B9E267A41E7AC70200BB9900 /* CollectionView Cells */,
 				B9E267971E7A86C100BB9900 /* Scroll Views */,
+				2C89E9631F90D2330002700E /* Nav Bar */,
 				B9E2678A1E7A7A1B00BB9900 /* Tab Bar */,
 				B9E267931E7A846600BB9900 /* TableView Cells */,
 			);
@@ -315,6 +364,7 @@
 				B9E267DE1E7D490100BB9900 /* WelcomeView.xib */,
 				B9E267A71E7AC74600BB9900 /* CollectionView Cell */,
 				B9E267961E7A86B800BB9900 /* Scroll Views */,
+				2C89E9591F90CF6B0002700E /* Nav Bar */,
 				B9E2678D1E7A7A4E00BB9900 /* Tab Bar */,
 			);
 			name = Xibs;
@@ -391,7 +441,7 @@
 			isa = PBXGroup;
 			children = (
 				2CD0FD2E1F84C981000C8E89 /* Home */,
-				2CF06DD21EFBF1090073C844 /* ActivityView.swift */,
+				2C89E9581F90C2680002700E /* Activity */,
 				2C63EF0C1F027530003573A7 /* AccountView.swift */,
 			);
 			name = "Tab Bar";
@@ -643,7 +693,9 @@
 				2C658A581F87770A009A18A9 /* TransactionTableViewCell.xib in Resources */,
 				B9E267D81E7D41F500BB9900 /* CategoryTableViewCell.xib in Resources */,
 				B9E267D11E7D41CA00BB9900 /* CategoryCollectionViewCell.xib in Resources */,
+				2C89E95C1F90CF920002700E /* FavoritesView.xib in Resources */,
 				B9FE3FEC1E77E32A003CDE74 /* Main.storyboard in Resources */,
+				2C89E95D1F90CF920002700E /* WishlistView.xib in Resources */,
 				B9E267B91E7BAEC400BB9900 /* BrowseView.xib in Resources */,
 				B9E267BB1E7BAF9500BB9900 /* SubCategoryCollectionViewCell.xib in Resources */,
 				2C93C0CD1F0F9659009B7179 /* ResourceTableViewCell.xib in Resources */,
@@ -722,9 +774,12 @@
 			files = (
 				2CD0FD321F84D31D000C8E89 /* ResourceTableViewCell.swift in Sources */,
 				B9E267B51E7BAE2600BB9900 /* BrowseViewController.swift in Sources */,
+				2C89E9621F90D22A0002700E /* WishlistViewController.swift in Sources */,
 				B9E267DB1E7D467800BB9900 /* WelcomeViewController.swift in Sources */,
+				2C89E9661F90D2510002700E /* FavoritesView.swift in Sources */,
 				2C5B06251F18C886002C09B8 /* Transaction.swift in Sources */,
 				B9E267C91E7D419500BB9900 /* FeaturedCarouselItemView.swift in Sources */,
+				2C89E9671F90D2510002700E /* WishlistView.swift in Sources */,
 				B9E267641E78ED0000BB9900 /* UserDao.swift in Sources */,
 				2C8BCC4F1F1325900064DD87 /* TransactionRemote.swift in Sources */,
 				B9E2677E1E79416A00BB9900 /* RegisterViewController.swift in Sources */,
@@ -744,10 +799,11 @@
 				B9E267C71E7D418300BB9900 /* CategoryCollectionViewCell.swift in Sources */,
 				2C5B06271F18C94B002C09B8 /* Resource.swift in Sources */,
 				B9E267721E78F7A500BB9900 /* UserRemote.swift in Sources */,
-				2C658A5A1F877746009A18A9 /* TransactionTableViewCell.swift in Sources */,
+				2C89E9571F90C2600002700E /* TransactionTableViewCell.swift in Sources */,
 				B9E267801E79419900BB9900 /* RegisterView.swift in Sources */,
 				B99151AB1E77F38300949529 /* ApiRequestManager.swift in Sources */,
 				B99151B21E77F67E00949529 /* LoginViewController.swift in Sources */,
+				2C89E9611F90D22A0002700E /* FavoritesViewController.swift in Sources */,
 				B9FE3FE71E77E32A003CDE74 /* AppDelegate.swift in Sources */,
 				B9E267B71E7BAEA600BB9900 /* BrowseView.swift in Sources */,
 				2C087D371F26110C00AC3921 /* Image.swift in Sources */,

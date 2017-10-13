@@ -24,5 +24,28 @@ class HomeTabBarViewController: UITabBarController {
         self.navigationItem.hidesBackButton = true
         self.navigationController?.setNavigationBarHidden(false, animated: false)
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        
+        
+        let imgFavorites   = UIImage(named: "ic_favorite_border")!
+        let imgWishlist = UIImage(named: "ic_card_giftcard")!
+        
+        let favoritesButton   = UIBarButtonItem(image: imgFavorites,  style: .plain, target: self, action: #selector(self.favoritesOnButtonPressed))
+        let wishlistButton = UIBarButtonItem(image: imgWishlist,  style: .plain, target: self, action: #selector(self.wishlistOnButtonPressed))
+        
+        // set to black
+        favoritesButton.tintColor = UIColor.black
+        wishlistButton.tintColor = UIColor.black
+        
+        navigationItem.rightBarButtonItems = [favoritesButton, wishlistButton]
+    }
+    
+    func favoritesOnButtonPressed(){
+        print("faovirtes")
+        performSegue(withIdentifier: Constants.segue.homeToFavoritesSegue, sender: self)
+    }
+    
+    func wishlistOnButtonPressed(){
+        print("wishlist")
+        performSegue(withIdentifier: Constants.segue.homeToWishlistSegue, sender: self)
     }
 }

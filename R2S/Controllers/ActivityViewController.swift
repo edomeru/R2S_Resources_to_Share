@@ -19,7 +19,7 @@ class ActivityViewController: BaseViewController {
     var screenSize: CGRect!
     var screenWidth: CGFloat!
     var screenHeight: CGFloat!
-    var categories: Results<Category>!
+    var transactions: Results<Transaction>!
     var selectedCategoryId: Int!
 
     override func viewDidLoad() {
@@ -46,6 +46,10 @@ class ActivityViewController: BaseViewController {
         self.activityView = self.loadFromNibNamed(nibNamed: Constants.xib.activityView) as! ActivityView
         self.view = self.activityView
         
+        self.activityView.activityTableView.register(UINib(nibName: "TransactionTableViewCell", bundle: nil), forCellReuseIdentifier: "TransactionTableViewCell")
+        self.activityView.activityTableView.delegate = self
+        self.activityView.activityTableView.dataSource = self
+        
         setupSegmentedControl()
     }
     private func setupSegmentedControl(){
@@ -66,25 +70,6 @@ class ActivityViewController: BaseViewController {
         activityIndicator.hidesWhenStopped = true
         self.view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
-//        CategoryService.fetchCategories { (statusCode, message) in
-//            if statusCode == 200 {
-//                activityIndicator.stopAnimating()
-//                self.categories = CategoryService.getCategories()
-//                CategoryService.clearSelectedCategories(self.categories)
-//                self.initUILayout()
-//                self.homeView.homeTableView.reloadData()
-//            } else {
-//                self.categories = CategoryService.getCategories()
-//                CategoryService.clearSelectedCategories(self.categories)
-//                self.initUILayout()
-//                Utility.showAlert(title: "Error", message: message!, targetController: self)
-//            }
-//        }
-//        activityIndicator.stopAnimating()
-//        self.categories = CategoryService.getCategories()
-//        CategoryService.clearSelectedCategories(self.categories)
-//        self.initUILayout()
-//        self.homeView.homeTableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -104,10 +89,18 @@ class ActivityViewController: BaseViewController {
 
 // MARK: - UITableViewDelegate
 extension ActivityViewController: UITableViewDelegate{
-    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 300
+    }
 }
 
 // MARK: - UITableViewDataSource
 extension ActivityViewController: UITableViewDataSource{
-    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 5
+    }
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCell", for: indexPath as IndexPath) as! TransactionTableViewCell
+        return cell
+    }
 }

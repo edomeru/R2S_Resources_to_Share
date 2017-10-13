@@ -23,6 +23,7 @@ class TransactionService {
             DispatchQueue.global(qos: .background).async{
                 if statusCode == 200{
                     message = ""
+                    
                     for (_, transaction):(String, JSON) in jsonData {
 //                        print (transaction);
 //                        print("hi")
@@ -30,6 +31,9 @@ class TransactionService {
 //                    print (jsonData)
                     print(jsonData.count)
                 }
+            }
+            DispatchQueue.main.async {
+                onCompletion(statusCode, message)
             }
         })
     }

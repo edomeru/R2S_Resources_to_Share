@@ -12,7 +12,7 @@
         <scene sceneID="5gd-tc-SuB">
             <objects>
                 <navigationController id="gyt-qp-uPB" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V3o-gx-w46">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="V3o-gx-w46">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -22,7 +22,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DP4-DK-3C9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2154" y="-40"/>
+            <point key="canvasLocation" x="-3350" y="-6"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="sez-2T-Kdr">
@@ -48,7 +48,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sfi-bF-vuN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1418" y="-40"/>
+            <point key="canvasLocation" x="-2614" y="-6"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="2WY-wb-Oge">
@@ -72,7 +72,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RKK-Jh-ak7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-682" y="708"/>
+            <point key="canvasLocation" x="-1878" y="742"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="sz1-Yx-9Iw">
@@ -90,7 +90,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="plo-rz-ga6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1418" y="708"/>
+            <point key="canvasLocation" x="-2614" y="742"/>
         </scene>
         <!--Inbox-->
         <scene sceneID="UFE-aT-wbo">
@@ -189,6 +189,42 @@
             </objects>
             <point key="canvasLocation" x="1420" y="-108"/>
         </scene>
+        <!--Favorites View Controller-->
+        <scene sceneID="NDD-GU-Mic">
+            <objects>
+                <viewController id="g2I-Rk-gJv" customClass="FavoritesViewController" customModule="R2S" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="X1o-nZ-ZSE"/>
+                        <viewControllerLayoutGuide type="bottom" id="HnA-18-yZR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ME6-Pv-oaU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zNF-LI-qEX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1314" y="-1916"/>
+        </scene>
+        <!--Wishlist View Controller-->
+        <scene sceneID="Jho-cR-fkz">
+            <objects>
+                <viewController id="bKC-Kf-5pF" customClass="WishlistViewController" customModule="R2S" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wSB-RT-uFo"/>
+                        <viewControllerLayoutGuide type="bottom" id="yga-va-uwD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="g53-ih-0CY">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qGE-6K-SK3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-313" y="-1916"/>
+        </scene>
         <!--Home-->
         <scene sceneID="E7T-OR-7V4">
             <objects>
@@ -229,11 +265,13 @@
                         <segue destination="iH5-4T-rRH" kind="relationship" relationship="viewControllers" id="wdp-Jj-08P"/>
                         <segue destination="eKi-rf-Y3v" kind="relationship" relationship="viewControllers" id="D3W-TR-CYQ"/>
                         <segue destination="HWt-XA-9Dc" kind="relationship" relationship="viewControllers" id="o2g-YZ-wTl"/>
+                        <segue destination="g2I-Rk-gJv" kind="show" identifier="HomeToFavoritesSegue" id="hU1-IH-Fgf"/>
+                        <segue destination="bKC-Kf-5pF" kind="show" identifier="HomeToWishlistSegue" id="IMl-cA-tSR"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ve3-lc-FER" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="100" y="-19"/>
+            <point key="canvasLocation" x="-1095" y="15"/>
         </scene>
     </scenes>
     <resources>
@@ -244,6 +282,6 @@
         <image name="ic_person" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Gng-5l-VT9"/>
+        <segue reference="xPI-oA-IOK"/>
     </inferredMetricsTieBreakers>
 </document>

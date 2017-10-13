@@ -11,4 +11,8 @@ import UIKit
 class ActivityView: BaseUIView {
     @IBOutlet weak var activitySegmentedControl: UISegmentedControl!
     @IBOutlet weak var activityTableView: UITableView!
+
+    override func awakeFromNib() {
+        activityTableView.backgroundColor = UIColor.init(hex: Constants.color.athensGray)
+    }
 }

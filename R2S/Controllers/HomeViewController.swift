@@ -59,24 +59,7 @@ class HomeViewController: BaseViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        let cartButton = MIBadgeButton()
-        let cartImage = UIImage(named: "ic_exit_to_app")
-        cartButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        cartButton.setImage(cartImage, for: .normal)
-        cartButton.badgeEdgeInsets = UIEdgeInsetsMake(15, 0, 0, 0)
-        cartButton.addTarget(self, action: #selector(self.cartButtonPressed), for: .touchUpInside)
-        let barButton = UIBarButtonItem.init(customView: cartButton)
-        self.tabBarController!.navigationItem.rightBarButtonItem = barButton
     }
-    
-    func cartButtonPressed() {
-        _ = self.navigationController?.popToRootViewController(animated: true)
-        CategoryDao.deleteAll()
-        SubcategoryDao.deleteAll()
-        let defaults = UserDefaults.standard
-        defaults.set(false, forKey: "isLoggedIn")
-    }
-    
     private func refreshData() {
         let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
         activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)

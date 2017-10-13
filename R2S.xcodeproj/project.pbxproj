@@ -29,6 +29,7 @@
 		9B456F391F8F6C32001F4C32 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B456F381F8F6C32001F4C32 /* Favorites.swift */; };
 		9BC70F221F8E247600D8CCED /* ResourceDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC70F211F8E247600D8CCED /* ResourceDao.swift */; };
 		9BC70F241F8E34FC00D8CCED /* ResourceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC70F231F8E34FC00D8CCED /* ResourceService.swift */; };
+		9BD8341A1F9076EE0049066E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD834191F9076EE0049066E /* Location.swift */; };
 		B99151AB1E77F38300949529 /* ApiRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99151AA1E77F38300949529 /* ApiRequestManager.swift */; };
 		B99151AD1E77F48500949529 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99151AC1E77F48500949529 /* NetworkManager.swift */; };
 		B99151B01E77F55600949529 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99151AF1E77F55600949529 /* BaseViewController.swift */; };
@@ -129,6 +130,7 @@
 		9B456F381F8F6C32001F4C32 /* Favorites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Favorites.swift; path = Models/Favorites.swift; sourceTree = "<group>"; };
 		9BC70F211F8E247600D8CCED /* ResourceDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceDao.swift; path = Dao/ResourceDao.swift; sourceTree = "<group>"; };
 		9BC70F231F8E34FC00D8CCED /* ResourceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceService.swift; path = Services/ResourceService.swift; sourceTree = "<group>"; };
+		9BD834191F9076EE0049066E /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Models/Location.swift; sourceTree = "<group>"; };
 		B99151AA1E77F38300949529 /* ApiRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiRequestManager.swift; path = Utilities/ApiRequestManager.swift; sourceTree = "<group>"; };
 		B99151AC1E77F48500949529 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = Utilities/NetworkManager.swift; sourceTree = "<group>"; };
 		B99151AF1E77F55600949529 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Controllers/BaseViewController.swift; sourceTree = "<group>"; };
@@ -340,6 +342,7 @@
 				B9E267AA1E7B945700BB9900 /* Category.swift */,
 				B9E267BE1E7BB7EF00BB9900 /* Subcategory.swift */,
 				9B456F381F8F6C32001F4C32 /* Favorites.swift */,
+				9BD834191F9076EE0049066E /* Location.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -792,6 +795,7 @@
 				9BC70F221F8E247600D8CCED /* ResourceDao.swift in Sources */,
 				B9E267741E78F8A000BB9900 /* Utility.swift in Sources */,
 				B9E267AD1E7B94D900BB9900 /* CategoryService.swift in Sources */,
+				9BD8341A1F9076EE0049066E /* Location.swift in Sources */,
 				B9E267BD1E7BAFF800BB9900 /* SubCategoryCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

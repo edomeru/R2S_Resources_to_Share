@@ -49,6 +49,7 @@ class Resource: Object {
     dynamic var imageUrl = ""
     dynamic var createdDate = ""
     dynamic var resourceRate = ""
+    let image = List<Image>()
 
     dynamic var name = ""
     dynamic var descriptionText = ""
@@ -56,7 +57,7 @@ class Resource: Object {
     dynamic var price = ""
     dynamic var quantity = ""
     dynamic var status = ""
-    dynamic var location = ""
+    dynamic var location: Location?
     
     override static func primaryKey() -> String? {
         return "id"

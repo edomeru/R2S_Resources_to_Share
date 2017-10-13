@@ -23,27 +23,52 @@ class ResourceService {
         ResourceRemote.get(onCompletion: { jsonData, statusCode in
             DispatchQueue.global(qos: .background).async{
                 if statusCode == 200{
-                    print("\(jsonData)" + "LOOB")
-//                    message = ""
-//                    for (_, resource):(String, JSON) in jsonData {
-//                        let newResource = Resource()
-//                        newResource.id = resource["id"].intValue
-//                        newResource.resourceCode = resource["resourceCode"].stringValue
-//                        newResource.snapshotCode = resource["snapshotCode"].stringValue
-//                        newResource.imageUrl = resource["image_url"].stringValue
-//                        newResource.createdDate = resource["createdDate"].stringValue
-//                        newResource.resourceRate = resource["resourceRate"].stringValue
-//                        newResource.name = resource["name"].stringValue
-//                        newResource.descriptionText = resource["descriptionText"].stringValue
-//                        newResource.account = resource["account"].stringValue
-//                        newResource.price = resource["price"].stringValue
-//                        newResource.quantity = resource["quantity"].stringValue
-//                        newResource.status = resource["status"].stringValue
-//                        newResource.location = resource["location"].stringValue
-//                        
-//                        ResourceDao.add(newResource)
-//                        
-//                    }
+                  print("JSONDATA" + "\(jsonData)"  )
+                    message = ""
+                    for (_, resource):(String, JSON) in jsonData {
+                        let newResource = Resource()
+                        newResource.id = resource["id"].intValue
+                        newResource.resourceCode = resource["resource_code"].stringValue
+                        newResource.snapshotCode = resource["snapshot_code"].stringValue
+                        newResource.imageUrl = resource["image_url"].stringValue
+                        newResource.createdDate = resource["created_date"].stringValue
+                        newResource.resourceRate = resource["resource_rate"].stringValue
+                        newResource.name = resource["name"].stringValue
+                        newResource.descriptionText = resource["description"].stringValue
+                        newResource.account = resource["account"].stringValue
+                        newResource.price = resource["price"].stringValue
+                        newResource.quantity = resource["quantity"].stringValue
+                        newResource.status = resource["status"].stringValue
+                        
+                        
+                        //Images
+                        for (_, image):(String, JSON) in resource["images"] {
+                            let img = Image()
+                            img.image = image["image"].stringValue
+                            img.imageFull = image["image_full"].stringValue
+                           
+                            newResource.image.append(img)
+                        }
+                        
+                        //Location
+                        let loc = resource["location"]
+                        let location = Location()
+                        location.zipcode = loc["zipcode"].stringValue
+                        location.state = loc["state"].stringValue
+                        location.latitude = loc["latitude"].stringValue
+                        location.city = loc["city"].stringValue
+                        location.longitude = loc["longitude"].stringValue
+                        location.street = loc["street"].stringValue
+                        
+                        newResource.location = location
+
+                        // show realm database file
+                        //print(Realm.Configuration.defaultConfiguration.fileURL!)
+
+                        
+                        ResourceDao.add(newResource)
+                         //print("LOOB" + "\(newResource)"  )
+                    }
                 } else {
                     message = jsonData["message"].stringValue
                 }
@@ -76,7 +101,7 @@ class ResourceService {
                         newResource.price = resource["price"].stringValue
                         newResource.quantity = resource["quantity"].stringValue
                         newResource.status = resource["status"].stringValue
-                        newResource.location = resource["location"].stringValue
+                       // newResource.location = resource["location"].stringValue
                         
                         
                         ResourceDao.deleteAll()
@@ -113,7 +138,7 @@ class ResourceService {
                         newResource.price = resource["price"].stringValue
                         newResource.quantity = resource["quantity"].stringValue
                         newResource.status = resource["status"].stringValue
-                        newResource.location = resource["location"].stringValue
+                       // newResource.location = resource["location"].stringValue
                         let favorite = Favorites()
                         favorite.id = resource["id"].intValue
                         FavoritesDao.isFavorite(id: favorite.id)
@@ -151,7 +176,7 @@ class ResourceService {
                         newResource.price = resource["price"].stringValue
                         newResource.quantity = resource["quantity"].stringValue
                         newResource.status = resource["status"].stringValue
-                        newResource.location = resource["location"].stringValue
+                        //newResource.location = resource["location"].stringValue
                       
                         ResourceDao.add(newResource)
                     }
@@ -187,7 +212,7 @@ class ResourceService {
                         newResource.price = resource["price"].stringValue
                         newResource.quantity = resource["quantity"].stringValue
                         newResource.status = resource["status"].stringValue
-                        newResource.location = resource["location"].stringValue
+                       // newResource.location = resource["location"].stringValue
                         
                         ResourceDao.add(newResource)
                     }

@@ -23,6 +23,7 @@ class CategoryService {
             DispatchQueue.global(qos: .background).async {
                 if statusCode == 200 {
                     message = ""
+                    //print("LOOB" + "\(jsonData)"  )
                     for (_, category):(String, JSON) in jsonData {
                         let newCategory = Category()
                         newCategory.id = category["id"].intValue

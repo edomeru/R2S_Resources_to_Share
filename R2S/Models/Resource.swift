@@ -50,7 +50,7 @@ class Resource: Object {
     dynamic var createdDate = ""
     dynamic var resourceRate = ""
     let image = List<Image>()
-
+    let categories = List<Categories>()
     dynamic var name = ""
     dynamic var descriptionText = ""
     dynamic var price = ""

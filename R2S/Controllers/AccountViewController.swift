@@ -28,13 +28,20 @@ class AccountViewController: BaseViewController {
         // Do any additional setup after loading the view.
         
         
-        ResourceService.get(onCompletion: { statusCode, message in
+//        ResourceService.get(onCompletion: { statusCode, message in
+//        
+//        print("\(statusCode!)" + " TEST NI EDS"  )
+//            print("\(message!)" + " TEST NI EDS"  )
+//        
+//        })
         
-        print("\(statusCode!)" + " TEST NI EDS"  )
+        
+        ResourceService.getByAccount(id: 1, onCompletion: { statusCode, message in
+            
+            print("\(statusCode!)" + " TEST NI EDS getByAccount"  )
             print("\(message!)" + " TEST NI EDS"  )
-        
+            
         })
-        
         
     }
 

@@ -17,7 +17,7 @@ class Account: Object {
     dynamic var birth_date = ""
     dynamic var landline_number = ""
     dynamic var created_date = ""
-    let buyer_reviews = List<BuyerReviews>()
+    let buyer_reviews = List<UserReview>()
     dynamic var mobile_number = ""
     dynamic var updated_date = ""
     dynamic var last_name = ""
@@ -25,7 +25,7 @@ class Account: Object {
     dynamic var id = 0
      let roles = List<Roles>()
     dynamic var email = ""
-    let seller_reviews = List<SellerReviews>()
+    let seller_review = List<UserReview>()
     dynamic var account_id = ""
     dynamic var deleted_date = ""
     dynamic var first_name = ""

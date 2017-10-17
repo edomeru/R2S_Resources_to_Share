@@ -18,7 +18,7 @@ class ResourceRemote{
         })
     }
 
-    static func addToFavorites(resource_id: String, params: [String: AnyObject], onCompletion: @escaping (JSON, Int?) -> Void) {
+    static func addToFavorites(resource_id: String, params: [String:AnyObject], onCompletion: @escaping (JSON, Int?) -> Void) {
         let urlString = Constants.api.resource.resource_favorites.replacingOccurrences(of: "{resource_id}", with: String(describing: resource_id))
         ApiRequestManager.sharedInstance.doPostRequest(urlString: urlString, params: params, headers: Utility.getHeadersWithAuth(), onCompletion: { jsonData, statusCode in
             onCompletion(jsonData, statusCode)

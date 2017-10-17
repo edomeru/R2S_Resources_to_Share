@@ -198,19 +198,7 @@ class ResourceService {
                         location.street = loc["street"].stringValue
                         
                         newResource.location = location
-                        
-                        
-                        
-                        
-                       
-                        
-                        // show realm database file
-                        //print(Realm.Configuration.defaultConfiguration.fileURL!)
-                        
-                        
-                        
-                        
-                        
+
                         
                         //Categories
                         for (_, categories):(String, JSON) in resource["categories"] {
@@ -231,7 +219,7 @@ class ResourceService {
                             
                             newResource.categories.append(cat)
                         }
-                        print("TEST BWAHAHHAHA ", newResource)
+                        
                         ResourceDao.deleteAll()
                         ResourceDao.add(newResource)
                     }
@@ -253,20 +241,64 @@ class ResourceService {
                 if statusCode == 200 {
                     message = ""
                     for (_, resource):(String, JSON) in jsonData {
+                        //                        print("TEST BWAHAHHAHA ", jsonData)
                         let newResource = Resource()
                         newResource.id = resource["id"].intValue
-                        newResource.resourceCode = resource["resourceCode"].stringValue
-                        newResource.snapshotCode = resource["snapshotCode"].stringValue
+                        newResource.resourceCode = resource["resource_code"].stringValue
+                        newResource.snapshotCode = resource["snapshot_code"].stringValue
                         newResource.imageUrl = resource["image_url"].stringValue
-                        newResource.createdDate = resource["createdDate"].stringValue
-                        newResource.resourceRate = resource["resourceRate"].stringValue
+                        newResource.createdDate = resource["created_date"].stringValue
+                        newResource.resourceRate = resource["resource_rate"].stringValue
                         newResource.name = resource["name"].stringValue
-                        newResource.descriptionText = resource["descriptionText"].stringValue
+                        newResource.descriptionText = resource["description"].stringValue
                         
                         newResource.price = resource["price"].stringValue
                         newResource.quantity = resource["quantity"].stringValue
                         newResource.status = resource["status"].stringValue
-                       // newResource.location = resource["location"].stringValue
+                        
+                        
+                        //Images
+                        for (_, image):(String, JSON) in resource["images"] {
+                            let img = Image()
+                            img.image = image["image"].stringValue
+                            img.imageFull = image["image_full"].stringValue
+                            
+                            newResource.image.append(img)
+                        }
+                        
+                        //Location
+                        let loc = resource["location"]
+                        let location = Location()
+                        location.zipcode = loc["zipcode"].stringValue
+                        location.state = loc["state"].stringValue
+                        location.latitude = loc["latitude"].stringValue
+                        location.city = loc["city"].stringValue
+                        location.longitude = loc["longitude"].stringValue
+                        location.street = loc["street"].stringValue
+                        
+                        newResource.location = location
+                        
+                        
+                        //Categories
+                        for (_, categories):(String, JSON) in resource["categories"] {
+                            let cat = Categories()
+                            cat.main_category_id = categories["main_category_id"].intValue
+                            cat.main_category_name = categories["main_category_name"].stringValue
+                            
+                            let subCat = categories["subcategory"]
+                            let sub = Subcategories()
+                            sub.created_date = subCat["created_date"].stringValue
+                            sub.id = subCat["id"].intValue
+                            sub.status = subCat["status"].stringValue
+                            sub.image_url = subCat["image_url"].stringValue
+                            sub.name = subCat["name"].stringValue
+                            sub.descriptionText = subCat["description"].stringValue
+                            
+                            cat.subcategories = sub
+                            
+                            newResource.categories.append(cat)
+                        }
+                        
                         let favorite = Favorites()
                         favorite.id = resource["id"].intValue
                         FavoritesDao.isFavorite(id: favorite.id)
@@ -289,25 +321,6 @@ class ResourceService {
         ResourceRemote.addToFavorites(resource_id: "\(resource_id)", params : params , onCompletion: { jsonData, statusCode in
             DispatchQueue.global(qos: .background).async {
                 if statusCode == 200 {
-                    message = ""
-                    for (_, resource):(String, JSON) in jsonData {
-                        let newResource = Resource()
-                        newResource.id = resource["id"].intValue
-                        newResource.resourceCode = resource["resourceCode"].stringValue
-                        newResource.snapshotCode = resource["snapshotCode"].stringValue
-                        newResource.imageUrl = resource["image_url"].stringValue
-                        newResource.createdDate = resource["createdDate"].stringValue
-                        newResource.resourceRate = resource["resourceRate"].stringValue
-                        newResource.name = resource["name"].stringValue
-                        newResource.descriptionText = resource["descriptionText"].stringValue
-                        
-                        newResource.price = resource["price"].stringValue
-                        newResource.quantity = resource["quantity"].stringValue
-                        newResource.status = resource["status"].stringValue
-                        //newResource.location = resource["location"].stringValue
-                      
-                        ResourceDao.add(newResource)
-                    }
                 } else {
                     message = jsonData["message"].stringValue
                 }
@@ -320,11 +333,12 @@ class ResourceService {
     }
 
     
-    static func createResource(resource_id: Int, params: [String: AnyObject], onCompletion: @escaping (Int?, String?) -> Void) {
+    static func createResource(id: Int, params: [String: AnyObject], onCompletion: @escaping (Int?, String?) -> Void) {
         var message = ""
-        UserRemote.createResource(resource_id: "\(resource_id)", params : params , onCompletion: { jsonData, statusCode in
+        UserRemote.createResource(id: "\(id)", params: params, onCompletion: { jsonData, statusCode in
             DispatchQueue.global(qos: .background).async {
                 if statusCode == 200 {
+                    print(jsonData)
                     message = ""
                     for (_, resource):(String, JSON) in jsonData {
                         let newResource = Resource()

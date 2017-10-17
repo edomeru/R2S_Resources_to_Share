@@ -34,8 +34,9 @@ class UserRemote {
         })
     }
     
-    static func createResource(resource_id: String,params: [String: AnyObject], onCompletion: @escaping (JSON, Int?) -> Void) {
-        ApiRequestManager.sharedInstance.doPostRequest(urlString: Constants.api.user.wishlist.replacingOccurrences(of: "{id}", with: String(describing: resource_id )), params: params, headers: Utility.getHeadersWithAuth(), onCompletion: { jsonData, statusCode in
+    static func createResource(id: String,params: [String: AnyObject], onCompletion: @escaping (JSON, Int?) -> Void) {
+        print("BWAGAHHAHAHAHHA "+Constants.api.user.resources.replacingOccurrences(of: "{id}", with: String(describing: id )))
+        ApiRequestManager.sharedInstance.doPostRequest(urlString: Constants.api.user.resources.replacingOccurrences(of: "{id}", with: String(describing: id )), params: params, headers: Utility.getHeadersWithAuth(), onCompletion: { jsonData, statusCode in
             onCompletion(jsonData, statusCode)
         })
     }

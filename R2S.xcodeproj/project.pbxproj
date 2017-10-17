@@ -30,6 +30,18 @@
 		2CF06DD11EFBF0E30073C844 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF06DD01EFBF0E30073C844 /* ActivityViewController.swift */; };
 		2CF06DD31EFBF1090073C844 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF06DD21EFBF1090073C844 /* ActivityView.swift */; };
 		548A6074C3188468E31693E6 /* Pods_R2S.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E60C07BE5101947A43207D /* Pods_R2S.framework */; };
+		9B456F311F8F541E001F4C32 /* FavoritesDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B456F301F8F541E001F4C32 /* FavoritesDao.swift */; };
+		9B456F371F8F638D001F4C32 /* ResourceRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B456F361F8F638D001F4C32 /* ResourceRemote.swift */; };
+		9B456F391F8F6C32001F4C32 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B456F381F8F6C32001F4C32 /* Favorites.swift */; };
+		9BC70F221F8E247600D8CCED /* ResourceDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC70F211F8E247600D8CCED /* ResourceDao.swift */; };
+		9BC70F241F8E34FC00D8CCED /* ResourceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC70F231F8E34FC00D8CCED /* ResourceService.swift */; };
+		9BD8341A1F9076EE0049066E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD834191F9076EE0049066E /* Location.swift */; };
+		9BD8341C1F90CBC80049066E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD8341B1F90CBC80049066E /* Account.swift */; };
+		9BD8341E1F90CD600049066E /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD8341D1F90CD600049066E /* Company.swift */; };
+		9BD834241F90E0A00049066E /* Roles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD834231F90E0A00049066E /* Roles.swift */; };
+		9BFC735A1F94641E00C9D888 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFC73591F94641E00C9D888 /* Categories.swift */; };
+		9BFC735C1F946E2B00C9D888 /* Subcategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFC735B1F946E2B00C9D888 /* Subcategories.swift */; };
+		9BFC735E1F94924400C9D888 /* UserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFC735D1F94924400C9D888 /* UserReview.swift */; };
 		B99151AB1E77F38300949529 /* ApiRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99151AA1E77F38300949529 /* ApiRequestManager.swift */; };
 		B99151AD1E77F48500949529 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99151AC1E77F48500949529 /* NetworkManager.swift */; };
 		B99151B01E77F55600949529 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99151AF1E77F55600949529 /* BaseViewController.swift */; };
@@ -131,6 +143,18 @@
 		2CF06DD01EFBF0E30073C844 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityViewController.swift; path = Controllers/ActivityViewController.swift; sourceTree = "<group>"; };
 		2CF06DD21EFBF1090073C844 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityView.swift; path = "View Classes/ActivityView.swift"; sourceTree = "<group>"; };
 		33DE7660843E508F233330F3 /* Pods-R2S.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R2S.release.xcconfig"; path = "Pods/Target Support Files/Pods-R2S/Pods-R2S.release.xcconfig"; sourceTree = "<group>"; };
+		9B456F301F8F541E001F4C32 /* FavoritesDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesDao.swift; path = Dao/FavoritesDao.swift; sourceTree = "<group>"; };
+		9B456F361F8F638D001F4C32 /* ResourceRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceRemote.swift; path = Remotes/ResourceRemote.swift; sourceTree = "<group>"; };
+		9B456F381F8F6C32001F4C32 /* Favorites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Favorites.swift; path = Models/Favorites.swift; sourceTree = "<group>"; };
+		9BC70F211F8E247600D8CCED /* ResourceDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceDao.swift; path = Dao/ResourceDao.swift; sourceTree = "<group>"; };
+		9BC70F231F8E34FC00D8CCED /* ResourceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceService.swift; path = Services/ResourceService.swift; sourceTree = "<group>"; };
+		9BD834191F9076EE0049066E /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Location.swift; path = Models/Location.swift; sourceTree = "<group>"; };
+		9BD8341B1F90CBC80049066E /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = Models/Account.swift; sourceTree = "<group>"; };
+		9BD8341D1F90CD600049066E /* Company.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Company.swift; path = Models/Company.swift; sourceTree = "<group>"; };
+		9BD834231F90E0A00049066E /* Roles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Roles.swift; sourceTree = "<group>"; };
+		9BFC73591F94641E00C9D888 /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Categories.swift; path = Models/Categories.swift; sourceTree = "<group>"; };
+		9BFC735B1F946E2B00C9D888 /* Subcategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subcategories.swift; path = Models/Subcategories.swift; sourceTree = "<group>"; };
+		9BFC735D1F94924400C9D888 /* UserReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserReview.swift; path = Models/UserReview.swift; sourceTree = "<group>"; };
 		B99151AA1E77F38300949529 /* ApiRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiRequestManager.swift; path = Utilities/ApiRequestManager.swift; sourceTree = "<group>"; };
 		B99151AC1E77F48500949529 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = Utilities/NetworkManager.swift; sourceTree = "<group>"; };
 		B99151AF1E77F55600949529 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Controllers/BaseViewController.swift; sourceTree = "<group>"; };
@@ -379,6 +403,14 @@
 				B9E267651E78ED7B00BB9900 /* User.swift */,
 				B9E267AA1E7B945700BB9900 /* Category.swift */,
 				B9E267BE1E7BB7EF00BB9900 /* Subcategory.swift */,
+				9B456F381F8F6C32001F4C32 /* Favorites.swift */,
+				9BD834191F9076EE0049066E /* Location.swift */,
+				9BD8341B1F90CBC80049066E /* Account.swift */,
+				9BD8341D1F90CD600049066E /* Company.swift */,
+				9BD834231F90E0A00049066E /* Roles.swift */,
+				9BFC73591F94641E00C9D888 /* Categories.swift */,
+				9BFC735B1F946E2B00C9D888 /* Subcategories.swift */,
+				9BFC735D1F94924400C9D888 /* UserReview.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -390,6 +422,8 @@
 				B9E267631E78ED0000BB9900 /* UserDao.swift */,
 				B9E267B01E7B94F800BB9900 /* CategoryDao.swift */,
 				B9E267C01E7BB84900BB9900 /* SubcategoryDao.swift */,
+				9BC70F211F8E247600D8CCED /* ResourceDao.swift */,
+				9B456F301F8F541E001F4C32 /* FavoritesDao.swift */,
 			);
 			name = Dao;
 			sourceTree = "<group>";
@@ -412,6 +446,7 @@
 				2C8BCC501F132D0C0064DD87 /* TransactionService.swift */,
 				B9E267791E7914A200BB9900 /* UserService.swift */,
 				B9E267AC1E7B94D900BB9900 /* CategoryService.swift */,
+				9BC70F231F8E34FC00D8CCED /* ResourceService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -419,6 +454,7 @@
 		B9E267621E78EA7500BB9900 /* Remotes */ = {
 			isa = PBXGroup;
 			children = (
+				9B456F361F8F638D001F4C32 /* ResourceRemote.swift */,
 				2C8BCC4E1F1325900064DD87 /* TransactionRemote.swift */,
 				B9E267711E78F7A500BB9900 /* UserRemote.swift */,
 				B9E267B21E7B950600BB9900 /* CategoryRemote.swift */,
@@ -747,7 +783,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B9E277E8BAD7167895A6EC83 /* [CP] Copy Pods Resources */ = {
@@ -779,20 +815,28 @@
 				2C89E9661F90D2510002700E /* FavoritesView.swift in Sources */,
 				2C5B06251F18C886002C09B8 /* Transaction.swift in Sources */,
 				B9E267C91E7D419500BB9900 /* FeaturedCarouselItemView.swift in Sources */,
+<<<<<<< HEAD
 				2C89E9671F90D2510002700E /* WishlistView.swift in Sources */,
+=======
+				9BD8341C1F90CBC80049066E /* Account.swift in Sources */,
+>>>>>>> develop-home-eds
 				B9E267641E78ED0000BB9900 /* UserDao.swift in Sources */,
 				2C8BCC4F1F1325900064DD87 /* TransactionRemote.swift in Sources */,
 				B9E2677E1E79416A00BB9900 /* RegisterViewController.swift in Sources */,
 				B9E2676A1E78F72F00BB9900 /* UIColor.swift in Sources */,
 				B9E267781E79145F00BB9900 /* Reachability.swift in Sources */,
+				9BFC735A1F94641E00C9D888 /* Categories.swift in Sources */,
 				B9E267B11E7B94F800BB9900 /* CategoryDao.swift in Sources */,
+				9B456F311F8F541E001F4C32 /* FavoritesDao.swift in Sources */,
 				B9E267BF1E7BB7EF00BB9900 /* Subcategory.swift in Sources */,
+				9B456F371F8F638D001F4C32 /* ResourceRemote.swift in Sources */,
 				B9E267AB1E7B945700BB9900 /* Category.swift in Sources */,
 				2C63EF0B1F027520003573A7 /* AccountViewController.swift in Sources */,
 				B9E267681E78F71D00BB9900 /* String.swift in Sources */,
 				B99151AD1E77F48500949529 /* NetworkManager.swift in Sources */,
 				2C4506E31F1DFE290026E8E9 /* TransactionDao.swift in Sources */,
 				B99151B71E77F6E300949529 /* LoginView.swift in Sources */,
+				9BFC735C1F946E2B00C9D888 /* Subcategories.swift in Sources */,
 				B99151B01E77F55600949529 /* BaseViewController.swift in Sources */,
 				B9E267CB1E7D41A500BB9900 /* HomeView.swift in Sources */,
 				B9E267C11E7BB84900BB9900 /* SubcategoryDao.swift in Sources */,
@@ -809,15 +853,19 @@
 				2C087D371F26110C00AC3921 /* Image.swift in Sources */,
 				2C63EF0D1F027530003573A7 /* AccountView.swift in Sources */,
 				B9E2676E1E78F76900BB9900 /* UITextField.swift in Sources */,
+				9BC70F241F8E34FC00D8CCED /* ResourceService.swift in Sources */,
 				2C8BCC511F132D0C0064DD87 /* TransactionService.swift in Sources */,
+				9BFC735E1F94924400C9D888 /* UserReview.swift in Sources */,
 				B9E267701E78F78000BB9900 /* UIView.swift in Sources */,
 				2CF06DD11EFBF0E30073C844 /* ActivityViewController.swift in Sources */,
 				2CF06DD31EFBF1090073C844 /* ActivityView.swift in Sources */,
+				9BD834241F90E0A00049066E /* Roles.swift in Sources */,
 				B99151B51E77F6C600949529 /* BaseUIView.swift in Sources */,
 				B9E267B31E7B950600BB9900 /* CategoryRemote.swift in Sources */,
 				B9E2676C1E78F75100BB9900 /* UITableView.swift in Sources */,
 				B9E267C41E7D416500BB9900 /* HomeTabBarViewController.swift in Sources */,
 				B9E267871E7A57DF00BB9900 /* UserManager.swift in Sources */,
+				9B456F391F8F6C32001F4C32 /* Favorites.swift in Sources */,
 				B9E267761E790FEE00BB9900 /* UserHelper.swift in Sources */,
 				B9E267DD1E7D48D600BB9900 /* WelcomeView.swift in Sources */,
 				B9E2677A1E7914A200BB9900 /* UserService.swift in Sources */,
@@ -826,9 +874,12 @@
 				B99151BC1E77F79B00949529 /* Constants.swift in Sources */,
 				B9E267CE1E7D41B500BB9900 /* CategoryTableViewCell.swift in Sources */,
 				B9E267C51E7D416500BB9900 /* HomeViewController.swift in Sources */,
+				9BC70F221F8E247600D8CCED /* ResourceDao.swift in Sources */,
 				B9E267741E78F8A000BB9900 /* Utility.swift in Sources */,
 				B9E267AD1E7B94D900BB9900 /* CategoryService.swift in Sources */,
+				9BD8341A1F9076EE0049066E /* Location.swift in Sources */,
 				B9E267BD1E7BAFF800BB9900 /* SubCategoryCollectionViewCell.swift in Sources */,
+				9BD8341E1F90CD600049066E /* Company.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

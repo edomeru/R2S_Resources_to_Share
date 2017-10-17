@@ -41,6 +41,8 @@ class LoginViewController: BaseViewController {
         self.loginView.delegate = self
         self.loginView.emailTextField.delegate = self
         self.loginView.passwordTextField.delegate = self
+        self.loginView.emailTextField.text = "venjo_villeza@yahoo.com"
+        self.loginView.passwordTextField.text = "password"
     }
     
     private func setupValidator() {
@@ -74,6 +76,9 @@ extension LoginViewController: ValidationDelegate {
             SwiftSpinner.show("Logging in...")
             let username = self.loginView.emailTextField.text!
             let password = self.loginView.passwordTextField.text!
+            
+//         let username =  "\(venjo_villeza@yahoo.com)"
+//          let  password =  "\(password)"
             
             UserService.login(email: username, password: password) { statusCode, message in
                 SwiftSpinner.hide()

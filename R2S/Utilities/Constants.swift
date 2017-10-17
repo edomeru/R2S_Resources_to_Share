@@ -34,12 +34,30 @@ class Constants {
             static let transaction_reject = transaction + "/reject"
             static let transaction_complete = transaction + "/complete"
             static let transaction_rate = transaction + "/rate"
+            
+             // MARK: - Resources
+            static let  wishlist = base + "/{id}/wishlists"
+            // MARK: - Resources
+            static let resources =  base + "/{id}/resources";
+            
+            // MARK: - Resources
+            static let favorites =  resources + "/favorites";
         }
         
         // MARK: - Category
         struct category {
             static let base = api.baseUrl + "/categories"
             static let subCategory = base + "/{id}/subcategories"
+        }
+        
+        struct resource {
+            static let base = api.baseUrl + "/resources"
+            static let category_id = base + "/category?id={category_id}"
+            static let unArchived = base + "?mode=unarchived"
+            static let subCategory_id = base + "/subcategory?id={subcategory_id}"
+            static let selected = base + "/{id}"
+            static let snapShot_code = base + "/references/{snapshot_code}"
+            static let resource_favorites = base + "/{resource_id}/favorites"
         }
         
     }

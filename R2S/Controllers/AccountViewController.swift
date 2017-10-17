@@ -28,9 +28,73 @@ class AccountViewController: BaseViewController {
         // Do any additional setup after loading the view.
         
         
+<<<<<<< HEAD
 
         // DO some shit here
         
+=======
+//        ResourceService.get(onCompletion: { statusCode, message in
+//        
+//        print("\(statusCode!)" + " TEST NI EDS"  )
+//            print("\(message!)" + " TEST NI EDS"  )
+//        
+//        })
+        
+        
+//        ResourceService.getFavorites(id: 1, onCompletion: { statusCode, message in
+//            
+//            print("\(statusCode!)" + " TEST NI EDS getByAccount"  )
+//            print("\(message!)" + " TEST NI EDS"  )
+//            
+//        })
+        
+//        let newResource = User()
+//        newResource.id = 8
+//        newResource.accountId = "34242"
+//        newResource.birthDate = "adadadad"
+//        newResource.createdDate = "thttthh"
+//        newResource.deletedDate = "thttthh"
+//        newResource.email = "thttthh"
+//        newResource.firstName = "thttthh"
+//        
+//        newResource.imageUrl = "thttthh"
+//        newResource.isSubscribed = true
+//        newResource.landlineNumber = "thttthh"
+//        newResource.lastName = "alarte"
+//        newResource.mobileNumber = "97917391739"
+//        newResource.password = "ihiqduadbaud"
+//        newResource.status = "aldjadadad"
+//        newResource.updatedDate = "adadbadgadvaud"
+        
+//        var someObject:[String : AnyObject] = ["account_id" : UserHelper.getId()! as AnyObject]
+
+        
+//        ResourceService.addToFavorites(resource_id: 8 ,params: someObject  , onCompletion: { statusCode, message in
+//            
+//            print("\(statusCode!)" + " TEST NI EDS addToFavorites"  )
+//            print("\(message!)" + " TEST NI EDS"  )
+//            
+//        })
+    
+        
+         var category1:[String : AnyObject] =  ["subcategory_id": 22 as AnyObject    ,"main_category_id": 10 as AnyObject]
+        
+        var categories:Array = [Dictionary<String, AnyObject>]()
+        categories.append(category1)
+        
+        
+        var someObject:[String : AnyObject] = ["image_url" : "http://web.r2s.tirsolutions.com/static/uploads/1492509242048_2.png" as AnyObject, "name":"Special Force" as AnyObject, "price": 20 as AnyObject, "quantity":8 as AnyObject,"resource_rate":"DAY" as AnyObject,"categories": categories as AnyObject , "description": "Slightly used." as AnyObject,]
+        
+       
+
+        ResourceService.createResource(id: 2 , params: someObject, onCompletion: { statusCode, message in
+            
+            print("\(statusCode!)" + " TEST NI EDS createResource"  )
+            print("\(message!)" + " TEST NI EDS"  )
+            
+        })
+
+>>>>>>> develop-home-eds
         
     }
 

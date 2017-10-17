@@ -87,6 +87,7 @@ class ActivityViewController: BaseViewController {
 }
 
 
+<<<<<<< HEAD
 // MARK: - UITableViewDelegate
 extension ActivityViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -104,3 +105,14 @@ extension ActivityViewController: UITableViewDataSource{
         return cell
     }
 }
+=======
+//// MARK: - UITableViewDelegate
+//extension ActivityViewController: UITableViewDelegate{
+//    
+//}
+//
+//// MARK: - UITableViewDataSource
+//extension ActivityViewController: UITableViewDataSource{
+//    
+//}
+>>>>>>> develop-home-eds

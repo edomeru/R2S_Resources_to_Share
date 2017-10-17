@@ -155,12 +155,14 @@ class ResourceService {
     }
     
     static func getByAccount(id: Int,onCompletion: @escaping (Int?, String?) -> Void) {
+        
         var message = ""
         UserRemote.resources(id: "\(id)", onCompletion: { jsonData, statusCode in
             DispatchQueue.global(qos: .background).async {
                 if statusCode == 200 {
                     message = ""
                     for (_, resource):(String, JSON) in jsonData {
+//                        print("TEST BWAHAHHAHA ", jsonData)
                         let newResource = Resource()
                         newResource.id = resource["id"].intValue
                         newResource.resourceCode = resource["resource_code"].stringValue
@@ -198,51 +200,9 @@ class ResourceService {
                         newResource.location = location
                         
                         
-                        //Account
-                        let accnt = resource["account"]
-                        let account = Account()
-                        account.seller_rating = accnt["seller_rating"].stringValue
-                        account.status = accnt["status"].stringValue
-                        
-                        account.birth_date = accnt["birth_date"].stringValue
-                        account.landline_number = accnt["landline_number"].stringValue
-                        account.created_date = accnt["created_date"].stringValue
-                        
-                        account.mobile_number = accnt["mobile_number"].stringValue
-                        account.updated_date = accnt["updated_date"].stringValue
-                        account.last_name = accnt["last_name"].stringValue
-                        
-                        account.is_subscribed = accnt["is_subscribed"].boolValue
-                        account.id = accnt["id"].intValue
-                        account.email = accnt["email"].stringValue
-                        account.account_id = accnt["account_id"].stringValue
-                        account.deleted_date = accnt["deleted_date"].stringValue
-                        account.first_name = accnt["first_name"].stringValue
-                        account.buyer_rating = accnt["buyer_rating"].intValue
-                        account.image_url = accnt["image_url"].stringValue
-                        
-                        //Roles
-                        
-                        for (_, role):(String, JSON) in accnt["roles"] {
-                            //                                let roles = Roles()
-                            //
-                            //                                account.roles.append((role as? Roles)!)
-                        }
                         
                         
-                        //Buyer & Seller Reviews
-                        
-                        for (_, seller_review):(String, JSON) in accnt["seller_reviews"] {
-                            let seller = UserReview()
-                            seller.id = seller_review["id"].intValue
-                            seller.accountName = seller_review["accountName"].stringValue
-                            seller.message = seller_review["message"].stringValue
-                            seller.rate = seller_review["rate"].stringValue
-                            
-                            account.seller_review.append(seller)
-                        }
-                        
-                        newResource.account = account
+                       
                         
                         // show realm database file
                         //print(Realm.Configuration.defaultConfiguration.fileURL!)
@@ -271,7 +231,7 @@ class ResourceService {
                             
                             newResource.categories.append(cat)
                         }
-                        
+                        print("TEST BWAHAHHAHA ", newResource)
                         ResourceDao.deleteAll()
                         ResourceDao.add(newResource)
                     }

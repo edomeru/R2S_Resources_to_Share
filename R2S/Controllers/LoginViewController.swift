@@ -45,6 +45,8 @@ class LoginViewController: BaseViewController {
         self.loginView.passwordTextField.text = "password"
     }
     
+    // MARK: - Private Functions
+    
     private func setupValidator() {
         self.validator.registerField(self.loginView.emailTextField, rules: [RequiredRule()])
         self.validator.registerField(self.loginView.passwordTextField, rules: [RequiredRule()])

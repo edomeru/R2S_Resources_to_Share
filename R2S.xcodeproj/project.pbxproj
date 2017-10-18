@@ -36,6 +36,9 @@
 		9BFC735A1F94641E00C9D888 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFC73591F94641E00C9D888 /* Categories.swift */; };
 		9BFC735C1F946E2B00C9D888 /* Subcategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFC735B1F946E2B00C9D888 /* Subcategories.swift */; };
 		9BFC735E1F94924400C9D888 /* UserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFC735D1F94924400C9D888 /* UserReview.swift */; };
+		9BFDB3701F9727F500D430D4 /* ResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFDB36F1F9727F500D430D4 /* ResourceViewController.swift */; };
+		9BFDB3721F97289700D430D4 /* ResourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFDB3711F97289700D430D4 /* ResourceView.swift */; };
+		9BFDB3741F97294400D430D4 /* ResourceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BFDB3731F97294400D430D4 /* ResourceView.xib */; };
 		B99151AB1E77F38300949529 /* ApiRequestManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99151AA1E77F38300949529 /* ApiRequestManager.swift */; };
 		B99151AD1E77F48500949529 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99151AC1E77F48500949529 /* NetworkManager.swift */; };
 		B99151B01E77F55600949529 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99151AF1E77F55600949529 /* BaseViewController.swift */; };
@@ -143,6 +146,9 @@
 		9BFC73591F94641E00C9D888 /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Categories.swift; path = Models/Categories.swift; sourceTree = "<group>"; };
 		9BFC735B1F946E2B00C9D888 /* Subcategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subcategories.swift; path = Models/Subcategories.swift; sourceTree = "<group>"; };
 		9BFC735D1F94924400C9D888 /* UserReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserReview.swift; path = Models/UserReview.swift; sourceTree = "<group>"; };
+		9BFDB36F1F9727F500D430D4 /* ResourceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceViewController.swift; path = Controllers/ResourceViewController.swift; sourceTree = "<group>"; };
+		9BFDB3711F97289700D430D4 /* ResourceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceView.swift; path = "View Classes/ResourceView.swift"; sourceTree = "<group>"; };
+		9BFDB3731F97294400D430D4 /* ResourceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ResourceView.xib; path = Xibs/ResourceView.xib; sourceTree = "<group>"; };
 		B99151AA1E77F38300949529 /* ApiRequestManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ApiRequestManager.swift; path = Utilities/ApiRequestManager.swift; sourceTree = "<group>"; };
 		B99151AC1E77F48500949529 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NetworkManager.swift; path = Utilities/NetworkManager.swift; sourceTree = "<group>"; };
 		B99151AF1E77F55600949529 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseViewController.swift; path = Controllers/BaseViewController.swift; sourceTree = "<group>"; };
@@ -312,6 +318,7 @@
 				B9E2677D1E79416A00BB9900 /* RegisterViewController.swift */,
 				B9E267DA1E7D467800BB9900 /* WelcomeViewController.swift */,
 				B9E267831E7A363B00BB9900 /* Tab Bar */,
+				9BFDB36F1F9727F500D430D4 /* ResourceViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -327,6 +334,7 @@
 				B9E267971E7A86C100BB9900 /* Scroll Views */,
 				B9E2678A1E7A7A1B00BB9900 /* Tab Bar */,
 				B9E267931E7A846600BB9900 /* TableView Cells */,
+				9BFDB3711F97289700D430D4 /* ResourceView.swift */,
 			);
 			name = "View Classes";
 			sourceTree = "<group>";
@@ -340,6 +348,7 @@
 				B9E267A71E7AC74600BB9900 /* CollectionView Cell */,
 				B9E267961E7A86B800BB9900 /* Scroll Views */,
 				B9E2678D1E7A7A4E00BB9900 /* Tab Bar */,
+				9BFDB3731F97294400D430D4 /* ResourceView.xib */,
 			);
 			name = Xibs;
 			sourceTree = "<group>";
@@ -675,6 +684,7 @@
 				B9FE3FEE1E77E32A003CDE74 /* Assets.xcassets in Resources */,
 				2C63EF101F027541003573A7 /* AccountView.xib in Resources */,
 				B99151BA1E77F71200949529 /* LoginView.xib in Resources */,
+				9BFDB3741F97294400D430D4 /* ResourceView.xib in Resources */,
 				2C63EF111F027541003573A7 /* ActivityView.xib in Resources */,
 				2C658A581F87770A009A18A9 /* TransactionTableViewCell.xib in Resources */,
 				B9E267D81E7D41F500BB9900 /* CategoryTableViewCell.xib in Resources */,
@@ -771,6 +781,7 @@
 				B9E267B11E7B94F800BB9900 /* CategoryDao.swift in Sources */,
 				9B456F311F8F541E001F4C32 /* FavoritesDao.swift in Sources */,
 				B9E267BF1E7BB7EF00BB9900 /* Subcategory.swift in Sources */,
+				9BFDB3721F97289700D430D4 /* ResourceView.swift in Sources */,
 				9B456F371F8F638D001F4C32 /* ResourceRemote.swift in Sources */,
 				B9E267AB1E7B945700BB9900 /* Category.swift in Sources */,
 				2C63EF0B1F027520003573A7 /* AccountViewController.swift in Sources */,
@@ -812,6 +823,7 @@
 				B9E2677A1E7914A200BB9900 /* UserService.swift in Sources */,
 				B9E267661E78ED7B00BB9900 /* User.swift in Sources */,
 				B9E267CF1E7D41B500BB9900 /* FeaturedTableViewCell.swift in Sources */,
+				9BFDB3701F9727F500D430D4 /* ResourceViewController.swift in Sources */,
 				B99151BC1E77F79B00949529 /* Constants.swift in Sources */,
 				B9E267CE1E7D41B500BB9900 /* CategoryTableViewCell.swift in Sources */,
 				B9E267C51E7D416500BB9900 /* HomeViewController.swift in Sources */,

@@ -71,6 +71,7 @@ class Constants {
         static let activityView = "ActivityView"
         static let accountView = "AccountView"
         static let browseView = "BrowseView"
+        static let resourceView = "ResourceView"
         
         // TableView Cell
         static let featuredTableCell = "FeaturedTableViewCell"

@@ -19,6 +19,14 @@ class ResourceDao {
         return resource
     }
     
+    
+    static func get() -> Results<Resource> {
+        let realm = try! Realm()
+        let resource = realm.objects(Resource.self)
+        return resource
+    }
+    
+    
     static func getByCategoryId(id: Int) -> Results<Resource>{
         let realm = try! Realm()
         let predicate = NSPredicate(format: "category.id = %d", id)

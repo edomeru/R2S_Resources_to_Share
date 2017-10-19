@@ -27,12 +27,6 @@ class AccountViewController: BaseViewController {
         self.initUILayout()
         // Do any additional setup after loading the view.
         
-        
-<<<<<<< HEAD
-
-        // DO some shit here
-        
-=======
 //        ResourceService.get(onCompletion: { statusCode, message in
 //        
 //        print("\(statusCode!)" + " TEST NI EDS"  )
@@ -94,8 +88,6 @@ class AccountViewController: BaseViewController {
             
         })
 
->>>>>>> develop-home-eds
-        
     }
 
     override func didReceiveMemoryWarning() {

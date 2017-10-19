@@ -14,6 +14,7 @@ class BrowseViewController: BaseViewController {
     var browseView = BrowseView()
     var selectedCategoryId: Int!
     var selectedCategoryName: String!
+    var resources: Results<Resource>!
     var subcategories: Results<Subcategory>!
     var screenSize: CGRect!
     var screenWidth: CGFloat!
@@ -22,8 +23,8 @@ class BrowseViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.initUILayout()
         self.configureNavBar()
+        fetchDataFromSource()
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,7 +58,33 @@ class BrowseViewController: BaseViewController {
         if let flowLayout = self.browseView.subcategoryCollectionView.collectionViewLayout as? UICollectionViewFlowLayout { flowLayout.estimatedItemSize = CGSize(width: 1, height: 1)
         }
         self.browseView.subcategoryCollectionView.reloadData()
+    }
+    
+    func fetchDataFromSource(){
         
+        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+        activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
+        activityIndicator.activityIndicatorViewStyle = .gray
+        activityIndicator.center = self.view.center
+        activityIndicator.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        
+        activityIndicator.startAnimating()
+        ResourceService.get{ (statusCode, message) in
+            if statusCode == 200 {
+                self.resources = ResourceDao.get();
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                    activityIndicator.stopAnimating()
+                    self.initUILayout()
+                    self.browseView.resourceTableView.reloadData()
+                })
+            } else {
+                self.resources = ResourceDao.get();
+                Utility.showAlert(title: "Error", message: message!, targetController: self)
+            }
+        }
+
     }
     
     private func configureNavBar() {
@@ -90,10 +117,11 @@ extension BrowseViewController: UITableViewDelegate{
 extension BrowseViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.browseView.resourceTableView {
-            
+            return self.resources.count
         }
-        return 500
+        return 0
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResourceTableViewCell", for: indexPath) as! ResourceTableViewCell
         return cell

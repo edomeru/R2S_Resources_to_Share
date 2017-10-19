@@ -73,6 +73,7 @@ class Constants {
         static let browseView = "BrowseView"
         static let favoritesView = "FavoritesView"
         static let wishlistView = "WishlistView"
+        static let resourceView = "ResourceView"
         
         // TableView Cell
         static let featuredTableCell = "FeaturedTableViewCell"
@@ -114,6 +115,7 @@ class Constants {
         static let homeToResourceSegue = "HomeToResourceSegue"
         static let homeToWishlistSegue = "HomeToWishlistSegue"
         static let homeToFavoritesSegue = "HomeToFavoritesSegue"
+        static let browseToResourceSegue  = "browseToResourceSegue"
     }
 }
 

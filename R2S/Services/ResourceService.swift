@@ -369,4 +369,17 @@ class ResourceService {
         })
     }
     
+    /////////////////////////////////////////////////////////////
+    //
+    //      Database / DAO Related Services
+    //
+    /////////////////////////////////////////////////////////////
+
+    static func getDetailView(id:Int) -> Resource? {
+        return ResourceDao.getOneBy(id:id)
+    }
+    
+    
+    
+    
 }

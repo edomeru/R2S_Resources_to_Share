@@ -54,4 +54,11 @@ class ResourceDao {
             realm.delete(categories)
         }
     }
+    
+    static func getOneBy(id: Int) -> Resource? {
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "id = %d", id)
+        let user = realm.objects(Resource.self).filter(predicate).first
+        return user
+    }
 }

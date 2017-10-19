@@ -375,7 +375,9 @@ class ResourceService {
     //
     /////////////////////////////////////////////////////////////
 
-    
+    static func getDetailView(id:Int) -> Resource? {
+        return ResourceDao.getOneBy(id:id)
+    }
     
     
     

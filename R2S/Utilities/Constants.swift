@@ -111,6 +111,7 @@ class Constants {
         static let welcomeToHome = "WelcomeToHomeSegue"
         static let loginToHome = "LoginToHomeSegue"
         static let homeToResourceSegue = "HomeToResourceSegue"
+        static let browseToResourceSegue  = "browseToResourceSegue"
     }
 }
 

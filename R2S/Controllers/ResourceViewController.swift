@@ -8,7 +8,7 @@
 
 import Foundation
 import UIKit
-import SDWebImage
+import Kingfisher
 import SwiftyJSON
 
 class ResourceViewController: BaseViewController {
@@ -22,6 +22,8 @@ class ResourceViewController: BaseViewController {
         self.initUILayout()
         
         self.fillUiWithData()
+        
+        print(selectedResourceId)
         
     }
     
@@ -37,19 +39,18 @@ class ResourceViewController: BaseViewController {
         
         
         
-        ResourceService.get{ (statusCode, message) in
-            if statusCode == 200 {
-                
-                let resource =  ResourceService.getDetailView(id: 1)
+//        ResourceService.get{ (statusCode, message) in
+//            if statusCode == 200 {
+        
+                let resource =  ResourceService.getDetailView(id: self.selectedResourceId)
                 
                 if let resourceDetail = resource {
                    
-                    let placeholderImage = UIImage(named: "jong_suk")!
                     
                     for img in resourceDetail.image {
-                         print("PAKYU ENZO!!!!", img.image)
+                         //print("IMAGE!!!", img.image)
                         
-                        self.resourceView.resourceImageView.sd_setImage(with: URL(string:img.image), placeholderImage: placeholderImage, options: [.continueInBackground, .progressiveDownload])
+                        self.resourceView.resourceImageView.kf.setImage(with: URL(string:img.image))
                         
                     }
                     
@@ -59,19 +60,19 @@ class ResourceViewController: BaseViewController {
                     if let account = resourceDetail.account {
                         self.resourceView.nameLabel.text  = "\(account.first_name) \(account.last_name)"
                     }
-                    
-                    if let category = resourceDetail.categories.value(forKey: "main_category_name") {
-                        print("BWAGAHHAHAHHAHA",category)
-                        self.resourceView.categoryLabel.text  = " \(category)"
+
+                    for category in resourceDetail.categories {
+                        //print("CATEGORY!!!!", category.main_category_name)
+//                        
+//                       self.resourceView.categoryLabel.text  = category.main_category_name
+//                        
                     }
                     
                     self.resourceView.phoneLabel.text  = resourceDetail.account?.mobile_number
                     self.resourceView.emailLabel.text  = resourceDetail.account?.email
                     self.resourceView.titleSubLabel.text  = resourceDetail.name
                 }
-            }
-        }
-        
+            
     }
     
 }

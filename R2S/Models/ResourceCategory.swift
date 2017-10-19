@@ -9,11 +9,11 @@
 import Foundation
 import RealmSwift
 
-class Categories: Object {
+class ResourceCategory: Object {
 
     dynamic var main_category_id = 0
     dynamic var main_category_name = ""
-    dynamic var subcategories : Subcategories?
+    dynamic var subcategory: Subcategory?
   
     
     override static func primaryKey() -> String? {

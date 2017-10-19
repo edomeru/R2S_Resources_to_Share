@@ -117,24 +117,23 @@ class ResourceService {
                         
                         
                         
-                        
-                        
                         //Categories
                         for (_, categories):(String, JSON) in resource["categories"] {
-                            let cat = Categories()
+                            let cat = ResourceCategory()
                             cat.main_category_id = categories["main_category_id"].intValue
                             cat.main_category_name = categories["main_category_name"].stringValue
                             
                             let subCat = categories["subcategory"]
-                            let sub = Subcategories()
-                            sub.created_date = subCat["created_date"].stringValue
+                            
+                            let sub = Subcategory()
+                            sub.createdDate = subCat["created_date"].stringValue
                             sub.id = subCat["id"].intValue
                             sub.status = subCat["status"].stringValue
-                            sub.image_url = subCat["image_url"].stringValue
+                            sub.imageUrl = subCat["image_url"].stringValue
                             sub.name = subCat["name"].stringValue
                             sub.descriptionText = subCat["description"].stringValue
                             
-                            cat.subcategories = sub
+                            cat.subcategory = sub
                             
                             newResource.categories.append(cat)
                         }
@@ -202,20 +201,20 @@ class ResourceService {
                         
                         //Categories
                         for (_, categories):(String, JSON) in resource["categories"] {
-                            let cat = Categories()
+                            let cat = ResourceCategory()
                             cat.main_category_id = categories["main_category_id"].intValue
                             cat.main_category_name = categories["main_category_name"].stringValue
                             
                             let subCat = categories["subcategory"]
-                            let sub = Subcategories()
-                            sub.created_date = subCat["created_date"].stringValue
+                            let sub = Subcategory()
+                            sub.createdDate = subCat["created_date"].stringValue
                             sub.id = subCat["id"].intValue
                             sub.status = subCat["status"].stringValue
-                            sub.image_url = subCat["image_url"].stringValue
+                            sub.imageUrl = subCat["image_url"].stringValue
                             sub.name = subCat["name"].stringValue
                             sub.descriptionText = subCat["description"].stringValue
                             
-                            cat.subcategories = sub
+                            cat.subcategory = sub
                             
                             newResource.categories.append(cat)
                         }
@@ -281,20 +280,20 @@ class ResourceService {
                         
                         //Categories
                         for (_, categories):(String, JSON) in resource["categories"] {
-                            let cat = Categories()
+                            let cat = ResourceCategory()
                             cat.main_category_id = categories["main_category_id"].intValue
                             cat.main_category_name = categories["main_category_name"].stringValue
                             
                             let subCat = categories["subcategory"]
-                            let sub = Subcategories()
-                            sub.created_date = subCat["created_date"].stringValue
+                            let sub = Subcategory()
+                            sub.createdDate = subCat["created_date"].stringValue
                             sub.id = subCat["id"].intValue
                             sub.status = subCat["status"].stringValue
-                            sub.image_url = subCat["image_url"].stringValue
+                            sub.imageUrl = subCat["image_url"].stringValue
                             sub.name = subCat["name"].stringValue
                             sub.descriptionText = subCat["description"].stringValue
                             
-                            cat.subcategories = sub
+                            cat.subcategory = sub
                             
                             newResource.categories.append(cat)
                         }
@@ -379,7 +378,11 @@ class ResourceService {
         return ResourceDao.getOneBy(id:id)
     }
     
+    static func getBySubCategory(id:Int) -> Results<Resource>? {
+        return ResourceDao.getBySubcategoryId(id: id)
+
     
+    }
     
     
 }

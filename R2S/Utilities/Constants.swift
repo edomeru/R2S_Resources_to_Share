@@ -115,7 +115,7 @@ class Constants {
         static let homeToResourceSegue = "HomeToResourceSegue"
         static let homeToWishlistSegue = "HomeToWishlistSegue"
         static let homeToFavoritesSegue = "HomeToFavoritesSegue"
-        static let browseToResourceSegue  = "browseToResourceSegue"
+        static let browseToResourceSegue  = "BrowseToResourceSegue"
     }
 }
 

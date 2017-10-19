@@ -19,6 +19,7 @@ class BrowseViewController: BaseViewController {
     var screenSize: CGRect!
     var screenWidth: CGFloat!
     var screenHeight: CGFloat!
+    var selectedResourceId: Int!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,6 +93,13 @@ class BrowseViewController: BaseViewController {
         self.navigationItem.hidesBackButton = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
+    
+
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+                let destinationVC = segue.destination as! ResourceViewController
+                destinationVC.selectedResourceId = selectedResourceId
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
@@ -100,8 +108,15 @@ extension BrowseViewController: UICollectionViewDelegateFlowLayout {
         if collectionView == self.browseView.subcategoryCollectionView {
             collectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
             CategoryService.clearSelectedSubcategories(self.subcategories)
+            print(self.subcategories[indexPath.item].id)
+            
+           let selectedResources = ResourceService.getBySubCategory(id: self.subcategories[indexPath.item].id)
+            print("UDBD",selectedResources)
+            
             CategoryService.selectSubategory(self.subcategories[indexPath.item])
             self.browseView.subcategoryCollectionView.reloadData()
+            self.browseView.resourceTableView.reloadData()
+            
         }
     }
 }
@@ -125,6 +140,13 @@ extension BrowseViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResourceTableViewCell", for: indexPath) as! ResourceTableViewCell
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let resource = resources[indexPath.item]
+       selectedResourceId  = resource.id
+        print (resource.id)
+         performSegue(withIdentifier: Constants.segue.browseToResourceSegue, sender: self)
     }
 }
 

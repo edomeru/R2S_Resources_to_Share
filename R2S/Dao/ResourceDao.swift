@@ -36,7 +36,7 @@ class ResourceDao {
     
     static func getBySubcategoryId(id: Int) -> Results<Resource> {
         let realm = try! Realm()
-        let predicate = NSPredicate(format: "categories.subcategory.id = %d", id)
+        let predicate = NSPredicate(format: "ANY categories.subcategory.id = %d", id)
         let resource = realm.objects(Resource.self).filter(predicate)
         return resource
     }

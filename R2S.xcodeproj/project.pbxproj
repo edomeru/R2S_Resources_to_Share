@@ -33,8 +33,7 @@
 		9BD8341C1F90CBC80049066E /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD8341B1F90CBC80049066E /* Account.swift */; };
 		9BD8341E1F90CD600049066E /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD8341D1F90CD600049066E /* Company.swift */; };
 		9BD834241F90E0A00049066E /* Roles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD834231F90E0A00049066E /* Roles.swift */; };
-		9BFC735A1F94641E00C9D888 /* Categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFC73591F94641E00C9D888 /* Categories.swift */; };
-		9BFC735C1F946E2B00C9D888 /* Subcategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFC735B1F946E2B00C9D888 /* Subcategories.swift */; };
+		9BFC735A1F94641E00C9D888 /* ResourceCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFC73591F94641E00C9D888 /* ResourceCategory.swift */; };
 		9BFC735E1F94924400C9D888 /* UserReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFC735D1F94924400C9D888 /* UserReview.swift */; };
 		9BFDB3701F9727F500D430D4 /* ResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFDB36F1F9727F500D430D4 /* ResourceViewController.swift */; };
 		9BFDB3721F97289700D430D4 /* ResourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BFDB3711F97289700D430D4 /* ResourceView.swift */; };
@@ -143,8 +142,7 @@
 		9BD8341B1F90CBC80049066E /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Account.swift; path = Models/Account.swift; sourceTree = "<group>"; };
 		9BD8341D1F90CD600049066E /* Company.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Company.swift; path = Models/Company.swift; sourceTree = "<group>"; };
 		9BD834231F90E0A00049066E /* Roles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Roles.swift; sourceTree = "<group>"; };
-		9BFC73591F94641E00C9D888 /* Categories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Categories.swift; path = Models/Categories.swift; sourceTree = "<group>"; };
-		9BFC735B1F946E2B00C9D888 /* Subcategories.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Subcategories.swift; path = Models/Subcategories.swift; sourceTree = "<group>"; };
+		9BFC73591F94641E00C9D888 /* ResourceCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceCategory.swift; path = Models/ResourceCategory.swift; sourceTree = "<group>"; };
 		9BFC735D1F94924400C9D888 /* UserReview.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UserReview.swift; path = Models/UserReview.swift; sourceTree = "<group>"; };
 		9BFDB36F1F9727F500D430D4 /* ResourceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceViewController.swift; path = Controllers/ResourceViewController.swift; sourceTree = "<group>"; };
 		9BFDB3711F97289700D430D4 /* ResourceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceView.swift; path = "View Classes/ResourceView.swift"; sourceTree = "<group>"; };
@@ -367,8 +365,7 @@
 				9BD8341B1F90CBC80049066E /* Account.swift */,
 				9BD8341D1F90CD600049066E /* Company.swift */,
 				9BD834231F90E0A00049066E /* Roles.swift */,
-				9BFC73591F94641E00C9D888 /* Categories.swift */,
-				9BFC735B1F946E2B00C9D888 /* Subcategories.swift */,
+				9BFC73591F94641E00C9D888 /* ResourceCategory.swift */,
 				9BFC735D1F94924400C9D888 /* UserReview.swift */,
 			);
 			name = Models;
@@ -777,7 +774,7 @@
 				B9E2677E1E79416A00BB9900 /* RegisterViewController.swift in Sources */,
 				B9E2676A1E78F72F00BB9900 /* UIColor.swift in Sources */,
 				B9E267781E79145F00BB9900 /* Reachability.swift in Sources */,
-				9BFC735A1F94641E00C9D888 /* Categories.swift in Sources */,
+				9BFC735A1F94641E00C9D888 /* ResourceCategory.swift in Sources */,
 				B9E267B11E7B94F800BB9900 /* CategoryDao.swift in Sources */,
 				9B456F311F8F541E001F4C32 /* FavoritesDao.swift in Sources */,
 				B9E267BF1E7BB7EF00BB9900 /* Subcategory.swift in Sources */,
@@ -789,7 +786,6 @@
 				B99151AD1E77F48500949529 /* NetworkManager.swift in Sources */,
 				2C4506E31F1DFE290026E8E9 /* TransactionDao.swift in Sources */,
 				B99151B71E77F6E300949529 /* LoginView.swift in Sources */,
-				9BFC735C1F946E2B00C9D888 /* Subcategories.swift in Sources */,
 				B99151B01E77F55600949529 /* BaseViewController.swift in Sources */,
 				B9E267CB1E7D41A500BB9900 /* HomeView.swift in Sources */,
 				B9E267C11E7BB84900BB9900 /* SubcategoryDao.swift in Sources */,

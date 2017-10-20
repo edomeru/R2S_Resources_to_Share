@@ -22,4 +22,6 @@ target 'R2S' do
   pod 'SwiftKeychainWrapper'
   pod 'DropDown'
   pod 'AMScrollingNavbar', '3.2.0'
+  pod 'moa', '~> 9.0'
+  pod 'Auk', '~> 8.0'
 end

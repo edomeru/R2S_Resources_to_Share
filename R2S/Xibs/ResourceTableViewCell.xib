@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="328" id="YEg-go-2pX" customClass="ResourceTableViewCell" customModule="R2S" customModuleProvider="target">
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ResourceTableViewCell" selectionStyle="default" indentationWidth="10" rowHeight="328" id="YEg-go-2pX" customClass="ResourceTableViewCell" customModule="R2S" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="328"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YEg-go-2pX" id="QRL-dN-KFX">
@@ -43,7 +43,7 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eaM-mJ-9ve">
-                        <rect key="frame" x="0.0" y="124" width="375" height="153"/>
+                        <rect key="frame" x="0.0" y="151" width="375" height="126"/>
                     </scrollView>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zmg-gc-us7">
                         <rect key="frame" x="311" y="289" width="46" height="30"/>
@@ -63,10 +63,17 @@
                     <constraint firstItem="BHU-YV-jhJ" firstAttribute="top" secondItem="0Tp-hj-6KU" secondAttribute="bottom" constant="8" id="YrS-Fg-rIB"/>
                     <constraint firstItem="0Tp-hj-6KU" firstAttribute="top" secondItem="6No-Dr-Aks" secondAttribute="bottom" constant="8" id="dpr-fc-m2p"/>
                     <constraint firstAttribute="trailingMargin" secondItem="Zmg-gc-us7" secondAttribute="trailing" constant="10" id="tMC-Eb-rAH"/>
-                    <constraint firstItem="eaM-mJ-9ve" firstAttribute="top" secondItem="isy-Ix-og9" secondAttribute="bottom" constant="8" id="tmU-1A-03g"/>
+                    <constraint firstItem="eaM-mJ-9ve" firstAttribute="top" secondItem="isy-Ix-og9" secondAttribute="bottom" constant="35" id="tmU-1A-03g"/>
                     <constraint firstItem="Zmg-gc-us7" firstAttribute="top" secondItem="eaM-mJ-9ve" secondAttribute="bottom" constant="12" id="z4r-XC-Dyx"/>
                 </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="dateLabel" destination="6No-Dr-Aks" id="cbh-rV-12T"/>
+                <outlet property="infoLabel" destination="BHU-YV-jhJ" id="Nih-eV-7Pb"/>
+                <outlet property="priceLabel" destination="isy-Ix-og9" id="ij5-sj-kra"/>
+                <outlet property="scrollView" destination="eaM-mJ-9ve" id="ddT-yE-nV7"/>
+                <outlet property="titleLabel" destination="0Tp-hj-6KU" id="utF-vB-0ai"/>
+            </connections>
             <point key="canvasLocation" x="-954.5" y="305"/>
         </tableViewCell>
     </objects>

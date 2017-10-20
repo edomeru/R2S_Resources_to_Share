@@ -8,6 +8,8 @@
 
 import UIKit
 import RealmSwift
+import Auk
+import moa
 
 class BrowseViewController: BaseViewController {
     
@@ -26,6 +28,7 @@ class BrowseViewController: BaseViewController {
         
         self.configureNavBar()
         fetchDataFromSource()
+      
     }
 
     override func didReceiveMemoryWarning() {
@@ -109,9 +112,12 @@ extension BrowseViewController: UICollectionViewDelegateFlowLayout {
             collectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
             CategoryService.clearSelectedSubcategories(self.subcategories)
             print(self.subcategories[indexPath.item].id)
+            print("PRINT1",subcategories.count)
+           let resourcesByCategorySelected = ResourceService.getBySubCategory(id: self.subcategories[indexPath.item].id)
             
-           let selectedResources = ResourceService.getBySubCategory(id: self.subcategories[indexPath.item].id)
-            print("UDBD",selectedResources)
+          print("PRINT",resourcesByCategorySelected?.count)
+    
+           resources = resourcesByCategorySelected
             
             CategoryService.selectSubategory(self.subcategories[indexPath.item])
             self.browseView.subcategoryCollectionView.reloadData()
@@ -139,6 +145,19 @@ extension BrowseViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ResourceTableViewCell", for: indexPath) as! ResourceTableViewCell
+        
+     
+        cell.titleLabel.text =  resources[indexPath.row].name
+       cell.dateLabel.text = resources[indexPath.row].createdDate
+        cell.priceLabel.text = "$ \(resources[indexPath.row].price).00"
+        cell.infoLabel.text = resources[indexPath.row].descriptionText
+
+        
+        for img in resources[indexPath.row].image {
+        cell.scrollView.auk.show(url: img.image)
+        }
+     cell.scrollView.auk.settings.contentMode = .scaleAspectFit
+       Moa.settings.cache.requestCachePolicy = .useProtocolCachePolicy
         return cell
     }
     

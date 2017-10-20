@@ -23,7 +23,8 @@ class ResourceService {
         ResourceRemote.get(onCompletion: { jsonData, statusCode in
             DispatchQueue.global(qos: .background).async{
                 if statusCode == 200 {
-                  //print("JSONDATA" + "\(jsonData)"  )
+                  
+                    print("JSONDATA" + "\(jsonData)"  )
                     message = ""
                     for (_, resource):(String, JSON) in jsonData {
                         let newResource = Resource()
@@ -125,7 +126,7 @@ class ResourceService {
                             
                             let subCat = categories["subcategory"]
                             
-                            let sub = Subcategory()
+                            let sub = ResourceSubcategory()
                             sub.createdDate = subCat["created_date"].stringValue
                             sub.id = subCat["id"].intValue
                             sub.status = subCat["status"].stringValue
@@ -206,7 +207,7 @@ class ResourceService {
                             cat.main_category_name = categories["main_category_name"].stringValue
                             
                             let subCat = categories["subcategory"]
-                            let sub = Subcategory()
+                            let sub = ResourceSubcategory()
                             sub.createdDate = subCat["created_date"].stringValue
                             sub.id = subCat["id"].intValue
                             sub.status = subCat["status"].stringValue
@@ -285,7 +286,7 @@ class ResourceService {
                             cat.main_category_name = categories["main_category_name"].stringValue
                             
                             let subCat = categories["subcategory"]
-                            let sub = Subcategory()
+                            let sub = ResourceSubcategory()
                             sub.createdDate = subCat["created_date"].stringValue
                             sub.id = subCat["id"].intValue
                             sub.status = subCat["status"].stringValue

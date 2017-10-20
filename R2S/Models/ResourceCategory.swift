@@ -13,7 +13,7 @@ class ResourceCategory: Object {
 
     dynamic var main_category_id = 0
     dynamic var main_category_name = ""
-    dynamic var subcategory: Subcategory?
+    dynamic var subcategory: ResourceSubcategory?
   
     
     override static func primaryKey() -> String? {

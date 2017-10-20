@@ -24,6 +24,7 @@
 		2CF06DD11EFBF0E30073C844 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF06DD01EFBF0E30073C844 /* ActivityViewController.swift */; };
 		2CF06DD31EFBF1090073C844 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF06DD21EFBF1090073C844 /* ActivityView.swift */; };
 		548A6074C3188468E31693E6 /* Pods_R2S.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E60C07BE5101947A43207D /* Pods_R2S.framework */; };
+		9B13E3751F99ADDD00D72FB7 /* ResourceSubcategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B13E3741F99ADDD00D72FB7 /* ResourceSubcategory.swift */; };
 		9B456F311F8F541E001F4C32 /* FavoritesDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B456F301F8F541E001F4C32 /* FavoritesDao.swift */; };
 		9B456F371F8F638D001F4C32 /* ResourceRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B456F361F8F638D001F4C32 /* ResourceRemote.swift */; };
 		9B456F391F8F6C32001F4C32 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B456F381F8F6C32001F4C32 /* Favorites.swift */; };
@@ -133,6 +134,7 @@
 		2CF06DD01EFBF0E30073C844 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityViewController.swift; path = Controllers/ActivityViewController.swift; sourceTree = "<group>"; };
 		2CF06DD21EFBF1090073C844 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityView.swift; path = "View Classes/ActivityView.swift"; sourceTree = "<group>"; };
 		33DE7660843E508F233330F3 /* Pods-R2S.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R2S.release.xcconfig"; path = "Pods/Target Support Files/Pods-R2S/Pods-R2S.release.xcconfig"; sourceTree = "<group>"; };
+		9B13E3741F99ADDD00D72FB7 /* ResourceSubcategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceSubcategory.swift; path = Models/ResourceSubcategory.swift; sourceTree = "<group>"; };
 		9B456F301F8F541E001F4C32 /* FavoritesDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesDao.swift; path = Dao/FavoritesDao.swift; sourceTree = "<group>"; };
 		9B456F361F8F638D001F4C32 /* ResourceRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceRemote.swift; path = Remotes/ResourceRemote.swift; sourceTree = "<group>"; };
 		9B456F381F8F6C32001F4C32 /* Favorites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Favorites.swift; path = Models/Favorites.swift; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 				9BD834231F90E0A00049066E /* Roles.swift */,
 				9BFC73591F94641E00C9D888 /* ResourceCategory.swift */,
 				9BFC735D1F94924400C9D888 /* UserReview.swift */,
+				9B13E3741F99ADDD00D72FB7 /* ResourceSubcategory.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -783,6 +786,7 @@
 				B9E267AB1E7B945700BB9900 /* Category.swift in Sources */,
 				2C63EF0B1F027520003573A7 /* AccountViewController.swift in Sources */,
 				B9E267681E78F71D00BB9900 /* String.swift in Sources */,
+				9B13E3751F99ADDD00D72FB7 /* ResourceSubcategory.swift in Sources */,
 				B99151AD1E77F48500949529 /* NetworkManager.swift in Sources */,
 				2C4506E31F1DFE290026E8E9 /* TransactionDao.swift in Sources */,
 				B99151B71E77F6E300949529 /* LoginView.swift in Sources */,

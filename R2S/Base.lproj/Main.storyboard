@@ -12,7 +12,7 @@
         <scene sceneID="5gd-tc-SuB">
             <objects>
                 <navigationController id="gyt-qp-uPB" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="V3o-gx-w46">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V3o-gx-w46">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -114,7 +114,7 @@
         <!--Browse View Controller-->
         <scene sceneID="Q7u-xO-vsR">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="Q5K-h3-mWc" customClass="BrowseViewController" customModule="R2S" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Q5K-h3-mWc" customClass="BrowseViewController" customModule="R2S" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4Mq-1a-s9P"/>
                         <viewControllerLayoutGuide type="bottom" id="Gll-5C-51a"/>

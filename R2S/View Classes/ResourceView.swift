@@ -16,9 +16,9 @@ protocol ResourceViewDelegate: class {
 class ResourceView: BaseUIView {
  weak var delegate: ResourceViewDelegate?
     
+    @IBOutlet weak var scrollView: UIScrollView!
     
-    @IBOutlet weak var resourceImageView: UIImageView!
-    
+
     @IBOutlet weak var categoryLabel: UILabel!
     
     @IBOutlet weak var emailLabel: UILabel!

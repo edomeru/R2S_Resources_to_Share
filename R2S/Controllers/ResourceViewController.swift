@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 import Kingfisher
 import SwiftyJSON
+import Auk
+import moa
 
 class ResourceViewController: BaseViewController {
     
@@ -50,11 +52,13 @@ class ResourceViewController: BaseViewController {
                     for img in resourceDetail.image {
                          //print("IMAGE!!!", img.image)
                         
-                        self.resourceView.resourceImageView.kf.setImage(with: URL(string:img.image))
+                        self.resourceView.scrollView.auk.show(url: img.image)
                         
                     }
                     
-                    
+                    resourceView.scrollView.auk.settings.contentMode = .scaleAspectFit
+                    Moa.settings.cache.requestCachePolicy = .useProtocolCachePolicy
+  
                     
                     self.resourceView.priceLabel.text  = "$ \(resourceDetail.price).00"
                     if let account = resourceDetail.account {

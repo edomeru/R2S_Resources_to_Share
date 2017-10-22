@@ -46,7 +46,7 @@ PODS:
   - GTMSessionFetcher/Full (1.1.12):
     - GTMSessionFetcher/Core (= 1.1.12)
   - IQKeyboardManagerSwift (4.0.6)
-  - Kingfisher (4.1.1)
+  - Kingfisher (4.2.0)
   - KMPlaceholderTextView (1.3.0)
   - M13Checkbox (3.2.1)
   - MIBadgeButton-Swift (0.5)
@@ -121,7 +121,7 @@ SPEC CHECKSUMS:
   GTMOAuth2: be83fd28d63ae3087e7d351b1f39c1a7e24ab6e7
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   IQKeyboardManagerSwift: b3015e819559ca76381f87a0833f44d178564603
-  Kingfisher: 6793a473357b5dbee42b0068ef203fe8325f259e
+  Kingfisher: 9ee7e788d8ba07c3f21ce0d43f33cec310a4f781
   KMPlaceholderTextView: 2bbcd19a273648a80a61e1e48f9743a24d8930e3
   M13Checkbox: 12376f5b128189432508c240e4a36dc945ab7e4e
   MIBadgeButton-Swift: 9e57309b00b168d75ca8fecb45bc75124a8ffddf
@@ -135,6 +135,6 @@ SPEC CHECKSUMS:
   SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
   SwiftyJSONRealmObject: ab791e57876b1e0041463291b97a378e90a3fa9f
 
-PODFILE CHECKSUM: 122e3d3a9c033406a2632826eac824576571765d
+PODFILE CHECKSUM: 4c2625873d8d47d582c2ab2910d438162ab07176
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.2.0

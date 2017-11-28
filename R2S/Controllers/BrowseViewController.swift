@@ -25,7 +25,7 @@ class BrowseViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+      
         self.configureNavBar()
         fetchDataFromSource()
       
@@ -78,6 +78,7 @@ class BrowseViewController: BaseViewController {
         ResourceService.get{ (statusCode, message) in
             if statusCode == 200 {
                 self.resources = ResourceDao.get();
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     activityIndicator.stopAnimating()
                     self.initUILayout()
@@ -111,11 +112,11 @@ extension BrowseViewController: UICollectionViewDelegateFlowLayout {
         if collectionView == self.browseView.subcategoryCollectionView {
             collectionView.scrollToItem(at: indexPath, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
             CategoryService.clearSelectedSubcategories(self.subcategories)
-            print(self.subcategories[indexPath.item].id)
-            print("PRINT1",subcategories.count)
+            //print(self.subcategories[indexPath.item].id)
+            //print("PRINT1",subcategories.count)
            let resourcesByCategorySelected = ResourceService.getBySubCategory(id: self.subcategories[indexPath.item].id)
             
-          print("PRINT",resourcesByCategorySelected?.count)
+          //print("PRINT",resourcesByCategorySelected?.count)
     
            resources = resourcesByCategorySelected
             
@@ -164,7 +165,7 @@ extension BrowseViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let resource = resources[indexPath.item]
        selectedResourceId  = resource.id
-        print (resource.id)
+       // print (resource.id)
          performSegue(withIdentifier: Constants.segue.browseToResourceSegue, sender: self)
     }
 }

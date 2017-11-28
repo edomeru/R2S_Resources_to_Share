@@ -24,7 +24,7 @@ class ResourceViewController: BaseViewController {
         self.initUILayout()
         
         self.fillUiWithData()
-        
+        print("ResourceViewController")
         print(selectedResourceId)
         
     }
@@ -45,12 +45,12 @@ class ResourceViewController: BaseViewController {
 //            if statusCode == 200 {
         
                 let resource =  ResourceService.getDetailView(id: self.selectedResourceId)
-                
+                print("resourceDetail",resource)
                 if let resourceDetail = resource {
                    
                     
                     for img in resourceDetail.image {
-                         //print("IMAGE!!!", img.image)
+                         print("IMAGE!!!", img.image)
                         
                         self.resourceView.scrollView.auk.show(url: img.image)
                         
@@ -62,13 +62,22 @@ class ResourceViewController: BaseViewController {
                     
                     self.resourceView.priceLabel.text  = "$ \(resourceDetail.price).00"
                     if let account = resourceDetail.account {
+                        let processor = RoundCornerImageProcessor(cornerRadius: 20)
                         self.resourceView.nameLabel.text  = "\(account.first_name) \(account.last_name)"
+                      
+                        self.resourceView.accountImagePickerView.kf.setImage(with:  URL(string: account.image_url), placeholder: nil, options: [.processor(processor)])
+                        
+                        
                     }
 
+                    self.resourceView.descriptionText.text = resource?.descriptionText
                     for category in resourceDetail.categories {
                         //print("CATEGORY!!!!", category.main_category_name)
 //                        
 //                       self.resourceView.categoryLabel.text  = category.main_category_name
+//                        for sub in category.subcategory {
+//                        
+//                        }
 //                        
                     }
                     

@@ -24,8 +24,11 @@ class ResourceView: BaseUIView {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneLabel: UILabel!
     
+    @IBOutlet weak var accountImagePickerView: UIImageView!
+    
     @IBOutlet weak var titleSubLabel: UILabel!
 
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var descriptionText: UITextView!
     @IBOutlet weak var priceLabel: UILabel!
 }

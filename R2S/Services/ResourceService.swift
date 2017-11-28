@@ -24,7 +24,7 @@ class ResourceService {
             DispatchQueue.global(qos: .background).async{
                 if statusCode == 200 {
                   
-                    print("JSONDATA" + "\(jsonData)"  )
+                    //print("JSONDATA" + "\(jsonData)"  )
                     message = ""
                     for (_, resource):(String, JSON) in jsonData {
                         let newResource = Resource()
@@ -140,7 +140,7 @@ class ResourceService {
                         }
                         
                         ResourceDao.add(newResource)
-                         print("LOOB" + "\(newResource)"  )
+                         //print("LOOB" + "\(newResource)"  )
                     }
                 } else {
                     message = jsonData["message"].stringValue

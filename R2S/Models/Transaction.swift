@@ -10,4 +10,24 @@ import Foundation
 import RealmSwift
 
 class Transaction: Object {
+    
+
+    dynamic var id = 0
+    dynamic var referenceCode = ""
+    dynamic var proposal = ""
+    dynamic var bookingStartDate = ""
+    dynamic var bookingEndDate = ""
+    dynamic var createdDate = ""
+   
+    dynamic var buyer = ""
+    dynamic var quantity = ""
+    dynamic var resource: Resource?
+    dynamic var seller = ""
+    dynamic var status = ""
+   
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+
+
 }

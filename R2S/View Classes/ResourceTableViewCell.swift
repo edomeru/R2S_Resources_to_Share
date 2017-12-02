@@ -16,7 +16,9 @@ class ResourceTableViewCell: UITableViewCell {
     
     @IBOutlet weak var infoLabel: UILabel!
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var productImageView: UIImageView!
+
+    @IBOutlet weak var favoriteUIImageView: UIImageView!
     
     @IBOutlet weak var priceLabel: UILabel!
     

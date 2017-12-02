@@ -132,7 +132,7 @@ extension BrowseViewController: UICollectionViewDelegateFlowLayout {
 // MARK: - UITableViewDelegate
 extension BrowseViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 300
+        return 330
     }
 }
 // MARK: - UITableViewDelegate
@@ -149,15 +149,23 @@ extension BrowseViewController: UITableViewDataSource{
         
      
         cell.titleLabel.text =  resources[indexPath.row].name
+        
+       
+        
        cell.dateLabel.text = resources[indexPath.row].createdDate
         cell.priceLabel.text = "$ \(resources[indexPath.row].price).00"
         cell.infoLabel.text = resources[indexPath.row].descriptionText
-
+      
         
         for img in resources[indexPath.row].image {
-        cell.scrollView.auk.show(url: img.image)
+     
+            cell.productImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
+            cell.productImageView.contentMode = .scaleAspectFit // OR .scaleAspectFill
+            cell.productImageView.clipsToBounds = true
+            cell.productImageView.kf.setImage(with:  URL(string: img.image))
+           
         }
-     cell.scrollView.auk.settings.contentMode = .scaleAspectFit
+         
        Moa.settings.cache.requestCachePolicy = .useProtocolCachePolicy
         return cell
     }

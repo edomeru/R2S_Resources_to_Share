@@ -9,4 +9,20 @@
 import UIKit
 
 class AccountView: BaseUIView {
+    
+    @IBOutlet weak var companyUILabel: UILabel!
+    
+    @IBOutlet weak var profilePicImageView: UIImageView!
+    
+    @IBOutlet weak var userNameUILabel: UILabel!
+   
+    
+   
+    
+    @IBOutlet weak var settingsUIButton: UIButton!
+    
+    @IBOutlet weak var profileTableView: UITableView!
+    
+    @IBOutlet weak var emailUILabel: UILabel!
+    
 }

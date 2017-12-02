@@ -30,4 +30,20 @@ class TransactionTableViewCell: UITableViewCell {
         layer.shadowOpacity = shadowOpacity
         layer.shadowPath = shadowPath.cgPath
     }
+    
+    
+    @IBOutlet weak var orderRefNumberUILabel: UILabel!
+    
+    @IBOutlet weak var startDateUILabel: UILabel!
+    
+    @IBOutlet weak var endDateUILabel: UILabel!
+    
+    @IBOutlet weak var resourceUIImageView: UIImageView!
+    
+    @IBOutlet weak var resourceNameUILabel: UILabel!
+    
+    @IBOutlet weak var resourceDescriptionUILabel: UILabel!
+    
+    @IBOutlet weak var cancelButtonUILabel: UIButton!
+    
 }

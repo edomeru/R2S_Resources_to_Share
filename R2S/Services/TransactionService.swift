@@ -17,18 +17,49 @@ class TransactionService {
     //      Network / API Related Services
     //
     /////////////////////////////////////////////////////////////
+
     
     static func fetchTransactions(onCompletion: @escaping(Int?, String?) -> Void){
         var message = ""
         TransactionRemote.fetchAll(onCompletion: { jsonData, statusCode in
             DispatchQueue.global(qos: .background).async{
                 if statusCode == 200{
-                    message = ""
                     
-                    for (_, transaction):(String, JSON) in jsonData {
-//                        print (transaction);
-//                        print("hi")
+                    for (_, transactions):(String, JSON) in jsonData {
+                                      print(transactions)
+                        let transaction = Transaction()
+                        transaction.id = transactions["id"].intValue
+                        transaction.referenceCode = transactions["reference_code"].stringValue
+                        transaction.proposal = transactions["proposal"].stringValue
+                        transaction.bookingStartDate = transactions["booking_start_date"].stringValue
+                        transaction.bookingEndDate = transactions["booking_end_date"].stringValue
+                        transaction.createdDate = transactions["created_date"].stringValue
+                        transaction.buyer = transactions["buyer"].stringValue
+                        transaction.quantity = transactions["quantity"].stringValue
+                        
+                        
+                        let resources = transactions["resource"]
+                        let res = Resource()
+                        res.createdDate = resources["created_date"].stringValue
+                        res.id = resources["id"].intValue
+                        res.status = resources["status"].stringValue
+                        res.imageUrl = resources["image_url"].stringValue
+                        res.name = resources["name"].stringValue
+                        res.descriptionText = resources["description"].stringValue
+                        
+                        transaction.resource  = res
+
+                        
+                        
+                        
+                        
+                        
+                        transaction.seller = transactions["seller"].stringValue
+                        transaction.status = transactions["status"].stringValue
+                        
+                        TransactionDao.add(transaction)
                     }
+                    
 //                    print (jsonData)
                     print(jsonData.count)
                 }

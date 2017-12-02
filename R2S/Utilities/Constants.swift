@@ -34,7 +34,7 @@ class Constants {
             static let transaction_reject = transaction + "/reject"
             static let transaction_complete = transaction + "/complete"
             static let transaction_rate = transaction + "/rate"
-            
+            static let profile_details = base + "/{id}"
              // MARK: - Resources
             static let  wishlist = base + "/{id}/wishlists"
             // MARK: - Resources
@@ -74,6 +74,7 @@ class Constants {
         static let favoritesView = "FavoritesView"
         static let wishlistView = "WishlistView"
         static let resourceView = "ResourceView"
+        static let NewResourceView = "NewResourceView"
         
         // TableView Cell
         static let featuredTableCell = "FeaturedTableViewCell"

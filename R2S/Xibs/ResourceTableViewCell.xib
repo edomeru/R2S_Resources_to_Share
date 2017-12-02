@@ -5,7 +5,6 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,63 +17,56 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="327.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6No-Dr-Aks">
-                        <rect key="frame" x="18" y="8" width="36" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Tp-hj-6KU">
+                        <rect key="frame" x="8" y="207" width="260" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Tp-hj-6KU">
-                        <rect key="frame" x="18" y="37" width="34" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHU-YV-jhJ">
+                        <rect key="frame" x="8" y="228" width="359" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="info" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BHU-YV-jhJ">
-                        <rect key="frame" x="18" y="66" width="29" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MKl-TU-t0Y">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6No-Dr-Aks">
+                        <rect key="frame" x="8" y="178" width="292" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="isy-Ix-og9">
-                        <rect key="frame" x="18" y="95" width="39" height="21"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <nil key="textColor"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_favorite_border" translatesAutoresizingMaskIntoConstraints="NO" id="N9h-ct-R36">
+                        <rect key="frame" x="329" y="287" width="38" height="33"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="isy-Ix-og9">
+                        <rect key="frame" x="8" y="266" width="234" height="21"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                        <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eaM-mJ-9ve">
-                        <rect key="frame" x="0.0" y="151" width="375" height="126"/>
-                    </scrollView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zmg-gc-us7">
-                        <rect key="frame" x="311" y="289" width="46" height="30"/>
-                        <state key="normal" title="Button"/>
-                    </button>
                 </subviews>
-                <constraints>
-                    <constraint firstAttribute="bottomMargin" secondItem="Zmg-gc-us7" secondAttribute="bottom" constant="0.5" id="4FD-nq-RRR"/>
-                    <constraint firstItem="isy-Ix-og9" firstAttribute="top" secondItem="BHU-YV-jhJ" secondAttribute="bottom" constant="8" id="5y2-PH-911"/>
-                    <constraint firstItem="6No-Dr-Aks" firstAttribute="top" secondItem="QRL-dN-KFX" secondAttribute="topMargin" id="A4X-YG-n0p"/>
-                    <constraint firstItem="6No-Dr-Aks" firstAttribute="leading" secondItem="QRL-dN-KFX" secondAttribute="leadingMargin" constant="10" id="EdY-qe-AeS"/>
-                    <constraint firstAttribute="trailing" secondItem="eaM-mJ-9ve" secondAttribute="trailing" id="PkR-qm-ugk"/>
-                    <constraint firstItem="eaM-mJ-9ve" firstAttribute="leading" secondItem="QRL-dN-KFX" secondAttribute="leading" id="Qzc-aO-e3M"/>
-                    <constraint firstItem="BHU-YV-jhJ" firstAttribute="leading" secondItem="QRL-dN-KFX" secondAttribute="leadingMargin" constant="10" id="UTF-0p-eUa"/>
-                    <constraint firstItem="isy-Ix-og9" firstAttribute="leading" secondItem="QRL-dN-KFX" secondAttribute="leadingMargin" constant="10" id="V1Q-qy-CnO"/>
-                    <constraint firstItem="0Tp-hj-6KU" firstAttribute="leading" secondItem="QRL-dN-KFX" secondAttribute="leadingMargin" constant="10" id="W1c-uw-6SV"/>
-                    <constraint firstItem="BHU-YV-jhJ" firstAttribute="top" secondItem="0Tp-hj-6KU" secondAttribute="bottom" constant="8" id="YrS-Fg-rIB"/>
-                    <constraint firstItem="0Tp-hj-6KU" firstAttribute="top" secondItem="6No-Dr-Aks" secondAttribute="bottom" constant="8" id="dpr-fc-m2p"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="Zmg-gc-us7" secondAttribute="trailing" constant="10" id="tMC-Eb-rAH"/>
-                    <constraint firstItem="eaM-mJ-9ve" firstAttribute="top" secondItem="isy-Ix-og9" secondAttribute="bottom" constant="35" id="tmU-1A-03g"/>
-                    <constraint firstItem="Zmg-gc-us7" firstAttribute="top" secondItem="eaM-mJ-9ve" secondAttribute="bottom" constant="12" id="z4r-XC-Dyx"/>
-                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="dateLabel" destination="6No-Dr-Aks" id="cbh-rV-12T"/>
+                <outlet property="favoriteUIImageView" destination="N9h-ct-R36" id="TP1-L9-ism"/>
                 <outlet property="infoLabel" destination="BHU-YV-jhJ" id="Nih-eV-7Pb"/>
                 <outlet property="priceLabel" destination="isy-Ix-og9" id="ij5-sj-kra"/>
-                <outlet property="scrollView" destination="eaM-mJ-9ve" id="ddT-yE-nV7"/>
+                <outlet property="productImageView" destination="MKl-TU-t0Y" id="fYY-wN-Fbh"/>
                 <outlet property="titleLabel" destination="0Tp-hj-6KU" id="utF-vB-0ai"/>
             </connections>
             <point key="canvasLocation" x="-954.5" y="305"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="ic_favorite_border" width="24" height="24"/>
+    </resources>
 </document>

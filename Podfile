@@ -24,5 +24,8 @@ target 'R2S' do
   pod 'AMScrollingNavbar', '3.2.0'
   pod 'moa', '~> 9.0'
   pod 'Auk', '~> 8.0'
-
+  pod 'DropDown'
+  pod "CZPicker"
+  
+  
 end

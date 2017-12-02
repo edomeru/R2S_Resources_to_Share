@@ -11,6 +11,8 @@ import RealmSwift
 import SwiftSpinner
 import Kingfisher
 import MIBadgeButton_Swift
+import SwiftyJSON
+
 
 class ActivityViewController: BaseViewController {
 
@@ -21,20 +23,35 @@ class ActivityViewController: BaseViewController {
     var screenHeight: CGFloat!
     var transactions: Results<Transaction>!
     var selectedCategoryId: Int!
-
+    var resources: Results<Transaction>!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.initUILayout()
-        // Do any additional setup after loading the view.
+        fetchDataFromSource()
         
-        TransactionService.fetchTransactions { (statusCode, message) in
-            print(statusCode)
-        }
+        
+        
+      
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func fetchDataFromSource(){
+        SwiftSpinner.show("Please wait..")
+        TransactionService.fetchTransactions { (statusCode, message) in
+            SwiftSpinner.hide()
+            print(statusCode)
+          
+            if statusCode == 200 {
+            
+                let transaction = TransactionDao.getTransactions()
+                print("TRANSACTIONDAO", transaction.count)
+                self.transactions = transaction
+                self.initUILayout()
+                self.activityView.activityTableView.reloadData()
+            }
+
+        }
+      
+        
     }
 
     // MARK: - Private Functions
@@ -97,10 +114,32 @@ extension ActivityViewController: UITableViewDelegate{
 // MARK: - UITableViewDataSource
 extension ActivityViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return transactions.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "TransactionTableViewCell", for: indexPath as IndexPath) as! TransactionTableViewCell
+        cell.orderRefNumberUILabel.text = transactions[indexPath.item].referenceCode
+        cell.startDateUILabel.text = transactions[indexPath.item].bookingStartDate
+        cell.endDateUILabel.text = transactions[indexPath.item].bookingEndDate
+        cell.resourceNameUILabel.text = transactions[indexPath.item].resource?.name
+        cell.resourceDescriptionUILabel.text = transactions[indexPath.item].resource?.descriptionText
+        cell.endDateUILabel.text = transactions[indexPath.item].bookingEndDate
+       
+      if  self.transactions[indexPath.item].resource?.imageUrl != "" {
+     
+        cell.resourceUIImageView.kf.setImage(with: URL(string: (transactions[indexPath.item].resource?.imageUrl)!), options: [.transition(.fade(0.2))])
+        
+        }else{
+        
+        
+         let url = URL(string: "http://theblackpanthers.com/s/photogallery/img/no-image-available.jpg")
+        cell.resourceUIImageView.kf.setImage(with: url, options: [.transition(.fade(0.2))])
+        
+        }
+        
+        
+        
+        
         return cell
     }
 }

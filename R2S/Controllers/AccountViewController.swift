@@ -11,6 +11,7 @@ import RealmSwift
 import SwiftSpinner
 import Kingfisher
 import MIBadgeButton_Swift
+import DropDown
 
 class AccountViewController: BaseViewController {
 
@@ -24,7 +25,39 @@ class AccountViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("AccountViewController")
+     //   let dropDown = DropDown()
         self.initUILayout()
+        
+      //  let chooseArticleDropDown = DropDown()
+        
+//        var dropDowns: [DropDown] = {
+//            return [
+//                self.chooseArticleDropDown,
+//                self.amountDropDown,
+//                self.chooseDropDown,
+//                self.centeredDropDown,
+//                self.rightBarDropDown
+//            ]
+//        }()
+//        
+//        chooseArticleDropDown.anchorView = self.accountView.settingsUIButton
+//        
+//        chooseArticleDropDown.dataSource = [
+//            "iPhone SE | Black | 64G",
+//            "Samsung S7",
+//            "Huawei P8 Lite Smartphone 4G",
+//            "Asus Zenfone Max 4G",
+//            "Apple Watwh | Sport Edition"
+//        ]
+//        
+//        // Action triggered on selection
+//        chooseArticleDropDown.selectionAction = { [unowned self] (index, item) in
+//            self.self.accountView.settingsUIButton.setTitle(item, for: .normal)
+//        }
+        
+        
+
         // Do any additional setup after loading the view.
         
 //        ResourceService.get(onCompletion: { statusCode, message in
@@ -87,12 +120,20 @@ class AccountViewController: BaseViewController {
             print("\(message!)" + " TEST NI EDS"  )
             
         })
+        
+         print("USERID",UserHelper.getId())
+       let Me =  UserDao.getOneBy(id: UserHelper.getId()! )
+        print("FNAME",Me?.firstName)
+        self.accountView.userNameUILabel.text = (Me?.firstName)! + " " + (Me?.lastName)!
+        self.accountView.companyUILabel.text = "Total Integrated Resources"
+        self.accountView.emailUILabel.text = (Me?.email)!
+        print("profpic",Me?.imageUrl)
+        if Me?.imageUrl != "" {
+        self.accountView.profilePicImageView.kf.setImage(with:  URL(string: (Me?.imageUrl)!))
+                            }
+        
 
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        
     }
 
     // MARK: - Private Functions
@@ -103,6 +144,12 @@ class AccountViewController: BaseViewController {
 
         self.accountView = self.loadFromNibNamed(nibNamed: Constants.xib.accountView) as! AccountView
         self.view = self.accountView
+        
+        self.accountView.profileTableView.register(UINib(nibName: Constants.xib.resourceTableCell, bundle:nil), forCellReuseIdentifier: "ProfileTableViewCell")
+        self.accountView.profileTableView.delegate = self
+        self.accountView.profileTableView.dataSource = self
+        
+        
     }
     
     private func refreshData() {
@@ -149,4 +196,48 @@ class AccountViewController: BaseViewController {
             }
         }
     }
+}
+
+// MARK: - UITableViewDelegate
+extension AccountViewController: UITableViewDelegate{
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 330
+    }
+}
+
+
+// MARK: - UITableViewDelegate
+extension AccountViewController: UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if tableView == self.accountView.profileTableView {
+            return 10
+        }
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ResourceTableViewCell
+        
+        
+        cell.titleLabel.text =  "Special Force"
+        
+        
+        
+        cell.dateLabel.text = "November 17, 2017"
+        cell.priceLabel.text = "$ 20.00"
+        cell.infoLabel.text = "Slightly Used"
+        cell.productImageView.image = UIImage(named:"jong_suk")
+        
+//        for img in resources[indexPath.row].image {
+//            
+//            cell.productImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
+//            cell.productImageView.contentMode = .scaleAspectFit // OR .scaleAspectFill
+//            cell.productImageView.clipsToBounds = true
+//            cell.productImageView.kf.setImage(with:  URL(string: img.image))
+//            
+//        }
+        
+        //Moa.settings.cache.requestCachePolicy = .useProtocolCachePolicy
+        return cell
+ }
 }

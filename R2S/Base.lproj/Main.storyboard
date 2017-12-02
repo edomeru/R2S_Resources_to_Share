@@ -135,13 +135,13 @@
         <!--Share-->
         <scene sceneID="24w-UK-M6H">
             <objects>
-                <viewController id="iH5-4T-rRH" sceneMemberID="viewController">
+                <viewController id="iH5-4T-rRH" customClass="NewResourceViewController" customModule="R2S" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dob-G4-lyg"/>
                         <viewControllerLayoutGuide type="bottom" id="xRi-oj-iSC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="DEZ-Wh-2Hn">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -149,10 +149,12 @@
                     <navigationItem key="navigationItem" id="o4w-lg-biB">
                         <barButtonItem key="backBarButtonItem" title=" " id="wFb-XF-V5O"/>
                     </navigationItem>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="1000"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="N9v-4F-Bxo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1420" y="-797"/>
+            <point key="canvasLocation" x="1318" y="-674"/>
         </scene>
         <!--Activity-->
         <scene sceneID="8Jv-Eb-Xk0">
@@ -211,7 +213,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="by0-9X-XqV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1420" y="-108"/>
+            <point key="canvasLocation" x="2103" y="-152"/>
         </scene>
         <!--Favorites View Controller-->
         <scene sceneID="NDD-GU-Mic">

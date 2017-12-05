@@ -236,12 +236,13 @@ class ResourceService {
     
     static func getFavorites(id: Int,onCompletion: @escaping (Int?, String?) -> Void) {
         var message = ""
-        UserRemote.resources(id: "\(id)", onCompletion: { jsonData, statusCode in
+        UserRemote.favorites(id: "\(id)", onCompletion: { jsonData, statusCode in
             DispatchQueue.global(qos: .background).async {
+                print("TEST BWAHAHHAHA ", jsonData)
                 if statusCode == 200 {
                     message = ""
                     for (_, resource):(String, JSON) in jsonData {
-                        //                        print("TEST BWAHAHHAHA ", jsonData)
+                        
                         let newResource = Resource()
                         newResource.id = resource["id"].intValue
                         newResource.resourceCode = resource["resource_code"].stringValue

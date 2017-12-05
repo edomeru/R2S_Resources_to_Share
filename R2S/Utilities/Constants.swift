@@ -60,6 +60,10 @@ class Constants {
             static let resource_favorites = base + "/{resource_id}/favorites"
         }
         
+        struct wishlists {
+        static let base = api.baseUrl + "/wishlists"
+        }
+        
     }
     
     // MARK: - Xib Names
@@ -75,11 +79,14 @@ class Constants {
         static let wishlistView = "WishlistView"
         static let resourceView = "ResourceView"
         static let NewResourceView = "NewResourceView"
+        static let wishlistDetailView = "WishListDetailView"
         
         // TableView Cell
         static let featuredTableCell = "FeaturedTableViewCell"
         static let categoryTableCell = "CategoryTableViewCell"
         static let resourceTableCell = "ResourceTableViewCell"
+        static let favoritesTableCell = "FavoritesTableViewCell"
+        static let wishListTableViewCell = "WishListTableViewCell"
         
         // CollectionView Cell
         static let categoryCollectionCell = "CategoryCollectionViewCell"
@@ -117,6 +124,7 @@ class Constants {
         static let homeToWishlistSegue = "HomeToWishlistSegue"
         static let homeToFavoritesSegue = "HomeToFavoritesSegue"
         static let browseToResourceSegue  = "BrowseToResourceSegue"
+        static let wishToWishListDetailSegue  = "WishToWishListDetailSegue"
     }
 }
 

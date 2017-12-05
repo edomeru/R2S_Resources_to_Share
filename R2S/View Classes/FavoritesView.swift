@@ -10,7 +10,7 @@ import UIKit
 
 class FavoritesView: BaseUIView {
     
-    
+    @IBOutlet weak var FavoritesTableView: UITableView!
     
     
 }

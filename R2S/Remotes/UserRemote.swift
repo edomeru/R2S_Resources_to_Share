@@ -29,6 +29,7 @@ class UserRemote {
     }
     
     static func favorites(id: String, onCompletion: @escaping (JSON, Int?) -> Void) {
+        print("REMOTE URL",Constants.api.user.favorites.replacingOccurrences(of: "{id}", with: String(describing: id )))
         ApiRequestManager.sharedInstance.doGetRequest(urlString: Constants.api.user.favorites.replacingOccurrences(of: "{id}", with: String(describing: id )), headers: Utility.getHeaders(), onCompletion: { jsonData, statusCode in
             onCompletion(jsonData, statusCode)
         })

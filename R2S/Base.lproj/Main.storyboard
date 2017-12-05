@@ -246,10 +246,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="ErP-gt-xTF" kind="show" identifier="WishToWishListDetailSegue" id="x9V-Hd-JC7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qGE-6K-SK3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-313" y="-1916"/>
+        </scene>
+        <!--Wishlist Detail View Controller-->
+        <scene sceneID="eJV-Ef-RxG">
+            <objects>
+                <viewController id="ErP-gt-xTF" customClass="WishlistDetailViewController" customModule="R2S" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Osf-qd-5co"/>
+                        <viewControllerLayoutGuide type="bottom" id="CxJ-XA-QoR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9FT-8q-hPi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fyc-6d-4cq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="405" y="-1996"/>
         </scene>
         <!--Home-->
         <scene sceneID="E7T-OR-7V4">

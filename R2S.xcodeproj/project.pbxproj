@@ -25,6 +25,9 @@
 		2CF06DD31EFBF1090073C844 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF06DD21EFBF1090073C844 /* ActivityView.swift */; };
 		548A6074C3188468E31693E6 /* Pods_R2S.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E60C07BE5101947A43207D /* Pods_R2S.framework */; };
 		9B13E3751F99ADDD00D72FB7 /* ResourceSubcategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B13E3741F99ADDD00D72FB7 /* ResourceSubcategory.swift */; };
+		9B1F86CE1FD6B329005C575E /* InboxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B1F86CD1FD6B329005C575E /* InboxView.xib */; };
+		9B1F86D11FD6B38B005C575E /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1F86D01FD6B38B005C575E /* InboxView.swift */; };
+		9B1F86D31FD6B526005C575E /* InboxDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1F86D21FD6B526005C575E /* InboxDao.swift */; };
 		9B3ED54A1FD2C8D700627679 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3ED5481FD2C8D700627679 /* FavoritesViewController.swift */; };
 		9B3ED54B1FD2C8D700627679 /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3ED5491FD2C8D700627679 /* WishlistViewController.swift */; };
 		9B3ED54E1FD2C8F400627679 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3ED54C1FD2C8F400627679 /* FavoritesView.swift */; };
@@ -33,6 +36,13 @@
 		9B3ED5531FD2C90C00627679 /* WishlistView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B3ED5511FD2C90C00627679 /* WishlistView.xib */; };
 		9B3ED5561FD2CD4B00627679 /* FavoritesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B3ED5551FD2CD4B00627679 /* FavoritesTableViewCell.xib */; };
 		9B3ED5591FD2CE5800627679 /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3ED5581FD2CE5800627679 /* FavoritesTableViewCell.swift */; };
+		9B3FDC961FD68BEB00091E10 /* InboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FDC951FD68BEB00091E10 /* InboxViewController.swift */; };
+		9B3FDC981FD6934200091E10 /* Inbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FDC971FD6934200091E10 /* Inbox.swift */; };
+		9B3FDC9A1FD6977A00091E10 /* LastMessege.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FDC991FD6977A00091E10 /* LastMessege.swift */; };
+		9B3FDC9C1FD6986800091E10 /* InboxResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FDC9B1FD6986800091E10 /* InboxResource.swift */; };
+		9B3FDC9E1FD69AAD00091E10 /* InboxRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FDC9D1FD69AAD00091E10 /* InboxRemote.swift */; };
+		9B3FDCA01FD69CB100091E10 /* InboxService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FDC9F1FD69CB100091E10 /* InboxService.swift */; };
+		9B3FDCA21FD6A0DC00091E10 /* Participants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3FDCA11FD6A0DC00091E10 /* Participants.swift */; };
 		9B456F311F8F541E001F4C32 /* FavoritesDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B456F301F8F541E001F4C32 /* FavoritesDao.swift */; };
 		9B456F371F8F638D001F4C32 /* ResourceRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B456F361F8F638D001F4C32 /* ResourceRemote.swift */; };
 		9B456F391F8F6C32001F4C32 /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B456F381F8F6C32001F4C32 /* Favorites.swift */; };
@@ -156,6 +166,9 @@
 		2CF06DD21EFBF1090073C844 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityView.swift; path = "View Classes/ActivityView.swift"; sourceTree = "<group>"; };
 		33DE7660843E508F233330F3 /* Pods-R2S.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R2S.release.xcconfig"; path = "Pods/Target Support Files/Pods-R2S/Pods-R2S.release.xcconfig"; sourceTree = "<group>"; };
 		9B13E3741F99ADDD00D72FB7 /* ResourceSubcategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceSubcategory.swift; path = Models/ResourceSubcategory.swift; sourceTree = "<group>"; };
+		9B1F86CD1FD6B329005C575E /* InboxView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InboxView.xib; path = Xibs/InboxView.xib; sourceTree = "<group>"; };
+		9B1F86D01FD6B38B005C575E /* InboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InboxView.swift; path = "View Classes/InboxView.swift"; sourceTree = "<group>"; };
+		9B1F86D21FD6B526005C575E /* InboxDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InboxDao.swift; path = Dao/InboxDao.swift; sourceTree = "<group>"; };
 		9B3ED5481FD2C8D700627679 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesViewController.swift; path = Controllers/FavoritesViewController.swift; sourceTree = "<group>"; };
 		9B3ED5491FD2C8D700627679 /* WishlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishlistViewController.swift; path = Controllers/WishlistViewController.swift; sourceTree = "<group>"; };
 		9B3ED54C1FD2C8F400627679 /* FavoritesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesView.swift; path = "View Classes/FavoritesView.swift"; sourceTree = "<group>"; };
@@ -164,6 +177,13 @@
 		9B3ED5511FD2C90C00627679 /* WishlistView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WishlistView.xib; path = Xibs/WishlistView.xib; sourceTree = "<group>"; };
 		9B3ED5551FD2CD4B00627679 /* FavoritesTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = FavoritesTableViewCell.xib; path = Xibs/FavoritesTableViewCell.xib; sourceTree = "<group>"; };
 		9B3ED5581FD2CE5800627679 /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesTableViewCell.swift; path = "View Classes/FavoritesTableViewCell.swift"; sourceTree = "<group>"; };
+		9B3FDC951FD68BEB00091E10 /* InboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InboxViewController.swift; path = Controllers/InboxViewController.swift; sourceTree = "<group>"; };
+		9B3FDC971FD6934200091E10 /* Inbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Inbox.swift; path = Models/Inbox.swift; sourceTree = "<group>"; };
+		9B3FDC991FD6977A00091E10 /* LastMessege.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LastMessege.swift; path = Models/LastMessege.swift; sourceTree = "<group>"; };
+		9B3FDC9B1FD6986800091E10 /* InboxResource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InboxResource.swift; path = Models/InboxResource.swift; sourceTree = "<group>"; };
+		9B3FDC9D1FD69AAD00091E10 /* InboxRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InboxRemote.swift; path = Remotes/InboxRemote.swift; sourceTree = "<group>"; };
+		9B3FDC9F1FD69CB100091E10 /* InboxService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InboxService.swift; path = Services/InboxService.swift; sourceTree = "<group>"; };
+		9B3FDCA11FD6A0DC00091E10 /* Participants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Participants.swift; path = Models/Participants.swift; sourceTree = "<group>"; };
 		9B456F301F8F541E001F4C32 /* FavoritesDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesDao.swift; path = Dao/FavoritesDao.swift; sourceTree = "<group>"; };
 		9B456F361F8F638D001F4C32 /* ResourceRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceRemote.swift; path = Remotes/ResourceRemote.swift; sourceTree = "<group>"; };
 		9B456F381F8F6C32001F4C32 /* Favorites.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Favorites.swift; path = Models/Favorites.swift; sourceTree = "<group>"; };
@@ -338,6 +358,22 @@
 			name = Activity;
 			sourceTree = "<group>";
 		};
+		9B1F86CC1FD6B2F9005C575E /* Inbox */ = {
+			isa = PBXGroup;
+			children = (
+				9B1F86CD1FD6B329005C575E /* InboxView.xib */,
+			);
+			name = Inbox;
+			sourceTree = "<group>";
+		};
+		9B1F86CF1FD6B36E005C575E /* Inbox */ = {
+			isa = PBXGroup;
+			children = (
+				9B1F86D01FD6B38B005C575E /* InboxView.swift */,
+			);
+			name = Inbox;
+			sourceTree = "<group>";
+		};
 		9B3ED5541FD2CCF100627679 /* Favorites */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,6 +390,14 @@
 				9B3ED5581FD2CE5800627679 /* FavoritesTableViewCell.swift */,
 			);
 			name = Favorites;
+			sourceTree = "<group>";
+		};
+		9B3FDC941FD68BC700091E10 /* Inbox */ = {
+			isa = PBXGroup;
+			children = (
+				9B3FDC951FD68BEB00091E10 /* InboxViewController.swift */,
+			);
+			name = Inbox;
 			sourceTree = "<group>";
 		};
 		9B5E23841FD3F28300A59FFF /* WishList */ = {
@@ -497,6 +541,10 @@
 				9B13E3741F99ADDD00D72FB7 /* ResourceSubcategory.swift */,
 				9B5E238E1FD4017F00A59FFF /* WishList.swift */,
 				9B75D2D71FD59E10002EF175 /* WishListAccount.swift */,
+				9B3FDC971FD6934200091E10 /* Inbox.swift */,
+				9B3FDC991FD6977A00091E10 /* LastMessege.swift */,
+				9B3FDC9B1FD6986800091E10 /* InboxResource.swift */,
+				9B3FDCA11FD6A0DC00091E10 /* Participants.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -511,6 +559,7 @@
 				9BC70F211F8E247600D8CCED /* ResourceDao.swift */,
 				9B456F301F8F541E001F4C32 /* FavoritesDao.swift */,
 				9B5E23901FD4032200A59FFF /* WishListDao.swift */,
+				9B1F86D21FD6B526005C575E /* InboxDao.swift */,
 			);
 			name = Dao;
 			sourceTree = "<group>";
@@ -535,6 +584,7 @@
 				B9E267AC1E7B94D900BB9900 /* CategoryService.swift */,
 				9BC70F231F8E34FC00D8CCED /* ResourceService.swift */,
 				9B5E238C1FD3FAFB00A59FFF /* WishListService.swift */,
+				9B3FDC9F1FD69CB100091E10 /* InboxService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -547,6 +597,7 @@
 				B9E267711E78F7A500BB9900 /* UserRemote.swift */,
 				B9E267B21E7B950600BB9900 /* CategoryRemote.swift */,
 				9B5E238A1FD3FA4300A59FFF /* WishListRemote.swift */,
+				9B3FDC9D1FD69AAD00091E10 /* InboxRemote.swift */,
 			);
 			name = Remotes;
 			sourceTree = "<group>";
@@ -554,6 +605,7 @@
 		B9E267831E7A363B00BB9900 /* Tab Bar */ = {
 			isa = PBXGroup;
 			children = (
+				9B3FDC941FD68BC700091E10 /* Inbox */,
 				9BCCD5FB1FD13EE8001A9507 /* NewResource */,
 				9BA3E2891FCD793A00BD1B24 /* Profile */,
 				B9E267C21E7D416400BB9900 /* HomeTabBarViewController.swift */,
@@ -566,6 +618,7 @@
 		B9E2678A1E7A7A1B00BB9900 /* Tab Bar */ = {
 			isa = PBXGroup;
 			children = (
+				9B1F86CF1FD6B36E005C575E /* Inbox */,
 				9BCCD6001FD13FCF001A9507 /* NewResource */,
 				2CD0FD2E1F84C981000C8E89 /* Home */,
 				2CF06DD21EFBF1090073C844 /* ActivityView.swift */,
@@ -577,6 +630,7 @@
 		B9E2678D1E7A7A4E00BB9900 /* Tab Bar */ = {
 			isa = PBXGroup;
 			children = (
+				9B1F86CC1FD6B2F9005C575E /* Inbox */,
 				9BCCD5F71FD137E8001A9507 /* NewResource */,
 				9BCCD5F61FD137CE001A9507 /* Profile */,
 				2CD0FD301F84CD97000C8E89 /* Home */,
@@ -830,6 +884,7 @@
 				9B3ED5521FD2C90C00627679 /* FavoritesView.xib in Resources */,
 				B9E267D81E7D41F500BB9900 /* CategoryTableViewCell.xib in Resources */,
 				B9E267D11E7D41CA00BB9900 /* CategoryCollectionViewCell.xib in Resources */,
+				9B1F86CE1FD6B329005C575E /* InboxView.xib in Resources */,
 				B9FE3FEC1E77E32A003CDE74 /* Main.storyboard in Resources */,
 				B9E267B91E7BAEC400BB9900 /* BrowseView.xib in Resources */,
 				B9E267BB1E7BAF9500BB9900 /* SubCategoryCollectionViewCell.xib in Resources */,
@@ -914,7 +969,9 @@
 				2C5B06251F18C886002C09B8 /* Transaction.swift in Sources */,
 				B9E267C91E7D419500BB9900 /* FeaturedCarouselItemView.swift in Sources */,
 				9BD8341C1F90CBC80049066E /* Account.swift in Sources */,
+				9B1F86D11FD6B38B005C575E /* InboxView.swift in Sources */,
 				B9E267641E78ED0000BB9900 /* UserDao.swift in Sources */,
+				9B3FDC9A1FD6977A00091E10 /* LastMessege.swift in Sources */,
 				9B3ED5591FD2CE5800627679 /* FavoritesTableViewCell.swift in Sources */,
 				2C8BCC4F1F1325900064DD87 /* TransactionRemote.swift in Sources */,
 				B9E2677E1E79416A00BB9900 /* RegisterViewController.swift in Sources */,
@@ -924,6 +981,7 @@
 				9BFC735A1F94641E00C9D888 /* ResourceCategory.swift in Sources */,
 				B9E267B11E7B94F800BB9900 /* CategoryDao.swift in Sources */,
 				9B456F311F8F541E001F4C32 /* FavoritesDao.swift in Sources */,
+				9B3FDC9E1FD69AAD00091E10 /* InboxRemote.swift in Sources */,
 				B9E267BF1E7BB7EF00BB9900 /* Subcategory.swift in Sources */,
 				9B5E23931FD4570E00A59FFF /* WishListDetailedViewController.swift in Sources */,
 				9BFDB3721F97289700D430D4 /* ResourceView.swift in Sources */,
@@ -942,6 +1000,7 @@
 				9B3ED54F1FD2C8F400627679 /* WishlistView.swift in Sources */,
 				9B5E23911FD4032200A59FFF /* WishListDao.swift in Sources */,
 				B9E267C71E7D418300BB9900 /* CategoryCollectionViewCell.swift in Sources */,
+				9B3FDC9C1FD6986800091E10 /* InboxResource.swift in Sources */,
 				2C5B06271F18C94B002C09B8 /* Resource.swift in Sources */,
 				9BCCD6041FD14000001A9507 /* NewResourceView.swift in Sources */,
 				B9E267721E78F7A500BB9900 /* UserRemote.swift in Sources */,
@@ -973,21 +1032,26 @@
 				B9E267C41E7D416500BB9900 /* HomeTabBarViewController.swift in Sources */,
 				B9E267871E7A57DF00BB9900 /* UserManager.swift in Sources */,
 				9B456F391F8F6C32001F4C32 /* Favorites.swift in Sources */,
+				9B3FDC981FD6934200091E10 /* Inbox.swift in Sources */,
 				B9E267761E790FEE00BB9900 /* UserHelper.swift in Sources */,
+				9B3FDC961FD68BEB00091E10 /* InboxViewController.swift in Sources */,
 				B9E267DD1E7D48D600BB9900 /* WelcomeView.swift in Sources */,
 				B9E2677A1E7914A200BB9900 /* UserService.swift in Sources */,
 				B9E267661E78ED7B00BB9900 /* User.swift in Sources */,
 				9B3ED54A1FD2C8D700627679 /* FavoritesViewController.swift in Sources */,
 				B9E267CF1E7D41B500BB9900 /* FeaturedTableViewCell.swift in Sources */,
 				9BFDB3701F9727F500D430D4 /* ResourceViewController.swift in Sources */,
+				9B3FDCA21FD6A0DC00091E10 /* Participants.swift in Sources */,
 				B99151BC1E77F79B00949529 /* Constants.swift in Sources */,
 				B9E267CE1E7D41B500BB9900 /* CategoryTableViewCell.swift in Sources */,
 				B9E267C51E7D416500BB9900 /* HomeViewController.swift in Sources */,
+				9B1F86D31FD6B526005C575E /* InboxDao.swift in Sources */,
 				9BC70F221F8E247600D8CCED /* ResourceDao.swift in Sources */,
 				B9E267741E78F8A000BB9900 /* Utility.swift in Sources */,
 				B9E267AD1E7B94D900BB9900 /* CategoryService.swift in Sources */,
 				9BD8341A1F9076EE0049066E /* Location.swift in Sources */,
 				B9E267BD1E7BAFF800BB9900 /* SubCategoryCollectionViewCell.swift in Sources */,
+				9B3FDCA01FD69CB100091E10 /* InboxService.swift in Sources */,
 				9BD8341E1F90CD600049066E /* Company.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

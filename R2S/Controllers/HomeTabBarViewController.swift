@@ -33,8 +33,8 @@ class HomeTabBarViewController: UITabBarController {
         let wishlistButton = UIBarButtonItem(image: imgWishlist,  style: .plain, target: self, action: #selector(self.wishlistOnButtonPressed))
         
         // set to black
-        favoritesButton.tintColor = UIColor.black
-        wishlistButton.tintColor = UIColor.black
+        favoritesButton.tintColor = UIColor.white
+        wishlistButton.tintColor = UIColor.white
         
         navigationItem.rightBarButtonItems = [favoritesButton, wishlistButton]
     }

@@ -14,9 +14,9 @@ class Constants {
     
     // MARK: - API Endpoints
     struct api {
-//        static let baseUrl = "http://api.r2s.tirsolutions.com/resources-to-share/api"
+        static let baseUrl = "http://api.r2s.tirsolutions.com/resources-to-share/api"
         
-        static let baseUrl =  "http://stagingapi.r2s.tirsolutions.com/resources-to-share-stg/api"
+//        static let baseUrl =  "http://stagingapi.r2s.tirsolutions.com/resources-to-share-stg/api"
         
         // MARK: - User
         struct user {
@@ -35,13 +35,17 @@ class Constants {
             static let transaction_complete = transaction + "/complete"
             static let transaction_rate = transaction + "/rate"
             static let profile_details = base + "/{id}"
-             // MARK: - Resources
+             // MARK: - Wishlisy
             static let  wishlist = base + "/{id}/wishlists"
             // MARK: - Resources
             static let resources =  base + "/{id}/resources";
             
-            // MARK: - Resources
+            // MARK: - favorites
             static let favorites =  resources + "/favorites";
+            
+            // MARK: - favorites
+            static let inbox =  base + "/{id}/messages";
+            
         }
         
         // MARK: - Category
@@ -63,6 +67,8 @@ class Constants {
         struct wishlists {
         static let base = api.baseUrl + "/wishlists"
         }
+        
+        
         
     }
     

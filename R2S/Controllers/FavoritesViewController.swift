@@ -25,12 +25,8 @@ class FavoritesViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initUILayout()
-        // Do any additional setup after loading the view.
-        
-        
-        
-        // DO some shit here
-        
+    
+        self.title = "Favorites"
                 ResourceService.getFavorites(id: UserHelper.getId()! , onCompletion: { statusCode, message in
         
                     print("\(statusCode!)" + " FAVORITES CODE"  )

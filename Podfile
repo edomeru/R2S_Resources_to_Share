@@ -26,6 +26,6 @@ target 'R2S' do
   pod 'Auk', '~> 8.0'
   pod 'DropDown'
   pod "CZPicker"
-  
+  pod "Floaty", "~> 3.0.0" 
   
 end

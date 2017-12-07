@@ -7,12 +7,13 @@
 //
 
 import Foundation
-
+import UIKit
 
 
 class InboxView: BaseUIView {
 
 
+    @IBOutlet weak var inboxTableView: UITableView!
    
 
     

@@ -47,4 +47,11 @@ class UserRemote {
             onCompletion(jsonData, statusCode)
         })
     }
+    
+    static func createWishList(id: String,params: [String: AnyObject], onCompletion: @escaping (JSON, Int?) -> Void) {
+        print("createWishList PARAMS",params)
+        ApiRequestManager.sharedInstance.doPostRequest(urlString: Constants.api.user.wishlist.replacingOccurrences(of: "{id}", with: String(describing: id )), params: params, headers: Utility.getHeadersWithAuth(), onCompletion: { jsonData, statusCode in
+            onCompletion(jsonData, statusCode)
+        })
+    }
 }

@@ -35,8 +35,7 @@ class ApiRequestManager {
                         let tempJsonData: JSON = ["message": responseBody!]
                         jsonData = tempJsonData
                     }
-                    print("FAV API PRINT", jsonData)
-                    print("FAV API statusCode", statusCode)
+                    
                     onCompletion(jsonData, statusCode)
                 case .failure:
                     onCompletion(JSON(["message": "Network connection failed."]), 1000)

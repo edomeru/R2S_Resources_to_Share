@@ -49,7 +49,7 @@ class WishListService {
                         account.first_name = accnt["first_name"].stringValue
                         account.buyer_rating = accnt["buyer_rating"].intValue
                         account.image_url = accnt["image_url"].stringValue
-
+                        
                         wishList.account = account
                         print("WISHLIST DAO",wishList)
                         WishListDao.add(wishList)
@@ -64,4 +64,27 @@ class WishListService {
             }
         })
     }
+    
+    
+    
+    static func createWishlist(category: [String : AnyObject], name: String, description: String, onCompletion: @escaping (Int?, String?) -> Void) {
+        var message = ""
+        var params: [String : AnyObject] = [:]
+        params["name"] = name as AnyObject?
+        params["description"] = description as AnyObject?
+        params["categories"] = category as AnyObject?
+        
+        UserRemote.createWishList(id: String(UserHelper.getId()!),params: params, onCompletion: { jsonData, statusCode in
+            if statusCode == 200 {
+                print("WishList Added Successfully")
+                message = "WishList Added Successfully"
+                
+            } else {
+                message = jsonData["message"].stringValue
+            }
+            onCompletion(statusCode, message)
+        })
+    }
+    
+    
 }

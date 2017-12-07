@@ -26,6 +26,9 @@
                 <constraint firstItem="dDa-fy-NcV" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="cuL-hU-mcj"/>
                 <constraint firstAttribute="bottom" secondItem="dDa-fy-NcV" secondAttribute="bottom" id="tb6-pJ-qjH"/>
             </constraints>
+            <connections>
+                <outlet property="inboxTableView" destination="dDa-fy-NcV" id="Z3F-EK-9gC"/>
+            </connections>
             <point key="canvasLocation" x="32.5" y="114.5"/>
         </view>
     </objects>

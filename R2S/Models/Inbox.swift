@@ -12,7 +12,7 @@ import RealmSwift
 class Inbox: Object {
 
     dynamic var id = 0
-    let participants = List<Participants>()
+    var participants = List<Participants>()
     dynamic var name = ""
     dynamic var date_created = ""
     dynamic var status = ""

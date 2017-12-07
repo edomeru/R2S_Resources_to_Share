@@ -231,7 +231,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNF-LI-qEX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1314" y="-1916"/>
+            <point key="canvasLocation" x="-3351" y="-1916"/>
         </scene>
         <!--Wishlist View Controller-->
         <scene sceneID="Jho-cR-fkz">
@@ -248,11 +248,30 @@
                     </view>
                     <connections>
                         <segue destination="ErP-gt-xTF" kind="show" identifier="WishToWishListDetailSegue" id="x9V-Hd-JC7"/>
+                        <segue destination="vSV-Gh-3y6" kind="show" identifier="WishToAddWishListSegue" id="szV-xY-9F4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qGE-6K-SK3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-313" y="-1916"/>
+            <point key="canvasLocation" x="-2318" y="-1916"/>
+        </scene>
+        <!--Wishlist Add View Controller-->
+        <scene sceneID="fwq-Rj-TlS">
+            <objects>
+                <viewController id="vSV-Gh-3y6" customClass="WishlistAddViewController" customModule="R2S" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Ula-oe-fCm"/>
+                        <viewControllerLayoutGuide type="bottom" id="Pw6-ha-D90"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TBz-X3-R9t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cQr-K6-V3i" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1220" y="-1589"/>
         </scene>
         <!--Wishlist Detail View Controller-->
         <scene sceneID="eJV-Ef-RxG">
@@ -270,7 +289,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fyc-6d-4cq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="405" y="-1996"/>
+            <point key="canvasLocation" x="-1220" y="-2529"/>
         </scene>
         <!--Home-->
         <scene sceneID="E7T-OR-7V4">

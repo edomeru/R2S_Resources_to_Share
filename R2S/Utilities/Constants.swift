@@ -86,6 +86,9 @@ class Constants {
         static let resourceView = "ResourceView"
         static let NewResourceView = "NewResourceView"
         static let wishlistDetailView = "WishListDetailView"
+        static let inboxView = "InboxView"
+        static let wishlistAddView = "WishListAddView"
+        
         
         // TableView Cell
         static let featuredTableCell = "FeaturedTableViewCell"
@@ -93,6 +96,7 @@ class Constants {
         static let resourceTableCell = "ResourceTableViewCell"
         static let favoritesTableCell = "FavoritesTableViewCell"
         static let wishListTableViewCell = "WishListTableViewCell"
+        static let inboxTableViewCell = "InboxTableViewCell"
         
         // CollectionView Cell
         static let categoryCollectionCell = "CategoryCollectionViewCell"

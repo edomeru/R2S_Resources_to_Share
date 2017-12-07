@@ -11,9 +11,10 @@ import RealmSwift
 import SwiftSpinner
 import Kingfisher
 import MIBadgeButton_Swift
+import Floaty
 
 class WishlistViewController: BaseViewController {
-    
+    var floaty = Floaty()
     var wishlistView = WishlistView()
     var wishList: Results<WishList>!
     var screenSize: CGRect!
@@ -28,10 +29,12 @@ class WishlistViewController: BaseViewController {
         fetchData()
      self.title = "Wishlist"
         
+        
+       
     
     }
     
-    private func fetchData(){
+     func fetchData(){
         WishListService.getAllWishList(onCompletion: { statusCode, message in
             
             print("\(statusCode!)" + " WISH CODE"  )
@@ -39,6 +42,7 @@ class WishlistViewController: BaseViewController {
             if statusCode == 200 {
                 self.wishList = WishListDao.get()
                 self.initUILayout()
+       
             }
         })
     
@@ -59,8 +63,19 @@ class WishlistViewController: BaseViewController {
         self.wishlistView.WishListTableView.delegate = self
         self.wishlistView.WishListTableView.dataSource = self
         
+       
+        floaty.addItem(title: "Hello, World!")
+        floaty.buttonColor = UIColor.blue
+        floaty.plusColor = UIColor.white
+        floaty.fabDelegate = self
+        
+        self.wishlistView.addSubview(floaty)
+        
+        
         
     }
+    
+  
     
     private func refreshData() {
         let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
@@ -106,6 +121,8 @@ class WishlistViewController: BaseViewController {
             }
         }
     }
+    
+    
 }
 
 
@@ -166,8 +183,17 @@ extension WishlistViewController: WishlistViewDelegate {
         print("SEGMENTED",sender.selectedSegmentIndex)
         if sender.selectedSegmentIndex == 0 {
             
-            self.wishList = WishListDao.get()
-            self.wishlistView.WishListTableView.reloadData()
+//            if wishList.count != WishListDao.get().count {
+//                
+//                fetchData()
+//                self.wishlistView.WishListTableView.reloadData()
+//                
+//            }else{
+            
+                self.wishList = WishListDao.get()
+                self.wishlistView.WishListTableView.reloadData()
+            
+            //}
             
         }else{
             
@@ -178,5 +204,35 @@ extension WishlistViewController: WishlistViewDelegate {
         
     }
     
+
     
+    
+}
+
+
+extension WishlistViewController: FloatyDelegate {
+
+    
+    func floatyWillOpen(_ floaty: Floaty) {
+        print("Floaty Will Open")
+        
+        performSegue(withIdentifier: "WishToAddWishListSegue", sender: self)
+    }
+    
+    func floatyDidOpen(_ floaty: Floaty) {
+        print("Floaty Did Open")
+        self.floaty.close()
+        
+    }
+    
+    func floatyWillClose(_ floaty: Floaty) {
+        print("Floaty Will Close")
+    }
+    
+    func floatyDidClose(_ floaty: Floaty) {
+        print("Floaty Did Close")
+    }
+
+
+
 }

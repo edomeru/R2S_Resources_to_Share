@@ -10,32 +10,45 @@ import UIKit
 import RealmSwift
 import SwiftValidator
 import SwiftSpinner
+import Foundation
+import TagListView
 
-class WishlistAddViewController: BaseViewController {
+class WishlistAddViewController: BaseViewController, TagListViewDelegate {
     
- var wishlistAdd = WishlistAdd()
- let validator = Validator()
-    //var someDict = [String : AnyObject]()
+    var wishlistAdd = WishlistAdd()
+    let validator = Validator()
+    var subcategoryNames = [String]()
+     var someDict = [String : AnyObject]()
+    var subCategoryDictionary = [String : AnyObject]()
     override func viewDidLoad() {
         super.viewDidLoad()
         
-         //initUILayout()
-         //self.setupValidator()
+        
+        
+        
+        
+        initUILayout()
+        self.setupValidator()
         self.title = "Add New Wishlist"
-//      self.wishlistAdd.delegate = self
-//       someDict["main_category_name"] = "Utensils" as AnyObject
-//        someDict["main_category_id"] = 5 as AnyObject
-//        someDict["subcategory_name"] = "cup" as AnyObject
-//        someDict["subcategory_id"] = 5 as AnyObject
-//        
-//        WishListService.createWishlist(category: someDict , name: "knife", description: "shiny") { statusCode, message in
-//            print("WISH CODE",statusCode)
-//            print("WISH MSG",message)
-//            
-//        }
+        self.wishlistAdd.delegate = self
+               someDict["main_category_name"] = "Guns" as AnyObject
+                someDict["main_category_id"] = 5 as AnyObject
+                someDict["subcategory_name"] = "silver bullet" as AnyObject
+                someDict["subcategory_id"] = 5 as AnyObject
+        
+                WishListService.createWishlist(category: someDict , name: "Dove", description: "white") { statusCode, message in
+                    print("WISH CODE",statusCode)
+                    print("WISH MSG",message)
+        
+                }
+        
+        
+        
+        
+        
         
     }
-
+    
     private func initUILayout() {
         self.wishlistAdd = self.loadFromNibNamed(nibNamed: Constants.xib.wishlistAddView) as! WishlistAdd
         self.view = self.wishlistAdd
@@ -43,13 +56,107 @@ class WishlistAddViewController: BaseViewController {
         
         self.wishlistAdd.Description.delegate = self
         self.wishlistAdd.Name.delegate = self
+        
+        
+        self.wishlistAdd.categoryUITextField.delegate = self
+        
+        self.wishlistAdd.categorySearchTextField.addTarget(self, action: Selector("configureSimpleSearchTextField"), for: UIControlEvents.editingDidBegin)
+        
+        
+        self.wishlistAdd.CategoryTagListView.delegate = self
+        
+        
+        
+        
+        self.wishlistAdd.CategoryTagListView.addTag("TagListView")
+        self.wishlistAdd.CategoryTagListView.addTag("TEAChart")
+        self.wishlistAdd.CategoryTagListView.addTag("To Be Removed")
+        self.wishlistAdd.CategoryTagListView.addTag("To Be Removed")
+        self.wishlistAdd.CategoryTagListView.addTag("Quark Shell")
+        self.wishlistAdd.CategoryTagListView.removeTag("To Be Removed")
+        
+        
+        self.wishlistAdd.CategoryTagListView.addTag("TAG TO BE REMOVED").onTap = { [weak self] tagView in
+            self?.wishlistAdd.CategoryTagListView.removeTagView(tagView)
+            self?.wishlistAdd.categoryUITextField.addSubview(tagView)
+        }
+        
+        
+        
+        
+        
+        //self.wishlistAdd.CategoryTagListView.frame = self.wishlistAdd.categoryUITextField.frame
+        
+        
+        
+        
     }
-
+    
+    func configureSimpleSearchTextField() {
+        // Start visible even without user's interaction as soon as created - Default: false
+        self.wishlistAdd.categorySearchTextField.startVisibleWithoutInteraction = true
+        // Set data source
+        self.wishlistAdd.categorySearchTextField.startVisible = true
+        let countries = getAllCscsid()
+         print("categories configureSimpleSearchTextField", countries)
+          self.wishlistAdd.categorySearchTextField.filterStrings(countries)
+        
+        self.wishlistAdd.categorySearchTextField.itemSelectionHandler = { filteredResults, itemPosition in
+            // Just in case you need the item position
+            let item = filteredResults[itemPosition]
+            print("Item at position \(itemPosition): \(item.title)")
+            
+            // Do whatever you want with the picked item
+             self.wishlistAdd.CategoryTagListView.addTag(item.title)
+        }
+        
+        
+    }
+    
+    fileprivate func getAllCscsid() -> [String] {
+        
+        
+        let categories =  CategoryService.getCategories()
+        
+        for category in categories {
+            print("CATEGORIES IDS",category.id)
+            let subcategories =  CategoryService.getSubcategoriesBy(categoryId: category.id)
+            for subcategory in subcategories {
+                print("SUBCATEGORIES" + "\(subcategory.name )" + "\(subcategory.id)" + " " + "\(subcategory.parentCategory?.name)" + "\(subcategory.parentCategory?.id)" )
+                
+                subcategoryNames.append(subcategory.name)
+            }
+            
+        }
+        return subcategoryNames
+    }
+    
     private func setupValidator() {
         self.validator.registerField(self.wishlistAdd.Description, rules: [RequiredRule()])
         self.validator.registerField(self.wishlistAdd.Name, rules: [RequiredRule()])
     }
-
+    
+    
+    
+    // MARK: TagListViewDelegate
+    func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
+        print("Tag pressed: \(title), \(sender)")
+        tagView.isSelected = !tagView.isSelected
+    }
+    
+    func tagRemoveButtonPressed(_ title: String, tagView: TagView, sender: TagListView) {
+        print("Tag Remove pressed: \(title), \(sender)")
+        sender.removeTagView(tagView)
+    }
+    
+    
+    func performAction() {
+        
+        self.wishlistAdd.CategoryTagListView.addTag(self.wishlistAdd.categoryUITextField.text!)
+        
+        
+    }
+    
 }
 
 
@@ -57,9 +164,10 @@ class WishlistAddViewController: BaseViewController {
 extension WishlistAddViewController: WishlistAddViewDelegate {
     func submitButtonOnPressed(sender: AnyObject){
         
-       print("HELLLLOOOOOOOOO")
+        print("HELLLLOOOOOOOOO")
         self.wishlistAdd.endEditing(true)
         //self.validator.validate(self)
+        
         
     }
 }
@@ -71,13 +179,13 @@ extension WishlistAddViewController: WishlistAddViewDelegate {
 //            SwiftSpinner.show("Please wait...")
 //            let name = self.wishlistAdd.Name.text!
 //            let desc = self.wishlistAdd.Description.text!
-//        
+//
 //            WishListService.createWishlist(category: self.fruits, name: name, description: desc) { statusCode, message in
 //                SwiftSpinner.hide()
 //                if statusCode == 200 {
 ////                    self.performSegue(withIdentifier: Constants.segue.loginToHome, sender: self)
 //                    print("WISHLIST ADDED SUCCESSFULLY")
-//                    
+//
 //                } else {
 //                    Utility.showAlert(title: "Login Error", message: message!, targetController: self)
 //                }
@@ -86,7 +194,7 @@ extension WishlistAddViewController: WishlistAddViewDelegate {
 //            Utility.showAlert(title: "", message: "No internet connection.", targetController: self)
 //        }
 //    }
-//    
+//
 //    func validationFailed(_ errors: [(Validatable, ValidationError)]) {
 //        for (field, _) in errors {
 //            if let field =  field as? UITextField {
@@ -116,10 +224,18 @@ extension WishlistAddViewController: UITextFieldDelegate {
             print("wishlistAdd.Neme")
             self.wishlistAdd.Name.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
             self.wishlistAdd.Name.backgroundColor = UIColor.white
-
+            
         default:
             print("default")
         }
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
+        print("textFieldShouldReturn")
+        performAction()
+        textField.resignFirstResponder()
+        return true
     }
 }
 

@@ -57,10 +57,11 @@
 		9B5E23931FD4570E00A59FFF /* WishListDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E23921FD4570E00A59FFF /* WishListDetailedViewController.swift */; };
 		9B5E23951FD45C1000A59FFF /* WishListDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B5E23941FD45C1000A59FFF /* WishListDetailView.xib */; };
 		9B5E23971FD45DB300A59FFF /* WishListDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E23961FD45DB300A59FFF /* WishListDetailView.swift */; };
-		9B740C681FD8F7D4003372DF /* WishListAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B740C671FD8F7D4003372DF /* WishListAddView.xib */; };
 		9B740C6A1FD8F927003372DF /* WishListAddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B740C691FD8F927003372DF /* WishListAddController.swift */; };
 		9B740C6D1FD90A72003372DF /* WishListAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B740C6C1FD90A72003372DF /* WishListAdd.swift */; };
 		9B75D2D81FD59E10002EF175 /* WishListAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B75D2D71FD59E10002EF175 /* WishListAccount.swift */; };
+		9BB84E141FDBFF8700078CDF /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BB84E131FDBFF8700078CDF /* countries.json */; };
+		9BBBD8C91FDA7EA900BCA018 /* WishListAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B740C671FD8F7D4003372DF /* WishListAddView.xib */; };
 		9BC70F221F8E247600D8CCED /* ResourceDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC70F211F8E247600D8CCED /* ResourceDao.swift */; };
 		9BC70F241F8E34FC00D8CCED /* ResourceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC70F231F8E34FC00D8CCED /* ResourceService.swift */; };
 		9BCCD5F91FD13871001A9507 /* NewResourceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BCCD5F81FD13871001A9507 /* NewResourceView.xib */; };
@@ -207,6 +208,9 @@
 		9B740C691FD8F927003372DF /* WishListAddController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListAddController.swift; path = Controllers/WishListAddController.swift; sourceTree = "<group>"; };
 		9B740C6C1FD90A72003372DF /* WishListAdd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListAdd.swift; path = "View Classes/WishListAdd.swift"; sourceTree = "<group>"; };
 		9B75D2D71FD59E10002EF175 /* WishListAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListAccount.swift; path = Models/WishListAccount.swift; sourceTree = "<group>"; };
+		9BB84E101FDBC65D00078CDF /* SearchTextField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SearchTextField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9BB84E131FDBFF8700078CDF /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
+		9BBBD8C11FDA59D000BCA018 /* TagListView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TagListView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BC70F211F8E247600D8CCED /* ResourceDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceDao.swift; path = Dao/ResourceDao.swift; sourceTree = "<group>"; };
 		9BC70F231F8E34FC00D8CCED /* ResourceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceService.swift; path = Services/ResourceService.swift; sourceTree = "<group>"; };
 		9BCCD5F81FD13871001A9507 /* NewResourceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewResourceView.xib; path = Xibs/NewResourceView.xib; sourceTree = "<group>"; };
@@ -710,6 +714,8 @@
 		B9FE3FDA1E77E32A003CDE74 = {
 			isa = PBXGroup;
 			children = (
+				9BB84E101FDBC65D00078CDF /* SearchTextField.framework */,
+				9BBBD8C11FDA59D000BCA018 /* TagListView.framework */,
 				B9FE3FE51E77E32A003CDE74 /* R2S */,
 				B9FE3FFA1E77E32B003CDE74 /* R2STests */,
 				B9FE40051E77E32B003CDE74 /* R2SUITests */,
@@ -732,6 +738,7 @@
 		B9FE3FE51E77E32A003CDE74 /* R2S */ = {
 			isa = PBXGroup;
 			children = (
+				9BB84E131FDBFF8700078CDF /* countries.json */,
 				B9FE3FE61E77E32A003CDE74 /* AppDelegate.swift */,
 				B9FE3FED1E77E32A003CDE74 /* Assets.xcassets */,
 				B9FE3FF21E77E32A003CDE74 /* Info.plist */,
@@ -890,12 +897,12 @@
 			files = (
 				B9FE3FF11E77E32A003CDE74 /* LaunchScreen.storyboard in Resources */,
 				9BCCD5F91FD13871001A9507 /* NewResourceView.xib in Resources */,
-				9B740C681FD8F7D4003372DF /* WishListAddView.xib in Resources */,
 				B9E267D91E7D41F500BB9900 /* FeaturedTableViewCell.xib in Resources */,
 				B9E267821E79421000BB9900 /* RegisterView.xib in Resources */,
 				9B5E23861FD3F2B200A59FFF /* WishListTableViewCell.xib in Resources */,
 				B9E267D31E7D41D700BB9900 /* FeaturedCarouselItemView.xib in Resources */,
 				B9E267D51E7D41E700BB9900 /* HomeView.xib in Resources */,
+				9BBBD8C91FDA7EA900BCA018 /* WishListAddView.xib in Resources */,
 				B9FE3FEE1E77E32A003CDE74 /* Assets.xcassets in Resources */,
 				2C63EF101F027541003573A7 /* AccountView.xib in Resources */,
 				B99151BA1E77F71200949529 /* LoginView.xib in Resources */,
@@ -914,6 +921,7 @@
 				B9E267B91E7BAEC400BB9900 /* BrowseView.xib in Resources */,
 				B9E267BB1E7BAF9500BB9900 /* SubCategoryCollectionViewCell.xib in Resources */,
 				2C93C0CD1F0F9659009B7179 /* ResourceTableViewCell.xib in Resources */,
+				9BB84E141FDBFF8700078CDF /* countries.json in Resources */,
 				B9E267DF1E7D490100BB9900 /* WelcomeView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

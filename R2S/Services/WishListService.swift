@@ -51,7 +51,7 @@ class WishListService {
                         account.image_url = accnt["image_url"].stringValue
                         
                         wishList.account = account
-                        print("WISHLIST DAO",wishList)
+                        
                         WishListDao.add(wishList)
                     }
                 } else {

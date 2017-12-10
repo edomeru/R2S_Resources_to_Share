@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import TagListView
+import SearchTextField
 
 protocol WishlistAddViewDelegate: class {
     func submitButtonOnPressed(sender: AnyObject)
@@ -18,7 +19,9 @@ protocol WishlistAddViewDelegate: class {
 class WishlistAdd: BaseUIView {
   weak var delegate: WishlistAddViewDelegate?
     
-    @IBOutlet weak var Category: UITextField!
+    @IBOutlet weak var categoryUITextField: UITextField!
+   
+    @IBOutlet weak var CategoryTagListView: TagListView!
     
     @IBOutlet weak var Name: UITextField!
     
@@ -29,4 +32,5 @@ class WishlistAdd: BaseUIView {
         delegate?.submitButtonOnPressed(sender: sender as AnyObject)
     }
     
+    @IBOutlet weak var categorySearchTextField: SearchTextField!
 }

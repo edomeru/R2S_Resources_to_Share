@@ -236,6 +236,7 @@ class ResourceService {
     
     static func getFavorites(id: Int,onCompletion: @escaping (Int?, String?) -> Void) {
         var message = ""
+        print("id getFavorites", id)
         UserRemote.favorites(id: "\(id)", onCompletion: { jsonData, statusCode in
             DispatchQueue.global(qos: .background).async {
                 print("TEST BWAHAHHAHA ", jsonData)
@@ -243,7 +244,7 @@ class ResourceService {
                     message = ""
                     for (_, resource):(String, JSON) in jsonData {
                         
-                        let newResource = Resource()
+                        let newResource = Favorites()
                         newResource.id = resource["id"].intValue
                         newResource.resourceCode = resource["resource_code"].stringValue
                         newResource.snapshotCode = resource["snapshot_code"].stringValue
@@ -300,11 +301,16 @@ class ResourceService {
                             newResource.categories.append(cat)
                         }
                         
-                        let favorite = Favorites()
-                        favorite.id = resource["id"].intValue
-                        FavoritesDao.isFavorite(id: favorite.id)
-                        ResourceDao.deleteAll()
-                        ResourceDao.add(newResource)
+                          print("FAVORITES SERVICE", newResource)
+                        FavoritesDao.add(newResource)
+                        
+                        
+                      
+//                        let favorite = Favorites()
+//                        favorite.id = resource["id"].intValue
+                        //FavoritesDao.isFavorite(id: favorite.id)
+//                        ResourceDao.deleteAll()
+//                        ResourceDao.add(newResource)
                     }
                 } else {
                     message = jsonData["message"].stringValue

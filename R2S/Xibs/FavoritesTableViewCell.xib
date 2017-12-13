@@ -42,10 +42,6 @@
                         <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_favorite_border" translatesAutoresizingMaskIntoConstraints="NO" id="b4h-A7-CBH">
-                        <rect key="frame" x="329" y="287" width="38" height="33"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEJ-nq-ClU">
                         <rect key="frame" x="8" y="266" width="234" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -53,12 +49,24 @@
                         <color key="textColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="icons8-heart-pink" translatesAutoresizingMaskIntoConstraints="NO" id="b4h-A7-CBH">
+                        <rect key="frame" x="311" y="277" width="38" height="33"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    </imageView>
                 </subviews>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="descriptionTextUILabel" destination="mV5-cz-2hK" id="Av4-Jv-FMW"/>
+                <outlet property="favDateUILabel" destination="KZ8-9L-xDN" id="qrZ-g7-MB6"/>
+                <outlet property="favImage" destination="H91-V1-seB" id="nLW-Qr-zk5"/>
+                <outlet property="favTitleUILabel" destination="4F4-pE-spj" id="Uw3-5C-1dG"/>
+                <outlet property="favoriteIconUIImageView" destination="b4h-A7-CBH" id="xo3-UL-wgC"/>
+                <outlet property="priceUILabel" destination="hEJ-nq-ClU" id="oVX-iN-ex8"/>
+            </connections>
             <point key="canvasLocation" x="-954.5" y="305"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="ic_favorite_border" width="24" height="24"/>
+        <image name="icons8-heart-pink" width="40" height="40"/>
     </resources>
 </document>

@@ -38,5 +38,28 @@ static func get() -> Results<WishList> {
         let wish = realm.objects(WishList.self).filter(predicate)
         return wish
     }
+    
+    
+    static func addWishListFromTags(_ wishlist: WishListTags) {
+        print("addWishListFromTags",wishlist)
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(wishlist, update: true)
+        }
+    }
+    
+    static func getWishListFromTags(subcategory_name: String) -> Results<WishListTags> {
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "subcategory_name = %@", subcategory_name)
+        let wish = realm.objects(WishListTags.self).filter(predicate)
+        return wish
+    }
+    
+    static func getCategoryWishListFromTags(subcategory_name: String) -> Results<WishListTags> {
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "subcategory_name = %@", subcategory_name)
+        let wish = realm.objects(WishListTags.self).filter(predicate)
+        return wish
+    }
 
 }

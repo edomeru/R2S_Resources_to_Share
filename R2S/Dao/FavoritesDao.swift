@@ -23,4 +23,18 @@ class FavoritesDao {
         return false
     }
     
+    static func add(_ category: Favorites) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(category, update: true)
+        }
+    }
+    
+    static func get() -> Results<Favorites> {
+        let realm = try! Realm()
+        let favorites = realm.objects(Favorites.self)
+        return favorites
+    }
+
+    
 }

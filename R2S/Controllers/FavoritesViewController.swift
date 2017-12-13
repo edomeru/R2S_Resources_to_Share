@@ -15,31 +15,33 @@ import MIBadgeButton_Swift
 class FavoritesViewController: BaseViewController {
     
     var favoritesView = FavoritesView()
-    
+    var selectedResourceId: Int!
     var screenSize: CGRect!
     var screenWidth: CGFloat!
     var screenHeight: CGFloat!
-    var categories: Results<Category>!
+    var favorites: Results<Favorites>!
     var selectedCategoryId: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.initUILayout()
-    
+        
+          fetchData()
         self.title = "Favorites"
-                ResourceService.getFavorites(id: UserHelper.getId()! , onCompletion: { statusCode, message in
         
-                    print("\(statusCode!)" + " FAVORITES CODE"  )
-                    print("\(message!)" + " FAVORITES MSG"  )
-        
-                })
         
         
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func fetchData(){
+        ResourceService.getFavorites(id: UserHelper.getId()! , onCompletion: { statusCode, message in
+            let favorites = FavoritesDao.get()
+            
+            print("FAV CONTROLLER", favorites )
+            self.favorites = favorites
+            self.initUILayout()
+            
+        })
+    
     }
     
     // MARK: - Private Functions
@@ -94,15 +96,21 @@ class FavoritesViewController: BaseViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             switch identifier {
-            case Constants.segue.homeToResourceSegue:
-                let destinationVC = segue.destination as! BrowseViewController
-                destinationVC.selectedCategoryId = selectedCategoryId
-                destinationVC.selectedCategoryName = CategoryDao.getOneBy(categoryId: selectedCategoryId)?.name
+            case "FavoritesToDetailSegue":
+                let destinationVC = segue.destination as! ResourceViewController
+                destinationVC.selectedResourceId = selectedCategoryId
+                
             default:
                 print("default");
             }
         }
     }
+    
+    func myFunction(gesture: UITapGestureRecognizer) {
+        print("it worked",gesture)
+    }
+
+   
 }
 
 
@@ -117,9 +125,8 @@ extension FavoritesViewController: UITableViewDelegate{
 extension FavoritesViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.favoritesView.FavoritesTableView {
-            //return self.resources.count
             
-            return 2
+            return self.favorites.count
         }
         return 0
     }
@@ -128,33 +135,59 @@ extension FavoritesViewController: UITableViewDataSource{
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavoritesTableViewCell", for: indexPath) as! FavoritesTableViewCell
         
         
-//        cell.titleLabel.text =  resources[indexPath.row].name
+        cell.favTitleUILabel.text =  favorites[indexPath.row].name
+        
+        
+        
+        cell.favDateUILabel.text = favorites[indexPath.row].createdDate
+        cell.priceUILabel.text = "$ \(favorites[indexPath.row].price).00"
+        cell.descriptionTextUILabel.text = favorites[indexPath.row].descriptionText
+        
+        
+        for img in favorites[indexPath.row].image {
+            
+            cell.favImage.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
+            cell.favImage.contentMode = .scaleAspectFit // OR .scaleAspectFill
+            cell.favImage.clipsToBounds = true
+            cell.favImage.kf.setImage(with:  URL(string: img.image))
+            
+        }
+        
+        
+        
+//        cell.favoriteIconUIImageView.isUserInteractionEnabled = true
+//        cell.favoriteIconUIImageView.tag = indexPath.row
 //        
-//        
-//        
-//        cell.dateLabel.text = resources[indexPath.row].createdDate
-//        cell.priceLabel.text = "$ \(resources[indexPath.row].price).00"
-//        cell.infoLabel.text = resources[indexPath.row].descriptionText
-//        
-//        
-//        for img in resources[indexPath.row].image {
-//            
-//            cell.productImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
-//            cell.productImageView.contentMode = .scaleAspectFit // OR .scaleAspectFill
-//            cell.productImageView.clipsToBounds = true
-//            cell.productImageView.kf.setImage(with:  URL(string: img.image))
-//            
-//        }
-//        
-//        Moa.settings.cache.requestCachePolicy = .useProtocolCachePolicy
+//        let tapped = UITapGestureRecognizer(target: self, action: #selector(FavoritesViewController.myFunction))
+//        tapped.numberOfTapsRequired = 1
+//        cell.favoriteIconUIImageView.addGestureRecognizer(tapped)
+        
+        
+        //cell.favoriteIconUIImageView.gestureRecognizers
+        
+
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let resource = resources[indexPath.item]
-//        selectedResourceId  = resource.id
-//        // print (resource.id)
-//        performSegue(withIdentifier: Constants.segue.browseToResourceSegue, sender: self)
+        let cell = tableView.cellForRow(at: indexPath) as! FavoritesTableViewCell
+       
+    
+        
+         cell.favoriteIconUIImageView.image = UIImage(named: "icons8-heart-blank")
+        
+//        let favorite = favorites[indexPath.item]
+//        selectedCategoryId  = favorite.id
+//         print ("favorite.id",favorite.id)
+//        performSegue(withIdentifier: "FavoritesToDetailSegue", sender: self)
+        
+        
+    
+       }
+    
+     
+    
+    
     }
-}
+
 

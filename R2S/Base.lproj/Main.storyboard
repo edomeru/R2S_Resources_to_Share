@@ -12,7 +12,7 @@
         <scene sceneID="5gd-tc-SuB">
             <objects>
                 <navigationController id="gyt-qp-uPB" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="V3o-gx-w46">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V3o-gx-w46">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -194,7 +194,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VAa-4I-0fT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3169" y="-2166"/>
+            <point key="canvasLocation" x="-185" y="-2682"/>
         </scene>
         <!--Me-->
         <scene sceneID="LFv-gX-3F4">
@@ -228,6 +228,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="ZMt-9q-k3G" kind="show" identifier="FavoritesToDetailSegue" id="qTV-HJ-SyU"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zNF-LI-qEX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -349,5 +352,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="xPI-oA-IOK"/>
+        <segue reference="qTV-HJ-SyU"/>
     </inferredMetricsTieBreakers>
 </document>

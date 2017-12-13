@@ -14,9 +14,15 @@ class FavoritesTableViewCell: UITableViewCell {
         super.awakeFromNib()
 }
     
+    @IBOutlet weak var favImage: UIImageView!
     
+    @IBOutlet weak var favDateUILabel: UILabel!
     
+    @IBOutlet weak var favTitleUILabel: UILabel!
     
+    @IBOutlet weak var favoriteIconUIImageView: UIImageView!
+    @IBOutlet weak var descriptionTextUILabel: UILabel!
 
+    @IBOutlet weak var priceUILabel: UILabel!
 }
 

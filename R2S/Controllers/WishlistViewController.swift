@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import SwiftSpinner
+import SwiftyJSON
 import Kingfisher
 import MIBadgeButton_Swift
 import Floaty
@@ -29,9 +30,20 @@ class WishlistViewController: BaseViewController {
         fetchData()
      self.title = "Wishlist"
         
-        
+       NotificationCenter.default.addObserver(self, selector: #selector(WishlistViewController.reloadTableWishList(_:)), name: NSNotification.Name(rawValue: "pass"), object: nil)
        
     
+    }
+    
+    
+    func reloadTableWishList(_ notification: Notification)  {
+        print("DATA",notification.object)
+        wishList = notification.object as? Results<WishList>!
+        print("reloadTable", wishList)
+        //self.initUILayout()
+        self.wishlistView.WishListTableView.reloadData()
+
+        
     }
     
      func fetchData(){
@@ -41,12 +53,15 @@ class WishlistViewController: BaseViewController {
             print("\(message!)" + " WISH MSG"  )
             if statusCode == 200 {
                 self.wishList = WishListDao.get()
+            
                 self.initUILayout()
-       
+               
             }
         })
     
     }
+    
+   
     
     // MARK: - Private Functions
     private func initUILayout() {
@@ -71,7 +86,7 @@ class WishlistViewController: BaseViewController {
         
         self.wishlistView.addSubview(floaty)
         
-        
+        self.wishlistView.WishListTableView.reloadData()
         
     }
     
@@ -129,7 +144,7 @@ class WishlistViewController: BaseViewController {
 // MARK: - UITableViewDelegate
 extension WishlistViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return 60
     }
 }
 // MARK: - UITableViewDelegate

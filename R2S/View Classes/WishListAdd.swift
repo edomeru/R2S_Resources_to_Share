@@ -10,8 +10,10 @@ import UIKit
 import TagListView
 import SearchTextField
 
+
 protocol WishlistAddViewDelegate: class {
     func submitButtonOnPressed(sender: AnyObject)
+  
     
 }
 
@@ -33,4 +35,16 @@ class WishlistAdd: BaseUIView {
     }
     
     @IBOutlet weak var categorySearchTextField: SearchTextField!
+    
+    
+    @IBOutlet weak var checkboxUICCheckbox: CCheckbox!
+ 
+
+    @IBOutlet weak var subCategoryCustom: UITextField!
+    
+    @IBOutlet weak var mainCategory: SearchTextField!
+
+    
+    
+    
 }

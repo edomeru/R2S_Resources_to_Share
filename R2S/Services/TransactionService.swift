@@ -31,8 +31,11 @@ class TransactionService {
                         transaction.id = transactions["id"].intValue
                         transaction.referenceCode = transactions["reference_code"].stringValue
                         transaction.proposal = transactions["proposal"].stringValue
-                        transaction.bookingStartDate = transactions["booking_start_date"].stringValue
-                        transaction.bookingEndDate = transactions["booking_end_date"].stringValue
+                        
+                        
+                        transaction.bookingStartDate = Utility.dateToString(dateString: Utility.stringToDate(dateString: transactions["booking_start_date"].stringValue))
+                        
+                        transaction.bookingEndDate = Utility.dateToString(dateString: Utility.stringToDate(dateString: transactions["booking_end_date"].stringValue))
                         transaction.createdDate = transactions["created_date"].stringValue
                         transaction.buyer = transactions["buyer"].stringValue
                         transaction.quantity = transactions["quantity"].stringValue
@@ -40,7 +43,12 @@ class TransactionService {
                         
                         let resources = transactions["resource"]
                         let res = Resource()
-                        res.createdDate = resources["created_date"].stringValue
+                        
+                       print("DATEEEEEE",Utility.dateToString(dateString: Utility.stringToDate(dateString: resources["created_date"].stringValue))) 
+                        
+                        
+                        res.createdDate = Utility.dateToString(dateString: Utility.stringToDate(dateString: resources["created_date"].stringValue))
+                        
                         res.id = resources["id"].intValue
                         res.status = resources["status"].stringValue
                         res.imageUrl = resources["image_url"].stringValue

@@ -47,4 +47,40 @@ class Utility {
         headersWithAuth["Authorization"] = "Basic \(base64LoginString)"
         return headersWithAuth
     }
+    
+    class func stringToDate(dateString: String?) -> Date {
+        if dateString != ""{
+            let dateFormatter = DateFormatter()
+            // dateFormatter.timeZone = TimeZone(abbreviation: "UTC")!
+            dateFormatter.dateFormat = "dd/M/yyyy, H:mm a"
+            let date = dateFormatter.date(from: dateString!)
+            
+            
+            /////TEST
+            
+            let calendar = NSCalendar.current
+            if let dateTriggered = date {
+                let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: dateTriggered)
+                let finalDate = calendar.date(from:components)
+                
+                print("INSIDE DATE FUNCTION",finalDate!)
+                return date!
+            }
+            return Date()
+        }
+        return Date()
+    }
+    
+    class func dateToString(dateString: Date?) -> String {
+        if dateString != nil{
+            let dateFormatter = DateFormatter()
+            // dateFormatter.timeZone = NSTimeZone(name: "UTC") as! TimeZone
+            
+            dateFormatter.dateFormat = "dd/M/yyyy, H:mm a"
+            let stringDate = dateFormatter.string(from: dateString!)
+            
+            return stringDate
+        }
+        return String()
+    }
 }

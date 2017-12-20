@@ -48,6 +48,9 @@ class ResourceDao {
         }
     }
     
+   
+
+    
     static func deleteAll() {
         let realm = try! Realm()
         try! realm.write {
@@ -57,6 +60,7 @@ class ResourceDao {
     }
     
     static func getOneBy(id: Int) -> Resource? {
+        print("RESOURCE ID", id)
         let realm = try! Realm()
         let predicate = NSPredicate(format: "id = %d", id)
         let user = realm.objects(Resource.self).filter(predicate).first

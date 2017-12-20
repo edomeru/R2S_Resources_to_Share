@@ -25,6 +25,15 @@ class ResourceRemote{
         })
 
     }
+    static func removeFavoriteObject(params: [String:AnyObject], onCompletion: @escaping (JSON, Int?) -> Void) {
+        let urlString = Constants.api.user.favorites.replacingOccurrences(of: "{id}", with: String(describing: UserHelper.getId()!))
+        print(urlString)
+        ApiRequestManager.sharedInstance.doDeleteRequest(urlString: urlString, params: params, headers: Utility.getHeadersWithAuth(), onCompletion: { jsonData, statusCode in
+            onCompletion(jsonData, statusCode)
+        })
+        
+    }
+    
     
     static func byCategory(categoty_id: String, onCompletion: @escaping (JSON, Int?) -> Void) {
         let urlString = Constants.api.user.transactions.replacingOccurrences(of: "{id}", with: String(describing: UserHelper.getId()!))

@@ -133,4 +133,35 @@ class ApiRequestManager {
                 }
         }
     }
+    
+    func doDeleteRequest(urlString: String,
+                      params: [String: AnyObject],
+                      headers: HTTPHeaders,
+                      onCompletion: @escaping ServiceResponse) {
+        NetworkManager.sharedInstance.SessionManager().request(urlString,
+                                                               method: .delete,
+                                                               parameters: params,
+                                                               encoding: JSONEncoding.default,
+                                                               headers: headers)
+            .responseData { response in
+                switch response.result {
+                case .success:
+                    let statusCode = response.response?.statusCode
+                    let responseBody = String(data: response.result.value!, encoding: .utf8)
+                    var jsonData = JSON.init(parseJSON: responseBody!)
+                    
+                    
+                    if responseBody == nil {
+                        let tempJsonData: JSON = ["message": ""]
+                        jsonData = tempJsonData
+                    } else if jsonData == JSON.null && responseBody != nil {
+                        let tempJsonData: JSON = ["message": responseBody!]
+                        jsonData = tempJsonData
+                    }
+                    onCompletion(jsonData, statusCode)
+                case .failure:
+                    onCompletion(JSON(["message": "Network connection failed."]), 1000)
+                }
+        }
+    }
 }

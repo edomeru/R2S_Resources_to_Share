@@ -28,6 +28,8 @@
 		9B1F86CE1FD6B329005C575E /* InboxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B1F86CD1FD6B329005C575E /* InboxView.xib */; };
 		9B1F86D11FD6B38B005C575E /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1F86D01FD6B38B005C575E /* InboxView.swift */; };
 		9B1F86D31FD6B526005C575E /* InboxDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1F86D21FD6B526005C575E /* InboxDao.swift */; };
+		9B2BB2061FE90E0E009EA173 /* imageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B2BB2051FE90E0D009EA173 /* imageCollectionCell.xib */; };
+		9B2BB20E1FE92165009EA173 /* ImageResourcesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2BB20D1FE92165009EA173 /* ImageResourcesCollectionViewCell.swift */; };
 		9B3ED54A1FD2C8D700627679 /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3ED5481FD2C8D700627679 /* FavoritesViewController.swift */; };
 		9B3ED54B1FD2C8D700627679 /* WishlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3ED5491FD2C8D700627679 /* WishlistViewController.swift */; };
 		9B3ED54E1FD2C8F400627679 /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B3ED54C1FD2C8F400627679 /* FavoritesView.swift */; };
@@ -63,6 +65,7 @@
 		9B740C6A1FD8F927003372DF /* WishListAddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B740C691FD8F927003372DF /* WishListAddController.swift */; };
 		9B740C6D1FD90A72003372DF /* WishListAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B740C6C1FD90A72003372DF /* WishListAdd.swift */; };
 		9B75D2D81FD59E10002EF175 /* WishListAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B75D2D71FD59E10002EF175 /* WishListAccount.swift */; };
+		9B8E82FF1FE7CA58004F50D2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E82FE1FE7CA58004F50D2 /* CustomButton.swift */; };
 		9BB84E141FDBFF8700078CDF /* countries.json in Resources */ = {isa = PBXBuildFile; fileRef = 9BB84E131FDBFF8700078CDF /* countries.json */; };
 		9BBBD8C91FDA7EA900BCA018 /* WishListAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B740C671FD8F7D4003372DF /* WishListAddView.xib */; };
 		9BC70F221F8E247600D8CCED /* ResourceDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC70F211F8E247600D8CCED /* ResourceDao.swift */; };
@@ -179,6 +182,8 @@
 		9B1F86CD1FD6B329005C575E /* InboxView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InboxView.xib; path = Xibs/InboxView.xib; sourceTree = "<group>"; };
 		9B1F86D01FD6B38B005C575E /* InboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InboxView.swift; path = "View Classes/InboxView.swift"; sourceTree = "<group>"; };
 		9B1F86D21FD6B526005C575E /* InboxDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InboxDao.swift; path = Dao/InboxDao.swift; sourceTree = "<group>"; };
+		9B2BB2051FE90E0D009EA173 /* imageCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = imageCollectionCell.xib; path = Xibs/imageCollectionCell.xib; sourceTree = "<group>"; };
+		9B2BB20D1FE92165009EA173 /* ImageResourcesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageResourcesCollectionViewCell.swift; path = "View Classes/ImageResourcesCollectionViewCell.swift"; sourceTree = "<group>"; };
 		9B3ED5481FD2C8D700627679 /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesViewController.swift; path = Controllers/FavoritesViewController.swift; sourceTree = "<group>"; };
 		9B3ED5491FD2C8D700627679 /* WishlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishlistViewController.swift; path = Controllers/WishlistViewController.swift; sourceTree = "<group>"; };
 		9B3ED54C1FD2C8F400627679 /* FavoritesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesView.swift; path = "View Classes/FavoritesView.swift"; sourceTree = "<group>"; };
@@ -213,6 +218,7 @@
 		9B740C691FD8F927003372DF /* WishListAddController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListAddController.swift; path = Controllers/WishListAddController.swift; sourceTree = "<group>"; };
 		9B740C6C1FD90A72003372DF /* WishListAdd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListAdd.swift; path = "View Classes/WishListAdd.swift"; sourceTree = "<group>"; };
 		9B75D2D71FD59E10002EF175 /* WishListAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListAccount.swift; path = Models/WishListAccount.swift; sourceTree = "<group>"; };
+		9B8E82FE1FE7CA58004F50D2 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		9BB84E101FDBC65D00078CDF /* SearchTextField.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = SearchTextField.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BB84E131FDBFF8700078CDF /* countries.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = countries.json; sourceTree = "<group>"; };
 		9BBBD8C11FDA59D000BCA018 /* TagListView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TagListView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -454,6 +460,14 @@
 			name = WishList;
 			sourceTree = "<group>";
 		};
+		9B8E82FD1FE7CA00004F50D2 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				9B8E82FE1FE7CA58004F50D2 /* CustomButton.swift */,
+			);
+			name = Custom;
+			sourceTree = "<group>";
+		};
 		9BA3E2891FCD793A00BD1B24 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -474,6 +488,7 @@
 			isa = PBXGroup;
 			children = (
 				9BCCD5F81FD13871001A9507 /* NewResourceView.xib */,
+				9B2BB2051FE90E0D009EA173 /* imageCollectionCell.xib */,
 			);
 			name = NewResource;
 			sourceTree = "<group>";
@@ -490,6 +505,7 @@
 			isa = PBXGroup;
 			children = (
 				9BCCD6031FD14000001A9507 /* NewResourceView.swift */,
+				9B2BB20D1FE92165009EA173 /* ImageResourcesCollectionViewCell.swift */,
 			);
 			name = NewResource;
 			sourceTree = "<group>";
@@ -745,6 +761,7 @@
 		B9FE3FE51E77E32A003CDE74 /* R2S */ = {
 			isa = PBXGroup;
 			children = (
+				9B8E82FD1FE7CA00004F50D2 /* Custom */,
 				9B5F49031FDFA3DD00CD3D66 /* CCheckbox.swift */,
 				9BB84E131FDBFF8700078CDF /* countries.json */,
 				B9FE3FE61E77E32A003CDE74 /* AppDelegate.swift */,
@@ -921,6 +938,7 @@
 				2C63EF111F027541003573A7 /* ActivityView.xib in Resources */,
 				2C658A581F87770A009A18A9 /* TransactionTableViewCell.xib in Resources */,
 				9B3ED5521FD2C90C00627679 /* FavoritesView.xib in Resources */,
+				9B2BB2061FE90E0E009EA173 /* imageCollectionCell.xib in Resources */,
 				B9E267D81E7D41F500BB9900 /* CategoryTableViewCell.xib in Resources */,
 				B9E267D11E7D41CA00BB9900 /* CategoryCollectionViewCell.xib in Resources */,
 				9B1F86CE1FD6B329005C575E /* InboxView.xib in Resources */,
@@ -1015,6 +1033,7 @@
 				9B3FDC9A1FD6977A00091E10 /* LastMessege.swift in Sources */,
 				9B3ED5591FD2CE5800627679 /* FavoritesTableViewCell.swift in Sources */,
 				9B740C6A1FD8F927003372DF /* WishListAddController.swift in Sources */,
+				9B2BB20E1FE92165009EA173 /* ImageResourcesCollectionViewCell.swift in Sources */,
 				2C8BCC4F1F1325900064DD87 /* TransactionRemote.swift in Sources */,
 				B9E2677E1E79416A00BB9900 /* RegisterViewController.swift in Sources */,
 				9B5E23971FD45DB300A59FFF /* WishListDetailView.swift in Sources */,
@@ -1073,6 +1092,7 @@
 				B99151B51E77F6C600949529 /* BaseUIView.swift in Sources */,
 				B9E267B31E7B950600BB9900 /* CategoryRemote.swift in Sources */,
 				9B740C6D1FD90A72003372DF /* WishListAdd.swift in Sources */,
+				9B8E82FF1FE7CA58004F50D2 /* CustomButton.swift in Sources */,
 				B9E2676C1E78F75100BB9900 /* UITableView.swift in Sources */,
 				B9E267C41E7D416500BB9900 /* HomeTabBarViewController.swift in Sources */,
 				B9E267871E7A57DF00BB9900 /* UserManager.swift in Sources */,

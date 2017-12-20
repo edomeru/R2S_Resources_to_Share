@@ -29,5 +29,5 @@ target 'R2S' do
   pod "Floaty", "~> 3.0.0"
   pod 'TagListView', '~> 1.0'
   pod "SearchTextField"
-  
+  pod "TTGSnackbar"
 end

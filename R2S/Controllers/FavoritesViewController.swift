@@ -11,6 +11,7 @@ import RealmSwift
 import SwiftSpinner
 import Kingfisher
 import MIBadgeButton_Swift
+import TTGSnackbar
 
 class FavoritesViewController: BaseViewController {
     
@@ -33,12 +34,25 @@ class FavoritesViewController: BaseViewController {
     }
     
     func fetchData(){
+        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+        activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
+        activityIndicator.activityIndicatorViewStyle = .gray
+        activityIndicator.center = self.view.center
+        activityIndicator.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        self.view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
         ResourceService.getFavorites(id: UserHelper.getId()! , onCompletion: { statusCode, message in
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                activityIndicator.stopAnimating()
+                
             let favorites = FavoritesDao.get()
             
-            print("FAV CONTROLLER", favorites )
             self.favorites = favorites
             self.initUILayout()
+                
+                })
             
         })
     
@@ -49,15 +63,17 @@ class FavoritesViewController: BaseViewController {
         self.screenSize = UIScreen.main.bounds
         self.screenWidth = screenSize.width
         self.screenHeight = screenSize.height
-        
-        
-        
         self.favoritesView = self.loadFromNibNamed(nibNamed: Constants.xib.favoritesView) as! FavoritesView
         self.view = self.favoritesView
-        
+        if  self.favorites != nil {
         self.favoritesView.FavoritesTableView.register(UINib(nibName: Constants.xib.favoritesTableCell, bundle:nil), forCellReuseIdentifier: "FavoritesTableViewCell")
         self.favoritesView.FavoritesTableView.delegate = self
         self.favoritesView.FavoritesTableView.dataSource = self
+        } else {
+            
+        self.favoritesView.noFavoritesUILabel.isHidden = false
+            
+        }
         
     }
     
@@ -107,7 +123,60 @@ class FavoritesViewController: BaseViewController {
     }
     
     func myFunction(gesture: UITapGestureRecognizer) {
-        print("it worked",gesture)
+        if let v = gesture.view {
+        print("it worked",v.tag)
+             let param:[String : AnyObject] = ["resource_id" : v.tag as AnyObject]
+            ResourceService.removeFavoriteObject(params:param){ (statusCode, message) in
+                //print("FAV STAT CODE",statusCode)
+                if let statCode = statusCode {
+                if statCode == 202 {
+            
+          let favObject = FavoritesDao.getOneBy(id: v.tag)
+            FavoritesDao.delete(favObject!)
+                    self.favoritesView.FavoritesTableView.reloadData()
+                    
+                    let snackbar = TTGSnackbar(message: "Item" + " has been removed ", duration: .short)
+                    snackbar.backgroundColor = UIColor.blue
+                    snackbar.show()
+                    
+                    
+                    let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+                    activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
+                    activityIndicator.activityIndicatorViewStyle = .gray
+                    activityIndicator.center = self.view.center
+                    activityIndicator.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
+                    activityIndicator.center = self.view.center
+                    activityIndicator.hidesWhenStopped = true
+                    self.view.addSubview(activityIndicator)
+                    activityIndicator.startAnimating()
+                    ResourceService.getFavorites(id: UserHelper.getId()! , onCompletion: { statusCode, message in
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                            activityIndicator.stopAnimating()
+                            
+                            let favorites = FavoritesDao.get()
+                            
+                         
+                            
+                        })
+                        
+                    })
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                }
+              }
+           }
+        }
+        
     }
 
    
@@ -124,9 +193,16 @@ extension FavoritesViewController: UITableViewDelegate{
 // MARK: - UITableViewDelegate
 extension FavoritesViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if self.favorites.count != 0 {
+            //table view is empty here
+        
         if tableView == self.favoritesView.FavoritesTableView {
             
             return self.favorites.count
+          }
+        } else {
+        self.favoritesView.FavoritesTableView.isHidden = true
+        self.favoritesView.noFavoritesUILabel.isHidden = false
         }
         return 0
     }
@@ -155,15 +231,15 @@ extension FavoritesViewController: UITableViewDataSource{
         
         
         
-//        cell.favoriteIconUIImageView.isUserInteractionEnabled = true
-//        cell.favoriteIconUIImageView.tag = indexPath.row
-//        
-//        let tapped = UITapGestureRecognizer(target: self, action: #selector(FavoritesViewController.myFunction))
-//        tapped.numberOfTapsRequired = 1
-//        cell.favoriteIconUIImageView.addGestureRecognizer(tapped)
+        cell.favoriteIconUIImageView.isUserInteractionEnabled = true
+        cell.favoriteIconUIImageView.tag = favorites[indexPath.row].id
+        
+        let tapped = UITapGestureRecognizer(target: self, action: #selector(FavoritesViewController.myFunction))
+        tapped.numberOfTapsRequired = 1
+        cell.favoriteIconUIImageView.addGestureRecognizer(tapped)
         
         
-        //cell.favoriteIconUIImageView.gestureRecognizers
+    //cell.favoriteIconUIImageView.gestureRecognizers
         
 
         return cell
@@ -174,12 +250,14 @@ extension FavoritesViewController: UITableViewDataSource{
        
     
         
-         cell.favoriteIconUIImageView.image = UIImage(named: "icons8-heart-blank")
         
-//        let favorite = favorites[indexPath.item]
-//        selectedCategoryId  = favorite.id
-//         print ("favorite.id",favorite.id)
-//        performSegue(withIdentifier: "FavoritesToDetailSegue", sender: self)
+        
+        
+        
+                let favorite = favorites[indexPath.item]
+        selectedCategoryId  = favorite.id
+        // print ("favorite.id",favorite.id)
+        performSegue(withIdentifier: "FavoritesToDetailSegue", sender: self)
         
         
     

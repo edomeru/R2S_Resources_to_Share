@@ -26,6 +26,16 @@ class InboxViewController: BaseViewController {
     
     
     private func fetchData(){
+        
+        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+        activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
+        activityIndicator.activityIndicatorViewStyle = .gray
+        activityIndicator.center = self.view.center
+        activityIndicator.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        self.view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
         InboxService.getAll(id: UserHelper.getId()! , onCompletion: { statusCode, message in
             
             print("\(statusCode!)" + " INBOX CODE"  )
@@ -34,7 +44,12 @@ class InboxViewController: BaseViewController {
                 self.inbox = InboxDao.getAll()
                   print("\(self.inbox!)" + " INBOX MSG"  )
                 
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                    activityIndicator.stopAnimating()
+                
                 self.initUILayout()
+                    
+                     })
             }
         })
         

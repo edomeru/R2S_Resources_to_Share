@@ -47,16 +47,28 @@ class WishlistViewController: BaseViewController {
     }
     
      func fetchData(){
-        WishListService.getAllWishList(onCompletion: { statusCode, message in
-            
+        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+        activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
+        activityIndicator.activityIndicatorViewStyle = .gray
+        activityIndicator.center = self.view.center
+        activityIndicator.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        self.view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        WishListService.getAllWishList(onCompletion: { (statusCode, message) in
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                activityIndicator.stopAnimating()
             print("\(statusCode!)" + " WISH CODE"  )
-            print("\(message!)" + " WISH MSG"  )
+            print("\(message!)" + " WISH MSG WISHLIST CONTROLLER FROM SERVICE"  )
             if statusCode == 200 {
+                
                 self.wishList = WishListDao.get()
-            
+            print("\(self.wishList)" + " WISH MSG WISHLIST CONTROLLER FROM DAO"  )
                 self.initUILayout()
                
             }
+                })
         })
     
     }
@@ -73,7 +85,7 @@ class WishlistViewController: BaseViewController {
         self.view = self.wishlistView
         
         self.wishlistView.delegate = self
-        
+        print("INIT LAYOUT")
         self.wishlistView.WishListTableView.register(UINib(nibName: Constants.xib.wishListTableViewCell, bundle:nil), forCellReuseIdentifier: "WishListTableViewCell")
         self.wishlistView.WishListTableView.delegate = self
         self.wishlistView.WishListTableView.dataSource = self
@@ -160,7 +172,7 @@ extension WishlistViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "WishListTableViewCell", for: indexPath) as! WishListTableViewCell
         
-        
+        print("WISHLIST TABLEVIEW CELL")
         cell.name.text =  wishList[indexPath.row].name
 
         
@@ -206,6 +218,7 @@ extension WishlistViewController: WishlistViewDelegate {
 //            }else{
             
                 self.wishList = WishListDao.get()
+            print("\(self.wishList)" + " WISH MSG WISHLIST CONTROLLER FROM SEGMENTED 0"  )
                 self.wishlistView.WishListTableView.reloadData()
             
             //}
@@ -213,6 +226,7 @@ extension WishlistViewController: WishlistViewDelegate {
         }else{
             
             self.wishList =  WishListDao.getAllWishByUser(id: UserHelper.getId()!)
+            print("\(self.wishList)" + " WISH MSG WISHLIST CONTROLLER FROM SEGMENTED 1"  )
             self.wishlistView.WishListTableView.reloadData()
            
         }

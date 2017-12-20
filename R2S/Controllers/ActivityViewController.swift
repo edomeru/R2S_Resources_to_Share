@@ -36,6 +36,15 @@ class ActivityViewController: BaseViewController {
 
     func fetchDataFromSource(){
         SwiftSpinner.show("Please wait..")
+        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+        activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
+        activityIndicator.activityIndicatorViewStyle = .gray
+        activityIndicator.center = self.view.center
+        activityIndicator.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        self.view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
         TransactionService.fetchTransactions { (statusCode, message) in
             SwiftSpinner.hide()
             print(statusCode)
@@ -43,10 +52,14 @@ class ActivityViewController: BaseViewController {
             if statusCode == 200 {
             
                 let transaction = TransactionDao.getTransactions()
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                    activityIndicator.stopAnimating()
                 print("TRANSACTIONDAO", transaction.count)
                 self.transactions = transaction
                 self.initUILayout()
                 self.activityView.activityTableView.reloadData()
+                    
+                    })
             }
 
         }

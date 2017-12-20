@@ -30,10 +30,32 @@ class FavoritesDao {
         }
     }
     
+    static func addResource(_ category: Resource) {
+    
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(category, update: true)
+        }
+    }
+    
     static func get() -> Results<Favorites> {
         let realm = try! Realm()
         let favorites = realm.objects(Favorites.self)
         return favorites
+    }
+    
+    static func getOneBy(id: Int) -> Favorites? {
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "id = %d", id)
+        let fav = realm.objects(Favorites.self).filter(predicate).first
+        return fav
+    }
+    
+    static func delete(_ fav: Favorites) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(fav)
+        }
     }
 
     

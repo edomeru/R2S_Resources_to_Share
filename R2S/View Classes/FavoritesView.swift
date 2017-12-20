@@ -12,5 +12,6 @@ class FavoritesView: BaseUIView {
     
     @IBOutlet weak var FavoritesTableView: UITableView!
     
+    @IBOutlet weak var noFavoritesUILabel: UILabel!
     
 }

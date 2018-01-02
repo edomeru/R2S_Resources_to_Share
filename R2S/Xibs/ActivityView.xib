@@ -17,9 +17,13 @@
                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="O8C-zU-hpL">
                     <rect key="frame" x="10" y="84" width="355" height="29"/>
                     <segments>
-                        <segment title="First"/>
-                        <segment title="Second"/>
+                        <segment title="Borrowed"/>
+                        <segment title="Shared"/>
+                        <segment title="History"/>
                     </segments>
+                    <connections>
+                        <action selector="activitySegmentedControl:" destination="bhj-ms-7uA" eventType="valueChanged" id="SI5-rt-ocA"/>
+                    </connections>
                 </segmentedControl>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Sd3-Nn-8xh">
                     <rect key="frame" x="10" y="122" width="355" height="495"/>
@@ -38,7 +42,6 @@
             </constraints>
             <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
             <connections>
-                <outlet property="activitySegmentedControl" destination="O8C-zU-hpL" id="Cha-Z0-Aqj"/>
                 <outlet property="activityTableView" destination="Sd3-Nn-8xh" id="lhE-P7-NsA"/>
             </connections>
             <point key="canvasLocation" x="-136" y="-103"/>

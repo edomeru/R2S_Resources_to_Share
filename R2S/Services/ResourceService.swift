@@ -529,7 +529,7 @@ class ResourceService {
     }
 
     
-    static func createResource(id: Int, params: [String: AnyObject], onCompletion: @escaping (Int?, String?) -> Void) {
+    static func createResource(id: Int, params: [String: Any], onCompletion: @escaping (Int?, String?) -> Void) {
         var message = ""
         UserRemote.createResource(id: "\(id)", params: params, onCompletion: { jsonData, statusCode in
             DispatchQueue.global(qos: .background).async {

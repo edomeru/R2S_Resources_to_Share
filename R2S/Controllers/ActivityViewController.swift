@@ -50,11 +50,30 @@ class ActivityViewController: BaseViewController {
             print(statusCode)
           
             if statusCode == 200 {
+                
+                let jsonObject: NSMutableDictionary = NSMutableDictionary()
+                
+                jsonObject.setValue("ONE", forKey: "b")
+                jsonObject.setValue("TWO", forKey: "p")
+                jsonObject.setValue("THREE", forKey: "o")
+                jsonObject.setValue("FOUR", forKey: "s")
+                jsonObject.setValue("FIVE", forKey: "r")
+                
+                let jsonData: NSData
+                
+                do {
+                    jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: JSONSerialization.WritingOptions()) as NSData
+                    let jsonString = NSString(data: jsonData as Data, encoding: String.Encoding.utf8.rawValue) as! String
+                    print("json string = \(jsonString)")
+                    
+                } catch _ {
+                    print ("JSON Failure")
+                }
             
                 let transaction = TransactionDao.getTransactions()
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     activityIndicator.stopAnimating()
-                print("TRANSACTIONDAO", transaction.count)
+                print("TRANSACTIONDAO", transaction)
                 self.transactions = transaction
                 self.initUILayout()
                 self.activityView.activityTableView.reloadData()
@@ -64,7 +83,7 @@ class ActivityViewController: BaseViewController {
 
         }
       
-        
+      
     }
 
     // MARK: - Private Functions
@@ -75,19 +94,19 @@ class ActivityViewController: BaseViewController {
 
         self.activityView = self.loadFromNibNamed(nibNamed: Constants.xib.activityView) as! ActivityView
         self.view = self.activityView
-        
+        self.activityView.delegate = self
         self.activityView.activityTableView.register(UINib(nibName: "TransactionTableViewCell", bundle: nil), forCellReuseIdentifier: "TransactionTableViewCell")
         self.activityView.activityTableView.delegate = self
         self.activityView.activityTableView.dataSource = self
         
-        setupSegmentedControl()
+        //setupSegmentedControl()
     }
-    private func setupSegmentedControl(){
-        self.activityView.activitySegmentedControl.removeAllSegments()
-        self.activityView.activitySegmentedControl.insertSegment(withTitle: "Buying", at: 0, animated: false)
-        self.activityView.activitySegmentedControl.insertSegment(withTitle: "Selling", at: 1, animated: false)
-        self.activityView.activitySegmentedControl.insertSegment(withTitle: "History", at: 2, animated: false)
-    }
+//    private func setupSegmentedControl(){
+//        self.activityView.activitySegmentedControl.removeAllSegments()
+//        self.activityView.activitySegmentedControl.insertSegment(withTitle: "Buying", at: 0, animated: false)
+//        self.activityView.activitySegmentedControl.insertSegment(withTitle: "Selling", at: 1, animated: false)
+//        self.activityView.activitySegmentedControl.insertSegment(withTitle: "History", at: 2, animated: false)
+//    }
     
     private func refreshData() {
         let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
@@ -137,7 +156,7 @@ extension ActivityViewController: UITableViewDataSource{
         cell.resourceNameUILabel.text = transactions[indexPath.item].resource?.name
         cell.resourceDescriptionUILabel.text = transactions[indexPath.item].resource?.descriptionText
         cell.endDateUILabel.text = transactions[indexPath.item].bookingEndDate
-       
+       cell.statusUIButton.setTitle( transactions[indexPath.item].status, for: .normal)
       if  self.transactions[indexPath.item].resource?.imageUrl != "" {
      
         cell.resourceUIImageView.kf.setImage(with: URL(string: (transactions[indexPath.item].resource?.imageUrl)!), options: [.transition(.fade(0.2))])
@@ -155,4 +174,45 @@ extension ActivityViewController: UITableViewDataSource{
         
         return cell
     }
+}
+
+
+// MARK: -ActivityViewDelegate
+extension ActivityViewController: ActivityViewDelegate {
+    func segmentedViewOnPressed(sender: AnyObject){
+        
+        print("SEGMENTED",sender.selectedSegmentIndex)
+        if sender.selectedSegmentIndex == 0 {
+            
+            
+            
+            let transaction = TransactionDao.getAllBuyers(buyer: true, status: "PENDING")
+           
+                print("TRANSACTIONDAO", transaction)
+                self.transactions = transaction
+            
+                self.activityView.activityTableView.reloadData()
+                
+            
+        }else if sender.selectedSegmentIndex == 1 {
+            
+            let transaction = TransactionDao.getAllBuyers(buyer: false, status: "PENDING")
+            
+            print("TRANSACTIONDAO", transaction)
+            self.transactions = transaction
+            
+            self.activityView.activityTableView.reloadData()
+            
+        }else{
+        
+            let transaction = TransactionDao.getCompletedTransactions()
+            
+            print("TRANSACTIONDAO", transaction)
+            self.transactions = transaction
+            
+            self.activityView.activityTableView.reloadData()
+        
+        }
+        
+     }
 }

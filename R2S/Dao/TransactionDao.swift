@@ -53,4 +53,20 @@ class TransactionDao {
             realm.delete(transactions)
         }
     }
+    
+    static func getAllBuyers(buyer: Bool, status: String) -> Results<Transaction> {
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "is_buyer = %@ AND status = %@", buyer as CVarArg, status)
+        let buyer = realm.objects(Transaction.self).filter(predicate)
+        return buyer
+    }
+    
+    static func getCompletedTransactions() -> Results<Transaction> {
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "status = %@ OR status = %@ OR status = %@", "COMPLETED", "CANCELLED", "REJECTED")
+        let buyer = realm.objects(Transaction.self).filter(predicate)
+        return buyer
+    }
+    
+    
 }

@@ -129,7 +129,7 @@ class BrowseViewController: BaseViewController {
                             self.view.addSubview(activityIndicator)
                             activityIndicator.startAnimating()
                             ResourceService.getFavorites(id: UserHelper.getId()! , onCompletion: { statusCode, message in
-                                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
                                     activityIndicator.stopAnimating()
                                     
                                     let favorites = FavoritesDao.get()

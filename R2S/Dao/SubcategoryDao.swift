@@ -23,6 +23,12 @@ class SubcategoryDao {
         let subcategory = realm.objects(Subcategory.self).filter(predicate).first
         return subcategory
     }
+    static func getAllBySubCategoryName(categoryId: Int, subCategoryName: String) -> Results<Subcategory> {
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "parentCategory.id = %d AND name = %@", categoryId, subCategoryName)
+        let subcategories = realm.objects(Subcategory.self).filter(predicate)
+        return subcategories
+    }
     
     static func add(_ subcategory: Subcategory) {
         let realm = try! Realm()

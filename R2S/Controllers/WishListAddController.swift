@@ -25,6 +25,9 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
     var mainCategoryNames = [String]()
     var someDict = [String : AnyObject]()
     var subCategoryDictionary = [String : AnyObject]()
+    var wishList = [WishListTags]()
+    var myArray:[[String : Any]] = [[ : ]]
+    var a = NSMutableArray()
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -271,19 +274,28 @@ extension WishlistAddViewController: ValidationDelegate {
                 print("TAGVIEWS",self.wishlistAdd.CategoryTagListView.tagViews.last?.titleLabel?.text)
                 let selctedCategories =  WishListDao.getWishListFromTags(subcategory_name: (wish.titleLabel?.text)!)
                 
-                
+                 let wishAdd = WishListTags()
                 for  categories  in selctedCategories {
                     
                     // selectedTags["main_category_name"] = categories.main_category_name as AnyObject
                     selectedTags["main_category_id"] = categories.main_category_id as AnyObject
-                    //selectedTags["subcategory_name"] = categories.subcategory_name as AnyObject
                     selectedTags["subcategory_id"] = categories.subcategory_id as AnyObject
+                    //wishAdd.main_category_id = categories.main_category_id
+                    //selectedTags["subcategory_name"] = categories.subcategory_name as AnyObject
+                    //wishAdd.subcategory_id = categories.subcategory_id
+                    
+                   // wishList.append(wishAdd)
+                    
                     
                 }
                 
+                a.addObjects(from: [selectedTags as! Any])
+                
             }
             
-            WishListService.createWishlist(category: selectedTags , name: name, description: desc) { statusCode, message in
+            print("SLECTED TAGS",a)
+            
+            WishListService.createWishlist(category: a , name: name, description: desc) { statusCode, message in
                 SwiftSpinner.hide()
                 print("STATUS CODE",statusCode)
                 if statusCode == 201 {

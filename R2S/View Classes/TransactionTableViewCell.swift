@@ -44,6 +44,7 @@ class TransactionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var resourceDescriptionUILabel: UILabel!
     
-    @IBOutlet weak var cancelButtonUILabel: UIButton!
+    @IBOutlet weak var statusUIButton: UIButton!
+
     
 }

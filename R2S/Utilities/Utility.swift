@@ -37,6 +37,15 @@ class Utility {
         return headers
     }
     
+    class func getHeadersForImage() -> HTTPHeaders {
+        let headers: HTTPHeaders = [
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        ]
+        
+        return headers
+    }
+    
     class func getHeadersWithAuth() -> HTTPHeaders {
         let username = UserHelper.getEmail()!
         let password = UserHelper.getPassword()!
@@ -47,6 +56,20 @@ class Utility {
         headersWithAuth["Authorization"] = "Basic \(base64LoginString)"
         return headersWithAuth
     }
+    
+    class func generateBoundary() -> String {
+    return "Boundary-\(NSUUID().uuidString)"
+    }
+    
+    class func getHeadersWithAuthForImage() -> HTTPHeaders {
+       
+        var headersWithAuth = getHeadersWithAuth()
+     let boundary = generateBoundary()
+        print("boundary",boundary)
+        headersWithAuth["Content-Type"] = "multipart/form-data; boundary=\(boundary)"
+        return headersWithAuth
+    }
+    
     
     class func stringToDate(dateString: String?) -> Date {
         if dateString != ""{

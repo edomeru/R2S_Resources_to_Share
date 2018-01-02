@@ -44,7 +44,7 @@ class ApiRequestManager {
     }
     
     func doPostRequest(urlString: String,
-                       params: [String: AnyObject],
+                       params: [String: Any],
                        headers: HTTPHeaders,
                        onCompletion: @escaping ServiceResponse) {
         NetworkManager.sharedInstance.SessionManager().request(urlString,
@@ -72,6 +72,7 @@ class ApiRequestManager {
                 }
         }
     }
+    
     
     func doPostRequestNoAuth(urlString: String,
                              params: [String: AnyObject],

@@ -70,6 +70,8 @@
 		9BBBD8C91FDA7EA900BCA018 /* WishListAddView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B740C671FD8F7D4003372DF /* WishListAddView.xib */; };
 		9BC70F221F8E247600D8CCED /* ResourceDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC70F211F8E247600D8CCED /* ResourceDao.swift */; };
 		9BC70F241F8E34FC00D8CCED /* ResourceService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC70F231F8E34FC00D8CCED /* ResourceService.swift */; };
+		9BCA4A091FF8DD61006AD90F /* SystemRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA4A081FF8DD61006AD90F /* SystemRemote.swift */; };
+		9BCA4A0B1FF8FCBF006AD90F /* SystemService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCA4A0A1FF8FCBF006AD90F /* SystemService.swift */; };
 		9BCCD5F91FD13871001A9507 /* NewResourceView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9BCCD5F81FD13871001A9507 /* NewResourceView.xib */; };
 		9BCCD5FD1FD13F37001A9507 /* NewResourceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCCD5FC1FD13F37001A9507 /* NewResourceViewController.swift */; };
 		9BCCD6041FD14000001A9507 /* NewResourceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCCD6031FD14000001A9507 /* NewResourceView.swift */; };
@@ -224,6 +226,8 @@
 		9BBBD8C11FDA59D000BCA018 /* TagListView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = TagListView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BC70F211F8E247600D8CCED /* ResourceDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceDao.swift; path = Dao/ResourceDao.swift; sourceTree = "<group>"; };
 		9BC70F231F8E34FC00D8CCED /* ResourceService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceService.swift; path = Services/ResourceService.swift; sourceTree = "<group>"; };
+		9BCA4A081FF8DD61006AD90F /* SystemRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SystemRemote.swift; path = Remotes/SystemRemote.swift; sourceTree = "<group>"; };
+		9BCA4A0A1FF8FCBF006AD90F /* SystemService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SystemService.swift; path = Services/SystemService.swift; sourceTree = "<group>"; };
 		9BCCD5F81FD13871001A9507 /* NewResourceView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NewResourceView.xib; path = Xibs/NewResourceView.xib; sourceTree = "<group>"; };
 		9BCCD5FC1FD13F37001A9507 /* NewResourceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewResourceViewController.swift; path = Controllers/NewResourceViewController.swift; sourceTree = "<group>"; };
 		9BCCD6031FD14000001A9507 /* NewResourceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NewResourceView.swift; path = "View Classes/NewResourceView.swift"; sourceTree = "<group>"; };
@@ -635,6 +639,7 @@
 				9BC70F231F8E34FC00D8CCED /* ResourceService.swift */,
 				9B5E238C1FD3FAFB00A59FFF /* WishListService.swift */,
 				9B3FDC9F1FD69CB100091E10 /* InboxService.swift */,
+				9BCA4A0A1FF8FCBF006AD90F /* SystemService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -648,6 +653,7 @@
 				B9E267B21E7B950600BB9900 /* CategoryRemote.swift */,
 				9B5E238A1FD3FA4300A59FFF /* WishListRemote.swift */,
 				9B3FDC9D1FD69AAD00091E10 /* InboxRemote.swift */,
+				9BCA4A081FF8DD61006AD90F /* SystemRemote.swift */,
 			);
 			name = Remotes;
 			sourceTree = "<group>";
@@ -1038,6 +1044,7 @@
 				B9E2677E1E79416A00BB9900 /* RegisterViewController.swift in Sources */,
 				9B5E23971FD45DB300A59FFF /* WishListDetailView.swift in Sources */,
 				B9E2676A1E78F72F00BB9900 /* UIColor.swift in Sources */,
+				9BCA4A091FF8DD61006AD90F /* SystemRemote.swift in Sources */,
 				B9E267781E79145F00BB9900 /* Reachability.swift in Sources */,
 				9BFC735A1F94641E00C9D888 /* ResourceCategory.swift in Sources */,
 				B9E267B11E7B94F800BB9900 /* CategoryDao.swift in Sources */,
@@ -1060,6 +1067,7 @@
 				B9E267CB1E7D41A500BB9900 /* HomeView.swift in Sources */,
 				B9E267C11E7BB84900BB9900 /* SubcategoryDao.swift in Sources */,
 				9B3ED54F1FD2C8F400627679 /* WishlistView.swift in Sources */,
+				9BCA4A0B1FF8FCBF006AD90F /* SystemService.swift in Sources */,
 				9B5E23911FD4032200A59FFF /* WishListDao.swift in Sources */,
 				B9E267C71E7D418300BB9900 /* CategoryCollectionViewCell.swift in Sources */,
 				9B3FDC9C1FD6986800091E10 /* InboxResource.swift in Sources */,

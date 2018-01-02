@@ -8,8 +8,18 @@
 
 import UIKit
 
+
+protocol ActivityViewDelegate: class {
+    func segmentedViewOnPressed(sender: AnyObject)
+    
+}
+
 class ActivityView: BaseUIView {
-    @IBOutlet weak var activitySegmentedControl: UISegmentedControl!
+     weak var delegate: ActivityViewDelegate?
+    @IBAction func activitySegmentedControl(_ sender: Any) {
+        delegate?.segmentedViewOnPressed(sender: sender as AnyObject)
+    }
+    
     @IBOutlet weak var activityTableView: UITableView!
 
     override func awakeFromNib() {

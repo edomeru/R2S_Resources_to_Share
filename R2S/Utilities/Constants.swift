@@ -68,6 +68,10 @@ class Constants {
         static let base = api.baseUrl + "/wishlists"
         }
         
+        struct System {
+        static let UPLOAD = api.baseUrl + "/upload/images"
+            
+        }
         
         
     }

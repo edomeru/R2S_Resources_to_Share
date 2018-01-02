@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (4.5.1)
+  - AlamofireImage (3.3.0):
+    - Alamofire (~> 4.5)
   - AMScrollingNavbar (3.2.0)
   - Auk (8.0.1):
     - moa
@@ -74,6 +76,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 4.0)
+  - AlamofireImage (~> 3.3)
   - AMScrollingNavbar (= 3.2.0)
   - Auk (~> 8.0)
   - CZPicker
@@ -117,6 +120,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  AlamofireImage: 2e784dc5d00f04903a52c1d169181469c805c3df
   AMScrollingNavbar: cf603d4d5f11061d466a0878b9ada136248927b2
   Auk: de11f6af65d783f40312ca1b8e6a0bf9dc65fca7
   CZPicker: 55aa1751ea26e209814552da1a9a08cba8bbf72a
@@ -150,6 +154,6 @@ SPEC CHECKSUMS:
   TagListView: 669f7d4455003c877655875d34829731c4191528
   TTGSnackbar: 058485c43a1cdbdfc988d41cb23c23f008df958d
 
-PODFILE CHECKSUM: 80cb8be1fe4fb8444555b0c6461c2d1e6f9730b4
+PODFILE CHECKSUM: 337390cbee532c86dc164b739fc34731e2815f33
 
 COCOAPODS: 1.2.1

@@ -67,13 +67,13 @@ class WishListService {
     
     
     
-    static func createWishlist(category: [String : AnyObject], name: String, description: String, onCompletion: @escaping (Int?, String?) -> Void) {
+    static func createWishlist(category: NSMutableArray, name: String, description: String, onCompletion: @escaping (Int?, String?) -> Void) {
         var message = ""
-        var params: [String : AnyObject] = [:]
+        var params = [String : AnyObject]()
         params["name"] = name as AnyObject?
         params["description"] = description as AnyObject?
         params["categories"] = category as AnyObject?
-        
+        print("PARAMS WISHLIST",params)
         UserRemote.createWishList(id: String(UserHelper.getId()!),params: params, onCompletion: { jsonData, statusCode in
             if statusCode == 200 {
                 print("WishList Added Successfully")
@@ -84,7 +84,7 @@ class WishListService {
             }
             onCompletion(statusCode, message)
         })
-    }
+      }
     
     
 }

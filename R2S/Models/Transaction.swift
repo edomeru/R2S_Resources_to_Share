@@ -24,6 +24,7 @@ class Transaction: Object {
     dynamic var resource: Resource?
     dynamic var seller = ""
     dynamic var status = ""
+    dynamic var is_buyer = false
    
     override static func primaryKey() -> String? {
         return "id"

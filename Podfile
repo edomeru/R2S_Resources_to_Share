@@ -16,7 +16,7 @@ target 'R2S' do
   pod 'RealmSwift'
   pod 'FSCalendar'
   pod 'Google/SignIn'
-
+  pod 'AlamofireImage', '~> 3.3'
   pod 'NVActivityIndicatorView'
   pod 'SwiftSpinner'
   pod 'SwiftKeychainWrapper'

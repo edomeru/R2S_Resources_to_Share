@@ -24,7 +24,8 @@ class TransactionService {
         TransactionRemote.fetchAll(onCompletion: { jsonData, statusCode in
             DispatchQueue.global(qos: .background).async{
                 if statusCode == 200{
-                    
+                    print("TRANSERVICE",jsonData)
+                    print("++++++++++++++++++++++++++++++")
                     for (_, transactions):(String, JSON) in jsonData {
                                       print(transactions)
                         let transaction = Transaction()
@@ -64,6 +65,7 @@ class TransactionService {
                         
                         transaction.seller = transactions["seller"].stringValue
                         transaction.status = transactions["status"].stringValue
+                        transaction.is_buyer = transactions["is_buyer"].boolValue
                         
                         TransactionDao.add(transaction)
                     }

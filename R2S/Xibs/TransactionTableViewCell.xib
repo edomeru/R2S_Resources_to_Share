@@ -160,7 +160,7 @@
                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zmg-gc-us7">
                         <rect key="frame" x="195" y="316" width="181" height="30"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
-                        <state key="normal" title="RATE TRANSACTION">
+                        <state key="normal">
                             <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
@@ -187,13 +187,13 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="cancelButtonUILabel" destination="Zmg-gc-us7" id="wWc-Tr-X7W"/>
                 <outlet property="endDateUILabel" destination="pPo-mg-lkJ" id="cta-jL-09f"/>
                 <outlet property="orderRefNumberUILabel" destination="6No-Dr-Aks" id="dCX-Lc-SDv"/>
                 <outlet property="resourceDescriptionUILabel" destination="pba-8H-0hO" id="mfw-Xy-EOx"/>
                 <outlet property="resourceNameUILabel" destination="whU-YI-gKd" id="5RG-HH-YJw"/>
                 <outlet property="resourceUIImageView" destination="QBI-Tw-As4" id="fyU-Vz-xIb"/>
                 <outlet property="startDateUILabel" destination="aWQ-BE-fcv" id="zR5-R0-XXq"/>
+                <outlet property="statusUIButton" destination="Zmg-gc-us7" id="ycn-EQ-KzL"/>
             </connections>
             <point key="canvasLocation" x="-941.5" y="273.5"/>
         </tableViewCell>

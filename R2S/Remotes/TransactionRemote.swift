@@ -16,4 +16,33 @@ class TransactionRemote {
             onCompletion(jsonData, statusCode)
         })
     }
+    
+    
+    static func accept(transaction_id: Int, onCompletion: @escaping (JSON, Int?) -> Void) {
+        var urlString = Constants.api.user.transaction.replacingOccurrences(of: "{id}", with: String(describing: UserHelper.getId()!))
+        urlString = urlString.replacingOccurrences(of: "{transaction_id}", with: String(transaction_id))
+        print("accept_url",urlString)
+        ApiRequestManager.sharedInstance.doPutRequest(urlString: urlString,  headers: Utility.getHeadersWithAuth(), onCompletion: { jsonData, statusCode in
+            onCompletion(jsonData, statusCode)
+        })
+    }
+    
+    static func reject(transaction_id: Int, onCompletion: @escaping (JSON, Int?) -> Void) {
+        var urlString = Constants.api.user.transaction_reject.replacingOccurrences(of: "{id}", with: String(describing: UserHelper.getId()!))
+        urlString = urlString.replacingOccurrences(of: "{transaction_id}", with: String(transaction_id))
+        print("reject_url",urlString)
+        ApiRequestManager.sharedInstance.doPostRequestNoParam(urlString: urlString,  headers: Utility.getHeadersWithAuth(), onCompletion: { jsonData, statusCode in
+            onCompletion(jsonData, statusCode)
+        })
+    }
+    
+    static func complete(transaction_id: Int, onCompletion: @escaping (JSON, Int?) -> Void) {
+        var urlString = Constants.api.user.transaction_complete.replacingOccurrences(of: "{id}", with: String(describing: UserHelper.getId()!))
+        urlString = urlString.replacingOccurrences(of: "{transaction_id}", with: String(transaction_id))
+        print("complete_url",urlString)
+        ApiRequestManager.sharedInstance.doPostRequestNoParam(urlString: urlString,  headers: Utility.getHeadersWithAuth(), onCompletion: { jsonData, statusCode in
+            onCompletion(jsonData, statusCode)
+        })
+    }
+    
 }

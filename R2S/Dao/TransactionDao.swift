@@ -30,15 +30,28 @@ class TransactionDao {
         }
     }
     
-    static func edit(_ Transaction: Transaction, keys: [String], values: [Any?]) {
+    
+    
+    //    static func edit(_ transactionId: Int, Transaction: Results<Transaction>, keys: [String], values: [Any?]) {
+    //        let realm = try! Realm()
+    //        for item in 0..<keys.count {
+    //            try! realm.write {
+    //                 let predicate = NSPredicate(format: "id = %d", transactionId)
+    //                Transaction.setValue(values[item], forKey: keys[item])
+    //            }
+    //        }
+    //    }
+    
+    
+    static func update(status: String, transaction_id: Int){
         let realm = try! Realm()
-        for item in 0..<keys.count {
-            try! realm.write {
-                Transaction.setValue(values[item], forKey: keys[item])
+        try! realm.write {
+            for person in realm.objects(Transaction.self).filter("id == %d", transaction_id) {
+                person.status = status
             }
         }
+        
     }
-    
     static func delete(_ Transaction: Transaction) {
         let realm = try! Realm()
         try! realm.write {
@@ -56,7 +69,7 @@ class TransactionDao {
     
     static func getAllBuyers(buyer: Bool, status: String) -> Results<Transaction> {
         let realm = try! Realm()
-        let predicate = NSPredicate(format: "is_buyer = %@ AND status = %@", buyer as CVarArg, status)
+        let predicate = NSPredicate(format: "(is_buyer = %@ AND status = %@) OR (is_buyer = %@ AND status = %@)", buyer as CVarArg, status,buyer as CVarArg, "ACCEPTED")
         let buyer = realm.objects(Transaction.self).filter(predicate)
         return buyer
     }

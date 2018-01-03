@@ -329,6 +329,7 @@ extension BrowseViewController: UICollectionViewDataSource {
         if collectionView == self.browseView.subcategoryCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubcategoryCollectionCell", for: indexPath) as! SubCategoryCollectionViewCell
             cell.subcategoryLabel.text = self.subcategories[indexPath.item].name
+            
             if self.subcategories[indexPath.item].isSelected {
                 cell.categoryUnderlineView.backgroundColor = UIColor(hex: Constants.color.primary)
             } else {

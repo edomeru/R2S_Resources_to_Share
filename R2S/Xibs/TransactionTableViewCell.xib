@@ -157,25 +157,51 @@
                             <constraint firstItem="QBI-Tw-As4" firstAttribute="leading" secondItem="Udo-8Z-ErE" secondAttribute="leading" constant="8" id="rdS-nO-d5F"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zmg-gc-us7">
+                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zmg-gc-us7">
                         <rect key="frame" x="195" y="316" width="181" height="30"/>
                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="10"/>
                         <state key="normal">
                             <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         </state>
                     </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1d4-OR-uxD">
+                        <rect key="frame" x="296" y="316" width="91" height="30"/>
+                        <color key="backgroundColor" red="0.0" green="0.25098040700000002" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="e5C-k7-XDS"/>
+                            <constraint firstAttribute="width" constant="91" id="lda-wd-fai"/>
+                        </constraints>
+                        <state key="normal" title="ACCEPT">
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7bL-nW-P6g">
+                        <rect key="frame" x="204" y="316" width="84" height="30"/>
+                        <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="84" id="Wpf-yO-LLW"/>
+                            <constraint firstAttribute="height" constant="30" id="yZ1-eo-8tc"/>
+                        </constraints>
+                        <state key="normal" title="REJECT">
+                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </state>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="4yA-hw-Say" firstAttribute="top" secondItem="QRL-dN-KFX" secondAttribute="topMargin" id="2N7-bj-cuU"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Zmg-gc-us7" secondAttribute="bottom" constant="8.5" id="4FD-nq-RRR"/>
+                    <constraint firstItem="1d4-OR-uxD" firstAttribute="leading" secondItem="7bL-nW-P6g" secondAttribute="trailing" constant="8" id="5BP-a7-l27"/>
                     <constraint firstItem="Udo-8Z-ErE" firstAttribute="trailing" secondItem="QRL-dN-KFX" secondAttribute="trailingMargin" id="B28-Az-Wjn"/>
                     <constraint firstItem="Udo-8Z-ErE" firstAttribute="leading" secondItem="QRL-dN-KFX" secondAttribute="leadingMargin" id="CYd-hE-7Mu"/>
                     <constraint firstItem="C2E-VI-zbV" firstAttribute="leading" secondItem="QRL-dN-KFX" secondAttribute="leadingMargin" id="EQi-Ze-igt"/>
                     <constraint firstItem="6No-Dr-Aks" firstAttribute="leading" secondItem="QRL-dN-KFX" secondAttribute="leadingMargin" constant="10" id="EdY-qe-AeS"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="1d4-OR-uxD" secondAttribute="bottom" constant="8.5" id="G7b-27-FUa"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="7bL-nW-P6g" secondAttribute="bottom" constant="8.5" id="GtA-Bx-Eph"/>
                     <constraint firstAttribute="trailing" secondItem="e3Y-vp-veV" secondAttribute="trailing" constant="4" id="NSB-I7-Khx"/>
                     <constraint firstAttribute="leadingMargin" secondItem="4yA-hw-Say" secondAttribute="leading" id="OV9-th-mxS"/>
                     <constraint firstItem="6No-Dr-Aks" firstAttribute="top" secondItem="4yA-hw-Say" secondAttribute="bottom" constant="19" id="SFb-H7-l2s"/>
                     <constraint firstItem="0Tp-hj-6KU" firstAttribute="leading" secondItem="QRL-dN-KFX" secondAttribute="leadingMargin" constant="10" id="W1c-uw-6SV"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="1d4-OR-uxD" secondAttribute="trailing" id="Zsa-eY-Nkk"/>
                     <constraint firstItem="0Tp-hj-6KU" firstAttribute="top" secondItem="6No-Dr-Aks" secondAttribute="bottom" id="dpr-fc-m2p"/>
                     <constraint firstItem="e3Y-vp-veV" firstAttribute="leading" secondItem="QRL-dN-KFX" secondAttribute="leading" constant="4" id="eHG-6s-zQu"/>
                     <constraint firstItem="C2E-VI-zbV" firstAttribute="top" secondItem="e3Y-vp-veV" secondAttribute="bottom" constant="8" id="feN-FU-YZb"/>
@@ -187,8 +213,10 @@
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="acceptUIButtonOutlet" destination="1d4-OR-uxD" id="7R7-is-csS"/>
                 <outlet property="endDateUILabel" destination="pPo-mg-lkJ" id="cta-jL-09f"/>
                 <outlet property="orderRefNumberUILabel" destination="6No-Dr-Aks" id="dCX-Lc-SDv"/>
+                <outlet property="rejectUIButtonOutlet" destination="7bL-nW-P6g" id="YfB-RA-9Cx"/>
                 <outlet property="resourceDescriptionUILabel" destination="pba-8H-0hO" id="mfw-Xy-EOx"/>
                 <outlet property="resourceNameUILabel" destination="whU-YI-gKd" id="5RG-HH-YJw"/>
                 <outlet property="resourceUIImageView" destination="QBI-Tw-As4" id="fyU-Vz-xIb"/>

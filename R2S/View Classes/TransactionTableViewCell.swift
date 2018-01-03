@@ -46,5 +46,10 @@ class TransactionTableViewCell: UITableViewCell {
     
     @IBOutlet weak var statusUIButton: UIButton!
 
+    @IBOutlet weak var acceptUIButtonOutlet: UIButton!
+    @IBOutlet weak var rejectUIButtonOutlet: UIButton!
+    
+    
+
     
 }

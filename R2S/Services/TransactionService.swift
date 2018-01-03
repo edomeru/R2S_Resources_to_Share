@@ -79,6 +79,64 @@ class TransactionService {
             }
         })
     }
+    
+    static func accept(transaction_id: Int, onCompletion: @escaping(Int?, String?) -> Void){
+        var message = ""
+        TransactionRemote.accept(transaction_id : transaction_id , onCompletion: { jsonData, statusCode in
+            DispatchQueue.global(qos: .background).async {
+                
+                
+                
+                message = jsonData["message"].stringValue
+                
+            }
+            
+            DispatchQueue.main.async {
+                onCompletion(statusCode, message)
+            }
+        })
+        
+    }
+    
+    
+    static func reject(transaction_id: Int, onCompletion: @escaping(Int?, String?) -> Void){
+        var message = ""
+        TransactionRemote.reject(transaction_id : transaction_id , onCompletion: { jsonData, statusCode in
+            DispatchQueue.global(qos: .background).async {
+                
+                
+                
+                message = jsonData["message"].stringValue
+                
+            }
+            
+            DispatchQueue.main.async {
+                onCompletion(statusCode, message)
+            }
+        })
+        
+    }
+    
+    static func complete(transaction_id: Int, onCompletion: @escaping(Int?, String?) -> Void){
+        var message = ""
+        TransactionRemote.complete(transaction_id : transaction_id , onCompletion: { jsonData, statusCode in
+            DispatchQueue.global(qos: .background).async {
+                
+                
+                
+                message = jsonData["message"].stringValue
+                
+            }
+            
+            DispatchQueue.main.async {
+                onCompletion(statusCode, message)
+            }
+        })
+        
+    }
+
+    
+    
     static func fetchCategories(onCompletion: @escaping (Int?, String?) -> Void) {
         var message = ""
         CategoryRemote.fetchAll(onCompletion: { jsonData, statusCode in

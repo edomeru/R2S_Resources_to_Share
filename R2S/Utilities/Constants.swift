@@ -92,7 +92,7 @@ class Constants {
         static let wishlistDetailView = "WishListDetailView"
         static let inboxView = "InboxView"
         static let wishlistAddView = "WishListAddView"
-        
+        static let transactionView = "transactionView"
         
         // TableView Cell
         static let featuredTableCell = "FeaturedTableViewCell"
@@ -126,6 +126,8 @@ class Constants {
         static let charcoal = "414340"
         static let astralBlue = "3A6994"
         static let grayUnderline = "9E9E9E"
+        static let redSnackBar = "E53935"
+        static let greenSnackBar = "66BB6A"
     }
     
     // MARK: - Segue Identifiers
@@ -139,6 +141,7 @@ class Constants {
         static let homeToFavoritesSegue = "HomeToFavoritesSegue"
         static let browseToResourceSegue  = "BrowseToResourceSegue"
         static let wishToWishListDetailSegue  = "WishToWishListDetailSegue"
+        static let activityViewToTrasactionView = "activityViewToTrasactionView"
     }
 }
 

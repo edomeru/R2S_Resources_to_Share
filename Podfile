@@ -30,4 +30,6 @@ target 'R2S' do
   pod 'TagListView', '~> 1.0'
   pod "SearchTextField"
   pod "TTGSnackbar"
+  pod 'SwiftHEXColors'
+  pod 'Cosmos', '~> 11.0'  
 end

@@ -114,12 +114,12 @@ class AccountViewController: BaseViewController {
         
        
 
-        ResourceService.createResource(id: 2 , params: someObject, onCompletion: { statusCode, message in
-            
-            print("\(statusCode!)" + " TEST NI EDS createResource"  )
-            print("\(message!)" + " TEST NI EDS"  )
-            
-        })
+//        ResourceService.createResource(id: 2 , params: someObject, onCompletion: { statusCode, message in
+//            
+//            print("\(statusCode!)" + " TEST NI EDS createResource"  )
+//            print("\(message!)" + " TEST NI EDS"  )
+//            
+//        })
         
          print("USERID",UserHelper.getId())
        let Me =  UserDao.getOneBy(id: UserHelper.getId()! )
@@ -127,13 +127,12 @@ class AccountViewController: BaseViewController {
         self.accountView.userNameUILabel.text = (Me?.firstName)! + " " + (Me?.lastName)!
         self.accountView.companyUILabel.text = "Total Integrated Resources"
         self.accountView.emailUILabel.text = (Me?.email)!
+        self.accountView.phoneUILabel.text = (Me?.landlineNumber)!
         print("profpic",Me?.imageUrl)
         if Me?.imageUrl != "" {
         self.accountView.profilePicImageView.kf.setImage(with:  URL(string: (Me?.imageUrl)!))
                             }
-        
 
-        
     }
 
     // MARK: - Private Functions

@@ -45,9 +45,10 @@ class TransactionService {
                         let resources = transactions["resource"]
                         let res = Resource()
                         
+                        
                        print("DATEEEEEE",Utility.dateToString(dateString: Utility.stringToDate(dateString: resources["created_date"].stringValue))) 
                         
-                        
+                        res.price = "$"  + resources["price"].stringValue
                         res.createdDate = Utility.dateToString(dateString: Utility.stringToDate(dateString: resources["created_date"].stringValue))
                         
                         res.id = resources["id"].intValue
@@ -60,10 +61,14 @@ class TransactionService {
 
                         
                         
+                        let sell = transactions["seller"]
+                        
+                        let seller =  Seller()
+                        seller.last_name =  sell["last_name"].stringValue
+                         seller.first_name =  sell["first_name"].stringValue
+                        transaction.seller = seller
                         
                         
-                        
-                        transaction.seller = transactions["seller"].stringValue
                         transaction.status = transactions["status"].stringValue
                         transaction.is_buyer = transactions["is_buyer"].boolValue
                         

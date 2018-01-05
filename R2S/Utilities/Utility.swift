@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import TTGSnackbar
 
 class Utility {
     class func showAlert(title: String, message: String, targetController: UIViewController) {
@@ -106,4 +107,11 @@ class Utility {
         }
         return String()
     }
+    
+    class func showSnackBAr(messege: String, bgcolor: UIColor){
+        let snackbar = TTGSnackbar(message: messege, duration: .short)
+        snackbar.backgroundColor = bgcolor
+        snackbar.show()
+    }
+    
 }

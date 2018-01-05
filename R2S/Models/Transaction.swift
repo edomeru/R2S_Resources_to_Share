@@ -22,10 +22,11 @@ class Transaction: Object {
     dynamic var buyer = ""
     dynamic var quantity = ""
     dynamic var resource: Resource?
-    dynamic var seller = ""
+    dynamic var seller: Seller?
     dynamic var status = ""
     dynamic var is_buyer = false
-   
+    dynamic var account: Account?
+    
     override static func primaryKey() -> String? {
         return "id"
     }

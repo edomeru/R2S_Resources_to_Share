@@ -12,7 +12,7 @@
         <scene sceneID="5gd-tc-SuB">
             <objects>
                 <navigationController id="gyt-qp-uPB" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V3o-gx-w46">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="V3o-gx-w46">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -170,10 +170,31 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Activity" image="ic_notifications" id="jFW-NX-bHK"/>
+                    <connections>
+                        <segue destination="flH-el-nGv" kind="show" identifier="activityViewToTrasactionView" id="QkT-m3-wEp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="STx-My-eQb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1420" y="577"/>
+        </scene>
+        <!--Transaction View Controller-->
+        <scene sceneID="eIp-qo-j7Q">
+            <objects>
+                <viewController id="flH-el-nGv" customClass="TransactionViewController" customModule="R2S" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vXT-Pf-xLZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="GMd-MD-ZvZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dNn-sx-2le">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4TP-Aa-dqk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2225" y="576"/>
         </scene>
         <!--Resource View Controller-->
         <scene sceneID="k8z-4e-T8m">

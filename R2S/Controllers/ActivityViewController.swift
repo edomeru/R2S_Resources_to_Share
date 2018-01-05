@@ -12,7 +12,8 @@ import SwiftSpinner
 import Kingfisher
 import MIBadgeButton_Swift
 import SwiftyJSON
-
+import TTGSnackbar
+import SwiftHEXColors
 
 class ActivityViewController: BaseViewController {
 
@@ -24,6 +25,7 @@ class ActivityViewController: BaseViewController {
     var screenHeight: CGFloat!
     var transactions: Results<Transaction>!
     var selectedCategoryId: Int!
+    var selectedTransactionId:Int = 0
     var resources: Results<Transaction>!
     var rejectArray = [String]()
     var rejectAnyArray = [Any]()
@@ -40,28 +42,8 @@ class ActivityViewController: BaseViewController {
         if let v = gesture.view {
             print("it worked",v.tag)
             
-            let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-            activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
-            activityIndicator.activityIndicatorViewStyle = .gray
-            activityIndicator.center = self.view.center
-            activityIndicator.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
-            activityIndicator.center = self.view.center
-            activityIndicator.hidesWhenStopped = true
-            self.view.addSubview(activityIndicator)
-            activityIndicator.startAnimating()
-            TransactionService.accept(transaction_id: v.tag, onCompletion: { statusCode, message in
-               
-                print("STATUSCODE",statusCode)
-                
-                TransactionDao.update(status: "ACCEPTED",transaction_id: v.tag)
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-                    activityIndicator.stopAnimating()
-                    self.activityView.activityTableView.reloadData()
-                    
-                })
-                
-            })
-            
+            alertConfirmation(title: "Confirm", message: "Do you really want this item to be accepted?", status: "ACCEPT", transaction_id: v.tag)
+
         }
     }
     
@@ -71,32 +53,8 @@ class ActivityViewController: BaseViewController {
         if let v = gesture.view {
             print("it worked",v.tag)
             
-            let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-            activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
-            activityIndicator.activityIndicatorViewStyle = .gray
-            activityIndicator.center = self.view.center
-            activityIndicator.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
-            activityIndicator.center = self.view.center
-            activityIndicator.hidesWhenStopped = true
-            self.view.addSubview(activityIndicator)
-            activityIndicator.startAnimating()
             
-            
-            
-            
-            TransactionService.reject(transaction_id: v.tag, onCompletion: { statusCode, message in
-                
-                print("STATUSCODE_REJECT",statusCode)
-               
-                TransactionDao.update(status: "REJECTED",transaction_id: v.tag)
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-                    activityIndicator.stopAnimating()
-                 self.activityView.activityTableView.reloadData()
-                    
-                     })
-                
-            })
-            
+            alertConfirmation(title: "Confirm", message: "Do you really want this item to be rejected?", status: "REJECT", transaction_id: v.tag)
         }
     
     }
@@ -104,35 +62,10 @@ class ActivityViewController: BaseViewController {
     
     func completed(gesture: UITapGestureRecognizer) {
         
+        
         if let v = gesture.view {
             print("it worked complete",v.tag)
-            
-            let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-            activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
-            activityIndicator.activityIndicatorViewStyle = .gray
-            activityIndicator.center = self.view.center
-            activityIndicator.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
-            activityIndicator.center = self.view.center
-            activityIndicator.hidesWhenStopped = true
-            self.view.addSubview(activityIndicator)
-            activityIndicator.startAnimating()
-            
-            
-            
-            
-            TransactionService.complete(transaction_id: v.tag, onCompletion: { statusCode, message in
-                
-                print("STATUSCODE_REJECT",statusCode)
-                
-                TransactionDao.update(status: "COMPLETED",transaction_id: v.tag)
-                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-                    activityIndicator.stopAnimating()
-                    self.activityView.activityTableView.reloadData()
-                    
-                })
-                
-            })
-            
+            alertConfirmation(title: "Confirm", message: "Do you really want this item to be completed?", status: "COMPLETE", transaction_id: v.tag)
         }
         
     }
@@ -173,6 +106,7 @@ class ActivityViewController: BaseViewController {
                 self.initUILayout()
                 self.activityView.activityTableView.reloadData()
                     
+                    
                     })
             }
 
@@ -203,6 +137,129 @@ class ActivityViewController: BaseViewController {
 //        self.activityView.activitySegmentedControl.insertSegment(withTitle: "History", at: 2, animated: false)
 //    }
     
+    
+    func alertConfirmation(title: String, message:String, status: String, transaction_id: Int) {
+    
+        let dialogMessage = UIAlertController(title: title , message: message , preferredStyle: .alert)
+        
+        // Create OK button with action handler
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+            if status == "COMPLETE" {
+                self.doComplete(transaction_id: transaction_id)
+            }else if status == "REJECT" {
+                 self.doReject(transaction_id: transaction_id)
+            }else if status == "ACCEPT" {
+                self.doAccept(transaction_id: transaction_id)
+            }
+            
+        })
+        
+        // Create Cancel button with action handlder
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+            print("Cancel button tapped")
+        }
+        
+        //Add OK and Cancel button to dialog message
+        dialogMessage.addAction(ok)
+        dialogMessage.addAction(cancel)
+        
+        // Present dialog message to user
+        self.present(dialogMessage, animated: true, completion: nil)
+
+    
+    }
+    
+    func doComplete(transaction_id: Int){
+                    let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+                    activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
+                    activityIndicator.activityIndicatorViewStyle = .gray
+                    activityIndicator.center = self.view.center
+                    activityIndicator.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
+                    activityIndicator.center = self.view.center
+                    activityIndicator.hidesWhenStopped = true
+                    self.view.addSubview(activityIndicator)
+                    activityIndicator.startAnimating()
+        
+        
+        
+        
+                    TransactionService.complete(transaction_id: transaction_id, onCompletion: { statusCode, message in
+        
+                        print("STATUSCODE_REJECT",statusCode)
+        
+                        TransactionDao.update(status: "COMPLETED",transaction_id: transaction_id)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                            activityIndicator.stopAnimating()
+                            self.activityView.activityTableView.reloadData()
+        
+        
+        
+        
+        Utility.showSnackBAr(messege:"Item has been completed", bgcolor: UIColor(hexString: Constants.color.primary)!)
+                        })
+                        
+                    })
+
+    }
+    
+    func doReject(transaction_id: Int){
+        
+        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+        activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
+        activityIndicator.activityIndicatorViewStyle = .gray
+        activityIndicator.center = self.view.center
+        activityIndicator.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        self.view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        
+        
+        
+        
+        TransactionService.reject(transaction_id: transaction_id , onCompletion: { statusCode, message in
+            
+            print("STATUSCODE_REJECT",statusCode)
+            
+            TransactionDao.update(status: "REJECTED",transaction_id: transaction_id)
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                activityIndicator.stopAnimating()
+                self.activityView.activityTableView.reloadData()
+                
+                Utility.showSnackBAr(messege:"Item has been rejected", bgcolor: UIColor(hexString: Constants.color.redSnackBar)!)
+                
+            })
+            
+        })
+    
+    }
+    
+    func doAccept(transaction_id: Int){
+    
+        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+        activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
+        activityIndicator.activityIndicatorViewStyle = .gray
+        activityIndicator.center = self.view.center
+        activityIndicator.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        self.view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        TransactionService.accept(transaction_id: transaction_id, onCompletion: { statusCode, message in
+            
+            print("STATUSCODE",statusCode)
+            
+            TransactionDao.update(status: "ACCEPTED",transaction_id: transaction_id)
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                activityIndicator.stopAnimating()
+                self.activityView.activityTableView.reloadData()
+                Utility.showSnackBAr(messege:"Item has been accepted", bgcolor: UIColor(hexString: Constants.color.greenSnackBar)!)
+                
+            })
+            
+        })
+    }
+    
     private func refreshData() {
         let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
         activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
@@ -219,10 +276,10 @@ class ActivityViewController: BaseViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             switch identifier {
-            case Constants.segue.homeToResourceSegue:
-                let destinationVC = segue.destination as! BrowseViewController
-                destinationVC.selectedCategoryId = selectedCategoryId
-                destinationVC.selectedCategoryName = CategoryDao.getOneBy(categoryId: selectedCategoryId)?.name
+            case Constants.segue.activityViewToTrasactionView:
+                let destinationVC = segue.destination as! TransactionViewController
+                destinationVC.selectedTransactionId = selectedTransactionId
+              
             default:
                 print("default");
             }
@@ -236,10 +293,24 @@ extension ActivityViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 300
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let transaction = transactions[indexPath.item]
+        if let cell = tableView.cellForRow(at: indexPath) {
+            
+            
+            selectedTransactionId  = transaction.id
+            print("TRANS_ID",transaction.id)
+            self.performSegue(withIdentifier: Constants.segue.activityViewToTrasactionView, sender: self)
+        }
+    }
 }
 
 // MARK: - UITableViewDataSource
 extension ActivityViewController: UITableViewDataSource{
+    
+   
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return transactions.count
     }
@@ -263,9 +334,9 @@ extension ActivityViewController: UITableViewDataSource{
         cell.rejectUIButtonOutlet.isHidden = true
         cell.statusUIButton.isUserInteractionEnabled = false
             if self.transactions[indexPath.item].status == "REJECTED" || self.transactions[indexPath.item].status == "CANCELLED" {
-            cell.statusUIButton.backgroundColor = UIColor.red
+            cell.statusUIButton.backgroundColor = UIColor(hexString: Constants.color.redSnackBar)!
             }else{
-            cell.statusUIButton.backgroundColor = UIColor.green
+            cell.statusUIButton.backgroundColor = UIColor(hexString: Constants.color.greenSnackBar)!
             
             }
             
@@ -275,7 +346,7 @@ extension ActivityViewController: UITableViewDataSource{
             
             if self.transactions[indexPath.item].status == "ACCEPTED" {
                 cell.statusUIButton.isHidden = false
-                cell.statusUIButton.backgroundColor = UIColor.blue
+                cell.statusUIButton.backgroundColor = UIColor(hexString: Constants.color.primary)!
                 cell.statusUIButton.setTitleColor(UIColor.white, for: .normal)
                 cell.statusUIButton.setTitle("COMPLETED", for: .normal)
                 cell.acceptUIButtonOutlet.isHidden = true
@@ -290,9 +361,7 @@ extension ActivityViewController: UITableViewDataSource{
            
         }
         
-        
-       
-        
+
         
       if  self.transactions[indexPath.item].resource?.imageUrl != "" {
      

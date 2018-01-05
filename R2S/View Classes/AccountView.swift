@@ -16,6 +16,7 @@ class AccountView: BaseUIView {
     
     @IBOutlet weak var userNameUILabel: UILabel!
    
+    @IBOutlet weak var phoneUILabel: UILabel!
     
    
     

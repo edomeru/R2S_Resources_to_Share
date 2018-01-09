@@ -12,9 +12,9 @@ import RealmSwift
 class ResourceDao {
    
     
-    static func getByAccountId(accountId: String) -> Results<Resource> {
+    static func getByAccountId(accountId: Int) -> Results<Resource> {
         let realm = try! Realm()
-        let predicate = NSPredicate(format: "id = %d", accountId)
+        let predicate = NSPredicate(format: "account.id = %d", accountId)
         let resource = realm.objects(Resource.self).filter(predicate)
         return resource
     }

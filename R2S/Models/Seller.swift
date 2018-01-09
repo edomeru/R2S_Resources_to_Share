@@ -12,5 +12,6 @@ import RealmSwift
 class Seller: Object {
     dynamic var last_name = ""
     dynamic var first_name = ""
+    //dynamic var company: Company?
   
 }

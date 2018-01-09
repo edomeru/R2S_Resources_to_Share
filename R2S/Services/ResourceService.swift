@@ -24,7 +24,7 @@ class ResourceService {
             DispatchQueue.global(qos: .background).async{
                 if statusCode == 200 {
                   
-                    //print("JSONDATA" + "\(jsonData)"  )
+                    print("JSONDATA" + "\(jsonData)"  )
                     message = ""
                     for (_, resource):(String, JSON) in jsonData {
                         let newResource = Resource()
@@ -87,6 +87,8 @@ class ResourceService {
                         account.buyer_rating = accnt["buyer_rating"].intValue
                         account.image_url = accnt["image_url"].stringValue
                         
+                        newResource.account = account
+                        
                         //Roles
                   
                             for (_, role):(String, JSON) in accnt["roles"] {
@@ -140,7 +142,7 @@ class ResourceService {
                         }
                         
                         ResourceDao.add(newResource)
-                         //print("LOOB" + "\(newResource)"  )
+                         print("LOOBRESOURCE" + "\(newResource)"  )
                     }
                 } else {
                     message = jsonData["message"].stringValue
@@ -162,7 +164,7 @@ class ResourceService {
                 if statusCode == 200 {
                     message = ""
                     for (_, resource):(String, JSON) in jsonData {
-//                        print("TEST BWAHAHHAHA ", jsonData)
+                        print("TEST BWAHAHHAHA ", jsonData)
                         let newResource = Resource()
                         newResource.id = resource["id"].intValue
                         newResource.resourceCode = resource["resource_code"].stringValue
@@ -323,6 +325,8 @@ class ResourceService {
                         account.first_name = accnt["first_name"].stringValue
                         account.buyer_rating = accnt["buyer_rating"].intValue
                         account.image_url = accnt["image_url"].stringValue
+                        
+                     
                         
                         //Roles
                         

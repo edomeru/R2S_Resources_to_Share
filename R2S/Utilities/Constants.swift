@@ -101,6 +101,7 @@ class Constants {
         static let favoritesTableCell = "FavoritesTableViewCell"
         static let wishListTableViewCell = "WishListTableViewCell"
         static let inboxTableViewCell = "InboxTableViewCell"
+        static let ProfileTableViewCell = "ProfileTableViewCell"
         
         // CollectionView Cell
         static let categoryCollectionCell = "CategoryCollectionViewCell"
@@ -142,6 +143,7 @@ class Constants {
         static let browseToResourceSegue  = "BrowseToResourceSegue"
         static let wishToWishListDetailSegue  = "WishToWishListDetailSegue"
         static let activityViewToTrasactionView = "activityViewToTrasactionView"
+        static let profileToWelcomeSegue = "profileToWelcomeSegue"
     }
 }
 

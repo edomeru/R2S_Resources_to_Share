@@ -231,6 +231,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Me" image="ic_person" id="SJ3-WQ-dSs" customClass="Anyway"/>
+                    <connections>
+                        <segue destination="MSh-Oj-9yy" kind="show" identifier="profileToWelcomeSegue" id="dJd-mu-kYQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="by0-9X-XqV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -372,6 +375,7 @@
         <image name="ic_person" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="dJd-mu-kYQ"/>
         <segue reference="xPI-oA-IOK"/>
         <segue reference="qTV-HJ-SyU"/>
     </inferredMetricsTieBreakers>

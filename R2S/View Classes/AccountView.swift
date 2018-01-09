@@ -8,8 +8,13 @@
 
 import UIKit
 
+protocol AccountViewDelegate: class {
+    func signoutButtonPressed(sender: AnyObject)
+   
+}
+
 class AccountView: BaseUIView {
-    
+    weak var delegate: AccountViewDelegate?
     @IBOutlet weak var companyUILabel: UILabel!
     
     @IBOutlet weak var profilePicImageView: UIImageView!
@@ -19,7 +24,13 @@ class AccountView: BaseUIView {
     @IBOutlet weak var phoneUILabel: UILabel!
     
    
+    @IBAction func signoutUIButton(_ sender: Any) {
+        
+        delegate?.signoutButtonPressed(sender: sender as AnyObject)
+        
+    }
     
+    @IBOutlet weak var dateJoinedUILabel: UILabel!
     @IBOutlet weak var settingsUIButton: UIButton!
     
     @IBOutlet weak var profileTableView: UITableView!
@@ -27,3 +38,5 @@ class AccountView: BaseUIView {
     @IBOutlet weak var emailUILabel: UILabel!
     
 }
+
+

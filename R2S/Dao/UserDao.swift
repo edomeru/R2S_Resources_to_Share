@@ -37,4 +37,11 @@ class UserDao {
             realm.delete(user)
         }
     }
+    
+    static func clear(){
+        let realm = try! Realm()
+        try! realm.write {
+            realm.deleteAll()
+        }
+    }
 }

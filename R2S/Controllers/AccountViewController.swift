@@ -12,11 +12,14 @@ import SwiftSpinner
 import Kingfisher
 import MIBadgeButton_Swift
 import DropDown
+import Auk
+import moa
+import Foundation
 
 class AccountViewController: BaseViewController {
 
     var accountView = AccountView()
-    
+    var myResource : Results<Resource>!
     var screenSize: CGRect!
     var screenWidth: CGFloat!
     var screenHeight: CGFloat!
@@ -27,7 +30,7 @@ class AccountViewController: BaseViewController {
         super.viewDidLoad()
         print("AccountViewController")
      //   let dropDown = DropDown()
-        self.initUILayout()
+        
         
       //  let chooseArticleDropDown = DropDown()
         
@@ -121,19 +124,44 @@ class AccountViewController: BaseViewController {
 //            
 //        })
         
-         print("USERID",UserHelper.getId())
-       let Me =  UserDao.getOneBy(id: UserHelper.getId()! )
-        print("FNAME",Me?.firstName)
-        self.accountView.userNameUILabel.text = (Me?.firstName)! + " " + (Me?.lastName)!
-        self.accountView.companyUILabel.text = "Total Integrated Resources"
-        self.accountView.emailUILabel.text = (Me?.email)!
-        self.accountView.phoneUILabel.text = (Me?.landlineNumber)!
-        print("profpic",Me?.imageUrl)
-        if Me?.imageUrl != "" {
-        self.accountView.profilePicImageView.kf.setImage(with:  URL(string: (Me?.imageUrl)!))
-                            }
+        let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+        activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
+        activityIndicator.activityIndicatorViewStyle = .gray
+        activityIndicator.center = self.view.center
+        activityIndicator.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        
+        activityIndicator.startAnimating()
+        ResourceService.get{ (statusCode, message) in
+            if statusCode == 200 {
+                
+                self.myResource =  ResourceDao.getByAccountId(accountId: UserHelper.getId()!)
+                let user = UserDao.getOneBy(id: UserHelper.getId()!)
+                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                    activityIndicator.stopAnimating()
+                    
+                   
+                    
+                   
+                    self.initUILayout()
+                    self.accountView.profileTableView.reloadData()
+                    
+                    
+                   
+                })
+            } else {
+                
+                Utility.showAlert(title: "Error", message: message!, targetController: self)
+            }
+        }
+        
+       
 
     }
+    
+    
+   
 
     // MARK: - Private Functions
     private func initUILayout() {
@@ -143,10 +171,33 @@ class AccountViewController: BaseViewController {
 
         self.accountView = self.loadFromNibNamed(nibNamed: Constants.xib.accountView) as! AccountView
         self.view = self.accountView
-        
-        self.accountView.profileTableView.register(UINib(nibName: Constants.xib.resourceTableCell, bundle:nil), forCellReuseIdentifier: "ProfileTableViewCell")
+        self.accountView.delegate = self
+        self.accountView.profileTableView.register(UINib(nibName: Constants.xib.ProfileTableViewCell, bundle:nil), forCellReuseIdentifier: "ProfileTableViewCell")
         self.accountView.profileTableView.delegate = self
         self.accountView.profileTableView.dataSource = self
+        
+        let Me =  UserDao.getOneBy(id: UserHelper.getId()! )
+        print("UserDao.getOneBy",Me)
+        if let user = Me {
+            
+            self.accountView.userNameUILabel.text = (user.firstName) + " " + (user.lastName)
+            
+            self.accountView.companyUILabel.text = "Total Integrated Resources"
+            self.accountView.emailUILabel.text = (user.email)
+            self.accountView.phoneUILabel.text = (user.landlineNumber)
+            
+            if user.imageUrl != "" {
+                let processor = RoundCornerImageProcessor(cornerRadius: 20)
+                self.accountView.profilePicImageView.kf.setImage(with:  URL(string: user.imageUrl), placeholder: nil, options: [.processor(processor)])
+            }
+            
+        
+            
+            print("USERDAODFEF",Utility.stringToDate(dateString: user.createdDate))
+            self.accountView.dateJoinedUILabel.text = "Joined " + (user.createdDate)
+        }
+        
+       
         
         
     }
@@ -186,10 +237,10 @@ class AccountViewController: BaseViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let identifier = segue.identifier {
             switch identifier {
-            case Constants.segue.homeToResourceSegue:
-                let destinationVC = segue.destination as! BrowseViewController
-                destinationVC.selectedCategoryId = selectedCategoryId
-                destinationVC.selectedCategoryName = CategoryDao.getOneBy(categoryId: selectedCategoryId)?.name
+                
+            case Constants.segue.profileToWelcomeSegue:
+                let destinationVC = segue.destination as! WelcomeViewController
+              
             default:
                 print("default");
             }
@@ -209,24 +260,30 @@ extension AccountViewController: UITableViewDelegate{
 extension AccountViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.accountView.profileTableView {
-            return 10
+            return self.myResource.count
         }
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ResourceTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
+        
+        let myResources = myResource[indexPath.row]
+        cell.titleLabel.text =  myResources.name
         
         
-        cell.titleLabel.text =  "Special Force"
         
+        cell.dateLabel.text = myResources.createdDate
+        cell.priceLabel.text = "$" + myResources.price
+        cell.infoLabel.text = myResources.descriptionText
         
+       
         
-        cell.dateLabel.text = "November 17, 2017"
-        cell.priceLabel.text = "$ 20.00"
-        cell.infoLabel.text = "Slightly Used"
-        cell.productImageView.image = UIImage(named:"jong_suk")
-        
+        cell.productImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
+        cell.productImageView.contentMode = .scaleAspectFit // OR .scaleAspectFill
+        cell.productImageView.clipsToBounds = true
+        cell.productImageView.kf.setImage(with:  URL(string: myResources.imageUrl))
+       
 //        for img in resources[indexPath.row].image {
 //            
 //            cell.productImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
@@ -239,4 +296,44 @@ extension AccountViewController: UITableViewDataSource{
         //Moa.settings.cache.requestCachePolicy = .useProtocolCachePolicy
         return cell
  }
+}
+
+
+// MARK: - LoginViewDelegate
+extension AccountViewController: AccountViewDelegate {
+    func signoutButtonPressed(sender: AnyObject) {
+       
+        
+        let dialogMessage = UIAlertController(title: "Confirm" , message: "are you sure you want to sign out?" , preferredStyle: .alert)
+        
+        // Create OK button with action handler
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+            UserDao.clear()
+         
+            print("RESOURCEDAO",ResourceDao.get())
+            print("TRANSACTIONDAO",TransactionDao.getTransactions())
+            
+            let domain = Bundle.main.bundleIdentifier!
+            UserDefaults.standard.removePersistentDomain(forName: domain)
+            UserDefaults.standard.synchronize()
+            
+            UserManager.sharedInstance.isLoggedIn = false
+            
+            self.performSegue(withIdentifier: Constants.segue.profileToWelcomeSegue, sender: self)
+            
+        })
+        
+        // Create Cancel button with action handlder
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+            print("Cancel button tapped")
+        }
+        
+        //Add OK and Cancel button to dialog message
+        dialogMessage.addAction(ok)
+        dialogMessage.addAction(cancel)
+        
+        // Present dialog message to user
+        self.present(dialogMessage, animated: true, completion: nil)
+    }
+
 }

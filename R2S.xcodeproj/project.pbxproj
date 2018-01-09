@@ -66,6 +66,8 @@
 		9B5F49041FDFA3DD00CD3D66 /* CCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5F49031FDFA3DD00CD3D66 /* CCheckbox.swift */; };
 		9B5F49051FDFA3DD00CD3D66 /* CCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5F49031FDFA3DD00CD3D66 /* CCheckbox.swift */; };
 		9B5F49061FDFA3DD00CD3D66 /* CCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5F49031FDFA3DD00CD3D66 /* CCheckbox.swift */; };
+		9B63FD77200368D800D91838 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B63FD76200368D800D91838 /* ProfileTableViewCell.xib */; };
+		9B63FD7A2003696B00D91838 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B63FD792003696B00D91838 /* ProfileTableViewCell.swift */; };
 		9B740C6A1FD8F927003372DF /* WishListAddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B740C691FD8F927003372DF /* WishListAddController.swift */; };
 		9B740C6D1FD90A72003372DF /* WishListAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B740C6C1FD90A72003372DF /* WishListAdd.swift */; };
 		9B75D2D81FD59E10002EF175 /* WishListAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B75D2D71FD59E10002EF175 /* WishListAccount.swift */; };
@@ -224,6 +226,8 @@
 		9B5E23941FD45C1000A59FFF /* WishListDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WishListDetailView.xib; path = Xibs/WishListDetailView.xib; sourceTree = "<group>"; };
 		9B5E23961FD45DB300A59FFF /* WishListDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListDetailView.swift; path = "View Classes/WishListDetailView.swift"; sourceTree = "<group>"; };
 		9B5F49031FDFA3DD00CD3D66 /* CCheckbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCheckbox.swift; sourceTree = "<group>"; };
+		9B63FD76200368D800D91838 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileTableViewCell.xib; path = Xibs/ProfileTableViewCell.xib; sourceTree = "<group>"; };
+		9B63FD792003696B00D91838 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileTableViewCell.swift; path = "View Classes/ProfileTableViewCell.swift"; sourceTree = "<group>"; };
 		9B740C671FD8F7D4003372DF /* WishListAddView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WishListAddView.xib; path = Xibs/WishListAddView.xib; sourceTree = "<group>"; };
 		9B740C691FD8F927003372DF /* WishListAddController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListAddController.swift; path = Controllers/WishListAddController.swift; sourceTree = "<group>"; };
 		9B740C6C1FD90A72003372DF /* WishListAdd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListAdd.swift; path = "View Classes/WishListAdd.swift"; sourceTree = "<group>"; };
@@ -472,6 +476,14 @@
 			name = WishList;
 			sourceTree = "<group>";
 		};
+		9B63FD782003694D00D91838 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				9B63FD792003696B00D91838 /* ProfileTableViewCell.swift */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		9B740C6B1FD8FA5F003372DF /* WishList */ = {
 			isa = PBXGroup;
 			children = (
@@ -502,6 +514,7 @@
 			isa = PBXGroup;
 			children = (
 				2C63EF0E1F027541003573A7 /* AccountView.xib */,
+				9B63FD76200368D800D91838 /* ProfileTableViewCell.xib */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -693,6 +706,7 @@
 		B9E2678A1E7A7A1B00BB9900 /* Tab Bar */ = {
 			isa = PBXGroup;
 			children = (
+				9B63FD782003694D00D91838 /* Profile */,
 				9B4E5CD31FFE0E95009C6767 /* Transaction */,
 				9B1F86CF1FD6B36E005C575E /* Inbox */,
 				9BCCD6001FD13FCF001A9507 /* NewResource */,
@@ -959,6 +973,7 @@
 				B99151BA1E77F71200949529 /* LoginView.xib in Resources */,
 				9B3ED5531FD2C90C00627679 /* WishlistView.xib in Resources */,
 				9BFDB3741F97294400D430D4 /* ResourceView.xib in Resources */,
+				9B63FD77200368D800D91838 /* ProfileTableViewCell.xib in Resources */,
 				9B5E23951FD45C1000A59FFF /* WishListDetailView.xib in Resources */,
 				9B3ED5561FD2CD4B00627679 /* FavoritesTableViewCell.xib in Resources */,
 				9B4E5CD21FFE0703009C6767 /* transactionView.xib in Resources */,
@@ -1057,6 +1072,7 @@
 				9BD8341C1F90CBC80049066E /* Account.swift in Sources */,
 				9B1F86D11FD6B38B005C575E /* InboxView.swift in Sources */,
 				B9E267641E78ED0000BB9900 /* UserDao.swift in Sources */,
+				9B63FD7A2003696B00D91838 /* ProfileTableViewCell.swift in Sources */,
 				9B3FDC9A1FD6977A00091E10 /* LastMessege.swift in Sources */,
 				9B3ED5591FD2CE5800627679 /* FavoritesTableViewCell.swift in Sources */,
 				9B740C6A1FD8F927003372DF /* WishListAddController.swift in Sources */,

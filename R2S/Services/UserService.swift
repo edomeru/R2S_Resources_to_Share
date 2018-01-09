@@ -47,6 +47,7 @@ class UserService {
         params["password"] = password as AnyObject?
         UserRemote.login(params, onCompletion: { jsonData, statusCode in
             if statusCode == 200 {
+                print("jsonDataUSER",jsonData)
                 message = "Login successful."
                 let user = User()
                 user.accountId = jsonData["account_id"].stringValue

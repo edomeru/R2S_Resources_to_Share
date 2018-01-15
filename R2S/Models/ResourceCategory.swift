@@ -10,14 +10,15 @@ import Foundation
 import RealmSwift
 
 class ResourceCategory: Object {
-
+    
+    dynamic var id = 0
     dynamic var main_category_id = 0
     dynamic var main_category_name = ""
     dynamic var subcategory: ResourceSubcategory?
 //    var subcategory = List<ResourceSubcategory>()
     
     override static func primaryKey() -> String? {
-        return "main_category_id"
+        return "id"
     }
     
     

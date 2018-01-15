@@ -54,4 +54,11 @@ class UserRemote {
             onCompletion(jsonData, statusCode)
         })
     }
+    
+    static func change(id: String,params: [String: Any], onCompletion: @escaping (JSON, Int?) -> Void) {
+        print("PARAMS",params)
+        ApiRequestManager.sharedInstance.doPutRequestWithParam(urlString: Constants.api.user.change.replacingOccurrences(of: "{id}", with: String(describing: id )), params: params, headers: Utility.getHeadersWithAuth(), onCompletion: { jsonData, statusCode in
+            onCompletion(jsonData, statusCode)
+        })
+    }
 }

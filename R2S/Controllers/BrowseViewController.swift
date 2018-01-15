@@ -67,25 +67,25 @@ class BrowseViewController: BaseViewController {
     }
     func myFunction(gesture: UITapGestureRecognizer) {
         if let v = gesture.view {
-            print("it worked",v.tag)
+           // print("it worked",v.tag)
             let resource = ResourceDao.getOneBy(id: v.tag)
             
-            print("RESOURCE_ID",resource?.id)
+           // print("RESOURCE_ID",resource?.id)
             
             let param:[String : AnyObject] = ["account_id" : UserHelper.getId() as AnyObject]
             ResourceService.addToFavorites(resource_id: (resource?.id)!, params:param){ (statusCode, message) in
                 //print("FAV STAT CODE",statusCode)
-                print("STATUSCODE",statusCode)
-                print("MSG",message)
+                //print("STATUSCODE",statusCode)
+                //print("MSG",message)
                 if let statCode = statusCode {
                     if statCode == 202 {
-                        print("PRINT_THISFAV", self.favoriteOrNot!)
+                       // print("PRINT_THISFAV", self.favoriteOrNot!)
                         
                        
                         
                          if message! != "Successfully updated" {
                             
-                      print("DELTE_FAV")
+                     
                             let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
                             activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
                             activityIndicator.activityIndicatorViewStyle = .gray
@@ -96,10 +96,10 @@ class BrowseViewController: BaseViewController {
                             self.view.addSubview(activityIndicator)
                             activityIndicator.startAnimating()
                         let favorite = FavoritesDao.getOneBy(id: (resource?.id)!)
-                            print("favorite DEL" ,favorite?.id)
+                            
                         FavoritesDao.delete(favorite!)
                           let fb =  FavoritesDao.get()
-                            print("PRINT_AFTER_ADDING_RESOURCE",fb)
+                          
                             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                                 activityIndicator.stopAnimating()
                             
@@ -113,7 +113,7 @@ class BrowseViewController: BaseViewController {
                             })
                             
                          }  else  {
-                        print("ADD_FAV")
+                       
                             
                             
                            
@@ -133,7 +133,7 @@ class BrowseViewController: BaseViewController {
                                     activityIndicator.stopAnimating()
                                     
                                     let favorites = FavoritesDao.get()
-                                    print("PRINT_AFTER_ADDING_RESOURCE",favorites)
+                                    
                                     // print("FAV CONTROLLER", favorites )
                                     self.browseView.resourceTableView.reloadData()
                                     let snackbar = TTGSnackbar(message: "Item" + " has been added to Favorites ", duration: .short)
@@ -184,12 +184,33 @@ class BrowseViewController: BaseViewController {
         activityIndicator.startAnimating()
         ResourceService.get{ (statusCode, message) in
             if statusCode == 200 {
-                self.resources = ResourceDao.get();
                 
+                self.resources = ResourceDao.getByCategoryId(id: self.selectedCategoryId)
+                 //print("JSONDATA" + "\(self.resources!)"  )
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     activityIndicator.stopAnimating()
                     self.initUILayout()
-                    self.browseView.resourceTableView.reloadData()
+                    
+                    
+                    if ( self.resources?.isEmpty)! {
+                        self.browseView.resourceTableView.reloadData()
+                        self.browseView.noAvailResourcesUILable.isHidden = false
+                        self.browseView.resourceTableView.isHidden = true
+                        print("NO VALUE")
+                        
+                        
+                    } else {
+                        
+                        //print("HAVE VALUES",  self.resources)
+                        self.browseView.resourceTableView.reloadData()
+                        self.browseView.noAvailResourcesUILable.isHidden = true
+                        self.browseView.resourceTableView.isHidden = false
+                    }
+                    
+                    
+                    
+                    
+                    
                 })
             } else {
                 self.resources = ResourceDao.get();
@@ -221,9 +242,11 @@ extension BrowseViewController: UICollectionViewDelegateFlowLayout {
             CategoryService.clearSelectedSubcategories(self.subcategories)
             //print(self.subcategories[indexPath.item].id)
             //print("PRINT1",subcategories.count)
-            let resourcesByCategorySelected = ResourceService.getBySubCategory(id: self.subcategories[indexPath.item].id)
+            print("CAT_ID",selectedCategoryId)
+            print("SUBCAT_ID",self.subcategories[indexPath.item].id)
+            let resourcesByCategorySelected = ResourceDao.getByCatIdAndSubCatId(catId: selectedCategoryId, subCatId: self.subcategories[indexPath.item].id)
             
-            //print("PRINT",resourcesByCategorySelected?.count)
+            print("PRINTaadad",resourcesByCategorySelected)
             
             resources = resourcesByCategorySelected
             
@@ -275,15 +298,15 @@ extension BrowseViewController: UITableViewDataSource{
         
        
          favoriteOrNot = FavoritesDao.isFavorite(id: resources[indexPath.row].id)
-        print("favoriteOrNot",favoriteOrNot)
+       // print("favoriteOrNot",favoriteOrNot)
         
         if favoriteOrNot! {
             cell.favoriteUIImageView.image = UIImage(named:"icons8-heart-pink")
-            print("NAME %s %@",resources[indexPath.row].name, favoriteOrNot)
+           // print("NAME %s %@",resources[indexPath.row].name, favoriteOrNot)
             
         }else {
             cell.favoriteUIImageView.image = UIImage(named:"icons8-heart-blank")
-            print("NAME %s %@",resources[indexPath.row].name, favoriteOrNot)
+            //print("NAME %s %@",resources[indexPath.row].name, favoriteOrNot)
             
         }
         
@@ -328,8 +351,9 @@ extension BrowseViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if collectionView == self.browseView.subcategoryCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubcategoryCollectionCell", for: indexPath) as! SubCategoryCollectionViewCell
-            cell.subcategoryLabel.text = self.subcategories[indexPath.item].name
             
+            cell.subcategoryLabel.text = self.subcategories[indexPath.item].name
+        
             if self.subcategories[indexPath.item].isSelected {
                 cell.categoryUnderlineView.backgroundColor = UIColor(hex: Constants.color.primary)
             } else {

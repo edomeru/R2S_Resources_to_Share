@@ -11,5 +11,6 @@ import UIKit
 class BrowseView: BaseUIView {
     @IBOutlet weak var subcategoryCollectionView: UICollectionView!
 
+    @IBOutlet weak var noAvailResourcesUILable: UILabel!
     @IBOutlet weak var resourceTableView: UITableView!
 }

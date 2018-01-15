@@ -23,8 +23,8 @@ class ResourceService {
         ResourceRemote.get(onCompletion: { jsonData, statusCode in
             DispatchQueue.global(qos: .background).async{
                 if statusCode == 200 {
-                  
-                    print("JSONDATA" + "\(jsonData)"  )
+                 // print("JSONDATAGETSERVICE" + "\(jsonData)"  )
+                    
                     message = ""
                     for (_, resource):(String, JSON) in jsonData {
                         let newResource = Resource()
@@ -121,13 +121,17 @@ class ResourceService {
                         
                         
                         //Categories
+                        
+//                        print("lyfvukvbuycvtuctucut" + "\(resource["categories"] )")
                         for (_, categories):(String, JSON) in resource["categories"] {
-                            let cat = ResourceCategory()
+                           let cat = ResourceCategory()
+                            cat.id = IncrementaID()
                             cat.main_category_id = categories["main_category_id"].intValue
                             cat.main_category_name = categories["main_category_name"].stringValue
-                            
+//                            print("cat.main_category_id" + "\(categories["main_category_id"].intValue)")
+//                            print("cat.main_category_name" + "\(categories["main_category_name"].stringValue)")
                             let subCat = categories["subcategory"]
-                            
+                           
                             let sub = ResourceSubcategory()
                             sub.createdDate = subCat["created_date"].stringValue
                             sub.id = subCat["id"].intValue
@@ -135,14 +139,18 @@ class ResourceService {
                             sub.imageUrl = subCat["image_url"].stringValue
                             sub.name = subCat["name"].stringValue
                             sub.descriptionText = subCat["description"].stringValue
-                            
+//                              print("sub.id" + "\(subCat["id"].intValue)")
+//                              print("sub.name" + "\(subCat["name"].stringValue)")
                             cat.subcategory = sub
                             
-                            newResource.categories.append(cat)
+                           newResource.categories.append(cat)
+                            
                         }
                         
+                        print("JSONDATAGETSERVICE" + "\(newResource)"  )
+                       
                         ResourceDao.add(newResource)
-                         print("LOOBRESOURCE" + "\(newResource)"  )
+                         
                     }
                 } else {
                     message = jsonData["message"].stringValue
@@ -154,6 +162,17 @@ class ResourceService {
                 onCompletion(statusCode, message)
             }
         })
+        
+        
+        //Increment ID
+         func IncrementaID() -> Int{
+            let realm = try! Realm()
+            if let retNext = realm.objects(ResourceCategory.self).sorted(byKeyPath: "id").last?.id {
+                return retNext + 1
+            }else{
+                return 1
+            }
+        }
     }
     
     static func getByAccount(id: Int,onCompletion: @escaping (Int?, String?) -> Void) {

@@ -64,6 +64,22 @@ class UserService {
                 user.createdDate = jsonData["created_date"].stringValue
                 user.updatedDate = jsonData["updated_date"].stringValue
                 user.deletedDate = jsonData["deleted_date"].stringValue
+                
+                //Account
+                let cmpy = jsonData["company"]
+                let company = Company()
+                company.name = cmpy["name"].stringValue
+               
+                
+                
+                
+                user.company = company
+                
+                
+                
+                
+                
+                
                 KeychainWrapper.standard.set(password, forKey: "password")
                 
                 let defaults = UserDefaults.standard

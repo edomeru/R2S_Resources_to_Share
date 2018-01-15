@@ -21,12 +21,14 @@ class Constants {
         // MARK: - User
         struct user {
             static let base = api.baseUrl + "/users"
+            static let users = api.baseUrl + "/users/{id}"
             static let one = user.base + "/{username}"
             static let register = user.base + "/register"
             static let login = user.base + "/login"
             static let changePassword = user.base + "/{username}/password"
             static let forgot = api.baseUrl + "/forgot"
             static let forgotCode = api.baseUrl + "/forgot/code"
+            static let change = users + "/password"
             
             // MARK: - Transaction
             static let transactions = base + "/{id}/transactions"
@@ -93,7 +95,10 @@ class Constants {
         static let inboxView = "InboxView"
         static let wishlistAddView = "WishListAddView"
         static let transactionView = "transactionView"
-        
+        static let EditProfile = "EditProfile"
+        static let ChangePasswordView = "ChangePasswordView"
+        static let AppSettingsView = "AppSettingsView"
+        static let RaiseSupportTicketView = "RaiseSupportTicketView"
         // TableView Cell
         static let featuredTableCell = "FeaturedTableViewCell"
         static let categoryTableCell = "CategoryTableViewCell"
@@ -144,6 +149,11 @@ class Constants {
         static let wishToWishListDetailSegue  = "WishToWishListDetailSegue"
         static let activityViewToTrasactionView = "activityViewToTrasactionView"
         static let profileToWelcomeSegue = "profileToWelcomeSegue"
+        static let profileToEditProfileSegue = "profileToEditProfileSegue"
+        static let profileToChangePasswordSegue = "profileToChangePasswordSegue"
+        static let profileToAppSettingsSegue = "profileToAppSettingsSegue"
+        static let profileToRaiseSupportTicketSegue = "profileToRaiseSupportTicketSegue"
+        
     }
 }
 

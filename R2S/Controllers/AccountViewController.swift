@@ -15,6 +15,7 @@ import DropDown
 import Auk
 import moa
 import Foundation
+import CZPicker
 
 class AccountViewController: BaseViewController {
 
@@ -25,7 +26,9 @@ class AccountViewController: BaseViewController {
     var screenHeight: CGFloat!
     var categories: Results<Category>!
     var selectedCategoryId: Int!
-
+    var settings = [String]()
+    var setingsSelected: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("AccountViewController")
@@ -105,6 +108,9 @@ class AccountViewController: BaseViewController {
 //            print("\(message!)" + " TEST NI EDS"  )
 //            
 //        })
+        
+        
+        
     
         
          var category1:[String : AnyObject] =  ["subcategory_id": 22 as AnyObject    ,"main_category_id": 10 as AnyObject]
@@ -172,7 +178,10 @@ class AccountViewController: BaseViewController {
         self.accountView = self.loadFromNibNamed(nibNamed: Constants.xib.accountView) as! AccountView
         self.view = self.accountView
         self.accountView.delegate = self
+        
         self.accountView.profileTableView.register(UINib(nibName: Constants.xib.ProfileTableViewCell, bundle:nil), forCellReuseIdentifier: "ProfileTableViewCell")
+        settings = ["Edit Profile", "Change Password", "App Settings", "Raise Support Ticket"]
+        
         self.accountView.profileTableView.delegate = self
         self.accountView.profileTableView.dataSource = self
         
@@ -182,10 +191,11 @@ class AccountViewController: BaseViewController {
             
             self.accountView.userNameUILabel.text = (user.firstName) + " " + (user.lastName)
             
-            self.accountView.companyUILabel.text = "Total Integrated Resources"
+            
             self.accountView.emailUILabel.text = (user.email)
             self.accountView.phoneUILabel.text = (user.landlineNumber)
-            
+            self.accountView.companyUILabel.text = user.company?.name
+           
             if user.imageUrl != "" {
                 let processor = RoundCornerImageProcessor(cornerRadius: 20)
                 self.accountView.profilePicImageView.kf.setImage(with:  URL(string: user.imageUrl), placeholder: nil, options: [.processor(processor)])
@@ -195,11 +205,26 @@ class AccountViewController: BaseViewController {
             
             print("USERDAODFEF",Utility.stringToDate(dateString: user.createdDate))
             self.accountView.dateJoinedUILabel.text = "Joined " + (user.createdDate)
+            
+            
         }
         
        
         
         
+    }
+    
+    func settingsTapped() {
+        let pickerDialog = CZPickerView(headerTitle: "Settings", cancelButtonTitle: "Cancel", confirmButtonTitle: "Ok")
+        pickerDialog?.delegate = self
+        pickerDialog?.dataSource = self
+        pickerDialog?.needFooterView = true
+        pickerDialog?.headerBackgroundColor = UIColor(hexString: Constants.color.primary)
+        pickerDialog?.tag = 1000
+        pickerDialog?.confirmButtonBackgroundColor = UIColor(hexString: Constants.color.primary)
+        pickerDialog?.checkmarkColor = .blue
+        pickerDialog?.show()
+    
     }
     
     private func refreshData() {
@@ -240,6 +265,8 @@ class AccountViewController: BaseViewController {
                 
             case Constants.segue.profileToWelcomeSegue:
                 let destinationVC = segue.destination as! WelcomeViewController
+            case Constants.segue.profileToChangePasswordSegue:
+                let destinationVC = segue.destination as! ChangePasswordViewController
               
             default:
                 print("default");
@@ -335,5 +362,102 @@ extension AccountViewController: AccountViewDelegate {
         // Present dialog message to user
         self.present(dialogMessage, animated: true, completion: nil)
     }
+    
+    
+    func settingsButtonPressed(sender: AnyObject) {
+    
+    settingsTapped()
+    
+    }
+
+}
+
+extension AccountViewController: CZPickerViewDelegate, CZPickerViewDataSource {
+    
+    public func numberOfRows(in pickerView: CZPickerView!) -> Int {
+        
+     
+            print("picker 1 count", pickerView.tag)
+            return settings.count
+        
+        
+        
+    }
+    
+    func czpickerView(_ pickerView: CZPickerView!, imageForRow row: Int) -> UIImage! {
+        
+        
+        return nil
+    }
+    
+    func numberOfRowsInPickerView(pickerView: CZPickerView!) -> Int {
+        
+        
+      
+            print("picker 1 count", pickerView.tag)
+            return settings.count
+       
+        
+        
+    }
+    
+    func czpickerView(_ pickerView: CZPickerView!, titleForRow row: Int) -> String! {
+        
+        
+       
+            print("picker 1 count", pickerView.tag)
+            return settings[row]
+     
+        
+        
+    }
+    
+    func czpickerView(_ pickerView: CZPickerView!, didConfirmWithItemAtRow row: Int){
+        
+        
+        
+        
+        
+        
+        
+        
+            print("FRUITS didConfirmWithItemAtRow", settings[row])
+            
+            setingsSelected = settings[row]
+            print(settings[row])
+            
+        setingsSelected = settings[row]
+        
+        
+        
+        
+        if setingsSelected == "Edit Profile" {
+            
+            self.performSegue(withIdentifier: Constants.segue.profileToEditProfileSegue, sender: self)
+            
+        }else if setingsSelected == "Change Password" {
+            print("performSegueChangePassword")
+             self.performSegue(withIdentifier: Constants.segue.profileToChangePasswordSegue, sender: self)
+            
+            
+        }else if setingsSelected == "App Settings" {
+            
+             self.performSegue(withIdentifier: Constants.segue.profileToAppSettingsSegue, sender: self)
+            
+        }else if setingsSelected == "Raise Support Ticket" {
+            
+             self.performSegue(withIdentifier: Constants.segue.profileToRaiseSupportTicketSegue, sender: self)
+            
+            
+        }
+        
+        
+        
+        
+    }
+    
+    func czpickerViewDidClickCancelButton(_ pickerView: CZPickerView!) {
+        
+}
 
 }

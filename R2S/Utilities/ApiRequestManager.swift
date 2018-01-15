@@ -134,7 +134,7 @@ class ApiRequestManager {
     }
     
     func doPutRequest(urlString: String,
-                      
+                     
                       headers: HTTPHeaders,
                       onCompletion: @escaping ServiceResponse) {
         NetworkManager.sharedInstance.SessionManager().request(urlString,
@@ -149,6 +149,37 @@ class ApiRequestManager {
                     let responseBody = String(data: response.result.value!, encoding: .utf8)
                     var jsonData = JSON.init(parseJSON: responseBody!)
 
+                    
+                    if responseBody == nil {
+                        let tempJsonData: JSON = ["message": ""]
+                        jsonData = tempJsonData
+                    } else if jsonData == JSON.null && responseBody != nil {
+                        let tempJsonData: JSON = ["message": responseBody!]
+                        jsonData = tempJsonData
+                    }
+                    onCompletion(jsonData, statusCode)
+                case .failure:
+                    onCompletion(JSON(["message": "Network connection failed."]), 1000)
+                }
+        }
+    }
+    
+    func doPutRequestWithParam(urlString: String,
+                       params: [String: Any],
+                      headers: HTTPHeaders,
+                      onCompletion: @escaping ServiceResponse) {
+        NetworkManager.sharedInstance.SessionManager().request(urlString,
+                                                               method: .put,
+                                                               parameters: params,
+                                                               encoding: JSONEncoding.default,
+                                                               headers: headers)
+            .responseData { response in
+                switch response.result {
+                case .success:
+                    let statusCode = response.response?.statusCode
+                    let responseBody = String(data: response.result.value!, encoding: .utf8)
+                    var jsonData = JSON.init(parseJSON: responseBody!)
+                    
                     
                     if responseBody == nil {
                         let tempJsonData: JSON = ["message": ""]

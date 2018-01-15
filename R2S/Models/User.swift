@@ -25,6 +25,7 @@ class User: Object {
     dynamic var createdDate = ""
     dynamic var updatedDate = ""
     dynamic var deletedDate = ""
+    dynamic var company: Company?
     
     override static func primaryKey() -> String? {
         return "id"

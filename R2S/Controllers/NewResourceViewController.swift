@@ -319,7 +319,19 @@ class NewResourceViewController: BaseViewController, UIImagePickerControllerDele
             // Just in case you need the item position
             let item = filteredResults[itemPosition]
             print("Item at position \(itemPosition): \(item.title)")
-            self.newResourceView.subCategoryUItextField.text = item.title
+            //self.newResourceView.subCategoryUItextField.text = item.title
+            
+            self.newResourceView.subCategoryUItextField.leftViewMode = UITextFieldViewMode.always
+            let view = TagListView(frame: CGRect(x: self.newResourceView.CategoryTagListView.frame.width, y: 0, width: 90, height: 20))
+            //let image = UIImage(named: imageName)
+             self.newResourceView.CategoryTagListView = view
+            self.newResourceView.subCategoryUItextField.leftView = view
+            
+            
+            self.newResourceView.CategoryTagListView.tagBackgroundColor = UIColor(hexString: Constants.color.primaryDark)!
+           
+           self.newResourceView.CategoryTagListView.layer.borderWidth = 2
+        
             self.newResourceView.CategoryTagListView.addTag(item.title)
             // Do whatever you want with the picked item
             //self.newResourceView.CategoryTagListView.addTag(item.title)
@@ -779,26 +791,7 @@ extension NewResourceViewController: ValidationDelegate {
             SwiftSpinner.show("Please wait...")
             
             print("IMAGESS", images)
-            
-            
-           
-            for img in self.images {
-                
-                
-               
-                
-                
-               }
-            
-            
-            
-                
-            
-            
-            
-            
-            
-            
+
             
             let name = self.newResourceView.nameOfResourceUILable.text!
             let description = self.newResourceView.descriptionUILabel.text!

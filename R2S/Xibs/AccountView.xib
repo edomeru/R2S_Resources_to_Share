@@ -104,6 +104,9 @@
                                         <constraint firstAttribute="width" constant="72" id="qEs-UR-afB"/>
                                     </constraints>
                                     <state key="normal" title="SETTINGS"/>
+                                    <connections>
+                                        <action selector="settingsUIButtonClick:" destination="lFf-Cv-WNb" eventType="touchUpInside" id="RHh-f2-2G0"/>
+                                    </connections>
                                 </button>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="phone2" translatesAutoresizingMaskIntoConstraints="NO" id="dL5-Os-5vu">
                                     <rect key="frame" x="20" y="206" width="24" height="25"/>
@@ -214,7 +217,6 @@
                 <outlet property="phoneUILabel" destination="88z-yw-G2a" id="8dI-am-AW0"/>
                 <outlet property="profilePicImageView" destination="aO9-8C-BlY" id="dsv-2r-UNF"/>
                 <outlet property="profileTableView" destination="oQu-xR-omU" id="U6i-eL-LoQ"/>
-                <outlet property="settingsUIButton" destination="gpK-3W-HlE" id="8rS-5D-jhT"/>
                 <outlet property="userNameUILabel" destination="s3r-5F-wMo" id="daP-Fc-Pc9"/>
             </connections>
             <point key="canvasLocation" x="47.5" y="-16.5"/>

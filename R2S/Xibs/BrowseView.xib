@@ -31,6 +31,13 @@
                     <rect key="frame" x="0.0" y="45" width="375" height="622"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="No available resources" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3k-mZ-GUx">
+                    <rect key="frame" x="81" y="316" width="212" height="35"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                    <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -43,6 +50,7 @@
                 <constraint firstAttribute="trailing" secondItem="siv-r5-qo4" secondAttribute="trailing" id="xBt-Qm-FZ6"/>
             </constraints>
             <connections>
+                <outlet property="noAvailResourcesUILable" destination="w3k-mZ-GUx" id="nmP-j3-ULk"/>
                 <outlet property="resourceTableView" destination="siv-r5-qo4" id="l9W-wc-snr"/>
                 <outlet property="subcategoryCollectionView" destination="aSk-BD-tRy" id="an8-IS-blD"/>
             </connections>

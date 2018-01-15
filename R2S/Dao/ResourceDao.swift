@@ -23,13 +23,14 @@ class ResourceDao {
     static func get() -> Results<Resource> {
         let realm = try! Realm()
         let resource = realm.objects(Resource.self)
+        
         return resource
     }
     
     
     static func getByCategoryId(id: Int) -> Results<Resource>{
         let realm = try! Realm()
-        let predicate = NSPredicate(format: "category.id = %d", id)
+        let predicate = NSPredicate(format: "ANY categories.main_category_id = %d", id)
         let resource = realm.objects(Resource.self).filter(predicate)
         return resource
     }
@@ -41,6 +42,15 @@ class ResourceDao {
        
         return resource
     }
+    
+    static func getByCatIdAndSubCatId(catId: Int, subCatId: Int) -> Results<Resource> {
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "ANY categories.main_category_id = %d AND ANY categories.subcategory.id = %d", catId, subCatId)
+        let resource = realm.objects(Resource.self).filter(predicate)
+        
+        return resource
+    }
+    
     static func add(_ category: Resource) {
         let realm = try! Realm()
         try! realm.write {

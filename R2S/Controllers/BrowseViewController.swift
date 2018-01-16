@@ -24,18 +24,32 @@ class BrowseViewController: BaseViewController {
     var screenWidth: CGFloat!
     var screenHeight: CGFloat!
     var selectedResourceId: Int!
+    var collectionViewCount:Bool?
+    var resourcesByCategorySelected: Results<Resource>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         self.configureNavBar()
         fetchDataFromSource()
+        collectionViewCount = false
+        
         
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    //Increment ID
+    public func IncrementaID() -> Int{
+        let realm = try! Realm()
+        if let retNext = realm.objects(WishListTags.self).sorted(byKeyPath: "id").last?.id {
+            return retNext + 1
+        }else{
+            return 1
+        }
     }
     
     // MARK: - Private Functions
@@ -44,7 +58,16 @@ class BrowseViewController: BaseViewController {
         self.screenWidth = screenSize.width
         self.screenHeight = screenSize.height
         
-        self.subcategories = CategoryService.getSubcategoriesBy(categoryId: self.selectedCategoryId)
+        let newCategory = Category()
+        newCategory.id = 100
+        let sub = Subcategory()
+        let lastindex = 100
+        sub.parentCategory = newCategory
+        sub.name = "ALL"
+        SubcategoryDao.add(sub)
+        
+        self.subcategories = SubcategoryDao.getSubcategoriesByWithALL(categoryId: self.selectedCategoryId, lastIndex: lastindex)
+        
         CategoryService.clearSelectedSubcategories(self.subcategories)
         CategoryService.selectSubategory(self.subcategories[0])
         
@@ -67,10 +90,10 @@ class BrowseViewController: BaseViewController {
     }
     func myFunction(gesture: UITapGestureRecognizer) {
         if let v = gesture.view {
-           // print("it worked",v.tag)
+            // print("it worked",v.tag)
             let resource = ResourceDao.getOneBy(id: v.tag)
             
-           // print("RESOURCE_ID",resource?.id)
+            // print("RESOURCE_ID",resource?.id)
             
             let param:[String : AnyObject] = ["account_id" : UserHelper.getId() as AnyObject]
             ResourceService.addToFavorites(resource_id: (resource?.id)!, params:param){ (statusCode, message) in
@@ -79,13 +102,13 @@ class BrowseViewController: BaseViewController {
                 //print("MSG",message)
                 if let statCode = statusCode {
                     if statCode == 202 {
-                       // print("PRINT_THISFAV", self.favoriteOrNot!)
+                        // print("PRINT_THISFAV", self.favoriteOrNot!)
                         
-                       
                         
-                         if message! != "Successfully updated" {
+                        
+                        if message! != "Successfully updated" {
                             
-                     
+                            
                             let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
                             activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
                             activityIndicator.activityIndicatorViewStyle = .gray
@@ -95,30 +118,30 @@ class BrowseViewController: BaseViewController {
                             activityIndicator.hidesWhenStopped = true
                             self.view.addSubview(activityIndicator)
                             activityIndicator.startAnimating()
-                        let favorite = FavoritesDao.getOneBy(id: (resource?.id)!)
+                            let favorite = FavoritesDao.getOneBy(id: (resource?.id)!)
                             
-                        FavoritesDao.delete(favorite!)
-                          let fb =  FavoritesDao.get()
-                          
+                            FavoritesDao.delete(favorite!)
+                            let fb =  FavoritesDao.get()
+                            
                             DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                                 activityIndicator.stopAnimating()
-                            
-                        self.browseView.resourceTableView.reloadData()
-                        
-                        let snackbar = TTGSnackbar(message: "Removed from favorites ", duration: .short)
-                        snackbar.backgroundColor = UIColor.blue
-                        snackbar.show()
-                        self.favoriteOrNot!  = false
+                                
+                                self.browseView.resourceTableView.reloadData()
+                                
+                                let snackbar = TTGSnackbar(message: "Removed from favorites ", duration: .short)
+                                snackbar.backgroundColor = UIColor.blue
+                                snackbar.show()
+                                self.favoriteOrNot!  = false
                                 
                             })
                             
-                         }  else  {
-                       
+                        }  else  {
                             
                             
-                           
                             
-                             
+                            
+                            
+                            
                             let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
                             activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
                             activityIndicator.activityIndicatorViewStyle = .gray
@@ -149,8 +172,8 @@ class BrowseViewController: BaseViewController {
                             
                             
                             
-                        
-
+                            
+                            
                         }
                         
                         
@@ -171,6 +194,27 @@ class BrowseViewController: BaseViewController {
         }
     }
     
+    
+    func checkIfEmpty(){
+        
+        if ( self.resources?.isEmpty)! {
+            self.browseView.resourceTableView.reloadData()
+            self.browseView.subcategoryCollectionView.reloadData()
+            self.browseView.noAvailResourcesUILable.isHidden = false
+            self.browseView.resourceTableView.isHidden = true
+            print("NO VALUE")
+            
+            
+        } else {
+            
+            //print("HAVE VALUES",  self.resources)
+            self.browseView.resourceTableView.reloadData()
+            self.browseView.subcategoryCollectionView.reloadData()
+            self.browseView.noAvailResourcesUILable.isHidden = true
+            self.browseView.resourceTableView.isHidden = false
+        }
+    }
+    
     func fetchDataFromSource(){
         
         let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
@@ -186,30 +230,12 @@ class BrowseViewController: BaseViewController {
             if statusCode == 200 {
                 
                 self.resources = ResourceDao.getByCategoryId(id: self.selectedCategoryId)
-                 //print("JSONDATA" + "\(self.resources!)"  )
+                //print("JSONDATA" + "\(self.resources!)"  )
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     activityIndicator.stopAnimating()
                     self.initUILayout()
                     
-                    
-                    if ( self.resources?.isEmpty)! {
-                        self.browseView.resourceTableView.reloadData()
-                        self.browseView.noAvailResourcesUILable.isHidden = false
-                        self.browseView.resourceTableView.isHidden = true
-                        print("NO VALUE")
-                        
-                        
-                    } else {
-                        
-                        //print("HAVE VALUES",  self.resources)
-                        self.browseView.resourceTableView.reloadData()
-                        self.browseView.noAvailResourcesUILable.isHidden = true
-                        self.browseView.resourceTableView.isHidden = false
-                    }
-                    
-                    
-                    
-                    
+                    self.checkIfEmpty()
                     
                 })
             } else {
@@ -244,15 +270,19 @@ extension BrowseViewController: UICollectionViewDelegateFlowLayout {
             //print("PRINT1",subcategories.count)
             print("CAT_ID",selectedCategoryId)
             print("SUBCAT_ID",self.subcategories[indexPath.item].id)
-            let resourcesByCategorySelected = ResourceDao.getByCatIdAndSubCatId(catId: selectedCategoryId, subCatId: self.subcategories[indexPath.item].id)
             
-            print("PRINTaadad",resourcesByCategorySelected)
+            if self.subcategories[indexPath.item].id != 0 {
+                resourcesByCategorySelected = ResourceDao.getByCatIdAndSubCatId(catId: selectedCategoryId, subCatId: self.subcategories[indexPath.item].id)
+            }else{
+                resourcesByCategorySelected = ResourceDao.getByCategoryId(id: self.selectedCategoryId)
+            }
             
             resources = resourcesByCategorySelected
             
             CategoryService.selectSubategory(self.subcategories[indexPath.item])
-            self.browseView.subcategoryCollectionView.reloadData()
-            self.browseView.resourceTableView.reloadData()
+            
+            checkIfEmpty()
+            
             
         }
     }
@@ -296,13 +326,13 @@ extension BrowseViewController: UITableViewDataSource{
             
         }
         
-       
-         favoriteOrNot = FavoritesDao.isFavorite(id: resources[indexPath.row].id)
-       // print("favoriteOrNot",favoriteOrNot)
+        
+        favoriteOrNot = FavoritesDao.isFavorite(id: resources[indexPath.row].id)
+        // print("favoriteOrNot",favoriteOrNot)
         
         if favoriteOrNot! {
             cell.favoriteUIImageView.image = UIImage(named:"icons8-heart-pink")
-           // print("NAME %s %@",resources[indexPath.row].name, favoriteOrNot)
+            // print("NAME %s %@",resources[indexPath.row].name, favoriteOrNot)
             
         }else {
             cell.favoriteUIImageView.image = UIImage(named:"icons8-heart-blank")
@@ -326,15 +356,15 @@ extension BrowseViewController: UITableViewDataSource{
         let resource = resources[indexPath.item]
         if let cell = tableView.cellForRow(at: indexPath) {
             
-//         let favIcon = cell.viewWithTag(1000) as! UIImageView
-//            if  favoriteOrNot {
-//           
-// 
-//            }
+            //         let favIcon = cell.viewWithTag(1000) as! UIImageView
+            //            if  favoriteOrNot {
+            //
+            //
+            //            }
             
-        selectedResourceId  = resource.id
-        // print (resource.id)
-        performSegue(withIdentifier: Constants.segue.browseToResourceSegue, sender: self)
+            selectedResourceId  = resource.id
+            // print (resource.id)
+            performSegue(withIdentifier: Constants.segue.browseToResourceSegue, sender: self)
         }
     }
 }
@@ -352,13 +382,34 @@ extension BrowseViewController: UICollectionViewDataSource {
         if collectionView == self.browseView.subcategoryCollectionView {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SubcategoryCollectionCell", for: indexPath) as! SubCategoryCollectionViewCell
             
+            //            if  collectionViewCount == false {
+            //                collectionViewCount = true
+            //                cell.subcategoryLabel.text = "ALL"
+            //
+            //                if self.subcategories[indexPath.item].isSelected {
+            //                    cell.categoryUnderlineView.backgroundColor = UIColor(hex: Constants.color.primary)
+            //                } else {
+            //                    cell.categoryUnderlineView.backgroundColor = UIColor.clear
+            //                }
+            //
+            //            }else{
+            
+            
             cell.subcategoryLabel.text = self.subcategories[indexPath.item].name
-        
+            
             if self.subcategories[indexPath.item].isSelected {
                 cell.categoryUnderlineView.backgroundColor = UIColor(hex: Constants.color.primary)
             } else {
                 cell.categoryUnderlineView.backgroundColor = UIColor.clear
             }
+            
+            
+            
+            
+            //}
+            
+            
+            
             return cell
         }
         return UICollectionViewCell()

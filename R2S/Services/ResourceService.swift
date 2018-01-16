@@ -147,7 +147,7 @@ class ResourceService {
                             
                         }
                         
-                        print("JSONDATAGETSERVICE" + "\(newResource)"  )
+                        //print("JSONDATAGETSERVICE" + "\(newResource)"  )
                        
                         ResourceDao.add(newResource)
                          

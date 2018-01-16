@@ -58,6 +58,12 @@ class ResourceDao {
         }
     }
     
+    static func addSubCategoryALL(_ category: Subcategory) {
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(category, update: true)
+        }
+    }
    
 
     

@@ -10,12 +10,31 @@ import Foundation
 import RealmSwift
 
 class SubcategoryDao {
+    
+   
+    
+    
     static func getSubcategoriesBy(categoryId: Int) -> Results<Subcategory> {
         let realm = try! Realm()
+        var subcategories: Results<Subcategory>?
+        
         let predicate = NSPredicate(format: "parentCategory.id = %d", categoryId)
-        let subcategories = realm.objects(Subcategory.self).filter(predicate)
-        return subcategories
+        subcategories = realm.objects(Subcategory.self).filter(predicate)
+        print("ssssssss", subcategories!)
+        return subcategories!
     }
+    
+    static func getSubcategoriesByWithALL(categoryId: Int, lastIndex: Int) -> Results<Subcategory> {
+        let realm = try! Realm()
+        var subcategories: Results<Subcategory>?
+        print("lastIndex", lastIndex)
+        let predicate = NSPredicate(format: "parentCategory.id = %d OR parentCategory.id = %d",categoryId,lastIndex)
+        subcategories = realm.objects(Subcategory.self).filter(predicate).sorted(byKeyPath: "parentCategory.id", ascending: false)
+                print("NBBBIUBUH", subcategories!)
+        return subcategories!
+    }
+    
+    
     
     static func getOneBy(subcategoryId: Int) -> Subcategory? {
         let realm = try! Realm()
@@ -36,6 +55,8 @@ class SubcategoryDao {
             realm.add(subcategory, update: true)
         }
     }
+    
+    
     
     static func edit(_ subcategory: Subcategory, keys: [String], values: [Any?]) {
         let realm = try! Realm()

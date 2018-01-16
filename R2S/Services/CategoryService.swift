@@ -81,6 +81,11 @@ class CategoryService {
         return subcategories
     }
     
+    static func getSubcategoriesByWithALL(categoryId: Int, lastIndex: Int) -> Results<Subcategory> {
+        let subcategories = SubcategoryDao.getSubcategoriesByWithALL(categoryId: categoryId, lastIndex: lastIndex)
+        return subcategories
+    }
+    
     static func selectSubategory(_ subcategory: Subcategory) {
         SubcategoryDao.edit(subcategory, keys: ["isSelected"], values: [true])
     }

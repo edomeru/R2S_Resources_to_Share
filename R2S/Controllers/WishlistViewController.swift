@@ -37,11 +37,13 @@ class WishlistViewController: BaseViewController {
     
     
     func reloadTableWishList(_ notification: Notification)  {
-        print("DATA",notification.object)
-        wishList = notification.object as? Results<WishList>!
-        print("reloadTable", wishList)
-        //self.initUILayout()
-        self.wishlistView.WishListTableView.reloadData()
+        //print("DATA",notification.object)
+//        wishList = notification.object as? Results<WishList>!
+//        print("reloadTable", wishList)
+//        //self.initUILayout()
+//        self.wishlistView.WishListTableView.reloadData()
+        
+        fetchData()
 
         
     }
@@ -97,7 +99,6 @@ class WishlistViewController: BaseViewController {
         floaty.fabDelegate = self
         
         self.wishlistView.addSubview(floaty)
-        
         self.wishlistView.WishListTableView.reloadData()
         
     }
@@ -216,8 +217,8 @@ extension WishlistViewController: WishlistViewDelegate {
 //                self.wishlistView.WishListTableView.reloadData()
 //                
 //            }else{
-            
-                self.wishList = WishListDao.get()
+            let allWishlist = WishListDao.get()
+                self.wishList = allWishlist
             print("\(self.wishList)" + " WISH MSG WISHLIST CONTROLLER FROM SEGMENTED 0"  )
                 self.wishlistView.WishListTableView.reloadData()
             

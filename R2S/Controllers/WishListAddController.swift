@@ -257,7 +257,7 @@ extension WishlistAddViewController: WishlistAddViewDelegate {
 extension WishlistAddViewController: ValidationDelegate {
     func validationSuccessful() {
         if Reachability.isConnectedToNetwork() {
-            SwiftSpinner.show("Please wait...")
+           
             let name = self.wishlistAdd.Name.text!
             let desc = self.wishlistAdd.Description.text!
             
@@ -294,19 +294,23 @@ extension WishlistAddViewController: ValidationDelegate {
             }
             
             print("SLECTED TAGS",a)
-            
+            SwiftSpinner.show("Please wait..")
             WishListService.createWishlist(category: a , name: name, description: desc) { statusCode, message in
-                SwiftSpinner.hide()
+                
                 print("STATUS CODE",statusCode)
-                if statusCode == 201 {
-                    
-                    let wishList = WishListDao.get()
+                if statusCode! == 201 {
+//                    WishListService.getAllWishList(onCompletion: { statusCode, message in
+                         SwiftSpinner.hide()
+//                        print("STATUS CODE2",statusCode)
+//                         if statusCode! == 200 {
+                   // let wishList = WishListDao.get()
                     //                    self.performSegue(withIdentifier: Constants.segue.loginToHome, sender: self)
-                    print("WISHLIST ADDED SUCCESSFULLY", wishList)
-                    NotificationCenter.default.post(name: Notification.Name(rawValue:"pass"), object: wishList, userInfo: nil)
+                   // print("WISHLIST ADDED SUCCESSFULLY", wishList)
+                    NotificationCenter.default.post(name: Notification.Name(rawValue:"pass"), object: nil, userInfo: nil)
                     self.navigationController?.popViewController(animated: true)
-                    
-                    
+//                        }
+//                    }
+//                    )
                 } else {
                     Utility.showAlert(title: "Login Error", message: message!, targetController: self)
                 }

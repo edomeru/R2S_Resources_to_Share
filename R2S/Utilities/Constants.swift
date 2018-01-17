@@ -99,6 +99,7 @@ class Constants {
         static let ChangePasswordView = "ChangePasswordView"
         static let AppSettingsView = "AppSettingsView"
         static let RaiseSupportTicketView = "RaiseSupportTicketView"
+        static let ScheduleBookingView = "ScheduleBookingView"
         // TableView Cell
         static let featuredTableCell = "FeaturedTableViewCell"
         static let categoryTableCell = "CategoryTableViewCell"
@@ -153,6 +154,7 @@ class Constants {
         static let profileToChangePasswordSegue = "profileToChangePasswordSegue"
         static let profileToAppSettingsSegue = "profileToAppSettingsSegue"
         static let profileToRaiseSupportTicketSegue = "profileToRaiseSupportTicketSegue"
+        static let resourceViewToScheduleBookingSegue = "resourceViewToScheduleBookingSegue"
         
     }
 }

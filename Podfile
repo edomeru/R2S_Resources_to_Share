@@ -31,5 +31,7 @@ target 'R2S' do
   pod "SearchTextField"
   pod "TTGSnackbar"
   pod 'SwiftHEXColors'
-  pod 'Cosmos', '~> 11.0'  
+  pod 'Cosmos', '~> 11.0'
+  pod 'GrowingTextView', '~> 0.4.0'
+  pod 'DatePickerDialog'
 end

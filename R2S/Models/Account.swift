@@ -32,5 +32,8 @@ class Account: Object {
     dynamic var buyer_rating = 0
     dynamic var image_url = ""
     
+    override static func primaryKey() -> String? {
+        return "id"
+    }
    
 }

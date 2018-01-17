@@ -71,6 +71,9 @@
 		9B740C6A1FD8F927003372DF /* WishListAddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B740C691FD8F927003372DF /* WishListAddController.swift */; };
 		9B740C6D1FD90A72003372DF /* WishListAdd.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B740C6C1FD90A72003372DF /* WishListAdd.swift */; };
 		9B75D2D81FD59E10002EF175 /* WishListAccount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B75D2D71FD59E10002EF175 /* WishListAccount.swift */; };
+		9B7EDC42200F27BC00169963 /* ScheduleBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7EDC41200F27BC00169963 /* ScheduleBookingViewController.swift */; };
+		9B7EDC44200F283F00169963 /* ScheduleBookingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B7EDC43200F283F00169963 /* ScheduleBookingView.xib */; };
+		9B7EDC46200F287700169963 /* ScheduleBookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7EDC45200F287700169963 /* ScheduleBookingView.swift */; };
 		9B8E82FF1FE7CA58004F50D2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E82FE1FE7CA58004F50D2 /* CustomButton.swift */; };
 		9B95E8692004B2D300612323 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B95E8682004B2D300612323 /* EditProfileViewController.swift */; };
 		9B95E86B2004B30700612323 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B95E86A2004B30700612323 /* ChangePasswordViewController.swift */; };
@@ -245,6 +248,9 @@
 		9B740C691FD8F927003372DF /* WishListAddController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListAddController.swift; path = Controllers/WishListAddController.swift; sourceTree = "<group>"; };
 		9B740C6C1FD90A72003372DF /* WishListAdd.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListAdd.swift; path = "View Classes/WishListAdd.swift"; sourceTree = "<group>"; };
 		9B75D2D71FD59E10002EF175 /* WishListAccount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListAccount.swift; path = Models/WishListAccount.swift; sourceTree = "<group>"; };
+		9B7EDC41200F27BC00169963 /* ScheduleBookingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleBookingViewController.swift; path = Controllers/ScheduleBookingViewController.swift; sourceTree = "<group>"; };
+		9B7EDC43200F283F00169963 /* ScheduleBookingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScheduleBookingView.xib; path = Xibs/ScheduleBookingView.xib; sourceTree = "<group>"; };
+		9B7EDC45200F287700169963 /* ScheduleBookingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleBookingView.swift; path = "View Classes/ScheduleBookingView.swift"; sourceTree = "<group>"; };
 		9B8E82FE1FE7CA58004F50D2 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		9B95E8682004B2D300612323 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditProfileViewController.swift; path = Controllers/EditProfileViewController.swift; sourceTree = "<group>"; };
 		9B95E86A2004B30700612323 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewController.swift; path = Controllers/ChangePasswordViewController.swift; sourceTree = "<group>"; };
@@ -391,6 +397,7 @@
 			children = (
 				B9E267CA1E7D41A500BB9900 /* HomeView.swift */,
 				B9E267B61E7BAEA600BB9900 /* BrowseView.swift */,
+				9B7EDC45200F287700169963 /* ScheduleBookingView.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -401,6 +408,7 @@
 				9BFDB36F1F9727F500D430D4 /* ResourceViewController.swift */,
 				B9E267C31E7D416500BB9900 /* HomeViewController.swift */,
 				B9E267B41E7BAE2600BB9900 /* BrowseViewController.swift */,
+				9B7EDC41200F27BC00169963 /* ScheduleBookingViewController.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -414,6 +422,7 @@
 				B9E267D61E7D41F500BB9900 /* CategoryTableViewCell.xib */,
 				B9E267D71E7D41F500BB9900 /* FeaturedTableViewCell.xib */,
 				2C93C0CC1F0F9659009B7179 /* ResourceTableViewCell.xib */,
+				9B7EDC43200F283F00169963 /* ScheduleBookingView.xib */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -1012,6 +1021,7 @@
 				B99151BA1E77F71200949529 /* LoginView.xib in Resources */,
 				9B95E8732004B41700612323 /* ChangePasswordView.xib in Resources */,
 				9B3ED5531FD2C90C00627679 /* WishlistView.xib in Resources */,
+				9B7EDC44200F283F00169963 /* ScheduleBookingView.xib in Resources */,
 				9BFDB3741F97294400D430D4 /* ResourceView.xib in Resources */,
 				9B63FD77200368D800D91838 /* ProfileTableViewCell.xib in Resources */,
 				9B5E23951FD45C1000A59FFF /* WishListDetailView.xib in Resources */,
@@ -1191,6 +1201,7 @@
 				9B95E87B2004B4AD00612323 /* EditProfileView.swift in Sources */,
 				B9E267871E7A57DF00BB9900 /* UserManager.swift in Sources */,
 				9B456F391F8F6C32001F4C32 /* Favorites.swift in Sources */,
+				9B7EDC42200F27BC00169963 /* ScheduleBookingViewController.swift in Sources */,
 				9B3FDC981FD6934200091E10 /* Inbox.swift in Sources */,
 				9B4E5CD51FFE0EAF009C6767 /* TransactionView.swift in Sources */,
 				B9E267761E790FEE00BB9900 /* UserHelper.swift in Sources */,
@@ -1205,6 +1216,7 @@
 				B9E267CF1E7D41B500BB9900 /* FeaturedTableViewCell.swift in Sources */,
 				9B4E5CD01FFE0697009C6767 /* TransactionViewController.swift in Sources */,
 				9BFDB3701F9727F500D430D4 /* ResourceViewController.swift in Sources */,
+				9B7EDC46200F287700169963 /* ScheduleBookingView.swift in Sources */,
 				9B3FDCA21FD6A0DC00091E10 /* Participants.swift in Sources */,
 				9B5F49041FDFA3DD00CD3D66 /* CCheckbox.swift in Sources */,
 				B99151BC1E77F79B00949529 /* Constants.swift in Sources */,

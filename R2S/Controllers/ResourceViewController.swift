@@ -12,11 +12,13 @@ import Kingfisher
 import SwiftyJSON
 import Auk
 import moa
+import Floaty
 
 class ResourceViewController: BaseViewController {
     
     var resourceView = ResourceView()
     var selectedResourceId: Int = 0
+    var floaty = Floaty()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +32,32 @@ class ResourceViewController: BaseViewController {
         
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case Constants.segue.resourceViewToScheduleBookingSegue:
+                let destinationVC = segue.destination as! ScheduleBookingViewController
+                destinationVC.selectedResourceId = selectedResourceId
+                
+            default:
+                print("default");
+            }
+        }
+    }
+    
     
     private func initUILayout() {
         self.resourceView = self.loadFromNibNamed(nibNamed: Constants.xib.resourceView) as! ResourceView
         self.view = self.resourceView
         
         self.resourceView.delegate = self
+         floaty.fabDelegate = self
+        floaty.addItem(title: "Hello, World!")
+        floaty.buttonColor = UIColor(hexString: Constants.color.primaryDark)!
+        floaty.buttonImage = UIImage(named: "ic_event_available_white")
+       
+        
+        self.resourceView.addSubview(floaty)
         
         
     }
@@ -150,6 +172,33 @@ class ResourceViewController: BaseViewController {
 }
 
 extension ResourceViewController: ResourceViewDelegate {
+    
+    
+}
+
+extension ResourceViewController: FloatyDelegate {
+    
+    
+    func floatyWillOpen(_ floaty: Floaty) {
+        print("Floaty Will Open")
+        
+        performSegue(withIdentifier: "resourceViewToScheduleBookingSegue", sender: self)
+    }
+    
+    func floatyDidOpen(_ floaty: Floaty) {
+        print("Floaty Did Open")
+        self.floaty.close()
+        
+    }
+    
+    func floatyWillClose(_ floaty: Floaty) {
+        print("Floaty Will Close")
+    }
+    
+    func floatyDidClose(_ floaty: Floaty) {
+        print("Floaty Did Close")
+    }
+    
     
     
 }

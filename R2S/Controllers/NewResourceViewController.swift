@@ -36,16 +36,18 @@ class NewResourceViewController: BaseViewController, UIImagePickerControllerDele
     var checkboxCheck: Bool = false
     var selectedTags = [String : Any]()
     let validator = Validator()
-    var categories = [String : Any]()
+    var categories = [String : AnyObject]()
     var categoriesArray = NSMutableArray()
+    var categoryArray:Array = [Dictionary<String, AnyObject>]()
+    var img_Array:Array = [Dictionary<String, AnyObject>]()
     var imageArray = NSMutableArray()
     var location = [String : Any]()
     var base64Param = [String : Any]()
     var resource_rate: String?
     var image_url: String?
     var image: UIImage?
-    var params: [String: Any] = [:]
-    var imageNewDictionary: [String: Any] = [:]
+    var params = [String: AnyObject]()
+    var imageNewDictionary = [String: AnyObject]()
     var  jsonDataa: NSData?
     var jsonString:String?
     var  json: Any?
@@ -321,16 +323,16 @@ class NewResourceViewController: BaseViewController, UIImagePickerControllerDele
             print("Item at position \(itemPosition): \(item.title)")
             //self.newResourceView.subCategoryUItextField.text = item.title
             
-            self.newResourceView.subCategoryUItextField.leftViewMode = UITextFieldViewMode.always
-            let view = TagListView(frame: CGRect(x: self.newResourceView.CategoryTagListView.frame.width, y: 0, width: 90, height: 20))
-            //let image = UIImage(named: imageName)
-             self.newResourceView.CategoryTagListView = view
-            self.newResourceView.subCategoryUItextField.leftView = view
-            
-            
-            self.newResourceView.CategoryTagListView.tagBackgroundColor = UIColor(hexString: Constants.color.primaryDark)!
-           
-           self.newResourceView.CategoryTagListView.layer.borderWidth = 2
+//            self.newResourceView.subCategoryUItextField.leftViewMode = UITextFieldViewMode.always
+//            let view = TagListView(frame: CGRect(x: self.newResourceView.CategoryTagListView.frame.width, y: 0, width: 90, height: 20))
+//            //let image = UIImage(named: imageName)
+//             self.newResourceView.CategoryTagListView = view
+//            self.newResourceView.subCategoryUItextField.leftView = view
+//            
+//            
+//            self.newResourceView.CategoryTagListView.tagBackgroundColor = UIColor(hexString: Constants.color.primaryDark)!
+//           
+//           self.newResourceView.CategoryTagListView.layer.borderWidth = 2
         
             self.newResourceView.CategoryTagListView.addTag(item.title)
             // Do whatever you want with the picked item
@@ -576,13 +578,19 @@ extension NewResourceViewController: CZPickerViewDelegate, CZPickerViewDataSourc
         print("FETCHED_image", JSON(base64Param))
         
          SystemService.upload(params:base64Param) { (statusCode, jsonData) in
+            print("SATUSCODE_UPLOAD",statusCode)
+            print("JSON_UPLOAD",jsonData)
              if statusCode == 201 {
             print("SUCCEESFUL_UPLOAD", jsonData!)
                 
                   //self.jsonToString(json: jsonData! as AnyObject)
               
-                self.imageNewDictionary["image_full"] = jsonData!["image_url_full"].stringValue
-                self.imageNewDictionary["image"] = jsonData!["image_url"].stringValue
+                self.imageNewDictionary["image_full"] = jsonData!["image_url_full"].stringValue as AnyObject
+                self.imageNewDictionary["image"] = jsonData!["image_url"].stringValue as AnyObject
+                
+                self.img_Array.append(self.imageNewDictionary)
+                
+                print("IMAGE_ARRAY", self.img_Array)
                
                 self.imgString = self.imageNewDictionary.description
                 self.imgString.remove(at: self.imgString.startIndex)
@@ -828,7 +836,7 @@ extension NewResourceViewController: ValidationDelegate {
             print(price)
             
             
-            
+            print("dmclicoisbncoasbcoiah",self.newResourceView.CategoryTagListView.tagViews.count)
             
             for tags in self.newResourceView.CategoryTagListView.tagViews {
                 let category = SubcategoryDao.getAllBySubCategoryName(categoryId: self.newResourceView.mainCategoryUISearchTextField.tag, subCategoryName: (tags.titleLabel?.text)!)
@@ -837,26 +845,27 @@ extension NewResourceViewController: ValidationDelegate {
                     
                     if let cat_id = cat.parentCategory?.id {
                         
-                        categories["main_category_id"] =  cat_id
+                        categories["main_category_id"] =  cat_id as AnyObject
                         print(cat_id)
                         
                     }
                     
                     if let cat_name = cat.parentCategory?.name {
                         
-                        categories["main_category_name"] =  cat_name
+                        categories["main_category_name"] =  cat_name as AnyObject
                         print(cat_name)
                         
                     }
                     
-                    categories["subcategory_id"] = cat.id
-                    categories["subcategory_name"] = cat.name
+                    categories["subcategory_id"] = cat.id as AnyObject
+                    categories["subcategory_name"] = cat.name as AnyObject
                     
                     print(cat.id)
                     print(cat.name)
+                    categoryArray.append(categories)
                     
                 }
-                print("JSONCAT",categories)
+               
                 categoriesString = categories.description
                 categoriesString.remove(at: categoriesString.startIndex)
                 categoriesString.remove(at: categoriesString.index(before: categoriesString.endIndex))
@@ -870,6 +879,11 @@ extension NewResourceViewController: ValidationDelegate {
                 
                 
             }
+            
+            
+             print("JSONCAT",categoryArray)
+            
+            
             categoriesString = "[" + categoriesArray.componentsJoined(by: ",") + "]"
              let dict_categoryString = convertToDictionary(text: categoriesString)
              print("categoriesString",categoriesString)
@@ -882,8 +896,8 @@ extension NewResourceViewController: ValidationDelegate {
             
             
             
-            params["categories"] = categoriesString
-            params["images"] = self.imgString
+            params["categories"] = categoriesString as AnyObject
+            params["images"] = self.imgString as AnyObject
             
             
             
@@ -910,13 +924,13 @@ extension NewResourceViewController: ValidationDelegate {
          
             
             
-            params["location"] = locationString
-            params["name"] = name
-            params["description"] = description
-            params["price"] = price
-            params["quantity"] = quantity
-            params["resource_rate"] = resource_rate!
-            params["image_url"] = self.img_url
+            params["location"] = locationString as AnyObject
+            params["name"] = name as AnyObject
+            params["description"] = description as AnyObject
+            params["price"] = price as AnyObject
+            params["quantity"] = quantity as AnyObject
+            params["resource_rate"] = resource_rate! as AnyObject
+            params["image_url"] = self.img_url as AnyObject
             
             
             var jsonString = params.description
@@ -931,13 +945,13 @@ extension NewResourceViewController: ValidationDelegate {
             let noDoublequoteAndslash = unescapeString2(string: noBackslash)
            print("noBAckslash", noDoublequoteAndslash)
            let converted = convertToDictionary(text: noDoublequoteAndslash)
-             print("converted", converted!)
+             //print("converted", converted!)
             
             print("DICTIONARIESLOC",dict_locationString!)
              print("CATEGORY_DICTIONARY",categories)
             print("LOCATION_OBJECT",location)
-            print("PARAMS",jsonString)
-            print("IMAGE","")
+            print("PARAMS",params)
+            print("IMAGE",img_Array)
            
             
            // let params:NSMutableDictionary? = ["foo": "bar"];
@@ -951,36 +965,37 @@ extension NewResourceViewController: ValidationDelegate {
 //            if let json = json {
 //                print(json)
 //            }
-            request.httpBody = (noDoublequoteAndslash).data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue));
-            
-            
-            Alamofire.request(request as! URLRequestConvertible)
-                .responseJSON { response in
-                    // do whatever you want here
-                    print(response.request)
-                    print(response.response)
-                    print(response.data)
-                    print(response.result)
-                    
-            }    }
-            
-            
-            
-//            ResourceService.createResource(id: UserHelper.getId()! , params: params) { statusCode, message in
-//                SwiftSpinner.hide()
-//                print("STATUS CODE",statusCode)
-//                if statusCode == 201 {
+//            request.httpBody = (noDoublequoteAndslash).data(using: String.Encoding(rawValue: String.Encoding.utf8.rawValue));
+//            
+//            
+//            Alamofire.request(request as! URLRequestConvertible)
+//                .responseJSON { response in
+//                    // do whatever you want here
+//                    print(response.request)
+//                    print(response.response)
+//                    print(response.data)
+//                    print(response.result)
 //                    
-//                } else {
-//                    Utility.showAlert(title: "Login Error", message: message!, targetController: self)
-//                }
-//            }
-//            
-//            
-//        } else {
-//            Utility.showAlert(title: "", message: "No internet connection.", targetController: self)
-//        }
+//            }   
+        //}
             
+            
+            
+            ResourceService.createResource(id: UserHelper.getId()! , params: params) { statusCode, message in
+                SwiftSpinner.hide()
+                print("STATUS CODE",statusCode)
+                if statusCode == 201 {
+                    
+                } else {
+                    Utility.showAlert(title: "Login Error", message: message!, targetController: self)
+                }
+            }
+            
+            
+        } else {
+            Utility.showAlert(title: "", message: "No internet connection.", targetController: self)
+        }
+    
             
         
         

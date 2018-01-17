@@ -114,14 +114,16 @@ class AccountViewController: BaseViewController {
     
         
          var category1:[String : AnyObject] =  ["subcategory_id": 22 as AnyObject    ,"main_category_id": 10 as AnyObject]
-        
+        var category2:[String : AnyObject] =  ["subcategory_id": 22 as AnyObject    ,"main_category_id": 2 as AnyObject]
+        print("PRINT_category1", category1)
         var categories:Array = [Dictionary<String, AnyObject>]()
         categories.append(category1)
-        
+        categories.append(category2)
+        print("PRINT_categoriesARRAY", categories)
         
         var someObject:[String : AnyObject] = ["image_url" : "http://web.r2s.tirsolutions.com/static/uploads/1492509242048_2.png" as AnyObject, "name":"Special Force" as AnyObject, "price": 20 as AnyObject, "quantity":8 as AnyObject,"resource_rate":"DAY" as AnyObject,"categories": categories as AnyObject , "description": "Slightly used." as AnyObject,]
         
-       
+       print("PRINT_PARAM", someObject)
 
 //        ResourceService.createResource(id: 2 , params: someObject, onCompletion: { statusCode, message in
 //            

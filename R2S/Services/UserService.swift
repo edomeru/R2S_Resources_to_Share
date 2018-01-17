@@ -104,4 +104,19 @@ class UserService {
             onCompletion(statusCode, message)
         })
     }
+    
+    
+    static func createTransaction(_ params: [String: AnyObject], onCompletion: @escaping (Int?, String?) -> Void) {
+        var message = ""
+      
+        
+        TransactionRemote.create(params: params, onCompletion: { jsonData, statusCode in
+            if statusCode == 201 {
+                message = "Successfully booked"
+            } else {
+                message = jsonData["message"].stringValue
+            }
+            onCompletion(statusCode, message)
+        })
+    }
 }

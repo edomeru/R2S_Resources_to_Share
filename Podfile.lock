@@ -91,7 +91,7 @@ DEPENDENCIES:
   - FSCalendar
   - Google/SignIn
   - GoogleMaps
-  - GrowingTextView (~> 0.4.0)
+  - GrowingTextView
   - IQKeyboardManagerSwift (= 4.0.6)
   - Kingfisher
   - KMPlaceholderTextView (~> 1.3.0)
@@ -166,6 +166,6 @@ SPEC CHECKSUMS:
   TagListView: 669f7d4455003c877655875d34829731c4191528
   TTGSnackbar: 058485c43a1cdbdfc988d41cb23c23f008df958d
 
-PODFILE CHECKSUM: 742dc682da518b616e3accbb0438382e561e35dc
+PODFILE CHECKSUM: f30aed768b617167924c5e93b9a66dd84712eed5
 
 COCOAPODS: 1.2.1

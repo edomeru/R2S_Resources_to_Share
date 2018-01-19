@@ -45,7 +45,7 @@ class TransactionRemote {
         })
     }
     
-    static func create(params:  [String: AnyObject], onCompletion: @escaping (JSON, Int?) -> Void) {
+    static func create(params:  [String: Any], onCompletion: @escaping (JSON, Int?) -> Void) {
         var urlString = Constants.api.user.transactions.replacingOccurrences(of: "{id}", with: String(describing: UserHelper.getId()!))
         
         print("create_url",urlString)

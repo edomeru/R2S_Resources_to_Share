@@ -106,7 +106,7 @@ class UserService {
     }
     
     
-    static func createTransaction(_ params: [String: AnyObject], onCompletion: @escaping (Int?, String?) -> Void) {
+    static func createTransaction(_ params: [String: Any], onCompletion: @escaping (Int?, String?) -> Void) {
         var message = ""
       
         

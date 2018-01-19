@@ -6,7 +6,8 @@
 //  Copyright © 2018 Total Integrated Resources. All rights reserved.
 //
 import UIKit
-import GrowingTextView
+import Foundation
+
 
 protocol ScheduleBookingViewDelegate: class {
     func submitOnPressed(sender: AnyObject)
@@ -17,7 +18,8 @@ class ScheduleBookingView: BaseUIView {
 weak var delegate: ScheduleBookingViewDelegate?
 
     
-    @IBOutlet weak var proposalUIGrowingTextView: GrowingTextView!
+    @IBOutlet weak var proposalUITextView: UITextView!
+    
 
     @IBOutlet weak var fromUTTextField: UITextField!
 

@@ -74,6 +74,7 @@
 		9B7EDC42200F27BC00169963 /* ScheduleBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7EDC41200F27BC00169963 /* ScheduleBookingViewController.swift */; };
 		9B7EDC44200F283F00169963 /* ScheduleBookingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B7EDC43200F283F00169963 /* ScheduleBookingView.xib */; };
 		9B7EDC46200F287700169963 /* ScheduleBookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7EDC45200F287700169963 /* ScheduleBookingView.swift */; };
+		9B838ABE2011E14A00B6FD07 /* UITextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B838ABD2011E14A00B6FD07 /* UITextViewPlaceholder.swift */; };
 		9B8E82FF1FE7CA58004F50D2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E82FE1FE7CA58004F50D2 /* CustomButton.swift */; };
 		9B95E8692004B2D300612323 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B95E8682004B2D300612323 /* EditProfileViewController.swift */; };
 		9B95E86B2004B30700612323 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B95E86A2004B30700612323 /* ChangePasswordViewController.swift */; };
@@ -251,6 +252,7 @@
 		9B7EDC41200F27BC00169963 /* ScheduleBookingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleBookingViewController.swift; path = Controllers/ScheduleBookingViewController.swift; sourceTree = "<group>"; };
 		9B7EDC43200F283F00169963 /* ScheduleBookingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScheduleBookingView.xib; path = Xibs/ScheduleBookingView.xib; sourceTree = "<group>"; };
 		9B7EDC45200F287700169963 /* ScheduleBookingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleBookingView.swift; path = "View Classes/ScheduleBookingView.swift"; sourceTree = "<group>"; };
+		9B838ABD2011E14A00B6FD07 /* UITextViewPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewPlaceholder.swift; sourceTree = "<group>"; };
 		9B8E82FE1FE7CA58004F50D2 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		9B95E8682004B2D300612323 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditProfileViewController.swift; path = Controllers/EditProfileViewController.swift; sourceTree = "<group>"; };
 		9B95E86A2004B30700612323 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewController.swift; path = Controllers/ChangePasswordViewController.swift; sourceTree = "<group>"; };
@@ -532,6 +534,7 @@
 		9B8E82FD1FE7CA00004F50D2 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				9B838ABD2011E14A00B6FD07 /* UITextViewPlaceholder.swift */,
 				9B8E82FE1FE7CA58004F50D2 /* CustomButton.swift */,
 			);
 			name = Custom;
@@ -1167,6 +1170,7 @@
 				2C5B06271F18C94B002C09B8 /* Resource.swift in Sources */,
 				9BCCD6041FD14000001A9507 /* NewResourceView.swift in Sources */,
 				B9E267721E78F7A500BB9900 /* UserRemote.swift in Sources */,
+				9B838ABE2011E14A00B6FD07 /* UITextViewPlaceholder.swift in Sources */,
 				9B75D2D81FD59E10002EF175 /* WishListAccount.swift in Sources */,
 				2C658A5A1F877746009A18A9 /* TransactionTableViewCell.swift in Sources */,
 				B9E267801E79419900BB9900 /* RegisterView.swift in Sources */,

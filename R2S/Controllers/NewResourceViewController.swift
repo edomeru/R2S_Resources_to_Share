@@ -852,13 +852,13 @@ extension NewResourceViewController: ValidationDelegate {
                     
                     if let cat_name = cat.parentCategory?.name {
                         
-                        categories["main_category_name"] =  cat_name as AnyObject
+                        //categories["main_category_name"] =  cat_name as AnyObject
                         print(cat_name)
                         
                     }
                     
                     categories["subcategory_id"] = cat.id as AnyObject
-                    categories["subcategory_name"] = cat.name as AnyObject
+                    //categories["subcategory_name"] = cat.name as AnyObject
                     
                     print(cat.id)
                     print(cat.name)
@@ -896,8 +896,8 @@ extension NewResourceViewController: ValidationDelegate {
             
             
             
-            params["categories"] = categoriesString as AnyObject
-            params["images"] = self.imgString as AnyObject
+            params["categories"] = categoryArray as AnyObject
+            params["images"] = self.img_Array as AnyObject
             
             
             

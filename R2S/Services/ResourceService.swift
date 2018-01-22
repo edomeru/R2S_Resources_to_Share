@@ -579,6 +579,7 @@ class ResourceService {
                     }
                 } else {
                     message = jsonData["message"].stringValue
+                    print("MESSAGEE",message)
                 }
             }
             

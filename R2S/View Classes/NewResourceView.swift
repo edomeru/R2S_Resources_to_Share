@@ -19,12 +19,17 @@ protocol NewResourceViewDelegate: class {
 
 class NewResourceView: BaseUIView {
     weak var delegate: NewResourceViewDelegate?
+    @IBOutlet weak var descErrorLine: UIView!
     
     @IBOutlet weak var CategoryTagListView: TagListView!
     
     @IBOutlet weak var rateUITextField: UITextField!
     
+    @IBOutlet weak var priceErrorLine: UIView!
+    @IBOutlet weak var quantityErrorLine: UIView!
+    @IBOutlet weak var nameErrorLine: UIView!
  
+    @IBOutlet weak var rateErrorLine: UIView!
     @IBOutlet weak var subCategoryUItextField: SearchTextField!
  
     @IBOutlet weak var addPhotoUIImageView: UIImageView!

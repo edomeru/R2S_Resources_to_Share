@@ -94,7 +94,7 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KtA-Af-cBh">
-                                    <rect key="frame" x="134" y="858" width="125" height="30"/>
+                                    <rect key="frame" x="19" y="858" width="343" height="30"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.40000000600000002" green="0.80000001190000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <state key="normal" title="Submit"/>
@@ -102,13 +102,6 @@
                                         <action selector="submitUIButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="26X-SH-kRC"/>
                                     </connections>
                                 </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add_box" translatesAutoresizingMaskIntoConstraints="NO" id="uJK-u4-dRs">
-                                    <rect key="frame" x="16" y="40" width="104" height="105"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="104" id="n6c-1Y-Bgg"/>
-                                        <constraint firstAttribute="height" constant="105" id="rfC-5D-PfC"/>
-                                    </constraints>
-                                </imageView>
                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Subcategory" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="raV-Qa-wnM" customClass="SearchTextField" customModule="SearchTextField">
                                     <rect key="frame" x="16" y="226" width="346" height="30"/>
                                     <constraints>
@@ -137,11 +130,11 @@
                                         <constraint firstAttribute="width" constant="346" id="J51-fv-u3O"/>
                                     </constraints>
                                 </view>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gyL-V0-EKr">
-                                    <rect key="frame" x="118" y="40" width="257" height="105"/>
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="gyL-V0-EKr">
+                                    <rect key="frame" x="60" y="40" width="315" height="105"/>
                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="257" id="H8b-PM-03r"/>
+                                        <constraint firstAttribute="width" constant="315" id="H8b-PM-03r"/>
                                         <constraint firstAttribute="height" constant="105" id="vgP-GV-etY"/>
                                     </constraints>
                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="2" id="dpM-MK-6vv">
@@ -155,6 +148,38 @@
                                     <rect key="frame" x="16" y="264" width="21" height="20"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </button>
+                                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8tZ-F0-ZXg">
+                                    <rect key="frame" x="16" y="303" width="346" height="3"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.99131041765213013" green="0.19323644042015076" blue="0.016015868633985519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
+                                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bku-Bk-Bxf">
+                                    <rect key="frame" x="18" y="368" width="344" height="3"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.99131041765213013" green="0.19323644042015076" blue="0.016015868633985519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
+                                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nQu-vn-VzZ">
+                                    <rect key="frame" x="19" y="426" width="343" height="3"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.99131041765213013" green="0.19323644042015076" blue="0.016015868633985519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
+                                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kPI-h1-bQX">
+                                    <rect key="frame" x="19" y="480" width="343" height="3"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.99131041765213013" green="0.19323644042015076" blue="0.016015868633985519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
+                                <view hidden="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SA8-kf-0zx">
+                                    <rect key="frame" x="18" y="542" width="343" height="3"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="0.99131041765213013" green="0.19323644042015076" blue="0.016015868633985519" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </view>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_add_a_photo" translatesAutoresizingMaskIntoConstraints="NO" id="uJK-u4-dRs">
+                                    <rect key="frame" x="16" y="40" width="44" height="42"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="44" id="n6c-1Y-Bgg"/>
+                                        <constraint firstAttribute="height" constant="42" id="rfC-5D-PfC"/>
+                                    </constraints>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -166,15 +191,15 @@
                                 <constraint firstItem="4fF-bt-8l0" firstAttribute="top" secondItem="fCE-w7-rAf" secondAttribute="top" constant="20" id="MKh-8b-0Kb"/>
                                 <constraint firstItem="4fF-bt-8l0" firstAttribute="leading" secondItem="fCE-w7-rAf" secondAttribute="leading" constant="16" id="Tah-D2-PJ1"/>
                                 <constraint firstItem="X9J-QB-fVh" firstAttribute="top" secondItem="03Y-mS-9dJ" secondAttribute="bottom" constant="8" id="Twr-Vy-12I"/>
-                                <constraint firstAttribute="trailing" secondItem="gyL-V0-EKr" secondAttribute="trailing" constant="1" id="iVd-UE-9EM"/>
+                                <constraint firstAttribute="trailing" secondItem="gyL-V0-EKr" secondAttribute="trailing" id="iVd-UE-9EM"/>
                                 <constraint firstItem="gyL-V0-EKr" firstAttribute="top" secondItem="fCE-w7-rAf" secondAttribute="top" constant="40" id="mMW-jB-zg6"/>
                                 <constraint firstItem="uJK-u4-dRs" firstAttribute="top" secondItem="4fF-bt-8l0" secondAttribute="bottom" constant="8" id="pKA-jY-b4T"/>
                                 <constraint firstItem="raV-Qa-wnM" firstAttribute="leading" secondItem="fCE-w7-rAf" secondAttribute="leading" constant="16" id="qZI-JY-BHK"/>
                                 <constraint firstAttribute="height" constant="1000" id="t1b-Sa-pce"/>
-                                <constraint firstItem="gyL-V0-EKr" firstAttribute="leading" secondItem="uJK-u4-dRs" secondAttribute="trailing" constant="-3" id="vDO-Pa-XVM"/>
+                                <constraint firstItem="gyL-V0-EKr" firstAttribute="leading" secondItem="uJK-u4-dRs" secondAttribute="trailing" id="vDO-Pa-XVM"/>
                                 <constraint firstItem="uJK-u4-dRs" firstAttribute="leading" secondItem="fCE-w7-rAf" secondAttribute="leading" constant="16" id="w6S-aq-JeA"/>
                                 <constraint firstItem="03Y-mS-9dJ" firstAttribute="leading" secondItem="fCE-w7-rAf" secondAttribute="leading" constant="16" id="wWE-pP-tql"/>
-                                <constraint firstItem="03Y-mS-9dJ" firstAttribute="top" secondItem="uJK-u4-dRs" secondAttribute="bottom" constant="23" id="zWg-EK-kyW"/>
+                                <constraint firstItem="03Y-mS-9dJ" firstAttribute="top" secondItem="uJK-u4-dRs" secondAttribute="bottom" constant="86" id="zWg-EK-kyW"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -199,12 +224,17 @@
                 <outlet property="addPhotoUIImageView" destination="uJK-u4-dRs" id="BBz-L1-tak"/>
                 <outlet property="checkBoxUIButton" destination="qeT-2f-YlT" id="Uem-Lo-6c1"/>
                 <outlet property="cityUITextField" destination="aid-uh-cvH" id="xiT-CY-aeD"/>
+                <outlet property="descErrorLine" destination="Bku-Bk-Bxf" id="GMB-hQ-5Wu"/>
                 <outlet property="descriptionUILabel" destination="zKb-9J-Wiw" id="y3g-zi-HS4"/>
                 <outlet property="imageCollectionView" destination="gyL-V0-EKr" id="70r-8q-DJz"/>
                 <outlet property="mainCategoryUISearchTextField" destination="03Y-mS-9dJ" id="Row-Mo-fdc"/>
+                <outlet property="nameErrorLine" destination="8tZ-F0-ZXg" id="tJV-Xf-WI5"/>
                 <outlet property="nameOfResourceUILable" destination="7qt-qd-yhH" id="0mx-5m-GYS"/>
+                <outlet property="priceErrorLine" destination="kPI-h1-bQX" id="3Kq-f4-huv"/>
                 <outlet property="priceUITextField" destination="KUL-LS-GIo" id="ced-Fa-oKF"/>
+                <outlet property="quantityErrorLine" destination="nQu-vn-VzZ" id="xta-oF-q5p"/>
                 <outlet property="quantityUITextField" destination="qWf-c3-XwS" id="Bq4-hU-Hac"/>
+                <outlet property="rateErrorLine" destination="SA8-kf-0zx" id="ilb-HU-6PG"/>
                 <outlet property="rateUITextField" destination="zhR-xN-PQg" id="ugj-sh-ER0"/>
                 <outlet property="stateUITextField" destination="Jx1-CB-E1S" id="54f-GV-r1w"/>
                 <outlet property="streetUITextField" destination="nEV-bj-Z67" id="6rl-Zk-cJC"/>
@@ -215,6 +245,6 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_add_box" width="24" height="24"/>
+        <image name="ic_add_a_photo" width="24" height="24"/>
     </resources>
 </document>

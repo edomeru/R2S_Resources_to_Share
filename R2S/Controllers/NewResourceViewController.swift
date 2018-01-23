@@ -17,14 +17,21 @@ import SwiftSpinner
 import Foundation
 import Alamofire
 import AlamofireImage
+import Kingfisher
 
 class NewResourceViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, TagListViewDelegate {
     
+    var nameplaceHolder = NSMutableAttributedString()
+    var descriptionplaceHolder = NSMutableAttributedString()
+    var quantityplaceHolder = NSMutableAttributedString()
+    var priceplaceHolder = NSMutableAttributedString()
+    var rateplaceHolder = NSMutableAttributedString()
     var newResourceView = NewResourceView()
     var rate = [String]()
     var action = [String]()
     var imagesDictionary = [String : Any]()
     var images = [UIImage]()
+    var imageStringArray = [String]()
     var reateSelected: String?
     var actionSelected: String?
     var captureSession: AVCaptureSession?
@@ -55,6 +62,11 @@ class NewResourceViewController: BaseViewController, UIImagePickerControllerDele
     var categoriesString:String = ""
     var imgString:String = ""
     var img_url:String?
+    var Name  = "Name of Resource"
+    var descLabel  = "Description"
+    var quantityLabel  = "Quantity"
+    var priceLabel  = "Price"
+    var rateLAbel  = "Rate"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,6 +74,20 @@ class NewResourceViewController: BaseViewController, UIImagePickerControllerDele
         self.setupValidator()
         
         
+       
+        
+        descriptionplaceHolder = NSMutableAttributedString(string:descLabel, attributes: [NSFontAttributeName:UIFont(name: "Helvetica", size: 15.0)!])
+        quantityplaceHolder = NSMutableAttributedString(string:quantityLabel, attributes: [NSFontAttributeName:UIFont(name: "Helvetica", size: 15.0)!])
+        priceplaceHolder = NSMutableAttributedString(string:priceLabel, attributes: [NSFontAttributeName:UIFont(name: "Helvetica", size: 15.0)!])
+        rateplaceHolder = NSMutableAttributedString(string:rateLAbel, attributes: [NSFontAttributeName:UIFont(name: "Helvetica", size: 15.0)!])
+        
+        
+        
+        
+        descriptionplaceHolder.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range:NSRange(location:0,length:descLabel.characters.count))
+        quantityplaceHolder.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range:NSRange(location:0,length:quantityLabel.characters.count))
+        priceplaceHolder.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range:NSRange(location:0,length:priceLabel.characters.count))
+        rateplaceHolder.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range:NSRange(location:0,length:rateLAbel.characters.count))
         
         
         
@@ -587,7 +613,7 @@ extension NewResourceViewController: CZPickerViewDelegate, CZPickerViewDataSourc
               
                 self.imageNewDictionary["image_full"] = jsonData!["image_url_full"].stringValue as AnyObject
                 self.imageNewDictionary["image"] = jsonData!["image_url"].stringValue as AnyObject
-                
+                self.imageStringArray.append(jsonData!["image_url"].stringValue)
                 self.img_Array.append(self.imageNewDictionary)
                 
                 print("IMAGE_ARRAY", self.img_Array)
@@ -621,6 +647,21 @@ extension NewResourceViewController: CZPickerViewDelegate, CZPickerViewDataSourc
         self.dismiss(animated: false, completion: nil)
         
     }
+    
+    func checkIfEmpty(){
+        
+        if ( self.images.isEmpty) {
+            
+ Utility.showSnackBAr(messege: "Please add atleast one resource image", bgcolor: UIColor(hexString: Constants.color.redSnackBar)!)
+            
+            
+        }else{
+            self.newResourceView.endEditing(true)
+            self.validator.validate(self)
+        
+        }
+    }
+
     
    
     
@@ -745,9 +786,16 @@ extension NewResourceViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // if collectionView == self.newResourceView.imageCollectionView {
+       
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageCollectionCell", for: indexPath) as! ImageResourcesCollectionViewCell
         
+        
+//        let processor = RoundCornerImageProcessor(cornerRadius: 20)
+//        cell.ImageResource.kf.setImage(with:  URL(string: imageStringArray[indexPath.item]), placeholder: nil, options: [.processor(processor)])
+        print("dvdvvvdd",imageStringArray.count)
+        print("wvwwrvgrg",images[indexPath.item])
+        
+    
         cell.ImageResource.image = images[indexPath.item]
         return cell
         
@@ -782,9 +830,9 @@ extension NewResourceViewController: NewResourceViewDelegate {
     func submitButtonPressed
         (sender: AnyObject){
         
-      
-        self.newResourceView.endEditing(true)
-        self.validator.validate(self)
+         checkIfEmpty()
+        
+        
         
         
     }
@@ -829,14 +877,14 @@ extension NewResourceViewController: ValidationDelegate {
             
             
             
-            print(name)
-            print(description)
-            print(resource_rate!)
-            //print(quantity)
-            print(price)
+//            print(name)
+//            print(description)
+//            print(resource_rate!)
+//            //print(quantity)
+//            print(price)
             
             
-            print("dmclicoisbncoasbcoiah",self.newResourceView.CategoryTagListView.tagViews.count)
+            //print("dmclicoisbncoasbcoiah",self.newResourceView.CategoryTagListView.tagViews.count)
             
             for tags in self.newResourceView.CategoryTagListView.tagViews {
                 let category = SubcategoryDao.getAllBySubCategoryName(categoryId: self.newResourceView.mainCategoryUISearchTextField.tag, subCategoryName: (tags.titleLabel?.text)!)
@@ -981,13 +1029,14 @@ extension NewResourceViewController: ValidationDelegate {
             
             
             
-            ResourceService.createResource(id: UserHelper.getId()! , params: params) { statusCode, message in
+            ResourceService.createResource(id: UserHelper.getId()! , params: params) { (statusCode, message) in
                 SwiftSpinner.hide()
                 print("STATUS CODE",statusCode)
+                print("MESSAGE2", message)
                 if statusCode == 201 {
-                    
+                     Utility.showSnackBAr(messege: "Your resource has been submitted for review. It should be posted within 48 hours once verified", bgcolor: UIColor(hexString: Constants.color.greenSnackBar)!)
                 } else {
-                    Utility.showAlert(title: "Login Error", message: message!, targetController: self)
+                    Utility.showAlert(title: "Error", message: message!, targetController: self)
                 }
             }
             
@@ -1005,16 +1054,24 @@ extension NewResourceViewController: ValidationDelegate {
         for (field, _) in errors {
             if let field =  field as? UITextField {
                 switch field {
+  
                 case self.newResourceView.nameOfResourceUILable:
-                    self.newResourceView.nameOfResourceUILable.backgroundColor = UIColor.red
+                    nameplaceHolder = NSMutableAttributedString(string:Name, attributes: [NSFontAttributeName:UIFont(name: "Helvetica", size: 15.0)!])
+                    nameplaceHolder.addAttribute(NSForegroundColorAttributeName, value: UIColor.red, range:NSRange(location:0,length:Name.characters.count))
+                    self.newResourceView.nameOfResourceUILable.attributedPlaceholder = nameplaceHolder
+                    self.newResourceView.nameErrorLine.isHidden = false
                 case self.newResourceView.descriptionUILabel:
-                    self.newResourceView.descriptionUILabel.backgroundColor = UIColor.red
+                    self.newResourceView.descriptionUILabel.attributedPlaceholder = descriptionplaceHolder
+                    self.newResourceView.descErrorLine.isHidden = false
                 case self.newResourceView.rateUITextField:
-                    self.newResourceView.rateUITextField.backgroundColor = UIColor.red
+                    self.newResourceView.rateUITextField.attributedPlaceholder = rateplaceHolder
+                    self.newResourceView.rateErrorLine.isHidden = false
                 case self.newResourceView.priceUITextField:
-                    self.newResourceView.priceUITextField.backgroundColor = UIColor.red
+                    self.newResourceView.priceUITextField.attributedPlaceholder = priceplaceHolder
+                    self.newResourceView.priceErrorLine.isHidden = false
                 case self.newResourceView.quantityUITextField:
-                    self.newResourceView.quantityUITextField.backgroundColor = UIColor.red
+                    self.newResourceView.quantityUITextField.attributedPlaceholder = quantityplaceHolder
+                    self.newResourceView.quantityErrorLine.isHidden = false
                 default:
                     print("default")
                 }
@@ -1028,24 +1085,23 @@ extension NewResourceViewController: ValidationDelegate {
 extension NewResourceViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         switch textField {
+
         case self.newResourceView.nameOfResourceUILable:
-            self.newResourceView.nameOfResourceUILable.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
-            self.newResourceView.nameOfResourceUILable.backgroundColor = UIColor.white
+            self.newResourceView.nameErrorLine.isHidden = true
+           
         case self.newResourceView.descriptionUILabel:
-            self.newResourceView.descriptionUILabel.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
-            self.newResourceView.descriptionUILabel.backgroundColor = UIColor.white
+            self.newResourceView.descErrorLine.isHidden = true
+            descriptionplaceHolder.addAttribute(NSForegroundColorAttributeName, value: Constants.color.grayUnderline, range:NSRange(location:0,length:descLabel.characters.count))
             
         case self.newResourceView.rateUITextField:
-            self.newResourceView.rateUITextField.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
-            self.newResourceView.rateUITextField.backgroundColor = UIColor.white
-            
+            self.newResourceView.rateErrorLine.isHidden = true
+            rateplaceHolder.addAttribute(NSForegroundColorAttributeName, value: Constants.color.grayUnderline, range:NSRange(location:0,length:rateLAbel.characters.count))
         case self.newResourceView.priceUITextField:
-            self.newResourceView.priceUITextField.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
-            self.newResourceView.priceUITextField.backgroundColor = UIColor.white
-            
+           self.newResourceView.priceErrorLine.isHidden = true
+             priceplaceHolder.addAttribute(NSForegroundColorAttributeName, value: Constants.color.grayUnderline, range:NSRange(location:0,length:priceLabel.characters.count))
         case self.newResourceView.quantityUITextField:
-            self.newResourceView.quantityUITextField.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
-            self.newResourceView.quantityUITextField.backgroundColor = UIColor.white
+          self.newResourceView.quantityErrorLine.isHidden = true
+             quantityplaceHolder.addAttribute(NSForegroundColorAttributeName, value: Constants.color.grayUnderline, range:NSRange(location:0,length:quantityLabel.characters.count))
             
         default:
             print("default")

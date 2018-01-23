@@ -94,7 +94,7 @@ class ChangePasswordViewController: BaseViewController {
             Utility.showSnackBAr(messege:"Password has been changed Succesfully", bgcolor: UIColor(hexString: Constants.color.greenSnackBar)!)
             
         } else {
-            Utility.showAlert(title: "Login Error", message: message!, targetController: self)
+            Utility.showAlert(title: "Error", message: message!, targetController: self)
         }
     }
 

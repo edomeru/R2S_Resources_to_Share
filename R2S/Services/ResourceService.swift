@@ -576,16 +576,20 @@ class ResourceService {
                        // newResource.location = resource["location"].stringValue
                         
                         ResourceDao.add(newResource)
+                        
+                        message = jsonData["message"].stringValue
+                       
                     }
                 } else {
                     message = jsonData["message"].stringValue
+                   
                     print("MESSAGEE",message)
                 }
             }
             
-            DispatchQueue.main.async {
+           
                 onCompletion(statusCode, message)
-            }
+            
         })
     }
     

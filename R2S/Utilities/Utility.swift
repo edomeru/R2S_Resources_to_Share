@@ -109,7 +109,7 @@ class Utility {
     }
     
     class func showSnackBAr(messege: String, bgcolor: UIColor){
-        let snackbar = TTGSnackbar(message: messege, duration: .short)
+        let snackbar = TTGSnackbar(message: messege, duration: .long)
         snackbar.backgroundColor = bgcolor
         snackbar.show()
     }

@@ -58,6 +58,8 @@ class UserService {
                 user.birthDate = jsonData["birth_date"].stringValue
                 user.mobileNumber = jsonData["mobile_number"].stringValue
                 user.landlineNumber = jsonData["landline_number"].stringValue
+                user.designation = jsonData["designation"].stringValue
+                user.descriptionText = jsonData["description"].stringValue
                 user.imageUrl = jsonData["image_url"].stringValue
                 user.status = jsonData["status"].stringValue
                 user.isSubscribed = jsonData["is_subscribed"].boolValue

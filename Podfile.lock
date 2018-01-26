@@ -67,6 +67,7 @@ PODS:
   - RealmSwift (3.0.0):
     - Realm (= 3.0.0)
   - SearchTextField (1.2.0)
+  - SwiftDate (4.3.0)
   - SwiftHEXColors (1.1.0)
   - SwiftKeychainWrapper (3.0.1)
   - SwiftSpinner (1.4.1)
@@ -101,6 +102,7 @@ DEPENDENCIES:
   - NVActivityIndicatorView
   - RealmSwift
   - SearchTextField
+  - SwiftDate (~> 4.3.0)
   - SwiftHEXColors
   - SwiftKeychainWrapper
   - SwiftSpinner
@@ -157,6 +159,7 @@ SPEC CHECKSUMS:
   Realm: dec0de73be8c57506e39db72694d513c189493b3
   RealmSwift: 44a7090b16d1b22a406c6bf129bdd602db1bbecc
   SearchTextField: a5bb7e4c33affadb115afdbe8100d84ef10a8024
+  SwiftDate: 64e2312711c5c506f7b51794308ce91f19eb494a
   SwiftHEXColors: 8f7e364df7929e32cff9f9eeb044bb215167d6be
   SwiftKeychainWrapper: 38952a3636320ae61bad3513cadd870929de7a4a
   SwiftSpinner: bf7c13332ad008952a09358cadf24a186510ae31
@@ -166,6 +169,6 @@ SPEC CHECKSUMS:
   TagListView: 669f7d4455003c877655875d34829731c4191528
   TTGSnackbar: 058485c43a1cdbdfc988d41cb23c23f008df958d
 
-PODFILE CHECKSUM: f30aed768b617167924c5e93b9a66dd84712eed5
+PODFILE CHECKSUM: 382d467750b03c142d54d343766d93c734f7e8da
 
 COCOAPODS: 1.2.1

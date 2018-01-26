@@ -27,4 +27,19 @@ class AccountService {
         })
     }
     
+    static func update(params: [String : Any], onCompletion: @escaping (Int?, String?) -> Void) {
+        var message = ""
+        
+        UserRemote.update(params: params, onCompletion: { jsonData, statusCode in
+            if statusCode == 202 {
+                print("Account updated Successfully")
+                message = "Account updated Successfully"
+                
+            } else {
+                message = jsonData["message"].stringValue
+            }
+            onCompletion(statusCode, message)
+        })
+    }
+    
 }

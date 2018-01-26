@@ -12,7 +12,7 @@
         <scene sceneID="5gd-tc-SuB">
             <objects>
                 <navigationController id="gyt-qp-uPB" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V3o-gx-w46">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="V3o-gx-w46">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -254,10 +254,10 @@
                     <tabBarItem key="tabBarItem" title="Me" image="ic_person" id="SJ3-WQ-dSs" customClass="Anyway"/>
                     <connections>
                         <segue destination="MSh-Oj-9yy" kind="show" identifier="profileToWelcomeSegue" id="dJd-mu-kYQ"/>
-                        <segue destination="wKB-et-l9i" kind="show" identifier="profileToEditProfileSegue" id="MPA-cA-cHg"/>
                         <segue destination="XHZ-Ge-Kbm" kind="show" identifier="profileToChangePasswordSegue" id="NNP-o9-8Fo"/>
                         <segue destination="o58-5i-PpW" kind="show" identifier="profileToAppSettingsSegue" id="IQA-O9-oT4"/>
                         <segue destination="so9-Yr-cBu" kind="show" identifier="profileToRaiseSupportTicketSegue" id="hvJ-vT-0Ut"/>
+                        <segue destination="wKB-et-l9i" kind="show" identifier="profileToEditProfileSegue" id="g34-q6-fpl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="by0-9X-XqV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -273,14 +273,16 @@
                         <viewControllerLayoutGuide type="bottom" id="AvE-hf-14W"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="s8y-C1-uYl">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="850"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="850"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kNY-Qb-soo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3559" y="-1213"/>
+            <point key="canvasLocation" x="3558" y="-1391"/>
         </scene>
         <!--Change Password View Controller-->
         <scene sceneID="fyu-b1-gFV">

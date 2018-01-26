@@ -61,4 +61,12 @@ class UserRemote {
             onCompletion(jsonData, statusCode)
         })
     }
+    
+    static func update(params: [String: Any], onCompletion: @escaping (JSON, Int?) -> Void) {
+        print("PARAMS",params)
+        print("URL",Constants.api.user.users.replacingOccurrences(of: "{id}", with: String(describing: UserHelper.getId()!)))
+        ApiRequestManager.sharedInstance.doPutRequestWithParam(urlString: Constants.api.user.users.replacingOccurrences(of: "{id}", with: String(describing: UserHelper.getId()! )), params: params, headers: Utility.getHeadersWithAuth(), onCompletion: { jsonData, statusCode in
+            onCompletion(jsonData, statusCode)
+        })
+    }
 }

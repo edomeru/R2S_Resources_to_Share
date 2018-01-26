@@ -34,4 +34,5 @@ target 'R2S' do
   pod 'Cosmos', '~> 11.0'
   pod 'GrowingTextView'
   pod 'DatePickerDialog'
+  pod 'SwiftDate', '~> 4.3.0'
 end

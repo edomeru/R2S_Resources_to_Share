@@ -20,6 +20,8 @@ class User: Object {
     dynamic var imageUrl = ""
     dynamic var landlineNumber = ""
     dynamic var mobileNumber = ""
+    dynamic var designation = ""
+    dynamic var descriptionText = ""
     dynamic var password = ""
     dynamic var status = ""
     dynamic var createdDate = ""

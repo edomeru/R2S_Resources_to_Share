@@ -15,28 +15,29 @@ import AVFoundation
 import Photos
 import SwiftyJSON
 import SwiftDate
+import DatePickerDialog
 
 class EditProfileViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-
+    
     
     var editProfileView = EditProfileView()
     var user:User?
     var params = [String: Any]()
-     var imageAction = [String]()
+    var imageAction = [String]()
     var actionSelected: String?
     var base64Param = [String : Any]()
     var image: UIImage?
     var img_url:String?
     var newDate:String?
-    
-
+    var  startDate: Date?
+    var startDateString: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
-       
+        
         self.title = "Edit Profile"
-
+        
         
     }
     
@@ -51,19 +52,19 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         activityIndicator.hidesWhenStopped = true
         
         activityIndicator.startAnimating()
-         user = UserDao.getOneBy(id: UserHelper.getId()!)
+        user = UserDao.getOneBy(id: UserHelper.getId()!)
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             activityIndicator.stopAnimating()
-        
+            
             self.initUILayout()
-
+            
         })
         
     }
     
     
     private func initUILayout() {
-    
+        
         self.editProfileView = self.loadFromNibNamed(nibNamed: Constants.xib.EditProfile) as! EditProfileView
         self.editProfileView.frame = CGRect(x: 0, y: Constants.navbarHeight, width: self.view.frame.width, height: self.view.frame.height)
         
@@ -71,9 +72,9 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         self.editProfileView.delegate = self
         
         self.editProfileView.firstNameUITextField.text = user?.firstName
-         self.editProfileView.lastNameUITextField.text = user?.lastName
-         self.editProfileView.companyUITextField.text = user?.company?.name
-         self.editProfileView.birthdayUITextField.text = user?.birthDate
+        self.editProfileView.lastNameUITextField.text = user?.lastName
+        self.editProfileView.companyUITextField.text = user?.company?.name
+        self.editProfileView.birthdayUITextField.text = user?.birthDate
         self.editProfileView.mobileUITextField.text = user?.mobileNumber
         self.editProfileView.landlineUITextField.text = user?.landlineNumber
         self.editProfileView.designationUITextField.text = user?.designation
@@ -83,12 +84,14 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
             let processor = RoundCornerImageProcessor(cornerRadius: 2500)
             self.editProfileView.profPicUIImageView.kf.setImage(with:  URL(string: (user?.imageUrl)!), placeholder: nil, options: [.processor(processor)])
         }
-      imageAction = ["Camera", "Photos", "Cancel"]
-       
+        imageAction = ["Camera", "Photos", "Cancel"]
+        
         
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         editProfileView.profPicUIImageView.isUserInteractionEnabled = true
         editProfileView.profPicUIImageView.addGestureRecognizer(tapGestureRecognizer)
+        
+        self.editProfileView.birthdayUITextField.addTarget(self, action: Selector("datePickerBdate"), for: UIControlEvents.editingDidBegin)
         
     }
     
@@ -107,8 +110,8 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         UIImageWriteToSavedPhotosAlbum((info[UIImagePickerControllerOriginalImage] as? UIImage)!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
         
         //images.append(image!)
-       
-         self.editProfileView.profPicUIImageView.kf.indicatorType = .activity
+        
+        self.editProfileView.profPicUIImageView.kf.indicatorType = .activity
         let imageName = UUID().uuidString
         let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
         
@@ -129,15 +132,15 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
             print("JSON_UPLOAD",jsonData)
             if statusCode == 201 {
                 print("SUCCEESFUL_UPLOAD", jsonData!)
-        self.editProfileView.profPicUIImageView.kf.indicatorType = .activity
+                self.editProfileView.profPicUIImageView.kf.indicatorType = .activity
                 self.img_url =  jsonData!["image_url_full"].stringValue
                 let processor = RoundCornerImageProcessor(cornerRadius: 2500)
                 self.editProfileView.profPicUIImageView.kf.setImage(with:  URL(string: (self.img_url)!), placeholder: nil, options: [.processor(processor)])
                 
             }
         }
-      
-       // self.newResourceView.imageCollectionView.reloadData()
+        
+        // self.newResourceView.imageCollectionView.reloadData()
         self.dismiss(animated: false, completion: nil)
         
     }
@@ -168,7 +171,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         
         return newImage!
     }
-
+    
     func convert_from_image_to_jpeg_to_Base64(image: UIImage)-> String {
         
         if let jpegDatacropped = UIImageJPEGRepresentation(image, 80) {
@@ -179,7 +182,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         }
         return ""
     }
-
+    
     func crop(image: UIImage, withWidth width: Double, andHeight height: Double) -> UIImage? {
         
         if let cgImage = image.cgImage {
@@ -230,7 +233,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
     
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
-       
+        
         let pickerDialog = CZPickerView(headerTitle: "Type of Alert", cancelButtonTitle: "Cancel", confirmButtonTitle: "Ok")
         pickerDialog?.delegate = self
         pickerDialog?.dataSource = self
@@ -242,7 +245,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         pickerDialog?.show()
     }
     
-   
+    
     
     func cameraFunction(){
         // Check if we have permission taking Camera
@@ -326,96 +329,134 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         //        Globals.showAlert(self, title: NSLocalizedString("error", comment: ""), message: message, animated: true, completion: nil, actions: action)
     }
     
-  func saveToLocal() {
-    let updatedUser = User()
-    updatedUser.accountId = (user?.accountId)!
-    updatedUser.id = (user?.id)!
-    updatedUser.firstName = self.editProfileView.firstNameUITextField.text!
-    updatedUser.lastName = self.editProfileView.lastNameUITextField.text!
-    updatedUser.email = (user?.email)!
-    
-    
-    let dateFormatter1 = DateFormatter()
-    dateFormatter1.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ" //Your date format
-    dateFormatter1.timeZone = TimeZone(abbreviation: "GMT+4:00") //Current time zone
-    let date1 = dateFormatter1.date(from: newDate!) //according to date format your date string
-    print("date",date1)
-    
-    dateFormatter1.dateFormat = "yyyy-mm-dd"
-    let singaporeFormat1 =  dateFormatter1.string(from: date1!)
-    
-    
-    
-    
-    updatedUser.birthDate = singaporeFormat1
-    updatedUser.mobileNumber = self.editProfileView.mobileUITextField.text!
-    updatedUser.landlineNumber = self.editProfileView.landlineUITextField.text!
-    updatedUser.designation = self.editProfileView.designationUITextField.text!
-    updatedUser.descriptionText = self.editProfileView.designationUITextField.text!
-    updatedUser.password = UserDefaults.standard.value(forKey: "password") as! String
-    
-     if self.img_url != nil {
-    updatedUser.imageUrl = self.img_url!
-     }else{
-    updatedUser.imageUrl = (user?.imageUrl)!
+    func datePickerBdate() {
+        let currentDate = Date()
+        
+        
+        let datePicker = DatePickerDialog(textColor: UIColor(hexString: Constants.color.primary)!,
+                                          buttonColor: UIColor(hexString: Constants.color.primaryDark)!,
+                                          font: UIFont.boldSystemFont(ofSize: 15),
+                                          showCancelButton: true)
+        datePicker.show("Start Date",
+                        doneButtonTitle: "Done",
+                        cancelButtonTitle: "Cancel",
+                        maximumDate: currentDate,
+                        datePickerMode: .date) { (date) in
+                            if let dt = date {
+                                let formatter = DateFormatter()
+                                let singaporeFormatter = DateFormatter()
+                                let gregorian = Calendar(identifier: .gregorian)
+                                
+                                var piStartcComponents = gregorian.dateComponents([.year, .month, .day, .hour, .minute, .second], from: dt)
+                                piStartcComponents.hour = 0
+                                piStartcComponents.minute = 0
+                                piStartcComponents.second = 0
+                                
+                                self.startDate = gregorian.date(from: piStartcComponents)!
+                                
+                                formatter.dateFormat = "YYYY-MM-dd"
+                                singaporeFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+                                self.editProfileView.birthdayUITextField.text = formatter.string(from: self.startDate!)
+                                self.startDateString = singaporeFormatter.string(from: self.startDate!)
+                                print("DATE OUTPUT",self.editProfileView.birthdayUITextField.text)
+                                print("STARTDATEE",self.startDate )
+                            }
+        }
+        
     }
     
-    updatedUser.status = (user?.status)!
-    updatedUser.isSubscribed = (user?.isSubscribed)!
-    updatedUser.createdDate = (user?.createdDate)!
-    updatedUser.updatedDate = (user?.updatedDate)!
-    updatedUser.deletedDate = (user?.deletedDate)!
-    
-    //Account
-    let cmpy = user?.company
-    let company = Company()
-    company.name = (cmpy?.name)!
-     updatedUser.company = company
-    print("DAOUSER",updatedUser)
-     UserDao.add(updatedUser)
-    
-    
-    let defaults = UserDefaults.standard
-    defaults.setValue(user?.accountId, forKey: "accountId")
-    defaults.setValue(user?.id, forKey: "id")
-    defaults.setValue(self.editProfileView.firstNameUITextField.text!, forKey: "firstName")
-    defaults.setValue(self.editProfileView.lastNameUITextField.text!, forKey: "lastName")
-    defaults.setValue(UserDefaults.standard.value(forKey: "password"), forKey: "password")
-    defaults.setValue(user?.email, forKey: "email")
-    
-    
-    let dateFormatter = DateFormatter()
-    dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ" //Your date format
-    dateFormatter.timeZone = TimeZone(abbreviation: "GMT+4:00") //Current time zone
-    let date = dateFormatter.date(from: newDate!) //according to date format your date string
-    print("date",date)
-    
-    dateFormatter.dateFormat = "yyyy-mm-dd"
-    let singaporeFormat =  dateFormatter.string(from: date!)
-    print("newDate",singaporeFormat)
-    print("self.editProfileView.birthdayUITextField.text!",self.editProfileView.birthdayUITextField.text!)
-    
-    
-    
-    
-    
-    
-    
-    defaults.setValue(singaporeFormat, forKey: "birthDate")
-    defaults.setValue(self.editProfileView.mobileUITextField.text!, forKey: "mobileNumber")
-    defaults.setValue(self.editProfileView.landlineUITextField.text!, forKey: "landlineNumber")
-    defaults.setValue(user?.isSubscribed, forKey: "isSubscribed")
-    
-    if self.img_url != nil {
-        defaults.setValue(self.img_url!, forKey: "imageUrl")
-    }else{
-        defaults.setValue(user?.imageUrl, forKey: "imageUrl")
-    }
-    
-    defaults.setValue(user?.createdDate, forKey: "createdDate")
-    defaults.setValue(user?.updatedDate, forKey: "updatedDate")
-    defaults.setValue(true, forKey: "isLoggedIn")
-    
+    func saveToLocal() -> User {
+        let updatedUser = User()
+        updatedUser.accountId = (user?.accountId)!
+        updatedUser.id = (user?.id)!
+        updatedUser.firstName = self.editProfileView.firstNameUITextField.text!
+        updatedUser.lastName = self.editProfileView.lastNameUITextField.text!
+        updatedUser.email = (user?.email)!
+        
+        
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ" //Your date format
+        dateFormatter1.timeZone = TimeZone(abbreviation: "GMT+4:00") //Current time zone
+        let date1 = dateFormatter1.date(from: newDate!) //according to date format your date string
+        print("date",date1)
+        
+        dateFormatter1.dateFormat = "yyyy-mm-dd"
+        let singaporeFormat1 =  dateFormatter1.string(from: date1!)
+        
+        
+        
+        
+        updatedUser.birthDate = singaporeFormat1
+        updatedUser.mobileNumber = self.editProfileView.mobileUITextField.text!
+        updatedUser.landlineNumber = self.editProfileView.landlineUITextField.text!
+        updatedUser.designation = self.editProfileView.designationUITextField.text!
+        updatedUser.descriptionText = self.editProfileView.designationUITextField.text!
+        updatedUser.password = UserDefaults.standard.value(forKey: "password") as! String
+        
+        if self.img_url != nil {
+            updatedUser.imageUrl = self.img_url!
+        }else{
+            updatedUser.imageUrl = (user?.imageUrl)!
+        }
+        
+        updatedUser.status = (user?.status)!
+        updatedUser.isSubscribed = (user?.isSubscribed)!
+        updatedUser.createdDate = (user?.createdDate)!
+        updatedUser.updatedDate = (user?.updatedDate)!
+        updatedUser.deletedDate = (user?.deletedDate)!
+        
+        //Account
+        let cmpy = user?.company
+        let company = Company()
+        company.name = (cmpy?.name)!
+        updatedUser.company = company
+        print("DAOUSER",updatedUser)
+        UserDao.add(updatedUser)
+        
+        
+        let defaults = UserDefaults.standard
+        defaults.setValue(user?.accountId, forKey: "accountId")
+        defaults.setValue(user?.id, forKey: "id")
+        defaults.setValue(self.editProfileView.firstNameUITextField.text!, forKey: "firstName")
+        defaults.setValue(self.editProfileView.lastNameUITextField.text!, forKey: "lastName")
+        defaults.setValue(UserDefaults.standard.value(forKey: "password"), forKey: "password")
+        defaults.setValue(user?.email, forKey: "email")
+        
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ" //Your date format
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+4:00") //Current time zone
+        let date = dateFormatter.date(from: newDate!) //according to date format your date string
+        print("date",date)
+        
+        dateFormatter.dateFormat = "yyyy-mm-dd"
+        let singaporeFormat =  dateFormatter.string(from: date!)
+        print("newDate",singaporeFormat)
+        print("self.editProfileView.birthdayUITextField.text!",self.editProfileView.birthdayUITextField.text!)
+        
+        
+        
+        
+        
+        
+        
+        defaults.setValue(singaporeFormat, forKey: "birthDate")
+        defaults.setValue(self.editProfileView.mobileUITextField.text!, forKey: "mobileNumber")
+        defaults.setValue(self.editProfileView.landlineUITextField.text!, forKey: "landlineNumber")
+        defaults.setValue(user?.isSubscribed, forKey: "isSubscribed")
+        
+        if self.img_url != nil {
+            defaults.setValue(self.img_url!, forKey: "imageUrl")
+        }else{
+            defaults.setValue(user?.imageUrl, forKey: "imageUrl")
+        }
+        
+        defaults.setValue(user?.createdDate, forKey: "createdDate")
+        defaults.setValue(user?.updatedDate, forKey: "updatedDate")
+        defaults.setValue(true, forKey: "isLoggedIn")
+        
+        return updatedUser
+        
     }
     
 }
@@ -423,13 +464,13 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
 // MARK: - LoginViewDelegate
 extension EditProfileViewController: EditProfileViewDelegate {
     func submitButtonPressed(sender: AnyObject) {
-//        self.loginView.endEditing(true)
-//        self.validator.validate(self)
+        //        self.loginView.endEditing(true)
+        //        self.validator.validate(self)
         
         print("IMG_URL", self.img_url)
         
         if self.img_url != nil {
-        params["image_url"] = self.img_url
+            params["image_url"] = self.img_url
         }
         
         let dateFormatter = DateFormatter()
@@ -438,16 +479,16 @@ extension EditProfileViewController: EditProfileViewDelegate {
         let date = dateFormatter.date(from: self.editProfileView.birthdayUITextField.text!) //according to date format your date string
         print("date",date)
         
-       dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-       newDate =  dateFormatter.string(from: date!)
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+        newDate =  dateFormatter.string(from: date!)
         print("newDate",newDate)
         print("self.editProfileView.birthdayUITextField.text!",self.editProfileView.birthdayUITextField.text!)
-       
-//        let rome = Region(tz: TimeZoneName.asiaSingapore, cal: CalendarName.current, loc: )
-//
-//        let date1 = DateInRegion(string: self.editProfileView.birthdayUITextField.text!, format: .iso8601Auto, fromRegion: rome)!
-//        
-//            print("date1",date1)
+        
+        //        let rome = Region(tz: TimeZoneName.asiaSingapore, cal: CalendarName.current, loc: )
+        //
+        //        let date1 = DateInRegion(string: self.editProfileView.birthdayUITextField.text!, format: .iso8601Auto, fromRegion: rome)!
+        //
+        //            print("date1",date1)
         
         params["first_name"] = self.editProfileView.firstNameUITextField.text
         params["last_name"] = self.editProfileView.lastNameUITextField.text
@@ -464,8 +505,9 @@ extension EditProfileViewController: EditProfileViewDelegate {
             SwiftSpinner.hide()
             if statusCode == 202 {
                 
-                self.saveToLocal()
+                let updatedDao = self.saveToLocal()
                 
+                NotificationCenter.default.post(name: Notification.Name(rawValue:"pass"), object: updatedDao , userInfo: nil)
                 self.navigationController?.popViewController(animated: true)
                 Utility.showSnackBAr(messege: message!, bgcolor: UIColor(hexString: Constants.color.greenSnackBar)!)
                 
@@ -483,9 +525,9 @@ extension EditProfileViewController: CZPickerViewDelegate, CZPickerViewDataSourc
     
     public func numberOfRows(in pickerView: CZPickerView!) -> Int {
         
-     
-            print("picker 2 count", pickerView.tag)
-            return imageAction.count
+        
+        print("picker 2 count", pickerView.tag)
+        return imageAction.count
         
         
         
@@ -501,8 +543,8 @@ extension EditProfileViewController: CZPickerViewDelegate, CZPickerViewDataSourc
         
         
         
-            print("picker 2 count", pickerView.tag)
-            return imageAction.count
+        print("picker 2 count", pickerView.tag)
+        return imageAction.count
         
         
         
@@ -511,9 +553,9 @@ extension EditProfileViewController: CZPickerViewDelegate, CZPickerViewDataSourc
     func czpickerView(_ pickerView: CZPickerView!, titleForRow row: Int) -> String! {
         
         
-   
-            print("picker 2 count", pickerView.tag)
-            return imageAction[row]
+        
+        print("picker 2 count", pickerView.tag)
+        return imageAction[row]
         
         
         
@@ -521,24 +563,24 @@ extension EditProfileViewController: CZPickerViewDelegate, CZPickerViewDataSourc
     
     func czpickerView(_ pickerView: CZPickerView!, didConfirmWithItemAtRow row: Int){
         
-
+        
+        
+        actionSelected = imageAction[row]
+        print(imageAction[row])
+        
+        if actionSelected == "Camera" {
             
-            actionSelected = imageAction[row]
-            print(imageAction[row])
+            cameraFunction()
             
-            if actionSelected == "Camera" {
-                
-                cameraFunction()
-                
-            }else if actionSelected == "Photos" {
-                
-                openLibrary()
-                
-            }else{
-                
-                
-                
-            }
+        }else if actionSelected == "Photos" {
+            
+            openLibrary()
+            
+        }else{
+            
+            
+            
+        }
         
         
         
@@ -547,5 +589,5 @@ extension EditProfileViewController: CZPickerViewDelegate, CZPickerViewDataSourc
     
     func czpickerViewDidClickCancelButton(_ pickerView: CZPickerView!) {
         
-  }
+    }
 }

@@ -28,10 +28,12 @@ class AccountViewController: BaseViewController {
     var selectedCategoryId: Int!
     var settings = [String]()
     var setingsSelected: String?
-    
+    var Me: User?
     override func viewDidLoad() {
         super.viewDidLoad()
         print("AccountViewController")
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(AccountViewController.reloadProfile(_:)), name: NSNotification.Name(rawValue: "pass"), object: nil)
      //   let dropDown = DropDown()
         
         
@@ -163,12 +165,14 @@ class AccountViewController: BaseViewController {
                 Utility.showAlert(title: "Error", message: message!, targetController: self)
             }
         }
-        
-       
-
     }
     
-    
+    func reloadProfile(_ notification: Notification) {
+        print("reloadProfile")
+        Me = notification.object  as?  User
+        self.initUILayout()
+        
+    }
    
 
     // MARK: - Private Functions
@@ -187,7 +191,7 @@ class AccountViewController: BaseViewController {
         self.accountView.profileTableView.delegate = self
         self.accountView.profileTableView.dataSource = self
         
-        let Me =  UserDao.getOneBy(id: UserHelper.getId()! )
+         Me =  UserDao.getOneBy(id: UserHelper.getId()! )
         print("UserDao.getOneBy",Me)
         if let user = Me {
             
@@ -215,6 +219,8 @@ class AccountViewController: BaseViewController {
         
         
     }
+    
+    
     
     func settingsTapped() {
         let pickerDialog = CZPickerView(headerTitle: "Settings", cancelButtonTitle: "Cancel", confirmButtonTitle: "Ok")
@@ -275,6 +281,8 @@ class AccountViewController: BaseViewController {
             }
         }
     }
+    
+   
 }
 
 // MARK: - UITableViewDelegate

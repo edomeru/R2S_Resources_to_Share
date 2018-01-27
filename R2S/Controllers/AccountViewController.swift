@@ -169,7 +169,7 @@ class AccountViewController: BaseViewController {
     
     func reloadProfile(_ notification: Notification) {
         print("reloadProfile")
-        Me = notification.object  as?  User
+        //Me = notification.object  as?  User
         self.initUILayout()
         
     }
@@ -203,6 +203,7 @@ class AccountViewController: BaseViewController {
             self.accountView.companyUILabel.text = user.company?.name
            
             if user.imageUrl != "" {
+                self.accountView.profilePicImageView.kf.indicatorType = .activity
                 let processor = RoundCornerImageProcessor(cornerRadius: 20)
                 self.accountView.profilePicImageView.kf.setImage(with:  URL(string: user.imageUrl), placeholder: nil, options: [.processor(processor)])
             }
@@ -319,6 +320,7 @@ extension AccountViewController: UITableViewDataSource{
         cell.productImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
         cell.productImageView.contentMode = .scaleAspectFit // OR .scaleAspectFill
         cell.productImageView.clipsToBounds = true
+        cell.productImageView.kf.indicatorType = .activity
         cell.productImageView.kf.setImage(with:  URL(string: myResources.imageUrl))
        
 //        for img in resources[indexPath.row].image {

@@ -81,6 +81,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         self.editProfileView.bioUITextView.text = user?.descriptionText
         
         if user?.imageUrl != "" {
+            self.editProfileView.profPicUIImageView.kf.indicatorType = .activity
             let processor = RoundCornerImageProcessor(cornerRadius: 2500)
             self.editProfileView.profPicUIImageView.kf.setImage(with:  URL(string: (user?.imageUrl)!), placeholder: nil, options: [.processor(processor)])
         }
@@ -108,10 +109,12 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         
         
         UIImageWriteToSavedPhotosAlbum((info[UIImagePickerControllerOriginalImage] as? UIImage)!, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
+        print("IMAGELOADED")
+        self.editProfileView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         
-        //images.append(image!)
-        
-        self.editProfileView.profPicUIImageView.kf.indicatorType = .activity
+        self.view.addSubview(self.editProfileView)
+
+        //self.editProfileView.profPicUIImageView.kf.indicatorType = .activity
         let imageName = UUID().uuidString
         let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
         
@@ -131,6 +134,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
             print("SATUSCODE_UPLOAD",statusCode)
             print("JSON_UPLOAD",jsonData)
             if statusCode == 201 {
+               
                 print("SUCCEESFUL_UPLOAD", jsonData!)
                 self.editProfileView.profPicUIImageView.kf.indicatorType = .activity
                 self.img_url =  jsonData!["image_url_full"].stringValue
@@ -394,8 +398,10 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         updatedUser.password = UserDefaults.standard.value(forKey: "password") as! String
         
         if self.img_url != nil {
+            print("IMG_NOT_NILL",self.img_url!)
             updatedUser.imageUrl = self.img_url!
         }else{
+            print("IMG_NILL",(user?.imageUrl)!)
             updatedUser.imageUrl = (user?.imageUrl)!
         }
         

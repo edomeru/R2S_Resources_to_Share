@@ -23,7 +23,7 @@ class ResourceService {
         ResourceRemote.get(onCompletion: { jsonData, statusCode in
             DispatchQueue.global(qos: .background).async{
                 if statusCode == 200 {
-                 // print("JSONDATAGETSERVICE" + "\(jsonData)"  )
+                  print("JSONDATAGETSERVICE" + "\(jsonData)"  )
                     
                     message = ""
                     for (_, resource):(String, JSON) in jsonData {

@@ -195,6 +195,7 @@
                 <outlet property="phoneLabel" destination="AkI-xg-ZYx" id="saD-eV-P5X"/>
                 <outlet property="priceLabel" destination="cO7-Hd-1i5" id="j2m-Ll-HCa"/>
                 <outlet property="scrollView" destination="ptD-UH-8Yk" id="lM0-I2-cYX"/>
+                <outlet property="sendMsgUIImageView" destination="tiz-3X-PRI" id="9dL-JF-34P"/>
                 <outlet property="titleSubLabel" destination="gTf-Ls-X1N" id="Wl6-S7-rgC"/>
             </connections>
             <point key="canvasLocation" x="67.5" y="123.5"/>

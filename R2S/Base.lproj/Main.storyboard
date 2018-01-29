@@ -178,6 +178,24 @@
             </objects>
             <point key="canvasLocation" x="1420" y="577"/>
         </scene>
+        <!--Search View Controller-->
+        <scene sceneID="PFw-wQ-HSX">
+            <objects>
+                <viewController id="ck7-NJ-Tdd" customClass="SearchViewController" customModule="R2S" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eNy-fn-lUW"/>
+                        <viewControllerLayoutGuide type="bottom" id="vuK-tv-lNX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9a6-Jn-Ddl">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="izH-BO-h3I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="311" y="-2166"/>
+        </scene>
         <!--Transaction View Controller-->
         <scene sceneID="eIp-qo-j7Q">
             <objects>
@@ -436,6 +454,7 @@
                     </navigationItem>
                     <connections>
                         <segue destination="Q5K-h3-mWc" kind="show" identifier="HomeToResourceSegue" id="sxH-e5-hhl"/>
+                        <segue destination="ck7-NJ-Tdd" kind="show" identifier="HomeViewToSearchViewSegue" id="a2O-Oz-Gpk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zrm-DX-Znu" userLabel="First Responder" sceneMemberID="firstResponder"/>

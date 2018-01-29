@@ -87,6 +87,7 @@ class Constants {
         static let activityView = "ActivityView"
         static let accountView = "AccountView"
         static let browseView = "BrowseView"
+         static let searchView = "SearchView"
         static let favoritesView = "FavoritesView"
         static let wishlistView = "WishlistView"
         static let resourceView = "ResourceView"
@@ -155,6 +156,7 @@ class Constants {
         static let profileToAppSettingsSegue = "profileToAppSettingsSegue"
         static let profileToRaiseSupportTicketSegue = "profileToRaiseSupportTicketSegue"
         static let resourceViewToScheduleBookingSegue = "resourceViewToScheduleBookingSegue"
+        static let HomeViewToSearchViewSegue = "HomeViewToSearchViewSegue"
         
     }
 }

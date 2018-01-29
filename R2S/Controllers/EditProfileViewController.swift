@@ -55,15 +55,16 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         user = UserDao.getOneBy(id: UserHelper.getId()!)
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             activityIndicator.stopAnimating()
-            
+        
             self.initUILayout()
             
         })
-        
+    
     }
     
     
     private func initUILayout() {
+        print("fix_frame")
         
         self.editProfileView = self.loadFromNibNamed(nibNamed: Constants.xib.EditProfile) as! EditProfileView
         self.editProfileView.frame = CGRect(x: 0, y: Constants.navbarHeight, width: self.view.frame.width, height: self.view.frame.height)

@@ -55,11 +55,34 @@ class ResourceViewController: BaseViewController {
         floaty.addItem(title: "Hello, World!")
         floaty.buttonColor = UIColor(hexString: Constants.color.primaryDark)!
         floaty.buttonImage = UIImage(named: "ic_event_available_white")
-       
-        
         self.resourceView.addSubview(floaty)
         
         
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
+        self.resourceView.sendMsgUIImageView.isUserInteractionEnabled = true
+        self.resourceView.sendMsgUIImageView.addGestureRecognizer(tapGestureRecognizer)
+        
+    }
+    
+    func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
+        let textView = UITextView()
+        textView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        
+        let controller = UIViewController()
+        
+        textView.frame = controller.view.frame
+        controller.view.addSubview(textView)
+        
+        alert.setValue(controller, forKey: "contentViewController")
+        
+        let height: NSLayoutConstraint = NSLayoutConstraint(item: alert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: view.frame.height * 0.8)
+        alert.view.addConstraint(height)
+        
+        present(alert, animated: true, completion: nil)
+        
+        // Your action
     }
     
     private func fillUiWithData(){

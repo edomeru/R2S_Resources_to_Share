@@ -29,11 +29,16 @@ class AccountViewController: BaseViewController {
     var settings = [String]()
     var setingsSelected: String?
     var Me: User?
+    var reloadView:Bool?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("AccountViewController")
-        
+        reloadView = false
         NotificationCenter.default.addObserver(self, selector: #selector(AccountViewController.reloadProfile(_:)), name: NSNotification.Name(rawValue: "pass"), object: nil)
+        
+        initUILayout()
+        
      //   let dropDown = DropDown()
         
         
@@ -65,67 +70,20 @@ class AccountViewController: BaseViewController {
 //        }
         
         
-
-        // Do any additional setup after loading the view.
-        
-//        ResourceService.get(onCompletion: { statusCode, message in
-//        
-//        print("\(statusCode!)" + " TEST NI EDS"  )
-//            print("\(message!)" + " TEST NI EDS"  )
-//        
-//        })
-        
-        
-//        ResourceService.getFavorites(id: 1, onCompletion: { statusCode, message in
-//            
-//            print("\(statusCode!)" + " TEST NI EDS getByAccount"  )
-//            print("\(message!)" + " TEST NI EDS"  )
-//            
-//        })
-        
-//        let newResource = User()
-//        newResource.id = 8
-//        newResource.accountId = "34242"
-//        newResource.birthDate = "adadadad"
-//        newResource.createdDate = "thttthh"
-//        newResource.deletedDate = "thttthh"
-//        newResource.email = "thttthh"
-//        newResource.firstName = "thttthh"
-//        
-//        newResource.imageUrl = "thttthh"
-//        newResource.isSubscribed = true
-//        newResource.landlineNumber = "thttthh"
-//        newResource.lastName = "alarte"
-//        newResource.mobileNumber = "97917391739"
-//        newResource.password = "ihiqduadbaud"
-//        newResource.status = "aldjadadad"
-//        newResource.updatedDate = "adadbadgadvaud"
-        
-//        var someObject:[String : AnyObject] = ["account_id" : UserHelper.getId()! as AnyObject]
-
-        
-//        ResourceService.addToFavorites(resource_id: 8 ,params: someObject  , onCompletion: { statusCode, message in
-//            
-//            print("\(statusCode!)" + " TEST NI EDS addToFavorites"  )
-//            print("\(message!)" + " TEST NI EDS"  )
-//            
-//        })
-        
-        
-        
+     
     
         
-         var category1:[String : AnyObject] =  ["subcategory_id": 22 as AnyObject    ,"main_category_id": 10 as AnyObject]
-        var category2:[String : AnyObject] =  ["subcategory_id": 22 as AnyObject    ,"main_category_id": 2 as AnyObject]
-        print("PRINT_category1", category1)
-        var categories:Array = [Dictionary<String, AnyObject>]()
-        categories.append(category1)
-        categories.append(category2)
-        print("PRINT_categoriesARRAY", categories)
-        
-        var someObject:[String : AnyObject] = ["image_url" : "http://web.r2s.tirsolutions.com/static/uploads/1492509242048_2.png" as AnyObject, "name":"Special Force" as AnyObject, "price": 20 as AnyObject, "quantity":8 as AnyObject,"resource_rate":"DAY" as AnyObject,"categories": categories as AnyObject , "description": "Slightly used." as AnyObject,]
-        
-       print("PRINT_PARAM", someObject)
+//         var category1:[String : AnyObject] =  ["subcategory_id": 22 as AnyObject    ,"main_category_id": 10 as AnyObject]
+//        var category2:[String : AnyObject] =  ["subcategory_id": 22 as AnyObject    ,"main_category_id": 2 as AnyObject]
+//        print("PRINT_category1", category1)
+//        var categories:Array = [Dictionary<String, AnyObject>]()
+//        categories.append(category1)
+//        categories.append(category2)
+//        print("PRINT_categoriesARRAY", categories)
+//        
+//        var someObject:[String : AnyObject] = ["image_url" : "http://web.r2s.tirsolutions.com/static/uploads/1492509242048_2.png" as AnyObject, "name":"Special Force" as AnyObject, "price": 20 as AnyObject, "quantity":8 as AnyObject,"resource_rate":"DAY" as AnyObject,"categories": categories as AnyObject , "description": "Slightly used." as AnyObject,]
+//        
+//       print("PRINT_PARAM", someObject)
 
 //        ResourceService.createResource(id: 2 , params: someObject, onCompletion: { statusCode, message in
 //            
@@ -134,6 +92,12 @@ class AccountViewController: BaseViewController {
 //            
 //        })
         
+       
+        
+    }
+    
+    func loadResource(){
+    
         let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
         activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
         activityIndicator.activityIndicatorViewStyle = .gray
@@ -147,29 +111,47 @@ class AccountViewController: BaseViewController {
             if statusCode == 200 {
                 
                 self.myResource =  ResourceDao.getByAccountId(accountId: UserHelper.getId()!)
-                let user = UserDao.getOneBy(id: UserHelper.getId()!)
+             
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     activityIndicator.stopAnimating()
                     
-                   
                     
-                   
-                    self.initUILayout()
+                    
+                    
+                    
+                    self.accountView.profileTableView.register(UINib(nibName: Constants.xib.ProfileTableViewCell, bundle:nil), forCellReuseIdentifier: "ProfileTableViewCell")
+                    
+                    
+                    self.accountView.profileTableView.delegate = self
+                    self.accountView.profileTableView.dataSource = self
                     self.accountView.profileTableView.reloadData()
+                    print("RELOAD", self.reloadView!)
+                    if self.reloadView! == false {
+                    self.accountView.frame = CGRect(x: 0, y: Constants.navbarHeight, width: self.view.frame.width, height: self.view.frame.height)
+                    self.view = self.accountView
+                    } else {
+                        self.accountView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+                        self.view = self.accountView
+                    }
+                
                     
-                    
-                   
                 })
             } else {
                 
                 Utility.showAlert(title: "Error", message: message!, targetController: self)
             }
         }
+
+    
+    
+    
+    
     }
     
     func reloadProfile(_ notification: Notification) {
         print("reloadProfile")
         //Me = notification.object  as?  User
+        reloadView = true
         self.initUILayout()
         
     }
@@ -182,14 +164,10 @@ class AccountViewController: BaseViewController {
         self.screenHeight = screenSize.height
 
         self.accountView = self.loadFromNibNamed(nibNamed: Constants.xib.accountView) as! AccountView
+        self.accountView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         self.view = self.accountView
         self.accountView.delegate = self
-        
-        self.accountView.profileTableView.register(UINib(nibName: Constants.xib.ProfileTableViewCell, bundle:nil), forCellReuseIdentifier: "ProfileTableViewCell")
-        settings = ["Edit Profile", "Change Password", "App Settings", "Raise Support Ticket"]
-        
-        self.accountView.profileTableView.delegate = self
-        self.accountView.profileTableView.dataSource = self
+       
         
          Me =  UserDao.getOneBy(id: UserHelper.getId()! )
         print("UserDao.getOneBy",Me)
@@ -216,8 +194,8 @@ class AccountViewController: BaseViewController {
             
         }
         
-       
-        
+       settings = ["Edit Profile", "Change Password", "App Settings", "Raise Support Ticket"]
+         loadResource()
         
     }
     

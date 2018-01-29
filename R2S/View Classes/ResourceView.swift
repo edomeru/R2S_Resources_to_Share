@@ -18,6 +18,7 @@ class ResourceView: BaseUIView {
     
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var sendMsgUIImageView: UIImageView!
 
     @IBOutlet weak var categoryLabel: UILabel!
     

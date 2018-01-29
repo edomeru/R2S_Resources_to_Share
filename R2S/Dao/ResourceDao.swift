@@ -82,4 +82,12 @@ class ResourceDao {
         let user = realm.objects(Resource.self).filter(predicate).first
         return user
     }
+    
+    static func getResourcesNotByUser(userId: Int) -> Results<Resource> {
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "account.id != %d", userId)
+        let resource = realm.objects(Resource.self).filter(predicate)
+        return resource
+    }
+    
 }

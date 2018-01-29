@@ -11,12 +11,13 @@ import RealmSwift
 import SwiftSpinner
 import Kingfisher
 import MIBadgeButton_Swift
+import Floaty
 
 class HomeViewController: BaseViewController {
-
+var roundButton = UIButton()
     var homeView = HomeView()
     var featuredPageControl = UIPageControl()
-    
+    var floaty = Floaty()
     var screenSize: CGRect!
     var screenWidth: CGFloat!
     var screenHeight: CGFloat!
@@ -52,6 +53,39 @@ class HomeViewController: BaseViewController {
         self.homeView.homeTableView.register(UINib(nibName: Constants.xib.categoryTableCell, bundle: nil), forCellReuseIdentifier: "CategoryTableCell")
         self.homeView.homeTableView.delegate = self
         self.homeView.homeTableView.dataSource = self
+        
+        floaty.fabDelegate = self
+        floaty.addItem(title: "Hello, World!")
+        floaty.buttonColor = UIColor(hexString: Constants.color.primaryDark)!
+        floaty.buttonImage = UIImage(named: "ic_event_available_white")
+        
+        
+        self.homeView.addSubview(floaty)
+        
+        self.roundButton = UIButton(type: .custom)
+        self.roundButton.setTitleColor(UIColor.orange, for: .normal)
+        self.roundButton.addTarget(self, action: #selector(ButtonClick(_:)), for: UIControlEvents.touchUpInside)
+        self.navigationController?.view.addSubview(roundButton)
+
+    }
+    override func viewWillLayoutSubviews() {
+        
+        roundButton.layer.cornerRadius = roundButton.layer.frame.size.width/2
+        roundButton.backgroundColor = UIColor.lightGray
+        roundButton.clipsToBounds = true
+        roundButton.setImage(UIImage(named:"ic_wb_sunny_48pt"), for: .normal)
+        roundButton.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            roundButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -3),
+//            roundButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -53),
+//            roundButton.widthAnchor.constraint(equalToConstant: 50),
+//            roundButton.heightAnchor.constraint(equalToConstant: 50)])
+    }
+    
+    @IBAction func ButtonClick(_ sender: UIButton){
+        
+        /** Do whatever you wanna do on button click**/
+        
     }
     
     private func configureNavBar() {
@@ -220,4 +254,31 @@ extension HomeViewController: UICollectionViewDataSource {
         
         return cell
     }
+}
+
+extension HomeViewController: FloatyDelegate {
+    
+    
+    func floatyWillOpen(_ floaty: Floaty) {
+        print("Floaty Will Open")
+        
+        performSegue(withIdentifier: Constants.segue.HomeViewToSearchViewSegue, sender: self)
+    }
+    
+    func floatyDidOpen(_ floaty: Floaty) {
+        print("Floaty Did Open")
+        self.floaty.close()
+        
+    }
+    
+    func floatyWillClose(_ floaty: Floaty) {
+        print("Floaty Will Close")
+    }
+    
+    func floatyDidClose(_ floaty: Floaty) {
+        print("Floaty Did Close")
+    }
+    
+    
+    
 }

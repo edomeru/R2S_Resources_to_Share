@@ -29,8 +29,8 @@
                         <constraint firstAttribute="height" constant="28" id="Sf5-6B-v20"/>
                     </constraints>
                     <segments>
-                        <segment title="All"/>
-                        <segment title="Mine"/>
+                        <segment title="All Wishlist"/>
+                        <segment title="Your Wishlist"/>
                     </segments>
                     <connections>
                         <action selector="SegmentedUIView:" destination="ZnM-mn-ufZ" eventType="valueChanged" id="BkG-90-jg1"/>

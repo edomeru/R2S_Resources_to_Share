@@ -342,9 +342,20 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
                                           buttonColor: UIColor(hexString: Constants.color.primaryDark)!,
                                           font: UIFont.boldSystemFont(ofSize: 15),
                                           showCancelButton: true)
+        
+        let gregorian = Calendar(identifier: .gregorian)
+        
+        var piStartcComponents = gregorian.dateComponents([.year, .month, .day, .hour, .minute, .second], from: currentDate)
+        piStartcComponents.year = 1901
+       
+       let minDate = gregorian.date(from: piStartcComponents)!
+        
+        
         datePicker.show("Start Date",
                         doneButtonTitle: "Done",
                         cancelButtonTitle: "Cancel",
+                        minimumDate: minDate,
+//                        minimumDate: Calendar.current.date(byAdding: .day, value: 1, to: Calendar.current.date(bySettingHour: 12, minute: 0, second: 0, of: currentDate)!),
                         maximumDate: currentDate,
                         datePickerMode: .date) { (date) in
                             if let dt = date {

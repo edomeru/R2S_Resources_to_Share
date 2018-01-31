@@ -14,7 +14,7 @@ import MIBadgeButton_Swift
 import Floaty
 
 class HomeViewController: BaseViewController {
-var roundButton = UIButton()
+    var roundButton = UIButton()
     var homeView = HomeView()
     var featuredPageControl = UIPageControl()
     var floaty = Floaty()
@@ -23,30 +23,31 @@ var roundButton = UIButton()
     var screenHeight: CGFloat!
     var categories: Results<Category>!
     var selectedCategoryId: Int!
-
+   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.refreshData()
         self.configureNavBar()
-        
+       
         // Do any additional setup after loading the view.
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK: - Private Functions
     private func initUILayout() {
         self.screenSize = UIScreen.main.bounds
         self.screenWidth = screenSize.width
         self.screenHeight = screenSize.height
-
+        
         self.homeView = self.loadFromNibNamed(nibNamed: Constants.xib.homeView) as! HomeView
         self.homeView.frame = CGRect(x: 0.0, y: Constants.navbarHeight, width: self.homeView.frame.width, height: self.homeView.frame.height)
-//        self.view.addSubview(self.homeView)
+        //        self.view.addSubview(self.homeView)
         self.view = self.homeView
         
         self.homeView.homeTableView.register(UINib(nibName: Constants.xib.featuredTableCell, bundle: nil), forCellReuseIdentifier: "FeaturedTableCell")
@@ -66,8 +67,11 @@ var roundButton = UIButton()
         self.roundButton.setTitleColor(UIColor.orange, for: .normal)
         self.roundButton.addTarget(self, action: #selector(ButtonClick(_:)), for: UIControlEvents.touchUpInside)
         self.navigationController?.view.addSubview(roundButton)
-
+        
     }
+    
+  
+    
     override func viewWillLayoutSubviews() {
         
         roundButton.layer.cornerRadius = roundButton.layer.frame.size.width/2
@@ -75,11 +79,11 @@ var roundButton = UIButton()
         roundButton.clipsToBounds = true
         roundButton.setImage(UIImage(named:"ic_wb_sunny_48pt"), for: .normal)
         roundButton.translatesAutoresizingMaskIntoConstraints = false
-//        NSLayoutConstraint.activate([
-//            roundButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -3),
-//            roundButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -53),
-//            roundButton.widthAnchor.constraint(equalToConstant: 50),
-//            roundButton.heightAnchor.constraint(equalToConstant: 50)])
+        //        NSLayoutConstraint.activate([
+        //            roundButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -3),
+        //            roundButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -53),
+        //            roundButton.widthAnchor.constraint(equalToConstant: 50),
+        //            roundButton.heightAnchor.constraint(equalToConstant: 50)])
     }
     
     @IBAction func ButtonClick(_ sender: UIButton){
@@ -231,12 +235,12 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.categories.count
     }
-
+    
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCollectionCell", for: indexPath) as! CategoryCollectionViewCell
         cell.categoryLabel.text = self.categories[indexPath.item].name
         
-//        print (self.categories[indexPath.item])
+        //        print (self.categories[indexPath.item])
         
         let imageUrl = self.categories[indexPath.item].imageUrl
         cell.categoryImageView.kf.indicatorType = .activity

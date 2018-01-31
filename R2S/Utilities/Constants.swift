@@ -109,6 +109,7 @@ class Constants {
         static let wishListTableViewCell = "WishListTableViewCell"
         static let inboxTableViewCell = "InboxTableViewCell"
         static let ProfileTableViewCell = "ProfileTableViewCell"
+        static let SearchTableViewCell = "SearchTableViewCell"
         
         // CollectionView Cell
         static let categoryCollectionCell = "CategoryCollectionViewCell"

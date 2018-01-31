@@ -28,6 +28,8 @@
 		9B1F86CE1FD6B329005C575E /* InboxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B1F86CD1FD6B329005C575E /* InboxView.xib */; };
 		9B1F86D11FD6B38B005C575E /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1F86D01FD6B38B005C575E /* InboxView.swift */; };
 		9B1F86D31FD6B526005C575E /* InboxDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1F86D21FD6B526005C575E /* InboxDao.swift */; };
+		9B26A33820202DD0008F1561 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B26A33720202DD0008F1561 /* SearchTableViewCell.xib */; };
+		9B26A33A20202F9F008F1561 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B26A33920202F9F008F1561 /* SearchTableViewCell.swift */; };
 		9B2BB2061FE90E0E009EA173 /* imageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B2BB2051FE90E0D009EA173 /* imageCollectionCell.xib */; };
 		9B2BB20E1FE92165009EA173 /* ImageResourcesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2BB20D1FE92165009EA173 /* ImageResourcesCollectionViewCell.swift */; };
 		9B36BB6D201EE0F400819137 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B36BB6C201EE0F400819137 /* SearchViewController.swift */; };
@@ -210,6 +212,8 @@
 		9B1F86CD1FD6B329005C575E /* InboxView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InboxView.xib; path = Xibs/InboxView.xib; sourceTree = "<group>"; };
 		9B1F86D01FD6B38B005C575E /* InboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InboxView.swift; path = "View Classes/InboxView.swift"; sourceTree = "<group>"; };
 		9B1F86D21FD6B526005C575E /* InboxDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InboxDao.swift; path = Dao/InboxDao.swift; sourceTree = "<group>"; };
+		9B26A33720202DD0008F1561 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchTableViewCell.xib; path = Xibs/SearchTableViewCell.xib; sourceTree = "<group>"; };
+		9B26A33920202F9F008F1561 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchTableViewCell.swift; path = "View Classes/SearchTableViewCell.swift"; sourceTree = "<group>"; };
 		9B2BB2051FE90E0D009EA173 /* imageCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = imageCollectionCell.xib; path = Xibs/imageCollectionCell.xib; sourceTree = "<group>"; };
 		9B2BB20D1FE92165009EA173 /* ImageResourcesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageResourcesCollectionViewCell.swift; path = "View Classes/ImageResourcesCollectionViewCell.swift"; sourceTree = "<group>"; };
 		9B36BB6C201EE0F400819137 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = Controllers/SearchViewController.swift; sourceTree = "<group>"; };
@@ -407,6 +411,7 @@
 				B9E267B61E7BAEA600BB9900 /* BrowseView.swift */,
 				9B7EDC45200F287700169963 /* ScheduleBookingView.swift */,
 				9B36BB70201EEF5400819137 /* SearchView.swift */,
+				9B26A33920202F9F008F1561 /* SearchTableViewCell.swift */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -434,6 +439,7 @@
 				2C93C0CC1F0F9659009B7179 /* ResourceTableViewCell.xib */,
 				9B7EDC43200F283F00169963 /* ScheduleBookingView.xib */,
 				9B36BB6E201EEEDC00819137 /* SearchView.xib */,
+				9B26A33720202DD0008F1561 /* SearchTableViewCell.xib */,
 			);
 			name = Home;
 			sourceTree = "<group>";
@@ -1047,6 +1053,7 @@
 				B9E267D81E7D41F500BB9900 /* CategoryTableViewCell.xib in Resources */,
 				9B95E8772004B45600612323 /* RaiseSupportTicketView.xib in Resources */,
 				B9E267D11E7D41CA00BB9900 /* CategoryCollectionViewCell.xib in Resources */,
+				9B26A33820202DD0008F1561 /* SearchTableViewCell.xib in Resources */,
 				9B95E8712004B3AC00612323 /* EditProfile.xib in Resources */,
 				9B36BB6F201EEEDC00819137 /* SearchView.xib in Resources */,
 				9B1F86CE1FD6B329005C575E /* InboxView.xib in Resources */,
@@ -1191,6 +1198,7 @@
 				9BDD2C341FDE21FD00F8DC55 /* WishListTags.swift in Sources */,
 				9BCCD5FD1FD13F37001A9507 /* NewResourceViewController.swift in Sources */,
 				9BE9AF1E200600B700A7E5F3 /* AccountService.swift in Sources */,
+				9B26A33A20202F9F008F1561 /* SearchTableViewCell.swift in Sources */,
 				B9E267B71E7BAEA600BB9900 /* BrowseView.swift in Sources */,
 				2C087D371F26110C00AC3921 /* Image.swift in Sources */,
 				9B5E238B1FD3FA4400A59FFF /* WishListRemote.swift in Sources */,

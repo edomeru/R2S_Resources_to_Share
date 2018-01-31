@@ -9,12 +9,15 @@
 import UIKit
 import RealmSwift
 import Foundation
+import Realm
 
 class SearchViewController: BaseViewController, UISearchBarDelegate {
-
+        let realm = try! Realm()
     var searchView = SearchView()
     var searchBar = UISearchBar()
     var resources:Results<Resource>!
+    var filteredArray = [String]()
+    var shouldShowSearchResults = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -82,14 +85,24 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        shouldShowSearchResults = true
         searchBar.endEditing(true)
+        self.searchView.searchTableView.reloadData()
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
     }
+//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//       
+//        filteredArray = resources.filter({ (data: String) -> Bool in
+//            
+//             let data = realm.objects(Resource).filter("name CONTAINS %@", searchText)
+//             return data != nil
+//        })
+//    }
     // MARK: - Private Functions
-    private func initUILayout() {
+    private func initUILayout () {
         
         
         self.searchView = self.loadFromNibNamed(nibNamed: Constants.xib.searchView) as! SearchView
@@ -99,7 +112,7 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         
        
         
-        self.searchView.searchTableView.register(UINib(nibName: Constants.xib.resourceTableCell, bundle:nil), forCellReuseIdentifier: "ResourceTableViewCell")
+        self.searchView.searchTableView.register(UINib(nibName: Constants.xib.SearchTableViewCell, bundle:nil), forCellReuseIdentifier: "SearchTableViewCell")
         self.searchView.searchTableView.delegate = self
         self.searchView.searchTableView.dataSource = self
         self.searchView.searchTableView.reloadData()
@@ -119,27 +132,50 @@ extension SearchViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 330
     }
+    
 }
 // MARK: - UITableViewDelegate
 extension SearchViewController: UITableViewDataSource{
+    
+    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.searchView.searchTableView {
+            
+            if shouldShowSearchResults {
+            return self.filteredArray.count
+            }else {
+            return self.resources.count
+            }
+            
+        
             return self.resources.count
         }
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ResourceTableViewCell", for: indexPath) as! ResourceTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
         
-//        
-//        cell.titleLabel.text =  resources[indexPath.row].name
-//
-//        cell.dateLabel.text = resources[indexPath.row].createdDate
-//        cell.priceLabel.text = "$ \(resources[indexPath.row].price).00"
-//        cell.infoLabel.text = resources[indexPath.row].descriptionText
-//        
-//        
+        if shouldShowSearchResults {
+        
+         cell.titleUILabel.text =  filteredArray[indexPath.row]
+        }
+        
+        cell.titleUILabel.text =  resources[indexPath.row].name
+
+        cell.dateUILabel.text = resources[indexPath.row].createdDate
+        cell.priceUILabel.text = "$ \(resources[indexPath.row].price).00"
+        cell.infoUILabel.text = resources[indexPath.row].descriptionText
+        
+        for img in resources[indexPath.row].image {
+            
+            cell.imageUIImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
+            cell.imageUIImageView.contentMode = .scaleAspectFit // OR .scaleAspectFill
+            cell.imageUIImageView.clipsToBounds = true
+            cell.imageUIImageView.kf.setImage(with:  URL(string: img.image))
+            
+        }
      
         
         return cell

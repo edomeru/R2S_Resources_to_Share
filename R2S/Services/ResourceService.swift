@@ -37,7 +37,7 @@ class ResourceService {
                         newResource.name = resource["name"].stringValue
                         newResource.descriptionText = resource["description"].stringValue
                        
-                        newResource.price = resource["price"].stringValue
+                        newResource.price = Int(resource["price"].stringValue)!
                         newResource.quantity = resource["quantity"].stringValue
                         newResource.status = resource["status"].stringValue
                         
@@ -194,7 +194,7 @@ class ResourceService {
                         newResource.name = resource["name"].stringValue
                         newResource.descriptionText = resource["description"].stringValue
                         
-                        newResource.price = resource["price"].stringValue
+                        newResource.price = Int(resource["price"].stringValue)!
                         newResource.quantity = resource["quantity"].stringValue
                         newResource.status = resource["status"].stringValue
                         
@@ -570,7 +570,7 @@ class ResourceService {
                         newResource.name = resource["name"].stringValue
                         newResource.descriptionText = resource["descriptionText"].stringValue
                         
-                        newResource.price = resource["price"].stringValue
+                        newResource.price = resource["price"].intValue
                         newResource.quantity = resource["quantity"].stringValue
                         newResource.status = resource["status"].stringValue
                        // newResource.location = resource["location"].stringValue

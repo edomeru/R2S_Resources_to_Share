@@ -50,8 +50,8 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         ResourceService.get{ (statusCode, message) in
             if statusCode == 200 {
                 
-                   self.resources = ResourceDao.getResourcesNotByUser(userId: UserHelper.getId()!)
-                print("Resource",self.resources)
+                   self.resources = ResourceDao.getResourcesNotByUserAscending(userId: UserHelper.getId()!)
+               
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     activityIndicator.stopAnimating()
@@ -117,7 +117,7 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         self.searchView.searchTableView.dataSource = self
         self.searchView.searchTableView.reloadData()
 
-    
+     print("Resourcesadd",self.resources)
        
     }
     

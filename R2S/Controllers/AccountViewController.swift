@@ -290,7 +290,7 @@ extension AccountViewController: UITableViewDataSource{
         
         
         cell.dateLabel.text = myResources.createdDate
-        cell.priceLabel.text = "$" + myResources.price
+        cell.priceLabel.text = "$" + "\(myResources.price)" 
         cell.infoLabel.text = myResources.descriptionText
         
        

@@ -48,7 +48,7 @@ class TransactionService {
                         
                        print("DATEEEEEE",Utility.dateToString(dateString: Utility.stringToDate(dateString: resources["created_date"].stringValue))) 
                         
-                        res.price = "$"  + resources["price"].stringValue
+                        res.price = Int(resources["price"].stringValue)!
                         res.createdDate = Utility.dateToString(dateString: Utility.stringToDate(dateString: resources["created_date"].stringValue))
                         
                         res.id = resources["id"].intValue

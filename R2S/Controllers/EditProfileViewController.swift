@@ -346,7 +346,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         let gregorian = Calendar(identifier: .gregorian)
         
         var piStartcComponents = gregorian.dateComponents([.year, .month, .day, .hour, .minute, .second], from: currentDate)
-        piStartcComponents.year = 1901
+        piStartcComponents.year = 1900
        
        let minDate = gregorian.date(from: piStartcComponents)!
         

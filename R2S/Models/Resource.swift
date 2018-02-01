@@ -53,7 +53,7 @@ class Resource: Object {
     let categories = List<ResourceCategory>()
     dynamic var name = ""
     dynamic var descriptionText = ""
-    dynamic var price = ""
+    dynamic var price = 0
     dynamic var quantity = ""
     dynamic var status = ""
     dynamic var location: Location?

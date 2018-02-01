@@ -14,7 +14,7 @@ import CZPicker
 import SwiftSpinner
 
 class SearchViewController: BaseViewController, UISearchBarDelegate {
-        let realm = try! Realm()
+    let realm = try! Realm()
     var searchView = SearchView()
     var searchBar = UISearchBar()
     var resources:Results<Resource>!
@@ -26,18 +26,18 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-          createSearchBar()
-          fetchData()
+        createSearchBar()
+        fetchData()
         settings = ["Highest to lowest price", "Lowest to highest price"]
         
     }
-
+    
     func createSearchBar(){
         searchBar.placeholder = "Search Resources"
         searchBar.delegate = self
         searchBar.showsCancelButton = true
         self.navigationItem.titleView = searchBar
-      
+        
     }
     
     func sortTapped() {
@@ -54,7 +54,7 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
     }
     
     func lowestToHighest () {
-    SwiftSpinner.show("Please wait...")
+        SwiftSpinner.show("Please wait...")
         self.resources = ResourceDao.getResourcesNotByUserAscending(userId: UserHelper.getId()!)
         SwiftSpinner.hide()
         self.searchView.searchTableView.reloadData()
@@ -77,7 +77,7 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         
         if ( self.resources?.isEmpty)! {
             self.searchView.searchTableView.reloadData()
-
+            
             self.searchView.noResourcesFoundUILabel.isHidden = false
             self.searchView.searchTableView.isHidden = true
             print("NO VALUE")
@@ -86,15 +86,15 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         } else {
             
             //print("HAVE VALUES",  self.resources)
-           self.searchView.searchTableView.reloadData()
-           
+            self.searchView.searchTableView.reloadData()
+            
             self.searchView.noResourcesFoundUILabel.isHidden = true
             self.searchView.searchTableView.isHidden = false
         }
     }
     
     func showMoreFilters() {
-    
+        
         let alertController = UIAlertController(title: "", message: "Enter minimum and maximum price", preferredStyle: UIAlertControllerStyle.alert)
         
         let saveAction = UIAlertAction(title: "Filter", style: UIAlertActionStyle.default, handler: {
@@ -102,14 +102,14 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
             
             let firstTextField = alertController.textFields![0] as UITextField
             let secondTextField = alertController.textFields![1] as UITextField
-
-             SwiftSpinner.show("Please wait...")
-           self.resources = ResourceDao.getResourcesMinimumMaximum(min:Int(firstTextField.text!)!,max:Int(secondTextField.text!)!)
+            
+            SwiftSpinner.show("Please wait...")
+            self.resources = ResourceDao.getResourcesMinimumMaximum(min:Int(firstTextField.text!)!,max:Int(secondTextField.text!)!)
             self.searchView.searchTableView.reloadData()
             self.checkIfEmpty()
             SwiftSpinner.hide()
-           
-
+            
+            
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {
@@ -128,11 +128,11 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         alertController.addAction(cancelAction)
         
         self.present(alertController, animated: true, completion: nil)
-    
+        
     }
     
     func  fetchData() {
-  
+        
         
         
         let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
@@ -147,9 +147,9 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         ResourceService.get{ (statusCode, message) in
             if statusCode == 200 {
                 
-                   self.resources = ResourceDao.getResourcesNotByUser(userId: UserHelper.getId()!)
-               
-
+                self.resources = ResourceDao.getResourcesNotByUser(userId: UserHelper.getId()!)
+                
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     activityIndicator.stopAnimating()
                     
@@ -157,8 +157,8 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
                     
                     
                     
-                     self.initUILayout()
-                     self.checkIfEmpty()
+                    self.initUILayout()
+                    self.checkIfEmpty()
                     
                     
                     
@@ -168,7 +168,7 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
                 Utility.showAlert(title: "Error", message: message!, targetController: self)
             }
         }
-
+        
         
     }
     
@@ -191,14 +191,22 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
     }
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//       
-//        filteredArray = resources.filter({ (data: String) -> Bool in
-//            
-//             let data = realm.objects(Resource).filter("name CONTAINS %@", searchText)
-//             return data != nil
-//        })
-//    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "name CONTAINS %@", searchText)
+        self.resources = realm.objects(Resource.self).filter(predicate)
+        
+        if ( self.resources?.isEmpty)! {
+            self.resources = ResourceDao.getResourcesNotByUser(userId: UserHelper.getId()!)
+        }
+        
+        self.searchView.searchTableView.reloadData()
+        
+        
+    }
+    
     // MARK: - Private Functions
     private func initUILayout () {
         
@@ -208,20 +216,20 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         
         self.view.addSubview(self.searchView)
         self.searchView.delegate = self
-       
+        
         
         self.searchView.searchTableView.register(UINib(nibName: Constants.xib.SearchTableViewCell, bundle:nil), forCellReuseIdentifier: "SearchTableViewCell")
         self.searchView.searchTableView.delegate = self
         self.searchView.searchTableView.dataSource = self
         self.searchView.searchTableView.reloadData()
-
-     print("Resourcesadd",self.resources)
-       
+        
+        print("Resourcesadd",self.resources)
+        
     }
     
-
     
-
+    
+    
 }
 
 
@@ -236,32 +244,32 @@ extension SearchViewController: UITableViewDelegate{
 extension SearchViewController: UITableViewDataSource{
     
     
-
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.searchView.searchTableView {
             
-            if shouldShowSearchResults {
-            return self.filteredArray.count
-            }else {
-            return self.resources.count
-            }
+            //            if shouldShowSearchResults {
+            //            return self.filteredArray.count
+            //            }else {
+            //return self.resources.count
+            // }
             
-        
+            
             return self.resources.count
         }
-        return 0
+        return self.resources.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchTableViewCell", for: indexPath) as! SearchTableViewCell
         
-        if shouldShowSearchResults {
-        
-         cell.titleUILabel.text =  filteredArray[indexPath.row]
-        }
+        //        if shouldShowSearchResults {
+        //
+        //         cell.titleUILabel.text =  filteredArray[indexPath.row]
+        //        }
         
         cell.titleUILabel.text =  resources[indexPath.row].name
-
+        
         cell.dateUILabel.text = resources[indexPath.row].createdDate
         cell.priceUILabel.text = "$ \(resources[indexPath.row].price).00"
         cell.infoUILabel.text = resources[indexPath.row].descriptionText
@@ -274,7 +282,7 @@ extension SearchViewController: UITableViewDataSource{
             cell.imageUIImageView.kf.setImage(with:  URL(string: img.image))
             
         }
-     
+        
         
         return cell
     }
@@ -283,18 +291,11 @@ extension SearchViewController: UITableViewDataSource{
         let resource = resources[indexPath.item]
         if let cell = tableView.cellForRow(at: indexPath) {
             
-            //         let favIcon = cell.viewWithTag(1000) as! UIImageView
-            //            if  favoriteOrNot {
-            //
-            //
-            //            }
-            
             selectedResourceId  = resource.id
-            // print (resource.id)
             performSegue(withIdentifier: Constants.segue.SearchToResourceSegue, sender: self)
         }
     }
-
+    
 }
 
 extension SearchViewController: CZPickerViewDelegate, CZPickerViewDataSource {
@@ -361,8 +362,8 @@ extension SearchViewController: CZPickerViewDelegate, CZPickerViewDataSource {
             highestToLowest ()
             
         }else if setingsSelected == "Lowest to highest price" {
-           
-           lowestToHighest ()
+            
+            lowestToHighest ()
             
             
         }

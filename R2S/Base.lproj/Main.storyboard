@@ -191,6 +191,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="ZMt-9q-k3G" kind="show" identifier="SearchToResourceSegue" id="JZv-gu-VcQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="izH-BO-h3I" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -493,8 +496,8 @@
         <image name="ic_person" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dJd-mu-kYQ"/>
         <segue reference="xPI-oA-IOK"/>
-        <segue reference="qTV-HJ-SyU"/>
+        <segue reference="dJd-mu-kYQ"/>
+        <segue reference="JZv-gu-VcQ"/>
     </inferredMetricsTieBreakers>
 </document>

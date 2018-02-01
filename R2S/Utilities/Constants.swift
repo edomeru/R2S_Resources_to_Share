@@ -158,6 +158,7 @@ class Constants {
         static let profileToRaiseSupportTicketSegue = "profileToRaiseSupportTicketSegue"
         static let resourceViewToScheduleBookingSegue = "resourceViewToScheduleBookingSegue"
         static let HomeViewToSearchViewSegue = "HomeViewToSearchViewSegue"
+        static let SearchToResourceSegue = "SearchToResourceSegue"
         
     }
 }

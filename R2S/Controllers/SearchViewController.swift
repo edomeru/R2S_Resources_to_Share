@@ -22,6 +22,7 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
     var shouldShowSearchResults = false
     var settings = [String]()
     var setingsSelected: String?
+    var selectedResourceId: Int!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,6 +71,26 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         
     }
     
+    func showMoreFilters() {
+    
+        let alert = UIAlertController(title: "Some Title", message: "Enter a text", preferredStyle: .alert)
+        
+        //2. Add the text field. You can configure it however you need.
+        alert.addTextField { (textField) in
+            textField.text = "Some default text"
+        }
+        
+        // 3. Grab the value from the text field, and print it when the user clicks OK.
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
+            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
+            print("Text field: \(textField?.text)")
+        }))
+        
+        // 4. Present the alert.
+        self.present(alert, animated: true, completion: nil)
+    
+    }
+    
     func  fetchData() {
   
         
@@ -107,14 +128,15 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
                 Utility.showAlert(title: "Error", message: message!, targetController: self)
             }
         }
-        
-        
-        
-        
-        
-        
+
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! ResourceViewController
+        destinationVC.selectedResourceId = selectedResourceId
+    }
+    
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         searchBar.endEditing(true)
@@ -205,7 +227,7 @@ extension SearchViewController: UITableViewDataSource{
         cell.infoUILabel.text = resources[indexPath.row].descriptionText
         
         for img in resources[indexPath.row].image {
-            
+            cell.imageUIImageView.kf.indicatorType = .activity
             cell.imageUIImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
             cell.imageUIImageView.contentMode = .scaleAspectFit // OR .scaleAspectFill
             cell.imageUIImageView.clipsToBounds = true
@@ -218,20 +240,21 @@ extension SearchViewController: UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let resource = resources[indexPath.item]
-//        if let cell = tableView.cellForRow(at: indexPath) {
-        
+        let resource = resources[indexPath.item]
+        if let cell = tableView.cellForRow(at: indexPath) {
+            
             //         let favIcon = cell.viewWithTag(1000) as! UIImageView
             //            if  favoriteOrNot {
             //
             //
             //            }
             
-            //selectedResourceId  = resource.id
+            selectedResourceId  = resource.id
             // print (resource.id)
-            performSegue(withIdentifier: Constants.segue.browseToResourceSegue, sender: self)
-        //}
+            performSegue(withIdentifier: Constants.segue.SearchToResourceSegue, sender: self)
+        }
     }
+
 }
 
 extension SearchViewController: CZPickerViewDelegate, CZPickerViewDataSource {
@@ -322,6 +345,6 @@ extension SearchViewController: SearchViewDelegate {
     }
     
     func moreFilterButtonPressed(sender: AnyObject) {
-        
+        showMoreFilters()
     }
 }

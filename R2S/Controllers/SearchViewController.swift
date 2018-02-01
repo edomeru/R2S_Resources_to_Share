@@ -73,21 +73,34 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
     
     func showMoreFilters() {
     
-        let alert = UIAlertController(title: "Some Title", message: "Enter a text", preferredStyle: .alert)
+        let alertController = UIAlertController(title: "", message: "Enter minimum and maximum price", preferredStyle: UIAlertControllerStyle.alert)
         
-        //2. Add the text field. You can configure it however you need.
-        alert.addTextField { (textField) in
-            textField.text = "Some default text"
+        let saveAction = UIAlertAction(title: "Filter", style: UIAlertActionStyle.default, handler: {
+            alert -> Void in
+            
+            let firstTextField = alertController.textFields![0] as UITextField
+            let secondTextField = alertController.textFields![1] as UITextField
+            print(firstTextField.text)
+            print(secondTextField.text)
+            
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {
+            (action : UIAlertAction!) -> Void in
+            
+        })
+        
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "Enter minimum price"
+        }
+        alertController.addTextField { (textField : UITextField!) -> Void in
+            textField.placeholder = "Enter Maximum price"
         }
         
-        // 3. Grab the value from the text field, and print it when the user clicks OK.
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak alert] (_) in
-            let textField = alert?.textFields![0] // Force unwrapping because we know it exists.
-            print("Text field: \(textField?.text)")
-        }))
+        alertController.addAction(saveAction)
+        alertController.addAction(cancelAction)
         
-        // 4. Present the alert.
-        self.present(alert, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     
     }
     

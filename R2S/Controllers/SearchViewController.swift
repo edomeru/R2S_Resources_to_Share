@@ -80,9 +80,12 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
             
             let firstTextField = alertController.textFields![0] as UITextField
             let secondTextField = alertController.textFields![1] as UITextField
-            print(firstTextField.text)
-            print(secondTextField.text)
-            
+
+             SwiftSpinner.show("Please wait...")
+           self.resources = ResourceDao.getResourcesMinimumMaximum(min:Int(firstTextField.text!)!,max:Int(secondTextField.text!)!)
+            self.searchView.searchTableView.reloadData()
+            SwiftSpinner.hide()
+
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.default, handler: {

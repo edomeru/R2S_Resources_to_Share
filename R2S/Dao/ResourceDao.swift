@@ -107,5 +107,12 @@ class ResourceDao {
         return sorted
     }
     
+    static func getResourcesMinimumMaximum(min: Int, max: Int) -> Results<Resource> {
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "account.id != %d AND price >= %d AND price <= %d", UserHelper.getId()!,min,max)
+        let resource = realm.objects(Resource.self).filter(predicate)
+        return resource
+    }
+    
     
 }

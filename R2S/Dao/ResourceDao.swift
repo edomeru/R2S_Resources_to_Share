@@ -96,10 +96,16 @@ class ResourceDao {
         let predicate = NSPredicate(format: "account.id != %d", userId)
         let resource = realm.objects(Resource.self).filter(predicate)
         let sorted = resource.sorted(byKeyPath: "price", ascending: true)
-        print("getResourcesNotByUserAscending",sorted)
         return sorted
     }
     
+    static func getResourcesNotByUserADescending(userId: Int) -> Results<Resource> {
+        let realm = try! Realm()
+        let predicate = NSPredicate(format: "account.id != %d", userId)
+        let resource = realm.objects(Resource.self).filter(predicate)
+        let sorted = resource.sorted(byKeyPath: "price", ascending: false)
+        return sorted
+    }
     
     
 }

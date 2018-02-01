@@ -10,6 +10,8 @@ import UIKit
 import RealmSwift
 import Foundation
 import Realm
+import CZPicker
+import SwiftSpinner
 
 class SearchViewController: BaseViewController, UISearchBarDelegate {
         let realm = try! Realm()
@@ -18,11 +20,14 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
     var resources:Results<Resource>!
     var filteredArray = [String]()
     var shouldShowSearchResults = false
+    var settings = [String]()
+    var setingsSelected: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
           createSearchBar()
           fetchData()
+        settings = ["Highest to lowest price", "Lowest to highest price"]
         
     }
 
@@ -32,6 +37,37 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         searchBar.showsCancelButton = true
         self.navigationItem.titleView = searchBar
       
+    }
+    
+    func sortTapped() {
+        let pickerDialog = CZPickerView(headerTitle: "Sort by:", cancelButtonTitle: "Cancel", confirmButtonTitle: "Ok")
+        pickerDialog?.delegate = self
+        pickerDialog?.dataSource = self
+        pickerDialog?.headerBackgroundColor = UIColor(hexString: Constants.color.primary)
+        pickerDialog?.tag = 1000
+        pickerDialog?.confirmButtonBackgroundColor = UIColor(hexString: Constants.color.primary)
+        pickerDialog?.checkmarkColor = .blue
+        pickerDialog?.needFooterView = false
+        pickerDialog?.show()
+        
+    }
+    
+    func lowestToHighest () {
+    SwiftSpinner.show("Please wait...")
+        self.resources = ResourceDao.getResourcesNotByUserAscending(userId: UserHelper.getId()!)
+        SwiftSpinner.hide()
+        self.searchView.searchTableView.reloadData()
+        
+    }
+    
+    
+    
+    func highestToLowest () {
+        SwiftSpinner.show("Please wait...")
+        self.resources = ResourceDao.getResourcesNotByUserADescending(userId: UserHelper.getId()!)
+        SwiftSpinner.hide()
+        self.searchView.searchTableView.reloadData()
+        
     }
     
     func  fetchData() {
@@ -50,7 +86,7 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         ResourceService.get{ (statusCode, message) in
             if statusCode == 200 {
                 
-                   self.resources = ResourceDao.getResourcesNotByUserAscending(userId: UserHelper.getId()!)
+                   self.resources = ResourceDao.getResourcesNotByUser(userId: UserHelper.getId()!)
                
 
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
@@ -109,7 +145,7 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         self.searchView.frame = CGRect(x: 0, y: Constants.navbarHeight, width: self.view.frame.width, height: self.view.frame.height)
         
         self.view.addSubview(self.searchView)
-        
+        self.searchView.delegate = self
        
         
         self.searchView.searchTableView.register(UINib(nibName: Constants.xib.SearchTableViewCell, bundle:nil), forCellReuseIdentifier: "SearchTableViewCell")
@@ -195,5 +231,97 @@ extension SearchViewController: UITableViewDataSource{
             // print (resource.id)
             performSegue(withIdentifier: Constants.segue.browseToResourceSegue, sender: self)
         //}
+    }
+}
+
+extension SearchViewController: CZPickerViewDelegate, CZPickerViewDataSource {
+    
+    public func numberOfRows(in pickerView: CZPickerView!) -> Int {
+        
+        
+        print("picker 1 count", pickerView.tag)
+        return settings.count
+        
+        
+        
+    }
+    
+    func czpickerView(_ pickerView: CZPickerView!, imageForRow row: Int) -> UIImage! {
+        
+        
+        return nil
+    }
+    
+    func numberOfRowsInPickerView(pickerView: CZPickerView!) -> Int {
+        
+        
+        
+        print("picker 1 count", pickerView.tag)
+        return settings.count
+        
+        
+        
+    }
+    
+    func czpickerView(_ pickerView: CZPickerView!, titleForRow row: Int) -> String! {
+        
+        
+        
+        print("picker 1 count", pickerView.tag)
+        return settings[row]
+        
+        
+        
+    }
+    
+    func czpickerView(_ pickerView: CZPickerView!, didConfirmWithItemAtRow row: Int){
+        
+        
+        
+        
+        
+        
+        
+        
+        print("FRUITS didConfirmWithItemAtRow", settings[row])
+        
+        setingsSelected = settings[row]
+        print(settings[row])
+        
+        setingsSelected = settings[row]
+        
+        
+        
+        
+        if setingsSelected == "Highest to lowest price" {
+            
+            highestToLowest ()
+            
+        }else if setingsSelected == "Lowest to highest price" {
+           
+           lowestToHighest ()
+            
+            
+        }
+        
+        
+        
+        
+    }
+    
+    func czpickerViewDidClickCancelButton(_ pickerView: CZPickerView!) {
+        
+    }
+    
+}
+
+// MARK: - LoginViewDelegate
+extension SearchViewController: SearchViewDelegate {
+    func sortButtonPressed(sender: AnyObject) {
+        sortTapped()
+    }
+    
+    func moreFilterButtonPressed(sender: AnyObject) {
+        
     }
 }

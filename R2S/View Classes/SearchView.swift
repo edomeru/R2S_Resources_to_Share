@@ -9,11 +9,24 @@
 import Foundation
 import UIKit
 
+protocol SearchViewDelegate: class {
+    func sortButtonPressed(sender: AnyObject)
+    func moreFilterButtonPressed(sender: AnyObject)
+}
+
 internal class SearchView : BaseUIView {
+    weak var delegate: SearchViewDelegate?
+ 
     
-    
+    @IBAction func moreFiltersUIButton(_ sender: AnyObject) {
+        delegate?.moreFilterButtonPressed(sender: sender)
+    }
     
     @IBOutlet weak var searchTableView: UITableView!
     
+    @IBAction func sortUIButton(_ sender: AnyObject) {
+         delegate?.sortButtonPressed(sender: sender)
+    }
    
+    
 }

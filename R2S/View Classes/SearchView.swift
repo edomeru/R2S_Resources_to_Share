@@ -17,6 +17,7 @@ protocol SearchViewDelegate: class {
 internal class SearchView : BaseUIView {
     weak var delegate: SearchViewDelegate?
  
+    @IBOutlet weak var noResourcesFoundUILabel: UILabel!
     
     @IBAction func moreFiltersUIButton(_ sender: AnyObject) {
         delegate?.moreFilterButtonPressed(sender: sender)

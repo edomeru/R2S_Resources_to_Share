@@ -15,19 +15,21 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="IAC-le-auh">
-                    <rect key="frame" x="0.0" y="38" width="375" height="629"/>
+                    <rect key="frame" x="0.0" y="32" width="375" height="635"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="375" id="7oA-Pe-anP"/>
-                        <constraint firstAttribute="height" constant="629" id="Pm0-pJ-D71"/>
+                        <constraint firstAttribute="height" constant="635" id="Pm0-pJ-D71"/>
                     </constraints>
                 </tableView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="anc-cd-Ga9">
-                    <rect key="frame" x="0.0" y="0.0" width="179" height="30"/>
+                    <rect key="frame" x="0.0" y="0.0" width="191" height="30"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="179" id="42D-0Q-DFs"/>
+                        <constraint firstAttribute="width" constant="191" id="42D-0Q-DFs"/>
                         <constraint firstAttribute="height" constant="30" id="wp0-YC-o0T"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="Sort"/>
                     <connections>
                         <action selector="sortUIButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="kGu-l8-RdZ"/>
@@ -35,35 +37,50 @@
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="scD-gF-Blb">
                     <rect key="frame" x="188" y="0.0" width="187" height="30"/>
+                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="VyH-WD-wWr"/>
                         <constraint firstAttribute="width" constant="187" id="gyW-OB-Y9F"/>
                     </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                     <state key="normal" title="More Filters"/>
                     <connections>
                         <action selector="moreFiltersUIButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="Sw7-BD-9UB"/>
                     </connections>
                 </button>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No resources found" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AZd-Gh-D5h">
+                    <rect key="frame" x="90" y="318" width="195" height="31"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="31" id="ahn-G8-O9x"/>
+                        <constraint firstAttribute="width" constant="195" id="eYT-hc-mqJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                    <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" red="0.94859244219341055" green="0.95798444657156312" blue="0.95798444657156312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="IAC-le-auh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="38" id="B0o-CA-G2D"/>
-                <constraint firstItem="IAC-le-auh" firstAttribute="top" secondItem="anc-cd-Ga9" secondAttribute="bottom" constant="8" id="CbE-Qx-Sj8"/>
+                <constraint firstItem="IAC-le-auh" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="32" id="B0o-CA-G2D"/>
+                <constraint firstItem="IAC-le-auh" firstAttribute="top" secondItem="anc-cd-Ga9" secondAttribute="bottom" constant="2" id="CbE-Qx-Sj8"/>
                 <constraint firstItem="anc-cd-Ga9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="E90-fN-qfK"/>
-                <constraint firstItem="scD-gF-Blb" firstAttribute="leading" secondItem="anc-cd-Ga9" secondAttribute="trailing" constant="9" id="FCK-e9-V3A"/>
+                <constraint firstItem="scD-gF-Blb" firstAttribute="leading" secondItem="anc-cd-Ga9" secondAttribute="trailing" constant="-3" id="FCK-e9-V3A"/>
                 <constraint firstItem="IAC-le-auh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="FuY-j8-s5b"/>
                 <constraint firstAttribute="trailing" secondItem="IAC-le-auh" secondAttribute="trailing" id="Jfc-wJ-ePP"/>
-                <constraint firstItem="IAC-le-auh" firstAttribute="top" secondItem="scD-gF-Blb" secondAttribute="bottom" constant="8" id="Kyg-mz-eIs"/>
+                <constraint firstItem="IAC-le-auh" firstAttribute="top" secondItem="scD-gF-Blb" secondAttribute="bottom" constant="2" id="Kyg-mz-eIs"/>
                 <constraint firstItem="IAC-le-auh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="STD-LK-g0S"/>
                 <constraint firstAttribute="trailing" secondItem="IAC-le-auh" secondAttribute="trailing" id="Sdj-3C-zp3"/>
                 <constraint firstAttribute="bottom" secondItem="IAC-le-auh" secondAttribute="bottom" id="bfD-0q-coq"/>
+                <constraint firstItem="AZd-Gh-D5h" firstAttribute="centerY" secondItem="IAC-le-auh" secondAttribute="centerY" constant="-16" id="cJr-i2-bh8"/>
                 <constraint firstAttribute="bottom" secondItem="IAC-le-auh" secondAttribute="bottom" id="fOO-el-8Qz"/>
+                <constraint firstItem="AZd-Gh-D5h" firstAttribute="centerX" secondItem="IAC-le-auh" secondAttribute="centerX" id="gtu-Dp-8rc"/>
                 <constraint firstAttribute="trailing" secondItem="scD-gF-Blb" secondAttribute="trailing" id="oSP-79-K06"/>
             </constraints>
             <connections>
+                <outlet property="noResourcesFoundUILabel" destination="AZd-Gh-D5h" id="RUU-VQ-E0o"/>
                 <outlet property="searchTableView" destination="IAC-le-auh" id="KdP-pg-gWh"/>
             </connections>
-            <point key="canvasLocation" x="56" y="148"/>
+            <point key="canvasLocation" x="55.5" y="147.5"/>
         </view>
     </objects>
 </document>

@@ -58,6 +58,7 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         self.resources = ResourceDao.getResourcesNotByUserAscending(userId: UserHelper.getId()!)
         SwiftSpinner.hide()
         self.searchView.searchTableView.reloadData()
+        checkIfEmpty()
         
     }
     
@@ -68,7 +69,28 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         self.resources = ResourceDao.getResourcesNotByUserADescending(userId: UserHelper.getId()!)
         SwiftSpinner.hide()
         self.searchView.searchTableView.reloadData()
+        checkIfEmpty()
         
+    }
+    
+    func checkIfEmpty(){
+        
+        if ( self.resources?.isEmpty)! {
+            self.searchView.searchTableView.reloadData()
+
+            self.searchView.noResourcesFoundUILabel.isHidden = false
+            self.searchView.searchTableView.isHidden = true
+            print("NO VALUE")
+            
+            
+        } else {
+            
+            //print("HAVE VALUES",  self.resources)
+           self.searchView.searchTableView.reloadData()
+           
+            self.searchView.noResourcesFoundUILabel.isHidden = true
+            self.searchView.searchTableView.isHidden = false
+        }
     }
     
     func showMoreFilters() {
@@ -84,7 +106,9 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
              SwiftSpinner.show("Please wait...")
            self.resources = ResourceDao.getResourcesMinimumMaximum(min:Int(firstTextField.text!)!,max:Int(secondTextField.text!)!)
             self.searchView.searchTableView.reloadData()
+            self.checkIfEmpty()
             SwiftSpinner.hide()
+           
 
         })
         
@@ -134,7 +158,7 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
                     
                     
                      self.initUILayout()
-                    
+                     self.checkIfEmpty()
                     
                     
                     

@@ -25,15 +25,17 @@ class HomeTabBarViewController: UITabBarController {
         
         let imgFavorites   = UIImage(named: "ic_favorite_border")!
         let imgWishlist = UIImage(named: "ic_card_giftcard")!
+        let imgSearch = UIImage(named: "ic_search")!
         
         let favoritesButton   = UIBarButtonItem(image: imgFavorites,  style: .plain, target: self, action: #selector(self.favoritesOnButtonPressed))
         let wishlistButton = UIBarButtonItem(image: imgWishlist,  style: .plain, target: self, action: #selector(self.wishlistOnButtonPressed))
+        let searchButton = UIBarButtonItem(image: imgSearch,  style: .plain, target: self, action: #selector(self.searchOnButtonPressed))
         
         // set to black
         favoritesButton.tintColor = UIColor.white
         wishlistButton.tintColor = UIColor.white
         
-        navigationItem.rightBarButtonItems = [favoritesButton, wishlistButton]
+        navigationItem.rightBarButtonItems = [favoritesButton, wishlistButton,searchButton]
     }
     
     func favoritesOnButtonPressed(){
@@ -44,6 +46,10 @@ class HomeTabBarViewController: UITabBarController {
     func wishlistOnButtonPressed(){
         print("wishlist")
         performSegue(withIdentifier: Constants.segue.homeToWishlistSegue, sender: self)
+    }
+    func searchOnButtonPressed(){
+        print("wishlist")
+        performSegue(withIdentifier: Constants.segue.HomeViewToSearchViewSegue, sender: self)
     }
 }
 

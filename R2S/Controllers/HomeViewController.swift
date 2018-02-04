@@ -63,34 +63,34 @@ class HomeViewController: BaseViewController {
         
         self.homeView.addSubview(floaty)
         
-        self.roundButton = UIButton(type: .custom)
-        self.roundButton.setTitleColor(UIColor.orange, for: .normal)
-        self.roundButton.addTarget(self, action: #selector(ButtonClick(_:)), for: UIControlEvents.touchUpInside)
-        self.navigationController?.view.addSubview(roundButton)
+//        self.roundButton = UIButton(type: .custom)
+//        self.roundButton.setTitleColor(UIColor.orange, for: .normal)
+//        self.roundButton.addTarget(self, action: #selector(ButtonClick(_:)), for: UIControlEvents.touchUpInside)
+//        self.navigationController?.view.addSubview(roundButton)
         
     }
     
   
     
-    override func viewWillLayoutSubviews() {
-        
-        roundButton.layer.cornerRadius = roundButton.layer.frame.size.width/2
-        roundButton.backgroundColor = UIColor.lightGray
-        roundButton.clipsToBounds = true
-        roundButton.setImage(UIImage(named:"ic_wb_sunny_48pt"), for: .normal)
-        roundButton.translatesAutoresizingMaskIntoConstraints = false
-        //        NSLayoutConstraint.activate([
-        //            roundButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -3),
-        //            roundButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -53),
-        //            roundButton.widthAnchor.constraint(equalToConstant: 50),
-        //            roundButton.heightAnchor.constraint(equalToConstant: 50)])
-    }
+//    override func viewWillLayoutSubviews() {
+//        
+//        roundButton.layer.cornerRadius = roundButton.layer.frame.size.width/2
+//        roundButton.backgroundColor = UIColor.lightGray
+//        roundButton.clipsToBounds = true
+//        roundButton.setImage(UIImage(named:"ic_wb_sunny_48pt"), for: .normal)
+//        roundButton.translatesAutoresizingMaskIntoConstraints = false
+//        //        NSLayoutConstraint.activate([
+//        //            roundButton.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -3),
+//        //            roundButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -53),
+//        //            roundButton.widthAnchor.constraint(equalToConstant: 50),
+//        //            roundButton.heightAnchor.constraint(equalToConstant: 50)])
+//    }
     
-    @IBAction func ButtonClick(_ sender: UIButton){
-        
-        /** Do whatever you wanna do on button click**/
-        
-    }
+//     func ButtonClick(_ sender: UIButton){
+//        
+//        /** Do whatever you wanna do on button click**/
+//        
+//    }
     
     private func configureNavBar() {
         self.navigationItem.hidesBackButton = true

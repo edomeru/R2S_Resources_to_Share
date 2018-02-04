@@ -481,6 +481,7 @@
                         <segue destination="HWt-XA-9Dc" kind="relationship" relationship="viewControllers" id="o2g-YZ-wTl"/>
                         <segue destination="g2I-Rk-gJv" kind="show" identifier="HomeToFavoritesSegue" id="hU1-IH-Fgf"/>
                         <segue destination="bKC-Kf-5pF" kind="show" identifier="HomeToWishlistSegue" id="IMl-cA-tSR"/>
+                        <segue destination="ck7-NJ-Tdd" kind="show" identifier="HomeViewToSearchViewSegue" id="OKF-L6-CNk"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ve3-lc-FER" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -498,6 +499,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="xPI-oA-IOK"/>
         <segue reference="dJd-mu-kYQ"/>
+        <segue reference="OKF-L6-CNk"/>
         <segue reference="JZv-gu-VcQ"/>
     </inferredMetricsTieBreakers>
 </document>

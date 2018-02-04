@@ -183,13 +183,13 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        shouldShowSearchResults = true
         searchBar.endEditing(true)
         self.searchView.searchTableView.reloadData()
+        
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.endEditing(true)
+        self.navigationController?.popViewController(animated: true)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -198,9 +198,13 @@ class SearchViewController: BaseViewController, UISearchBarDelegate {
         let predicate = NSPredicate(format: "name CONTAINS %@", searchText)
         self.resources = realm.objects(Resource.self).filter(predicate)
         
-        if ( self.resources?.isEmpty)! {
+        if searchText.length == 0 {
+
             self.resources = ResourceDao.getResourcesNotByUser(userId: UserHelper.getId()!)
         }
+        
+         checkIfEmpty()
+       
         
         self.searchView.searchTableView.reloadData()
         
@@ -242,8 +246,6 @@ extension SearchViewController: UITableViewDelegate{
 }
 // MARK: - UITableViewDelegate
 extension SearchViewController: UITableViewDataSource{
-    
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == self.searchView.searchTableView {

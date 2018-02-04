@@ -79,6 +79,8 @@
 		9B7EDC42200F27BC00169963 /* ScheduleBookingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7EDC41200F27BC00169963 /* ScheduleBookingViewController.swift */; };
 		9B7EDC44200F283F00169963 /* ScheduleBookingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B7EDC43200F283F00169963 /* ScheduleBookingView.xib */; };
 		9B7EDC46200F287700169963 /* ScheduleBookingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7EDC45200F287700169963 /* ScheduleBookingView.swift */; };
+		9B8233082024584B0015CE9F /* ProfileHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B8233072024584B0015CE9F /* ProfileHeaderView.xib */; };
+		9B82330A202459B30015CE9F /* ProfileHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B823309202459B30015CE9F /* ProfileHeaderViewCell.swift */; };
 		9B838ABE2011E14A00B6FD07 /* UITextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B838ABD2011E14A00B6FD07 /* UITextViewPlaceholder.swift */; };
 		9B8E82FF1FE7CA58004F50D2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E82FE1FE7CA58004F50D2 /* CustomButton.swift */; };
 		9B95E8692004B2D300612323 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B95E8682004B2D300612323 /* EditProfileViewController.swift */; };
@@ -262,6 +264,8 @@
 		9B7EDC41200F27BC00169963 /* ScheduleBookingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleBookingViewController.swift; path = Controllers/ScheduleBookingViewController.swift; sourceTree = "<group>"; };
 		9B7EDC43200F283F00169963 /* ScheduleBookingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ScheduleBookingView.xib; path = Xibs/ScheduleBookingView.xib; sourceTree = "<group>"; };
 		9B7EDC45200F287700169963 /* ScheduleBookingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleBookingView.swift; path = "View Classes/ScheduleBookingView.swift"; sourceTree = "<group>"; };
+		9B8233072024584B0015CE9F /* ProfileHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileHeaderView.xib; path = Xibs/ProfileHeaderView.xib; sourceTree = "<group>"; };
+		9B823309202459B30015CE9F /* ProfileHeaderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileHeaderViewCell.swift; path = "View Classes/ProfileHeaderViewCell.swift"; sourceTree = "<group>"; };
 		9B838ABD2011E14A00B6FD07 /* UITextViewPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewPlaceholder.swift; sourceTree = "<group>"; };
 		9B8E82FE1FE7CA58004F50D2 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		9B95E8682004B2D300612323 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditProfileViewController.swift; path = Controllers/EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -531,7 +535,9 @@
 		9B63FD782003694D00D91838 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				2C63EF0C1F027530003573A7 /* AccountView.swift */,
 				9B63FD792003696B00D91838 /* ProfileTableViewCell.swift */,
+				9B823309202459B30015CE9F /* ProfileHeaderViewCell.swift */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -568,6 +574,7 @@
 			children = (
 				2C63EF0E1F027541003573A7 /* AccountView.xib */,
 				9B63FD76200368D800D91838 /* ProfileTableViewCell.xib */,
+				9B8233072024584B0015CE9F /* ProfileHeaderView.xib */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -778,7 +785,6 @@
 				9BCCD6001FD13FCF001A9507 /* NewResource */,
 				2CD0FD2E1F84C981000C8E89 /* Home */,
 				2CF06DD21EFBF1090073C844 /* ActivityView.swift */,
-				2C63EF0C1F027530003573A7 /* AccountView.swift */,
 			);
 			name = "Tab Bar";
 			sourceTree = "<group>";
@@ -1045,6 +1051,7 @@
 				9B5E23951FD45C1000A59FFF /* WishListDetailView.xib in Resources */,
 				9B3ED5561FD2CD4B00627679 /* FavoritesTableViewCell.xib in Resources */,
 				9B95E8752004B42F00612323 /* AppSettingsView.xib in Resources */,
+				9B8233082024584B0015CE9F /* ProfileHeaderView.xib in Resources */,
 				9B4E5CD21FFE0703009C6767 /* transactionView.xib in Resources */,
 				2C63EF111F027541003573A7 /* ActivityView.xib in Resources */,
 				2C658A581F87770A009A18A9 /* TransactionTableViewCell.xib in Resources */,
@@ -1243,6 +1250,7 @@
 				9B7EDC46200F287700169963 /* ScheduleBookingView.swift in Sources */,
 				9B3FDCA21FD6A0DC00091E10 /* Participants.swift in Sources */,
 				9B5F49041FDFA3DD00CD3D66 /* CCheckbox.swift in Sources */,
+				9B82330A202459B30015CE9F /* ProfileHeaderViewCell.swift in Sources */,
 				B99151BC1E77F79B00949529 /* Constants.swift in Sources */,
 				9B95E86F2004B33A00612323 /* RaiseSupportTicketViewController.swift in Sources */,
 				B9E267CE1E7D41B500BB9900 /* CategoryTableViewCell.swift in Sources */,

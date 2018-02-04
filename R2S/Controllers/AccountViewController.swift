@@ -29,15 +29,15 @@ class AccountViewController: BaseViewController {
     var settings = [String]()
     var setingsSelected: String?
     var Me: User?
-    var reloadView:Bool?
+    //var reloadView:Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("AccountViewController")
-        reloadView = false
+        //reloadView = false
         NotificationCenter.default.addObserver(self, selector: #selector(AccountViewController.reloadProfile(_:)), name: NSNotification.Name(rawValue: "pass"), object: nil)
         
-        initUILayout()
+        loadResource()
         
      //   let dropDown = DropDown()
         
@@ -96,6 +96,43 @@ class AccountViewController: BaseViewController {
         
     }
     
+    
+    func signOut(gesture: UITapGestureRecognizer) {
+    
+        let dialogMessage = UIAlertController(title: "Confirm" , message: "are you sure you want to sign out?" , preferredStyle: .alert)
+        
+        // Create OK button with action handler
+        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
+            UserDao.clear()
+            
+            print("RESOURCEDAO",ResourceDao.get())
+            print("TRANSACTIONDAO",TransactionDao.getTransactions())
+            
+            let domain = Bundle.main.bundleIdentifier!
+            UserDefaults.standard.removePersistentDomain(forName: domain)
+            UserDefaults.standard.synchronize()
+            
+            UserManager.sharedInstance.isLoggedIn = false
+            
+            self.performSegue(withIdentifier: Constants.segue.profileToWelcomeSegue, sender: self)
+            
+        })
+        
+        // Create Cancel button with action handlder
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
+            print("Cancel button tapped")
+        }
+        
+        //Add OK and Cancel button to dialog message
+        dialogMessage.addAction(ok)
+        dialogMessage.addAction(cancel)
+        
+        // Present dialog message to user
+        self.present(dialogMessage, animated: true, completion: nil)
+    
+    
+    }
+    
     func loadResource(){
     
         let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
@@ -105,34 +142,39 @@ class AccountViewController: BaseViewController {
         activityIndicator.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
-        
+        self.view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
         ResourceService.get{ (statusCode, message) in
             if statusCode == 200 {
                 
                 self.myResource =  ResourceDao.getByAccountId(accountId: UserHelper.getId()!)
-             
+           let  headerPic =  UserDao.getOneBy(id: UserHelper.getId()! )
+               print("headerPic?.imageUrl",headerPic?.imageUrl)
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     activityIndicator.stopAnimating()
                     
+ 
+                    self.Me =  UserDao.getOneBy(id: UserHelper.getId()! )
                     
-                    
-                    
-                    
-                    self.accountView.profileTableView.register(UINib(nibName: Constants.xib.ProfileTableViewCell, bundle:nil), forCellReuseIdentifier: "ProfileTableViewCell")
-                    
-                    
+                    self.initUILayout()
+                  
                     self.accountView.profileTableView.delegate = self
                     self.accountView.profileTableView.dataSource = self
+                    self.accountView.profileTableView.register(UINib(nibName: Constants.xib.ProfileTableViewCell, bundle:nil), forCellReuseIdentifier: "ProfileTableViewCell")
+                    //self.accountView.profileTableView.tableHeaderView = headerView
+
+                    //}
+                    
+                    
                     self.accountView.profileTableView.reloadData()
-                    print("RELOAD", self.reloadView!)
-                    if self.reloadView! == false {
-                    self.accountView.frame = CGRect(x: 0, y: Constants.navbarHeight, width: self.view.frame.width, height: self.view.frame.height)
-                    self.view = self.accountView
-                    } else {
-                        self.accountView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-                        self.view = self.accountView
-                    }
+                    //print("RELOAD", self.reloadView!)
+//                    if self.reloadView! == false {
+//                    self.accountView.frame = CGRect(x: 0, y: Constants.navbarHeight, width: self.view.frame.width, height: self.view.frame.height)
+//                    self.view = self.accountView
+//                    } else {
+//                        self.accountView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+//                        self.view = self.accountView
+//                    }
                 
                     
                 })
@@ -151,9 +193,8 @@ class AccountViewController: BaseViewController {
     func reloadProfile(_ notification: Notification) {
         print("reloadProfile")
         //Me = notification.object  as?  User
-        reloadView = true
-        self.initUILayout()
-        
+        //reloadView = true
+        loadResource()        
     }
    
 
@@ -164,44 +205,18 @@ class AccountViewController: BaseViewController {
         self.screenHeight = screenSize.height
 
         self.accountView = self.loadFromNibNamed(nibNamed: Constants.xib.accountView) as! AccountView
-        self.accountView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+        self.accountView.frame = CGRect(x: 0, y: 0 , width: self.view.frame.width, height: self.screenHeight)
         self.view = self.accountView
-        self.accountView.delegate = self
-       
-        
-         Me =  UserDao.getOneBy(id: UserHelper.getId()! )
-        print("UserDao.getOneBy",Me)
-        if let user = Me {
-            
-            self.accountView.userNameUILabel.text = (user.firstName) + " " + (user.lastName)
-            
-            
-            self.accountView.emailUILabel.text = (user.email)
-            self.accountView.phoneUILabel.text = (user.landlineNumber)
-            self.accountView.companyUILabel.text = user.company?.name
-           
-            if user.imageUrl != "" {
-                self.accountView.profilePicImageView.kf.indicatorType = .activity
-                let processor = RoundCornerImageProcessor(cornerRadius: 20)
-                self.accountView.profilePicImageView.kf.setImage(with:  URL(string: user.imageUrl), placeholder: nil, options: [.processor(processor)])
-            }
-            
-        
-            
-            print("USERDAODFEF",Utility.stringToDate(dateString: user.createdDate))
-            self.accountView.dateJoinedUILabel.text = "Joined " + (user.createdDate)
-            
-            
-        }
-        
+       print("initUILayout")
        settings = ["Edit Profile", "Change Password", "App Settings", "Raise Support Ticket"]
-         loadResource()
+       
         
     }
     
     
     
-    func settingsTapped() {
+    func settingsTapped(gesture: UITapGestureRecognizer) {
+        print("HELLLOOOOOOOdatePickerEndTapped")
         let pickerDialog = CZPickerView(headerTitle: "Settings", cancelButtonTitle: "Cancel", confirmButtonTitle: "Ok")
         pickerDialog?.delegate = self
         pickerDialog?.dataSource = self
@@ -269,6 +284,7 @@ extension AccountViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 330
     }
+    
 }
 
 
@@ -280,6 +296,7 @@ extension AccountViewController: UITableViewDataSource{
         }
         return 0
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ProfileTableViewCell", for: indexPath) as! ProfileTableViewCell
@@ -313,54 +330,53 @@ extension AccountViewController: UITableViewDataSource{
         //Moa.settings.cache.requestCachePolicy = .useProtocolCachePolicy
         return cell
  }
-}
-
-
-// MARK: - LoginViewDelegate
-extension AccountViewController: AccountViewDelegate {
-    func signoutButtonPressed(sender: AnyObject) {
-       
+    
+    
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+         let headerView = self.loadFromNibNamed(nibNamed: "ProfileHeaderView") as! ProfileHeaderViewCell
+      
         
-        let dialogMessage = UIAlertController(title: "Confirm" , message: "are you sure you want to sign out?" , preferredStyle: .alert)
         
-        // Create OK button with action handler
-        let ok = UIAlertAction(title: "OK", style: .default, handler: { (action) -> Void in
-            UserDao.clear()
-         
-            print("RESOURCEDAO",ResourceDao.get())
-            print("TRANSACTIONDAO",TransactionDao.getTransactions())
-            
-            let domain = Bundle.main.bundleIdentifier!
-            UserDefaults.standard.removePersistentDomain(forName: domain)
-            UserDefaults.standard.synchronize()
-            
-            UserManager.sharedInstance.isLoggedIn = false
-            
-            self.performSegue(withIdentifier: Constants.segue.profileToWelcomeSegue, sender: self)
-            
-        })
+                            headerView.profileHeaderNameUImageView.text = (Me?.firstName)! + " " + (Me?.lastName)!
+                                headerView.emailHeaderUILabel.text = (Me?.email)
+                                headerView.phoneNumberHeaderUILabel.text = (Me?.landlineNumber)
+                                headerView.companyHeaderUILabel.text = Me?.company?.name
         
-        // Create Cancel button with action handlder
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { (action) -> Void in
-            print("Cancel button tapped")
-        }
+                                if Me?.imageUrl != "" {
         
-        //Add OK and Cancel button to dialog message
-        dialogMessage.addAction(ok)
-        dialogMessage.addAction(cancel)
+                                    headerView.profileHeaderPIcUImageView.kf.indicatorType = .activity
+                                    let processor = RoundCornerImageProcessor(cornerRadius: 20)
+                                    headerView.profileHeaderPIcUImageView.kf.setImage(with:  URL(string: (Me?.imageUrl)!), placeholder: nil, options: [.processor(processor)])
+                                }
         
-        // Present dialog message to user
-        self.present(dialogMessage, animated: true, completion: nil)
+                                print("USERDAODFEF",Utility.stringToDate(dateString: Me?.createdDate))
+                                headerView.usernameHeaderUILabel.text = "Joined " + (Me?.createdDate)!
+                                headerView.settingsHeaderUIButton.addTarget(self, action: Selector("settingsTapped"), for: UIControlEvents.editingDidBegin)
+        
+        
+        
+        let settingTapped = UITapGestureRecognizer(target: self, action: #selector(AccountViewController.settingsTapped(gesture:)))
+        settingTapped.numberOfTapsRequired = 1
+         headerView.settingsHeaderUIButton.addGestureRecognizer(settingTapped)
+        
+        let signOutTapped = UITapGestureRecognizer(target: self, action: #selector(AccountViewController.signOut(gesture:)))
+        signOutTapped.numberOfTapsRequired = 1
+        headerView.signOutHeaderUIButton.addGestureRecognizer(signOutTapped)
+    
+        return headerView
     }
     
     
-    func settingsButtonPressed(sender: AnyObject) {
     
-    settingsTapped()
-    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 338
     }
-
+    
 }
+
+
+
 
 extension AccountViewController: CZPickerViewDelegate, CZPickerViewDataSource {
     

@@ -15,6 +15,8 @@ class InboxService {
     static func getAll(id: Int , onCompletion: @escaping (Int?, String?) -> Void) {
         var message = ""
         InboxRemote.fetchAll(id: id , onCompletion: { jsonData, statusCode in
+            
+            print("INBOX_JSON",jsonData)
             DispatchQueue.global(qos: .background).async {
                 if statusCode == 200 {
                     message = ""
@@ -61,7 +63,7 @@ class InboxService {
                         inbox.resource = inbox_resource
 
                         
-                        print("INBOX DAO",inbox)
+                        
                         InboxDao.add(inbox)
                     }
                 } else {

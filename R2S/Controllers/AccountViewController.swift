@@ -194,7 +194,7 @@ class AccountViewController: BaseViewController {
         print("reloadProfile")
         //Me = notification.object  as?  User
         //reloadView = true
-        loadResource()        
+        loadResource()
     }
    
 

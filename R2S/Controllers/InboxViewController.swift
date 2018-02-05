@@ -38,11 +38,11 @@ class InboxViewController: BaseViewController {
         activityIndicator.startAnimating()
         InboxService.getAll(id: UserHelper.getId()! , onCompletion: { statusCode, message in
             
-            print("\(statusCode!)" + " INBOX CODE"  )
+           // print("\(statusCode!)" + " INBOX CODE"  )
           
             if statusCode == 200 {
                 self.inbox = InboxDao.getAll()
-                  print("\(self.inbox!)" + " INBOX MSG"  )
+                 // print("\(self.inbox!)" + " INBOX MSG"  )
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     activityIndicator.stopAnimating()
@@ -98,14 +98,16 @@ extension InboxViewController : UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "InboxTableViewCell", for: indexPath) as! InboxTableViewCell
         
         
-        cell.name_UILabel.text =  inbox[indexPath.row].participants.first?.account_name
+        cell.name_UILabel.text =  inbox[indexPath.row].last_message?.account_name
         
         
         cell.lastmsg_UILabel.text = inbox[indexPath.row].last_message?.message
         
         if  self.inbox[indexPath.item].participants.first?.account_image_url  != "" {
-            
-            cell.inbox_imageUIImageView.kf.setImage(with: URL(string: (inbox[indexPath.item].participants.first?.account_image_url)!), options: [.transition(.fade(0.2))])
+            cell.inbox_imageUIImageView.contentMode = .scaleAspectFill
+            cell.inbox_imageUIImageView.layer.cornerRadius = 25.958897898
+            cell.inbox_imageUIImageView.clipsToBounds = true
+            cell.inbox_imageUIImageView.kf.setImage(with: URL(string: (inbox[indexPath.item].last_message?.account_image_url)!), options: [.transition(.fade(0.2))])
             
         }else{
             

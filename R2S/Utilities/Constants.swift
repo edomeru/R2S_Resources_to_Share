@@ -48,6 +48,10 @@ class Constants {
             // MARK: - favorites
             static let inbox =  base + "/{id}/messages";
             
+             // MARK: - messages
+            static let message_by_id = base + "/{id}/messages/{message_id}"
+            static let reply = message_by_id + "/reply"
+            
         }
         
         // MARK: - Category
@@ -101,6 +105,7 @@ class Constants {
         static let AppSettingsView = "AppSettingsView"
         static let RaiseSupportTicketView = "RaiseSupportTicketView"
         static let ScheduleBookingView = "ScheduleBookingView"
+        static let ChatView = "ChatView"
         // TableView Cell
         static let featuredTableCell = "FeaturedTableViewCell"
         static let categoryTableCell = "CategoryTableViewCell"
@@ -114,6 +119,7 @@ class Constants {
         // CollectionView Cell
         static let categoryCollectionCell = "CategoryCollectionViewCell"
         static let subcategoryCollectionCell = "SubCategoryCollectionViewCell"
+        static let chatCollectionViewCell = "chatCollectionViewCell"
 
         
         // Scroll views
@@ -159,6 +165,7 @@ class Constants {
         static let resourceViewToScheduleBookingSegue = "resourceViewToScheduleBookingSegue"
         static let HomeViewToSearchViewSegue = "HomeViewToSearchViewSegue"
         static let SearchToResourceSegue = "SearchToResourceSegue"
+        static let InboxToChatSegue = "InboxToChatSegue"
         
     }
 }

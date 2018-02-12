@@ -12,7 +12,7 @@ import SwiftyJSON
 class CategoryRemote {
     static func fetchAll(onCompletion: @escaping (JSON, Int?) -> Void) {
         let urlString = Constants.api.category.base
-        ApiRequestManager.sharedInstance.doGetRequest(urlString: urlString, headers: Utility.getHeadersWithAuth(), onCompletion: { jsonData, statusCode in
+        ApiRequestManager.sharedInstance.doGetRequest(urlString: urlString, headers: Utility.getHeaders(), onCompletion: { jsonData, statusCode in
             onCompletion(jsonData, statusCode)
         })
     }

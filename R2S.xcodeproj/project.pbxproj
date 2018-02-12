@@ -30,6 +30,13 @@
 		9B1F86D31FD6B526005C575E /* InboxDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1F86D21FD6B526005C575E /* InboxDao.swift */; };
 		9B26A33820202DD0008F1561 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B26A33720202DD0008F1561 /* SearchTableViewCell.xib */; };
 		9B26A33A20202F9F008F1561 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B26A33920202F9F008F1561 /* SearchTableViewCell.swift */; };
+		9B290E412029680B0022D52E /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B290E402029680B0022D52E /* ChatViewController.swift */; };
+		9B290E43202968ED0022D52E /* ChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B290E42202968ED0022D52E /* ChatView.xib */; };
+		9B290E452029692C0022D52E /* ChatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B290E442029692C0022D52E /* ChatView.swift */; };
+		9B290E4720296F180022D52E /* chatCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B290E4620296F180022D52E /* chatCollectionViewCell.xib */; };
+		9B290E49202970A00022D52E /* chatCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B290E48202970A00022D52E /* chatCollectionViewCell.swift */; };
+		9B290E4B20299EFD0022D52E /* ConversationRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B290E4A20299EFD0022D52E /* ConversationRemote.swift */; };
+		9B290E4D2029A1700022D52E /* ConversationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B290E4C2029A1700022D52E /* ConversationService.swift */; };
 		9B2BB2061FE90E0E009EA173 /* imageCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B2BB2051FE90E0D009EA173 /* imageCollectionCell.xib */; };
 		9B2BB20E1FE92165009EA173 /* ImageResourcesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2BB20D1FE92165009EA173 /* ImageResourcesCollectionViewCell.swift */; };
 		9B36BB6D201EE0F400819137 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B36BB6C201EE0F400819137 /* SearchViewController.swift */; };
@@ -59,6 +66,8 @@
 		9B4E5CD01FFE0697009C6767 /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4E5CCF1FFE0697009C6767 /* TransactionViewController.swift */; };
 		9B4E5CD21FFE0703009C6767 /* transactionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B4E5CD11FFE0703009C6767 /* transactionView.xib */; };
 		9B4E5CD51FFE0EAF009C6767 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4E5CD41FFE0EAF009C6767 /* TransactionView.swift */; };
+		9B5CDC29202A9ECA002F8F6F /* ConversationDao.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5CDC28202A9ECA002F8F6F /* ConversationDao.swift */; };
+		9B5CDC2B202AA0E5002F8F6F /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5CDC2A202AA0E5002F8F6F /* Conversation.swift */; };
 		9B5E23861FD3F2B200A59FFF /* WishListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B5E23851FD3F2B200A59FFF /* WishListTableViewCell.xib */; };
 		9B5E23891FD3F34700A59FFF /* WishListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E23881FD3F34700A59FFF /* WishListTableViewCell.swift */; };
 		9B5E238B1FD3FA4400A59FFF /* WishListRemote.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5E238A1FD3FA4300A59FFF /* WishListRemote.swift */; };
@@ -83,6 +92,7 @@
 		9B82330A202459B30015CE9F /* ProfileHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B823309202459B30015CE9F /* ProfileHeaderViewCell.swift */; };
 		9B838ABE2011E14A00B6FD07 /* UITextViewPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B838ABD2011E14A00B6FD07 /* UITextViewPlaceholder.swift */; };
 		9B8E82FF1FE7CA58004F50D2 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E82FE1FE7CA58004F50D2 /* CustomButton.swift */; };
+		9B8E8BBC202E0A3D00748E0E /* MessageParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8E8BBB202E0A3D00748E0E /* MessageParam.swift */; };
 		9B95E8692004B2D300612323 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B95E8682004B2D300612323 /* EditProfileViewController.swift */; };
 		9B95E86B2004B30700612323 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B95E86A2004B30700612323 /* ChangePasswordViewController.swift */; };
 		9B95E86D2004B32100612323 /* AppSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B95E86C2004B32100612323 /* AppSettingsViewController.swift */; };
@@ -216,6 +226,13 @@
 		9B1F86D21FD6B526005C575E /* InboxDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InboxDao.swift; path = Dao/InboxDao.swift; sourceTree = "<group>"; };
 		9B26A33720202DD0008F1561 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = SearchTableViewCell.xib; path = Xibs/SearchTableViewCell.xib; sourceTree = "<group>"; };
 		9B26A33920202F9F008F1561 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchTableViewCell.swift; path = "View Classes/SearchTableViewCell.swift"; sourceTree = "<group>"; };
+		9B290E402029680B0022D52E /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatViewController.swift; path = Controllers/ChatViewController.swift; sourceTree = "<group>"; };
+		9B290E42202968ED0022D52E /* ChatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ChatView.xib; path = Xibs/ChatView.xib; sourceTree = "<group>"; };
+		9B290E442029692C0022D52E /* ChatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChatView.swift; path = "View Classes/ChatView.swift"; sourceTree = "<group>"; };
+		9B290E4620296F180022D52E /* chatCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = chatCollectionViewCell.xib; path = Xibs/chatCollectionViewCell.xib; sourceTree = "<group>"; };
+		9B290E48202970A00022D52E /* chatCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = chatCollectionViewCell.swift; path = "View Classes/chatCollectionViewCell.swift"; sourceTree = "<group>"; };
+		9B290E4A20299EFD0022D52E /* ConversationRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConversationRemote.swift; path = Remotes/ConversationRemote.swift; sourceTree = "<group>"; };
+		9B290E4C2029A1700022D52E /* ConversationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConversationService.swift; path = Services/ConversationService.swift; sourceTree = "<group>"; };
 		9B2BB2051FE90E0D009EA173 /* imageCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = imageCollectionCell.xib; path = Xibs/imageCollectionCell.xib; sourceTree = "<group>"; };
 		9B2BB20D1FE92165009EA173 /* ImageResourcesCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ImageResourcesCollectionViewCell.swift; path = "View Classes/ImageResourcesCollectionViewCell.swift"; sourceTree = "<group>"; };
 		9B36BB6C201EE0F400819137 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = Controllers/SearchViewController.swift; sourceTree = "<group>"; };
@@ -245,6 +262,8 @@
 		9B4E5CCF1FFE0697009C6767 /* TransactionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionViewController.swift; path = Controllers/TransactionViewController.swift; sourceTree = "<group>"; };
 		9B4E5CD11FFE0703009C6767 /* transactionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = transactionView.xib; sourceTree = "<group>"; };
 		9B4E5CD41FFE0EAF009C6767 /* TransactionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TransactionView.swift; path = "View Classes/TransactionView.swift"; sourceTree = "<group>"; };
+		9B5CDC28202A9ECA002F8F6F /* ConversationDao.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ConversationDao.swift; path = Dao/ConversationDao.swift; sourceTree = "<group>"; };
+		9B5CDC2A202AA0E5002F8F6F /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Conversation.swift; path = Models/Conversation.swift; sourceTree = "<group>"; };
 		9B5E23851FD3F2B200A59FFF /* WishListTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WishListTableViewCell.xib; path = Xibs/WishListTableViewCell.xib; sourceTree = "<group>"; };
 		9B5E23881FD3F34700A59FFF /* WishListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListTableViewCell.swift; path = "View Classes/WishListTableViewCell.swift"; sourceTree = "<group>"; };
 		9B5E238A1FD3FA4300A59FFF /* WishListRemote.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListRemote.swift; path = Remotes/WishListRemote.swift; sourceTree = "<group>"; };
@@ -268,6 +287,7 @@
 		9B823309202459B30015CE9F /* ProfileHeaderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileHeaderViewCell.swift; path = "View Classes/ProfileHeaderViewCell.swift"; sourceTree = "<group>"; };
 		9B838ABD2011E14A00B6FD07 /* UITextViewPlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITextViewPlaceholder.swift; sourceTree = "<group>"; };
 		9B8E82FE1FE7CA58004F50D2 /* CustomButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		9B8E8BBB202E0A3D00748E0E /* MessageParam.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MessageParam.swift; path = Models/MessageParam.swift; sourceTree = "<group>"; };
 		9B95E8682004B2D300612323 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EditProfileViewController.swift; path = Controllers/EditProfileViewController.swift; sourceTree = "<group>"; };
 		9B95E86A2004B30700612323 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ChangePasswordViewController.swift; path = Controllers/ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		9B95E86C2004B32100612323 /* AppSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppSettingsViewController.swift; path = Controllers/AppSettingsViewController.swift; sourceTree = "<group>"; };
@@ -463,6 +483,8 @@
 			children = (
 				9B1F86CD1FD6B329005C575E /* InboxView.xib */,
 				9B413D941FD799AC0083D43F /* InboxTableViewCell.xib */,
+				9B290E42202968ED0022D52E /* ChatView.xib */,
+				9B290E4620296F180022D52E /* chatCollectionViewCell.xib */,
 			);
 			name = Inbox;
 			sourceTree = "<group>";
@@ -472,6 +494,8 @@
 			children = (
 				9B1F86D01FD6B38B005C575E /* InboxView.swift */,
 				9B413D961FD79FFA0083D43F /* InboxTableViewCell.swift */,
+				9B290E442029692C0022D52E /* ChatView.swift */,
+				9B290E48202970A00022D52E /* chatCollectionViewCell.swift */,
 			);
 			name = Inbox;
 			sourceTree = "<group>";
@@ -498,6 +522,7 @@
 			isa = PBXGroup;
 			children = (
 				9B3FDC951FD68BEB00091E10 /* InboxViewController.swift */,
+				9B290E402029680B0022D52E /* ChatViewController.swift */,
 			);
 			name = Inbox;
 			sourceTree = "<group>";
@@ -703,6 +728,8 @@
 				9B3FDCA11FD6A0DC00091E10 /* Participants.swift */,
 				9BDD2C331FDE21FD00F8DC55 /* WishListTags.swift */,
 				9B38ACAC1FFF27D0007240C4 /* Seller.swift */,
+				9B5CDC2A202AA0E5002F8F6F /* Conversation.swift */,
+				9B8E8BBB202E0A3D00748E0E /* MessageParam.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -718,6 +745,7 @@
 				9B456F301F8F541E001F4C32 /* FavoritesDao.swift */,
 				9B5E23901FD4032200A59FFF /* WishListDao.swift */,
 				9B1F86D21FD6B526005C575E /* InboxDao.swift */,
+				9B5CDC28202A9ECA002F8F6F /* ConversationDao.swift */,
 			);
 			name = Dao;
 			sourceTree = "<group>";
@@ -745,6 +773,7 @@
 				9B3FDC9F1FD69CB100091E10 /* InboxService.swift */,
 				9BCA4A0A1FF8FCBF006AD90F /* SystemService.swift */,
 				9BE9AF1D200600B700A7E5F3 /* AccountService.swift */,
+				9B290E4C2029A1700022D52E /* ConversationService.swift */,
 			);
 			name = Services;
 			sourceTree = "<group>";
@@ -759,6 +788,7 @@
 				9B5E238A1FD3FA4300A59FFF /* WishListRemote.swift */,
 				9B3FDC9D1FD69AAD00091E10 /* InboxRemote.swift */,
 				9BCA4A081FF8DD61006AD90F /* SystemRemote.swift */,
+				9B290E4A20299EFD0022D52E /* ConversationRemote.swift */,
 			);
 			name = Remotes;
 			sourceTree = "<group>";
@@ -1032,6 +1062,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B290E4720296F180022D52E /* chatCollectionViewCell.xib in Resources */,
 				B9FE3FF11E77E32A003CDE74 /* LaunchScreen.storyboard in Resources */,
 				9BCCD5F91FD13871001A9507 /* NewResourceView.xib in Resources */,
 				B9E267D91E7D41F500BB9900 /* FeaturedTableViewCell.xib in Resources */,
@@ -1064,6 +1095,7 @@
 				9B95E8712004B3AC00612323 /* EditProfile.xib in Resources */,
 				9B36BB6F201EEEDC00819137 /* SearchView.xib in Resources */,
 				9B1F86CE1FD6B329005C575E /* InboxView.xib in Resources */,
+				9B290E43202968ED0022D52E /* ChatView.xib in Resources */,
 				9B413D951FD799AC0083D43F /* InboxTableViewCell.xib in Resources */,
 				B9FE3FEC1E77E32A003CDE74 /* Main.storyboard in Resources */,
 				B9E267B91E7BAEC400BB9900 /* BrowseView.xib in Resources */,
@@ -1145,11 +1177,13 @@
 			files = (
 				2CD0FD321F84D31D000C8E89 /* ResourceTableViewCell.swift in Sources */,
 				B9E267B51E7BAE2600BB9900 /* BrowseViewController.swift in Sources */,
+				9B290E412029680B0022D52E /* ChatViewController.swift in Sources */,
 				9B5E23891FD3F34700A59FFF /* WishListTableViewCell.swift in Sources */,
 				9B95E8792004B48300612323 /* RaiseSupportTicketView.swift in Sources */,
 				B9E267DB1E7D467800BB9900 /* WelcomeViewController.swift in Sources */,
 				2C5B06251F18C886002C09B8 /* Transaction.swift in Sources */,
 				B9E267C91E7D419500BB9900 /* FeaturedCarouselItemView.swift in Sources */,
+				9B290E49202970A00022D52E /* chatCollectionViewCell.swift in Sources */,
 				9BD8341C1F90CBC80049066E /* Account.swift in Sources */,
 				9B1F86D11FD6B38B005C575E /* InboxView.swift in Sources */,
 				B9E267641E78ED0000BB9900 /* UserDao.swift in Sources */,
@@ -1160,6 +1194,7 @@
 				9B2BB20E1FE92165009EA173 /* ImageResourcesCollectionViewCell.swift in Sources */,
 				2C8BCC4F1F1325900064DD87 /* TransactionRemote.swift in Sources */,
 				B9E2677E1E79416A00BB9900 /* RegisterViewController.swift in Sources */,
+				9B290E4D2029A1700022D52E /* ConversationService.swift in Sources */,
 				9B5E23971FD45DB300A59FFF /* WishListDetailView.swift in Sources */,
 				B9E2676A1E78F72F00BB9900 /* UIColor.swift in Sources */,
 				9BCA4A091FF8DD61006AD90F /* SystemRemote.swift in Sources */,
@@ -1175,8 +1210,10 @@
 				9B5E23931FD4570E00A59FFF /* WishListDetailedViewController.swift in Sources */,
 				9BFDB3721F97289700D430D4 /* ResourceView.swift in Sources */,
 				9B456F371F8F638D001F4C32 /* ResourceRemote.swift in Sources */,
+				9B8E8BBC202E0A3D00748E0E /* MessageParam.swift in Sources */,
 				B9E267AB1E7B945700BB9900 /* Category.swift in Sources */,
 				9B5E238F1FD4017F00A59FFF /* WishList.swift in Sources */,
+				9B5CDC2B202AA0E5002F8F6F /* Conversation.swift in Sources */,
 				2C63EF0B1F027520003573A7 /* AccountViewController.swift in Sources */,
 				B9E267681E78F71D00BB9900 /* String.swift in Sources */,
 				9B13E3751F99ADDD00D72FB7 /* ResourceSubcategory.swift in Sources */,
@@ -1223,6 +1260,7 @@
 				9BD834241F90E0A00049066E /* Roles.swift in Sources */,
 				9B3ED54B1FD2C8D700627679 /* WishlistViewController.swift in Sources */,
 				B99151B51E77F6C600949529 /* BaseUIView.swift in Sources */,
+				9B290E4B20299EFD0022D52E /* ConversationRemote.swift in Sources */,
 				B9E267B31E7B950600BB9900 /* CategoryRemote.swift in Sources */,
 				9B740C6D1FD90A72003372DF /* WishListAdd.swift in Sources */,
 				9B8E82FF1FE7CA58004F50D2 /* CustomButton.swift in Sources */,
@@ -1248,6 +1286,7 @@
 				9B4E5CD01FFE0697009C6767 /* TransactionViewController.swift in Sources */,
 				9BFDB3701F9727F500D430D4 /* ResourceViewController.swift in Sources */,
 				9B7EDC46200F287700169963 /* ScheduleBookingView.swift in Sources */,
+				9B290E452029692C0022D52E /* ChatView.swift in Sources */,
 				9B3FDCA21FD6A0DC00091E10 /* Participants.swift in Sources */,
 				9B5F49041FDFA3DD00CD3D66 /* CCheckbox.swift in Sources */,
 				9B82330A202459B30015CE9F /* ProfileHeaderViewCell.swift in Sources */,
@@ -1261,6 +1300,7 @@
 				B9E267AD1E7B94D900BB9900 /* CategoryService.swift in Sources */,
 				9BD8341A1F9076EE0049066E /* Location.swift in Sources */,
 				B9E267BD1E7BAFF800BB9900 /* SubCategoryCollectionViewCell.swift in Sources */,
+				9B5CDC29202A9ECA002F8F6F /* ConversationDao.swift in Sources */,
 				9B3FDCA01FD69CB100091E10 /* InboxService.swift in Sources */,
 				9BD8341E1F90CD600049066E /* Company.swift in Sources */,
 			);

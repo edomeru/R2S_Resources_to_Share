@@ -13,6 +13,9 @@ import RealmSwift
 class InboxViewController: BaseViewController {
     var inbox: Results<Inbox>!
     var inboxView = InboxView()
+    var selectedChatId:Int?
+    var selectedResourceId:Int?
+    var resourceName:String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +74,19 @@ class InboxViewController: BaseViewController {
         
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let identifier = segue.identifier {
+            switch identifier {
+            case Constants.segue.InboxToChatSegue:
+                let destinationVC = segue.destination as! ChatViewController
+                destinationVC.selectedChatId = selectedChatId
+                destinationVC.selectedResourceId = selectedResourceId
+                 destinationVC.resourceName  =  resourceName
+            default:
+                print("default");
+            }
+        }
+    }
     
     
 }
@@ -109,6 +125,7 @@ extension InboxViewController : UITableViewDataSource {
             cell.inbox_imageUIImageView.clipsToBounds = true
             cell.inbox_imageUIImageView.kf.setImage(with: URL(string: (inbox[indexPath.item].last_message?.account_image_url)!), options: [.transition(.fade(0.2))])
             
+            
         }else{
             
             
@@ -120,9 +137,11 @@ extension InboxViewController : UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let ibox = inbox[indexPath.item]
-       // selectedWishListId  = ibox.id
-        // print (resource.id)
-        //performSegue(withIdentifier: Constants.segue.wishToWishListDetailSegue, sender: self)
+        let inboxChat = inbox[indexPath.item]
+        selectedChatId  = inboxChat.id
+        selectedResourceId  = inboxChat.resource?.id
+        resourceName = inbox[indexPath.item].resource?.name
+         print (selectedChatId)
+        performSegue(withIdentifier: Constants.segue.InboxToChatSegue, sender: self)
     }
 }

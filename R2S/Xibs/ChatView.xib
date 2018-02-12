@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ChatView" customModule="R2S" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="osB-de-7Zm">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="620"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="2" minimumInteritemSpacing="0.0" id="2RT-Ns-wio">
+                        <size key="itemSize" width="371" height="80"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="1" maxX="0.0" maxY="1"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" usesAttributedText="YES" borderStyle="roundedRect" placeholder="Send a message..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nJn-kN-FYb">
+                    <rect key="frame" x="7" y="628" width="328" height="25"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="328" id="5cH-Zn-adu"/>
+                        <constraint firstAttribute="height" constant="25" id="pIE-xN-MuJ"/>
+                    </constraints>
+                    <attributedString key="attributedText"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="send"/>
+                    <connections>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="y05-yu-Yvd"/>
+                    </connections>
+                </textField>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_send" translatesAutoresizingMaskIntoConstraints="NO" id="xcX-Bc-rtA">
+                    <rect key="frame" x="343" y="628" width="28" height="26"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="26" id="HKe-CW-K7e"/>
+                        <constraint firstAttribute="width" constant="28" id="aUd-8p-ph5"/>
+                    </constraints>
+                </imageView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="nJn-kN-FYb" secondAttribute="trailing" constant="40" id="1NE-7F-y6A"/>
+                <constraint firstItem="xcX-Bc-rtA" firstAttribute="leading" secondItem="nJn-kN-FYb" secondAttribute="trailing" constant="8" id="4Xc-G9-oN2"/>
+                <constraint firstAttribute="trailing" secondItem="osB-de-7Zm" secondAttribute="trailing" id="JAV-46-knw"/>
+                <constraint firstItem="osB-de-7Zm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="JmS-dP-mx6"/>
+                <constraint firstAttribute="bottom" secondItem="osB-de-7Zm" secondAttribute="bottom" constant="47" id="KIr-NF-BVS"/>
+                <constraint firstItem="nJn-kN-FYb" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="7" id="Ka7-vl-1aE"/>
+                <constraint firstAttribute="bottom" secondItem="xcX-Bc-rtA" secondAttribute="bottom" constant="13" id="TkA-m1-Vuc"/>
+                <constraint firstAttribute="bottom" secondItem="nJn-kN-FYb" secondAttribute="bottom" constant="14" id="j2r-QK-SSd"/>
+                <constraint firstItem="osB-de-7Zm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="n7e-ld-XkH"/>
+                <constraint firstAttribute="trailing" secondItem="xcX-Bc-rtA" secondAttribute="trailing" constant="4" id="pK3-UL-vih"/>
+            </constraints>
+            <connections>
+                <outlet property="chatUICollectionView" destination="osB-de-7Zm" id="taU-pq-x5M"/>
+                <outlet property="sendUIImageView" destination="xcX-Bc-rtA" id="caK-2z-eAZ"/>
+                <outlet property="sendUITextfield" destination="nJn-kN-FYb" id="t7R-PJ-sGD"/>
+            </connections>
+            <point key="canvasLocation" x="67.5" y="59.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_send" width="24" height="24"/>
+    </resources>
+</document>

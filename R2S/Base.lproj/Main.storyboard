@@ -12,7 +12,7 @@
         <scene sceneID="5gd-tc-SuB">
             <objects>
                 <navigationController id="gyt-qp-uPB" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="V3o-gx-w46">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V3o-gx-w46">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -106,6 +106,9 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Inbox" image="ic_email" id="FT6-9j-dIe"/>
+                    <connections>
+                        <segue destination="9wW-PI-8hZ" kind="show" identifier="InboxToChatSegue" id="sh9-9H-YtT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U53-7J-fpz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -284,6 +287,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="by0-9X-XqV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2103" y="-152"/>
+        </scene>
+        <!--Chat View Controller-->
+        <scene sceneID="mJg-Kt-0lJ">
+            <objects>
+                <viewController id="9wW-PI-8hZ" customClass="ChatViewController" customModule="R2S" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="okB-lE-jKZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="p23-kU-rv3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lGk-hz-HQO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nan-2N-O5v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2372" y="-1473"/>
         </scene>
         <!--Edit Profile View Controller-->
         <scene sceneID="MoI-e1-Jlb">

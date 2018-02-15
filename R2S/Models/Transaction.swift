@@ -26,6 +26,7 @@ class Transaction: Object {
     dynamic var status = ""
     dynamic var is_buyer = false
     dynamic var account: Account?
+    dynamic var agreement = ""
     
     override static func primaryKey() -> String? {
         return "id"

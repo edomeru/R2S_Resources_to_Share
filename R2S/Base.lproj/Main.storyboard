@@ -83,10 +83,12 @@
                         <viewControllerLayoutGuide type="bottom" id="cm0-vf-EkZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="TOz-Qv-05P">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="700"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="375" height="700"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="plo-rz-ga6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

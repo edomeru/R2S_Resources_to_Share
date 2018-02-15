@@ -20,6 +20,14 @@ class RegisterViewController: BaseViewController {
         
         self.initUILayout()
         self.setupValidator()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,6 +41,7 @@ class RegisterViewController: BaseViewController {
     // MARK: - Private Functions
     private func initUILayout() {
         self.registerView = self.loadFromNibNamed(nibNamed: Constants.xib.register) as! RegisterView
+        self.registerView.frame = CGRect(x: 0, y: Constants.navbarHeight, width: self.registerView.frame.width, height: self.registerView.frame.height)
         self.view = self.registerView
             
         self.title = "Registration"

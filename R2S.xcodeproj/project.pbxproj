@@ -80,6 +80,8 @@
 		9B5F49041FDFA3DD00CD3D66 /* CCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5F49031FDFA3DD00CD3D66 /* CCheckbox.swift */; };
 		9B5F49051FDFA3DD00CD3D66 /* CCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5F49031FDFA3DD00CD3D66 /* CCheckbox.swift */; };
 		9B5F49061FDFA3DD00CD3D66 /* CCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5F49031FDFA3DD00CD3D66 /* CCheckbox.swift */; };
+		9B60CCB42032D6390086EFF0 /* Agreement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B60CCB32032D6390086EFF0 /* Agreement.swift */; };
+		9B60CCB62032D79A0086EFF0 /* AgreementObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B60CCB52032D79A0086EFF0 /* AgreementObject.swift */; };
 		9B63FD77200368D800D91838 /* ProfileTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B63FD76200368D800D91838 /* ProfileTableViewCell.xib */; };
 		9B63FD7A2003696B00D91838 /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B63FD792003696B00D91838 /* ProfileTableViewCell.swift */; };
 		9B740C6A1FD8F927003372DF /* WishListAddController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B740C691FD8F927003372DF /* WishListAddController.swift */; };
@@ -274,6 +276,8 @@
 		9B5E23941FD45C1000A59FFF /* WishListDetailView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WishListDetailView.xib; path = Xibs/WishListDetailView.xib; sourceTree = "<group>"; };
 		9B5E23961FD45DB300A59FFF /* WishListDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WishListDetailView.swift; path = "View Classes/WishListDetailView.swift"; sourceTree = "<group>"; };
 		9B5F49031FDFA3DD00CD3D66 /* CCheckbox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CCheckbox.swift; sourceTree = "<group>"; };
+		9B60CCB32032D6390086EFF0 /* Agreement.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Agreement.swift; path = Models/Agreement.swift; sourceTree = "<group>"; };
+		9B60CCB52032D79A0086EFF0 /* AgreementObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AgreementObject.swift; path = Models/AgreementObject.swift; sourceTree = "<group>"; };
 		9B63FD76200368D800D91838 /* ProfileTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ProfileTableViewCell.xib; path = Xibs/ProfileTableViewCell.xib; sourceTree = "<group>"; };
 		9B63FD792003696B00D91838 /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileTableViewCell.swift; path = "View Classes/ProfileTableViewCell.swift"; sourceTree = "<group>"; };
 		9B740C671FD8F7D4003372DF /* WishListAddView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = WishListAddView.xib; path = Xibs/WishListAddView.xib; sourceTree = "<group>"; };
@@ -730,6 +734,8 @@
 				9B38ACAC1FFF27D0007240C4 /* Seller.swift */,
 				9B5CDC2A202AA0E5002F8F6F /* Conversation.swift */,
 				9B8E8BBB202E0A3D00748E0E /* MessageParam.swift */,
+				9B60CCB32032D6390086EFF0 /* Agreement.swift */,
+				9B60CCB52032D79A0086EFF0 /* AgreementObject.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -1226,6 +1232,7 @@
 				B9E267C11E7BB84900BB9900 /* SubcategoryDao.swift in Sources */,
 				9B3ED54F1FD2C8F400627679 /* WishlistView.swift in Sources */,
 				9BCA4A0B1FF8FCBF006AD90F /* SystemService.swift in Sources */,
+				9B60CCB62032D79A0086EFF0 /* AgreementObject.swift in Sources */,
 				9B5E23911FD4032200A59FFF /* WishListDao.swift in Sources */,
 				B9E267C71E7D418300BB9900 /* CategoryCollectionViewCell.swift in Sources */,
 				9B3FDC9C1FD6986800091E10 /* InboxResource.swift in Sources */,
@@ -1277,6 +1284,7 @@
 				9B95E8692004B2D300612323 /* EditProfileViewController.swift in Sources */,
 				9B95E87D2004B4D100612323 /* AppSettingsView.swift in Sources */,
 				9B36BB71201EEF5400819137 /* SearchView.swift in Sources */,
+				9B60CCB42032D6390086EFF0 /* Agreement.swift in Sources */,
 				B9E267DD1E7D48D600BB9900 /* WelcomeView.swift in Sources */,
 				9B38ACAD1FFF27D0007240C4 /* Seller.swift in Sources */,
 				B9E2677A1E7914A200BB9900 /* UserService.swift in Sources */,

@@ -30,6 +30,19 @@ class TransactionDao {
         }
     }
     
+//    static func addAgreement(_ Transaction: Agreement) {
+//        let realm = try! Realm()
+//        try! realm.write {
+//            realm.add(Transaction, update: true)
+//        }
+//    }
+    
+//    static func getAgreements() -> Results<Agreement> {
+//        let realm = try! Realm()
+//        let agreements = realm.objects(Agreement.self)
+//        return agreements
+//    }
+    
     
     
     //    static func edit(_ transactionId: Int, Transaction: Results<Transaction>, keys: [String], values: [Any?]) {

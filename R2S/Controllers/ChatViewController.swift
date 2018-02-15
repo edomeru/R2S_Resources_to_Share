@@ -25,13 +25,14 @@ class ChatViewController: BaseViewController, UITextFieldDelegate {
         super.viewDidLoad()
         
         fetchData()
-//        view.addSubview(messageInputContainerView)
-//        view.addConstraint(<#T##constraint: NSLayoutConstraint##NSLayoutConstraint#>)
         
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if self.chatView.sendUITextfield.text != "" {
         sendMessage()
+        }
+        
         return true
     }
     
@@ -49,7 +50,6 @@ class ChatViewController: BaseViewController, UITextFieldDelegate {
         activityIndicator.startAnimating()
         ConversationService.getMessages(messageId: selectedChatId! , onCompletion: { statusCode, message in
             
-            // print("\(statusCode!)" + " INBOX CODE"  )
             
             if statusCode == 200 {
                 
@@ -67,11 +67,6 @@ class ChatViewController: BaseViewController, UITextFieldDelegate {
         
     }
     
-//    let messageInputContainerView: UIView = {
-//       let view = UIView()
-//        view.backgroundColor = UIColor.red
-//        return view
-//    }()
     
     
     private func initUILayout() {
@@ -91,13 +86,6 @@ class ChatViewController: BaseViewController, UITextFieldDelegate {
         self.chatView.sendUITextfield.delegate = self
         self.chatView.sendUITextfield.becomeFirstResponder()
         
-        //        let cellWidth : CGFloat = (self.view.frame.width - 20.0 - (5 * 1.0)) / 5.0
-        //        let cellHeight : CGFloat = (self.view.frame.height - 260.0 - (8 * 1.0)) / 8.0
-        //        let collectionViewLayout: UICollectionViewFlowLayout = (self.chatView.chatUICollectionView as! UICollectionViewFlowLayout)
-        //
-        //        collectionViewLayout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0)
-        //
-        //        collectionViewLayout.itemSize = CGSize(width: cellWidth , height:cellHeight)
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
         self.chatView.sendUIImageView.isUserInteractionEnabled = true
         self.chatView.sendUIImageView.addGestureRecognizer(tapGestureRecognizer)
@@ -113,8 +101,11 @@ class ChatViewController: BaseViewController, UITextFieldDelegate {
     
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
-
+        
+        if self.chatView.sendUITextfield.text != "" {
         sendMessage()
+        }
+        
     }
     
     
@@ -158,8 +149,8 @@ class ChatViewController: BaseViewController, UITextFieldDelegate {
                 self.fetchData()
                 
                 
-            } else if statusCode == 400 {
-                //Utility.showAlert(title: "Error " + "\(statusCode!)" , message: message!, targetController: self)
+            } else if statusCode != 202 {
+                Utility.showAlert(title: "Error " + "\(statusCode!)" , message: message!, targetController: self)
                 
             }
             

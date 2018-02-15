@@ -14,6 +14,7 @@ class Constants {
     
     // MARK: - API Endpoints
     struct api {
+        static let agreement_url = "http://chat.r2s.tirsolutions.com/resources/agreement/{reference_code}"
         static let baseUrl = "http://api.r2s.tirsolutions.com/resources-to-share/api"
         
 //        static let baseUrl =  "http://stagingapi.r2s.tirsolutions.com/resources-to-share-stg/api"
@@ -37,6 +38,7 @@ class Constants {
             static let transaction_complete = transaction + "/complete"
             static let transaction_rate = transaction + "/rate"
             static let profile_details = base + "/{id}"
+            static let selling = transactions + "/selling"
              // MARK: - Wishlisy
             static let  wishlist = base + "/{id}/wishlists"
             // MARK: - Resources

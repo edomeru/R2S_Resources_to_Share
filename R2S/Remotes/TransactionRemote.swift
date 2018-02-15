@@ -54,4 +54,20 @@ class TransactionRemote {
         })
     }
     
+    static func selling(onCompletion: @escaping (JSON, Int?) -> Void) {
+        let urlString = Constants.api.user.selling.replacingOccurrences(of: "{id}", with: String(describing: UserHelper.getId()!))
+        ApiRequestManager.sharedInstance.doGetRequest(urlString: urlString, headers: Utility.getHeadersWithAuth(), onCompletion: { jsonData, statusCode in
+            onCompletion(jsonData, statusCode)
+        })
+    }
+
+    static func getAgreement(reference_code: String, onCompletion: @escaping (JSON, Int?) -> Void) {
+        var urlString = Constants.api.agreement_url.replacingOccurrences(of: "{reference_code}", with: String(describing: reference_code))
+        
+        print("agreement_url",urlString)
+        ApiRequestManager.sharedInstance.doGetRequest(urlString: urlString, headers: Utility.getHeadersWithAuth(), onCompletion: { jsonData, statusCode in
+            onCompletion(jsonData, statusCode)
+        })
+    }
+    
 }

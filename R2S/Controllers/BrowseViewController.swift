@@ -91,6 +91,7 @@ class BrowseViewController: BaseViewController {
     func myFunction(gesture: UITapGestureRecognizer) {
         if let v = gesture.view {
             // print("it worked",v.tag)
+            v.isUserInteractionEnabled = false
             let resource = ResourceDao.getOneBy(id: v.tag)
             
             // print("RESOURCE_ID",resource?.id)
@@ -131,6 +132,7 @@ class BrowseViewController: BaseViewController {
                                 let snackbar = TTGSnackbar(message: "Removed from favorites ", duration: .short)
                                 snackbar.backgroundColor = UIColor.blue
                                 snackbar.show()
+                                v.isUserInteractionEnabled = true
                                 self.favoriteOrNot!  = false
                                 
                             })
@@ -162,7 +164,7 @@ class BrowseViewController: BaseViewController {
                                     let snackbar = TTGSnackbar(message: "Item" + " has been added to Favorites ", duration: .short)
                                     snackbar.backgroundColor = UIColor.green
                                     snackbar.show()
-                                    
+                                    v.isUserInteractionEnabled = true
                                     self.favoriteOrNot!  = true
                                     
                                     

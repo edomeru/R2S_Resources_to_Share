@@ -15,7 +15,9 @@ protocol RegisterViewDelegate: class {
 
 class RegisterView: BaseUIView {
     weak var delegate: RegisterViewDelegate?
+    @IBOutlet weak var companyNameTextField: UITextField!
 
+    @IBOutlet weak var businessREgNumberTextField: UITextField!
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -25,9 +27,13 @@ class RegisterView: BaseUIView {
     @IBOutlet weak var lastNameBorderView: UIView!
     @IBOutlet weak var emailBorderView: UIView!
     @IBOutlet weak var passwordBorderView: UIView!
+    @IBOutlet weak var companyBorderView: UIView!
     
+    @IBOutlet weak var confirmPasswordTextField: UITextField!
+    @IBOutlet weak var busnessRegBorderView: UIView!
     @IBOutlet weak var registerButton: UIButton!
     
+    @IBOutlet weak var confirmPasswordBorderView: UIView!
     @IBAction func registerButtonPressed(_ sender: AnyObject) {
         delegate?.registerButtonPressed(sender: sender)
     }

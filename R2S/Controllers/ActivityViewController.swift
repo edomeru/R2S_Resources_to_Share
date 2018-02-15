@@ -84,7 +84,7 @@ class ActivityViewController: BaseViewController {
         activityIndicator.startAnimating()
         TransactionService.fetchTransactions { (statusCode, message) in
            
-            print(statusCode)
+          //  print(statusCode)
           
             if statusCode == 200 {
                 
@@ -99,10 +99,45 @@ class ActivityViewController: BaseViewController {
          
                 
                 let transaction = TransactionDao.getAllBuyers(buyer: true, status: "PENDING")
+                print("COUNThjcvkvfku",transaction.count)
+
+
+                
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     activityIndicator.stopAnimating()
                 print("TRANSACTIONDAO", transaction)
                 self.transactions = transaction
+                    print("COUNThjcvkvfkgkgu",transaction.count)
+                    
+//                                                   for index in 0...transaction.count - 1 {
+//                                    TransactionService.getAgreement(reference_code: transaction[index].referenceCode, onCompletion: { statusCode, agreements in
+//                    
+//                                        print("STATUSCODE_AGREEMENTffyf",statusCode!)
+//                    
+//                                       print("GET_AGREEMENTSiug", agreements)
+//                    
+////                                    let  agreement =  TransactionDao.getAgreements()
+////                    
+////                                        if transaction[index].referenceCode == agreement[index].agreement?.booking_reference_code {
+////                                           //transaction[index].agreement == agreement[index].agreement?.booking_reference_code
+////                    
+////                                        }
+//                    //                    TransactionDao.update(status: "COMPLETED",transaction_id: transaction_id)
+//                    //                    DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+//                    //                        activityIndicator.stopAnimating()
+//                    //                        self.activityView.activityTableView.reloadData()
+//                    //
+//                    //                        
+//                    //                        
+//                    //                        
+//                    //                        Utility.showSnackBAr(messege:"Item has been completed", bgcolor: UIColor(hexString: Constants.color.primary)!)
+//                    //                    })
+//                                        
+//                                    })
+//                                    
+//                                    }
+                    
+                    
                 self.initUILayout()
                 self.activityView.activityTableView.reloadData()
                     

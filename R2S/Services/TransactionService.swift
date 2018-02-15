@@ -8,8 +8,8 @@
 
 import Foundation
 import SwiftyJSON
+import SwiftKeychainWrapper
 import RealmSwift
-
 class TransactionService {
     
     /////////////////////////////////////////////////////////////
@@ -25,13 +25,24 @@ class TransactionService {
             DispatchQueue.global(qos: .background).async{
                 if statusCode == 200{
                     print("TRANSERVICE",jsonData)
-                    print("++++++++++++++++++++++++++++++")
+//                    print("++++++++++++++++++++++++++++++")
+                    
+                   
+                    
                     for (_, transactions):(String, JSON) in jsonData {
-                                      print(transactions)
+                        
                         let transaction = Transaction()
                         transaction.id = transactions["id"].intValue
                         transaction.referenceCode = transactions["reference_code"].stringValue
                         transaction.proposal = transactions["proposal"].stringValue
+                        
+                        
+                    
+                        
+                       
+                        
+                        
+                       
                         
                         
                         transaction.bookingStartDate = Utility.dateToString(dateString: Utility.stringToDate(dateString: transactions["booking_start_date"].stringValue))
@@ -46,7 +57,7 @@ class TransactionService {
                         let res = Resource()
                         
                         
-                       print("DATEEEEEE",Utility.dateToString(dateString: Utility.stringToDate(dateString: resources["created_date"].stringValue))) 
+//                       print("DATEEEEEE",Utility.dateToString(dateString: Utility.stringToDate(dateString: resources["created_date"].stringValue))) 
                         
                         res.price = Int(resources["price"].stringValue)!
                         res.createdDate = Utility.dateToString(dateString: Utility.stringToDate(dateString: resources["created_date"].stringValue))
@@ -76,7 +87,7 @@ class TransactionService {
                     }
                     
 //                    print (jsonData)
-                    print(jsonData.count)
+                    //print(jsonData.count)
                 }
             }
             DispatchQueue.main.async {
@@ -180,38 +191,110 @@ class TransactionService {
         })
     }
     
+    
+//    static func getAgreement(reference_code: String, onCompletion: @escaping(Int?, AgreementObject?) -> Void){
+//        var message = ""
+//        TransactionRemote.getAgreement(reference_code: reference_code, onCompletion: { jsonData, statusCode in
+//            DispatchQueue.global(qos: .background).async{
+//                print("AGREEMENT_CODE", statusCode)
+//                print("AGREEMENT_JSON", jsonData)
+//                var agreements = [AgreementObject]()
+//               
+//                if statusCode! == 200{
+//                    message = ""
+//                    
+//                   
+//                    
+//                        //agree.id = IncrementaId()
+//                    
+//                        let agreementObject = jsonData["agreement"]
+//                        let agreementObj = AgreementObject()
+//                        print("AGREEMENT_IFddf",agreementObject["agreement_html"].stringValue)
+//                    print("AGREEMENTdsd",agreementObject["booking_reference_code"].stringValue)
+//                    agreementObj.agreement_html = agreementObject["agreement_html"].stringValue
+//                    agreementObj.booking_reference_code = agreementObject["booking_reference_code"].stringValue
+////                        agreementObj.id = agreementObject["id"].intValue
+////                        agreementObj.agreement_html = agreementObject["agreement_html"].stringValue
+////                        agreementObj.booking_reference_code = agreementObject["booking_reference_code"].stringValue
+////                        agree.agreement = agreementObj
+////                    
+//                    agreements.append(agreementObj)
+//                    //TransactionDao.addAgreement(agree)
+//                    }
+//            
+//                else {
+//                    message = jsonData["message"].stringValue
+//                }
+//            }
+//
+//            DispatchQueue.main.async {
+//                onCompletion(statusCode, agreements)
+//            }
+//        })
+    
+    
+//        //Increment ID
+//        func IncrementaID() -> Int{
+//            let realm = try! Realm()
+//            if let retNext = realm.objects(AgreementObject.self).sorted(byKeyPath: "id").last?.id {
+//                return retNext + 1
+//            }else{
+//                return 1
+//            }
+//        }
+//        
+//        //Increment ID
+//        func IncrementaId() -> Int{
+//            let realm = try! Realm()
+//            if let retNext = realm.objects(Agreement.self).sorted(byKeyPath: "id").last?.id {
+//                return retNext + 1
+//            }else{
+//                return 1
+//            }
+//        }
+   // }
+    
+   
+
+
+
+
+
+
+
     /////////////////////////////////////////////////////////////
     //
     //      Database / DAO Related Services
     //
     /////////////////////////////////////////////////////////////
     
-    static func getCategories() -> Results<Category> {
+    func getCategories() -> Results<Category> {
         return CategoryDao.getCategories()
     }
     
-    static func selectCategory(_ category: Category) {
+    func selectCategory(_ category: Category) {
         CategoryDao.edit(category, keys: ["isSelected"], values: [true])
     }
     
-    static func clearSelectedCategories(_ categories: Results<Category>) {
+    func clearSelectedCategories(_ categories: Results<Category>) {
         for category in categories {
             CategoryDao.edit(category, keys: ["isSelected"], values: [false])
         }
     }
     
-    static func getSubcategoriesBy(categoryId: Int) -> Results<Subcategory> {
+    func getSubcategoriesBy(categoryId: Int) -> Results<Subcategory> {
         let subcategories = SubcategoryDao.getSubcategoriesBy(categoryId: categoryId)
         return subcategories
     }
     
-    static func selectSubategory(_ subcategory: Subcategory) {
+    func selectSubategory(_ subcategory: Subcategory) {
         SubcategoryDao.edit(subcategory, keys: ["isSelected"], values: [true])
     }
     
-    static func clearSelectedSubcategories(_ subcategories: Results<Subcategory>) {
+    func clearSelectedSubcategories(_ subcategories: Results<Subcategory>) {
         for subcategory in subcategories {
             SubcategoryDao.edit(subcategory, keys: ["isSelected"], values: [false])
         }
     }
+
 }

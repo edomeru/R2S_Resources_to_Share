@@ -50,6 +50,9 @@ class RegisterViewController: BaseViewController {
         self.registerView.lastNameTextField.delegate = self
         self.registerView.emailTextField.delegate = self
         self.registerView.passwordTextField.delegate = self
+        self.registerView.confirmPasswordTextField.delegate = self
+        self.registerView.businessREgNumberTextField.delegate = self
+        self.registerView.companyNameTextField.delegate = self
     }
     
     private func setupValidator() {
@@ -57,6 +60,9 @@ class RegisterViewController: BaseViewController {
         self.validator.registerField(self.registerView.lastNameTextField, rules: [RequiredRule()])
         self.validator.registerField(self.registerView.emailTextField, rules: [RequiredRule()])
         self.validator.registerField(self.registerView.passwordTextField, rules: [RequiredRule()])
+        self.validator.registerField(self.registerView.confirmPasswordTextField, rules: [RequiredRule()])
+        self.validator.registerField(self.registerView.businessREgNumberTextField, rules: [RequiredRule()])
+        self.validator.registerField(self.registerView.companyNameTextField, rules: [RequiredRule()])
     }
     
     private func configureNavBar() {
@@ -114,6 +120,11 @@ extension RegisterViewController: ValidationDelegate {
                     self.registerView.emailBorderView.backgroundColor = UIColor.red
                 case self.registerView.passwordTextField:
                     self.registerView.passwordBorderView.backgroundColor = UIColor.red
+                case self.registerView.confirmPasswordTextField:
+                    self.registerView.confirmPasswordBorderView.backgroundColor =  UIColor.red
+                case self.registerView.companyNameTextField:
+                    self.registerView.companyBorderView.backgroundColor =  UIColor.red                case self.registerView.businessREgNumberTextField:
+                    self.registerView.busnessRegBorderView.backgroundColor = UIColor.red
                 default:
                     print("default")
                 }
@@ -134,6 +145,12 @@ extension RegisterViewController: UITextFieldDelegate {
             self.registerView.emailBorderView.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
         case self.registerView.passwordTextField:
             self.registerView.passwordBorderView.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
+        case self.registerView.confirmPasswordTextField:
+            self.registerView.confirmPasswordBorderView.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
+        case self.registerView.companyNameTextField:
+            self.registerView.companyBorderView.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
+        case self.registerView.businessREgNumberTextField:
+            self.registerView.busnessRegBorderView.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
         default:
             print("default")
         }

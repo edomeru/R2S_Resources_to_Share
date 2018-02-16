@@ -20,4 +20,11 @@ class Company: Object {
     dynamic var name = ""
     dynamic var business_reg_number = ""
     
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+    override static func indexedProperties() -> [String] {
+        return ["business_reg_number", "name"]
+    }
+    
 }

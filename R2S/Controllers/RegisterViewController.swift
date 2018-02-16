@@ -90,12 +90,16 @@ extension RegisterViewController: ValidationDelegate {
             user.firstName = self.registerView.firstNameTextField.text!
             user.lastName = self.registerView.lastNameTextField.text!
             user.password = self.registerView.passwordTextField.text!
+            user.company?.name = self.registerView.companyNameTextField.text!
+            user.company?.business_reg_number = self.registerView.businessREgNumberTextField.text!
+            print("businessREgNumberTextField", self.registerView.businessREgNumberTextField.text!)
+              print("companyNameTextField", self.registerView.companyNameTextField.text!)
             if self.registerView.subscribeCheckbox.checkState == .checked {
                 user.isSubscribed = true
             } else if self.registerView.subscribeCheckbox.checkState == .unchecked {
                 user.isSubscribed = false
             }
-            UserService.register(user, onCompletion: { statusCode, message in
+            UserService.register(user, business_reg_num: self.registerView.businessREgNumberTextField.text!,company_name: self.registerView.companyNameTextField.text!,onCompletion: { statusCode, message in
                 SwiftSpinner.hide()
                 if statusCode == 201 {
                     Utility.showAlert(title: message!.capitalized, message: "Please check your email for the activation link and verify your account.", targetController: self)

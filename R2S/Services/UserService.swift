@@ -18,7 +18,7 @@ class UserService {
     //
     /////////////////////////////////////////////////////////////
 
-    static func register(_ user: User, onCompletion: @escaping (Int?, String?) -> Void) {
+    static func register(_ user: User,business_reg_num: String, company_name: String, onCompletion: @escaping (Int?, String?) -> Void) {
         var message = ""
         var params: [String: AnyObject] = [:]
         params["email"] = user.email as AnyObject?
@@ -26,7 +26,9 @@ class UserService {
         params["last_name"] = user.lastName as AnyObject?
         params["password"] = user.password as AnyObject?
         params["is_subscribed"] = user.isSubscribed as AnyObject?
-        
+        params["company_name"] = company_name as AnyObject?
+        params["business_reg_number"] = business_reg_num as AnyObject?
+        print("REG_PARAM", params)
         UserRemote.register(params, onCompletion: { jsonData, statusCode in
             if statusCode == 201 {
                 message = "Registration successful."

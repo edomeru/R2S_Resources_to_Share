@@ -190,6 +190,8 @@
                 <outlet property="companyHeaderUILabel" destination="YoR-fE-JXS" id="Y3K-Ld-uNS"/>
                 <outlet property="emailHeaderUILabel" destination="WJZ-QP-g27" id="6hv-yx-UTR"/>
                 <outlet property="phoneNumberHeaderUILabel" destination="LGJ-3O-hSj" id="hGv-Bb-4o1"/>
+                <outlet property="phoneNumberIconUIImageView" destination="wgR-57-hdu" id="qgk-md-ymL"/>
+                <outlet property="phoneNumberLabelUILabel" destination="msD-7z-IEq" id="xJq-ob-cyo"/>
                 <outlet property="profileHeaderNameUImageView" destination="Gwo-iq-Mzy" id="pAy-NP-qYi"/>
                 <outlet property="profileHeaderPIcUImageView" destination="j23-8h-xtA" id="0qq-9V-UmH"/>
                 <outlet property="settingsHeaderUIButton" destination="myR-vC-5tN" id="1F3-g2-Xhb"/>

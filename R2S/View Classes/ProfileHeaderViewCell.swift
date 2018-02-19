@@ -39,5 +39,8 @@ class ProfileHeaderViewCell: UITableViewCell {
     
     @IBOutlet weak var signOutHeaderUIButton: UIButton!
     
+    @IBOutlet weak var phoneNumberIconUIImageView: UIImageView!
+    
+    @IBOutlet weak var phoneNumberLabelUILabel: UILabel!
     
 }

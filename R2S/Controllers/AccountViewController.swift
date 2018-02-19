@@ -18,7 +18,7 @@ import Foundation
 import CZPicker
 
 class AccountViewController: BaseViewController {
-
+    
     var accountView = AccountView()
     var myResource : Results<Resource>!
     var screenSize: CGRect!
@@ -39,66 +39,66 @@ class AccountViewController: BaseViewController {
         
         loadResource()
         
-     //   let dropDown = DropDown()
+        //   let dropDown = DropDown()
         
         
-      //  let chooseArticleDropDown = DropDown()
+        //  let chooseArticleDropDown = DropDown()
         
-//        var dropDowns: [DropDown] = {
-//            return [
-//                self.chooseArticleDropDown,
-//                self.amountDropDown,
-//                self.chooseDropDown,
-//                self.centeredDropDown,
-//                self.rightBarDropDown
-//            ]
-//        }()
-//        
-//        chooseArticleDropDown.anchorView = self.accountView.settingsUIButton
-//        
-//        chooseArticleDropDown.dataSource = [
-//            "iPhone SE | Black | 64G",
-//            "Samsung S7",
-//            "Huawei P8 Lite Smartphone 4G",
-//            "Asus Zenfone Max 4G",
-//            "Apple Watwh | Sport Edition"
-//        ]
-//        
-//        // Action triggered on selection
-//        chooseArticleDropDown.selectionAction = { [unowned self] (index, item) in
-//            self.self.accountView.settingsUIButton.setTitle(item, for: .normal)
-//        }
+        //        var dropDowns: [DropDown] = {
+        //            return [
+        //                self.chooseArticleDropDown,
+        //                self.amountDropDown,
+        //                self.chooseDropDown,
+        //                self.centeredDropDown,
+        //                self.rightBarDropDown
+        //            ]
+        //        }()
+        //
+        //        chooseArticleDropDown.anchorView = self.accountView.settingsUIButton
+        //
+        //        chooseArticleDropDown.dataSource = [
+        //            "iPhone SE | Black | 64G",
+        //            "Samsung S7",
+        //            "Huawei P8 Lite Smartphone 4G",
+        //            "Asus Zenfone Max 4G",
+        //            "Apple Watwh | Sport Edition"
+        //        ]
+        //
+        //        // Action triggered on selection
+        //        chooseArticleDropDown.selectionAction = { [unowned self] (index, item) in
+        //            self.self.accountView.settingsUIButton.setTitle(item, for: .normal)
+        //        }
         
         
-     
-    
         
-//         var category1:[String : AnyObject] =  ["subcategory_id": 22 as AnyObject    ,"main_category_id": 10 as AnyObject]
-//        var category2:[String : AnyObject] =  ["subcategory_id": 22 as AnyObject    ,"main_category_id": 2 as AnyObject]
-//        print("PRINT_category1", category1)
-//        var categories:Array = [Dictionary<String, AnyObject>]()
-//        categories.append(category1)
-//        categories.append(category2)
-//        print("PRINT_categoriesARRAY", categories)
-//        
-//        var someObject:[String : AnyObject] = ["image_url" : "http://web.r2s.tirsolutions.com/static/uploads/1492509242048_2.png" as AnyObject, "name":"Special Force" as AnyObject, "price": 20 as AnyObject, "quantity":8 as AnyObject,"resource_rate":"DAY" as AnyObject,"categories": categories as AnyObject , "description": "Slightly used." as AnyObject,]
-//        
-//       print("PRINT_PARAM", someObject)
-
-//        ResourceService.createResource(id: 2 , params: someObject, onCompletion: { statusCode, message in
-//            
-//            print("\(statusCode!)" + " TEST NI EDS createResource"  )
-//            print("\(message!)" + " TEST NI EDS"  )
-//            
-//        })
         
-       
+        
+        //         var category1:[String : AnyObject] =  ["subcategory_id": 22 as AnyObject    ,"main_category_id": 10 as AnyObject]
+        //        var category2:[String : AnyObject] =  ["subcategory_id": 22 as AnyObject    ,"main_category_id": 2 as AnyObject]
+        //        print("PRINT_category1", category1)
+        //        var categories:Array = [Dictionary<String, AnyObject>]()
+        //        categories.append(category1)
+        //        categories.append(category2)
+        //        print("PRINT_categoriesARRAY", categories)
+        //
+        //        var someObject:[String : AnyObject] = ["image_url" : "http://web.r2s.tirsolutions.com/static/uploads/1492509242048_2.png" as AnyObject, "name":"Special Force" as AnyObject, "price": 20 as AnyObject, "quantity":8 as AnyObject,"resource_rate":"DAY" as AnyObject,"categories": categories as AnyObject , "description": "Slightly used." as AnyObject,]
+        //
+        //       print("PRINT_PARAM", someObject)
+        
+        //        ResourceService.createResource(id: 2 , params: someObject, onCompletion: { statusCode, message in
+        //
+        //            print("\(statusCode!)" + " TEST NI EDS createResource"  )
+        //            print("\(message!)" + " TEST NI EDS"  )
+        //
+        //        })
+        
+        
         
     }
     
     
     func signOut(gesture: UITapGestureRecognizer) {
-    
+        
         let dialogMessage = UIAlertController(title: "Confirm" , message: "are you sure you want to sign out?" , preferredStyle: .alert)
         
         // Create OK button with action handler
@@ -129,12 +129,12 @@ class AccountViewController: BaseViewController {
         
         // Present dialog message to user
         self.present(dialogMessage, animated: true, completion: nil)
-    
-    
+        
+        
     }
     
     func loadResource(){
-    
+        
         let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
         activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
         activityIndicator.activityIndicatorViewStyle = .gray
@@ -148,34 +148,34 @@ class AccountViewController: BaseViewController {
             if statusCode == 200 {
                 
                 self.myResource =  ResourceDao.getByAccountId(accountId: UserHelper.getId()!)
-           let  headerPic =  UserDao.getOneBy(id: UserHelper.getId()! )
-               print("headerPic?.imageUrl",headerPic?.imageUrl)
+                let  headerPic =  UserDao.getOneBy(id: UserHelper.getId()! )
+                print("headerPic?.imageUrl",headerPic?.imageUrl)
                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                     activityIndicator.stopAnimating()
                     
- 
+                    
                     self.Me =  UserDao.getOneBy(id: UserHelper.getId()! )
                     
                     self.initUILayout()
-                  
+                    
                     self.accountView.profileTableView.delegate = self
                     self.accountView.profileTableView.dataSource = self
                     self.accountView.profileTableView.register(UINib(nibName: Constants.xib.ProfileTableViewCell, bundle:nil), forCellReuseIdentifier: "ProfileTableViewCell")
                     //self.accountView.profileTableView.tableHeaderView = headerView
-
+                    
                     //}
                     
                     
                     self.accountView.profileTableView.reloadData()
                     //print("RELOAD", self.reloadView!)
-//                    if self.reloadView! == false {
-//                    self.accountView.frame = CGRect(x: 0, y: Constants.navbarHeight, width: self.view.frame.width, height: self.view.frame.height)
-//                    self.view = self.accountView
-//                    } else {
-//                        self.accountView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
-//                        self.view = self.accountView
-//                    }
-                
+                    //                    if self.reloadView! == false {
+                    //                    self.accountView.frame = CGRect(x: 0, y: Constants.navbarHeight, width: self.view.frame.width, height: self.view.frame.height)
+                    //                    self.view = self.accountView
+                    //                    } else {
+                    //                        self.accountView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
+                    //                        self.view = self.accountView
+                    //                    }
+                    
                     
                 })
             } else {
@@ -183,11 +183,11 @@ class AccountViewController: BaseViewController {
                 Utility.showAlert(title: "Error", message: message!, targetController: self)
             }
         }
-
-    
-    
-    
-    
+        
+        
+        
+        
+        
     }
     
     func reloadProfile(_ notification: Notification) {
@@ -196,20 +196,20 @@ class AccountViewController: BaseViewController {
         //reloadView = true
         loadResource()
     }
-   
-
+    
+    
     // MARK: - Private Functions
     private func initUILayout() {
         self.screenSize = UIScreen.main.bounds
         self.screenWidth = screenSize.width
         self.screenHeight = screenSize.height
-
+        
         self.accountView = self.loadFromNibNamed(nibNamed: Constants.xib.accountView) as! AccountView
         self.accountView.frame = CGRect(x: 0, y: 0 , width: self.view.frame.width, height: self.screenHeight)
         self.view = self.accountView
-       print("initUILayout")
-       settings = ["Edit Profile", "Change Password", "App Settings", "Raise Support Ticket"]
-       
+        print("initUILayout")
+        settings = ["Edit Profile", "Change Password", "App Settings", "Raise Support Ticket"]
+        
         
     }
     
@@ -226,7 +226,7 @@ class AccountViewController: BaseViewController {
         pickerDialog?.confirmButtonBackgroundColor = UIColor(hexString: Constants.color.primary)
         pickerDialog?.checkmarkColor = .blue
         pickerDialog?.show()
-    
+        
     }
     
     private func refreshData() {
@@ -240,25 +240,25 @@ class AccountViewController: BaseViewController {
         activityIndicator.hidesWhenStopped = true
         self.view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
-//        CategoryService.fetchCategories { (statusCode, message) in
-//            if statusCode == 200 {
-//                activityIndicator.stopAnimating()
-//                self.categories = CategoryService.getCategories()
-//                CategoryService.clearSelectedCategories(self.categories)
-//                self.initUILayout()
-//                self.homeView.homeTableView.reloadData()
-//            } else {
-//                self.categories = CategoryService.getCategories()
-//                CategoryService.clearSelectedCategories(self.categories)
-//                self.initUILayout()
-//                Utility.showAlert(title: "Error", message: message!, targetController: self)
-//            }
-//        }
-//        activityIndicator.stopAnimating()
-//        self.categories = CategoryService.getCategories()
-//        CategoryService.clearSelectedCategories(self.categories)
-//        self.initUILayout()
-//        self.homeView.homeTableView.reloadData()
+        //        CategoryService.fetchCategories { (statusCode, message) in
+        //            if statusCode == 200 {
+        //                activityIndicator.stopAnimating()
+        //                self.categories = CategoryService.getCategories()
+        //                CategoryService.clearSelectedCategories(self.categories)
+        //                self.initUILayout()
+        //                self.homeView.homeTableView.reloadData()
+        //            } else {
+        //                self.categories = CategoryService.getCategories()
+        //                CategoryService.clearSelectedCategories(self.categories)
+        //                self.initUILayout()
+        //                Utility.showAlert(title: "Error", message: message!, targetController: self)
+        //            }
+        //        }
+        //        activityIndicator.stopAnimating()
+        //        self.categories = CategoryService.getCategories()
+        //        CategoryService.clearSelectedCategories(self.categories)
+        //        self.initUILayout()
+        //        self.homeView.homeTableView.reloadData()
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -269,14 +269,14 @@ class AccountViewController: BaseViewController {
                 let destinationVC = segue.destination as! WelcomeViewController
             case Constants.segue.profileToChangePasswordSegue:
                 let destinationVC = segue.destination as! ChangePasswordViewController
-              
+                
             default:
                 print("default");
             }
         }
     }
     
-   
+    
 }
 
 // MARK: - UITableViewDelegate
@@ -307,63 +307,70 @@ extension AccountViewController: UITableViewDataSource{
         
         
         cell.dateLabel.text = myResources.createdDate
-        cell.priceLabel.text = "$" + "\(myResources.price)" 
+        cell.priceLabel.text = "$" + "\(myResources.price)"
         cell.infoLabel.text = myResources.descriptionText
         
-       
+        
         
         cell.productImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
         cell.productImageView.contentMode = .scaleAspectFit // OR .scaleAspectFill
         cell.productImageView.clipsToBounds = true
         cell.productImageView.kf.indicatorType = .activity
         cell.productImageView.kf.setImage(with:  URL(string: myResources.imageUrl))
-       
-//        for img in resources[indexPath.row].image {
-//            
-//            cell.productImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
-//            cell.productImageView.contentMode = .scaleAspectFit // OR .scaleAspectFill
-//            cell.productImageView.clipsToBounds = true
-//            cell.productImageView.kf.setImage(with:  URL(string: img.image))
-//            
-//        }
+        
+        //        for img in resources[indexPath.row].image {
+        //
+        //            cell.productImageView.autoresizingMask = [.flexibleWidth, .flexibleHeight, .flexibleBottomMargin, .flexibleRightMargin, .flexibleLeftMargin, .flexibleTopMargin]
+        //            cell.productImageView.contentMode = .scaleAspectFit // OR .scaleAspectFill
+        //            cell.productImageView.clipsToBounds = true
+        //            cell.productImageView.kf.setImage(with:  URL(string: img.image))
+        //
+        //        }
         
         //Moa.settings.cache.requestCachePolicy = .useProtocolCachePolicy
         return cell
- }
+    }
     
     
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-         let headerView = self.loadFromNibNamed(nibNamed: "ProfileHeaderView") as! ProfileHeaderViewCell
-      
+        let headerView = self.loadFromNibNamed(nibNamed: "ProfileHeaderView") as! ProfileHeaderViewCell
         
         
-                            headerView.profileHeaderNameUImageView.text = (Me?.firstName)! + " " + (Me?.lastName)!
-                                headerView.emailHeaderUILabel.text = (Me?.email)
-                                headerView.phoneNumberHeaderUILabel.text = (Me?.landlineNumber)
-                                headerView.companyHeaderUILabel.text = Me?.company?.name
         
-                                if Me?.imageUrl != "" {
+        headerView.profileHeaderNameUImageView.text = (Me?.firstName)! + " " + (Me?.lastName)!
+        headerView.emailHeaderUILabel.text = (Me?.email)
+        headerView.phoneNumberHeaderUILabel.text = (Me?.landlineNumber)
+        headerView.companyHeaderUILabel.text = Me?.company?.name
         
-                                    headerView.profileHeaderPIcUImageView.kf.indicatorType = .activity
-                                    let processor = RoundCornerImageProcessor(cornerRadius: 20)
-                                    headerView.profileHeaderPIcUImageView.kf.setImage(with:  URL(string: (Me?.imageUrl)!), placeholder: nil, options: [.processor(processor)])
-                                }
-        
-                                print("USERDAODFEF",Utility.stringToDate(dateString: Me?.createdDate))
-                                headerView.usernameHeaderUILabel.text = "Joined " + (Me?.createdDate)!
-                                headerView.settingsHeaderUIButton.addTarget(self, action: Selector("settingsTapped"), for: UIControlEvents.editingDidBegin)
+        if Me?.imageUrl != "" {
+            
+            headerView.profileHeaderPIcUImageView.kf.indicatorType = .activity
+            let processor = RoundCornerImageProcessor(cornerRadius: 20)
+            headerView.profileHeaderPIcUImageView.kf.setImage(with:  URL(string: (Me?.imageUrl)!), placeholder: nil, options: [.processor(processor)])
+        }
+        print("LANDLAND",Me?.landlineNumber)
+        if Me?.landlineNumber != nil {
+            headerView.phoneNumberLabelUILabel.isHidden = true
+            headerView.phoneNumberIconUIImageView.isHidden = true
+        }else {
+            headerView.phoneNumberLabelUILabel.isHidden = false
+            headerView.phoneNumberIconUIImageView.isHidden = false
+        }
+        print("USERDAODFEF",Utility.stringToDate(dateString: Me?.createdDate))
+        headerView.usernameHeaderUILabel.text = "Joined " + (Me?.createdDate)!
+        headerView.settingsHeaderUIButton.addTarget(self, action: Selector("settingsTapped"), for: UIControlEvents.editingDidBegin)
         
         
         
         let settingTapped = UITapGestureRecognizer(target: self, action: #selector(AccountViewController.settingsTapped(gesture:)))
         settingTapped.numberOfTapsRequired = 1
-         headerView.settingsHeaderUIButton.addGestureRecognizer(settingTapped)
+        headerView.settingsHeaderUIButton.addGestureRecognizer(settingTapped)
         
         let signOutTapped = UITapGestureRecognizer(target: self, action: #selector(AccountViewController.signOut(gesture:)))
         signOutTapped.numberOfTapsRequired = 1
         headerView.signOutHeaderUIButton.addGestureRecognizer(signOutTapped)
-    
+        
         return headerView
     }
     
@@ -382,9 +389,9 @@ extension AccountViewController: CZPickerViewDelegate, CZPickerViewDataSource {
     
     public func numberOfRows(in pickerView: CZPickerView!) -> Int {
         
-     
-            print("picker 1 count", pickerView.tag)
-            return settings.count
+        
+        print("picker 1 count", pickerView.tag)
+        return settings.count
         
         
         
@@ -399,10 +406,10 @@ extension AccountViewController: CZPickerViewDelegate, CZPickerViewDataSource {
     func numberOfRowsInPickerView(pickerView: CZPickerView!) -> Int {
         
         
-      
-            print("picker 1 count", pickerView.tag)
-            return settings.count
-       
+        
+        print("picker 1 count", pickerView.tag)
+        return settings.count
+        
         
         
     }
@@ -410,10 +417,10 @@ extension AccountViewController: CZPickerViewDelegate, CZPickerViewDataSource {
     func czpickerView(_ pickerView: CZPickerView!, titleForRow row: Int) -> String! {
         
         
-       
-            print("picker 1 count", pickerView.tag)
-            return settings[row]
-     
+        
+        print("picker 1 count", pickerView.tag)
+        return settings[row]
+        
         
         
     }
@@ -427,11 +434,11 @@ extension AccountViewController: CZPickerViewDelegate, CZPickerViewDataSource {
         
         
         
-            print("FRUITS didConfirmWithItemAtRow", settings[row])
-            
-            setingsSelected = settings[row]
-            print(settings[row])
-            
+        print("FRUITS didConfirmWithItemAtRow", settings[row])
+        
+        setingsSelected = settings[row]
+        print(settings[row])
+        
         setingsSelected = settings[row]
         
         
@@ -443,16 +450,16 @@ extension AccountViewController: CZPickerViewDelegate, CZPickerViewDataSource {
             
         }else if setingsSelected == "Change Password" {
             print("performSegueChangePassword")
-             self.performSegue(withIdentifier: Constants.segue.profileToChangePasswordSegue, sender: self)
+            self.performSegue(withIdentifier: Constants.segue.profileToChangePasswordSegue, sender: self)
             
             
         }else if setingsSelected == "App Settings" {
             
-             self.performSegue(withIdentifier: Constants.segue.profileToAppSettingsSegue, sender: self)
+            self.performSegue(withIdentifier: Constants.segue.profileToAppSettingsSegue, sender: self)
             
         }else if setingsSelected == "Raise Support Ticket" {
             
-             self.performSegue(withIdentifier: Constants.segue.profileToRaiseSupportTicketSegue, sender: self)
+            self.performSegue(withIdentifier: Constants.segue.profileToRaiseSupportTicketSegue, sender: self)
             
             
         }
@@ -464,6 +471,6 @@ extension AccountViewController: CZPickerViewDelegate, CZPickerViewDataSource {
     
     func czpickerViewDidClickCancelButton(_ pickerView: CZPickerView!) {
         
-}
-
+    }
+    
 }

@@ -22,9 +22,10 @@ class ResourceService {
         var message = ""
         ResourceRemote.get(onCompletion: { jsonData, statusCode in
             DispatchQueue.global(qos: .background).async{
+                if jsonData.count != 0 {
                 if statusCode == 200 {
                   print("JSONDATAGETSERVICE" + "\(jsonData)"  )
-                    
+                   
                     message = ""
                     for (_, resource):(String, JSON) in jsonData {
                         let newResource = Resource()
@@ -36,8 +37,11 @@ class ResourceService {
                         newResource.resourceRate = resource["resource_rate"].stringValue
                         newResource.name = resource["name"].stringValue
                         newResource.descriptionText = resource["description"].stringValue
+                        if let price = Int(resource["price"].stringValue) {
+                             newResource.price = price
+                        }
+                     
                        
-                        newResource.price = Int(resource["price"].stringValue)!
                         newResource.quantity = resource["quantity"].stringValue
                         newResource.status = resource["status"].stringValue
                         
@@ -151,11 +155,12 @@ class ResourceService {
                        
                         ResourceDao.add(newResource)
                          
-                    }
+                       }
+                    
                 } else {
                     message = jsonData["message"].stringValue
                 }
-                
+               }
             }
             
             DispatchQueue.main.async {

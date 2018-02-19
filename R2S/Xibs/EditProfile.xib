@@ -139,12 +139,9 @@
                                         <action selector="saveUIButton:" destination="iN0-l3-epB" eventType="touchUpInside" id="NwR-6l-rKh"/>
                                     </connections>
                                 </button>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="jong_suk" translatesAutoresizingMaskIntoConstraints="NO" id="iE8-uA-F5o">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic_person" translatesAutoresizingMaskIntoConstraints="NO" id="iE8-uA-F5o">
                                     <rect key="frame" x="123" y="20" width="128" height="128"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="128" id="UMW-ro-XBU"/>
-                                        <constraint firstAttribute="height" constant="128" id="zCU-BK-ipz"/>
-                                    </constraints>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 </imageView>
                                 <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BbC-TG-U8M">
                                     <rect key="frame" x="0.0" y="315" width="375" height="3"/>
@@ -155,8 +152,6 @@
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="850" id="LcB-DJ-u39"/>
-                                <constraint firstItem="iE8-uA-F5o" firstAttribute="centerX" secondItem="JoS-rs-b1G" secondAttribute="centerX" id="hBt-GG-pS4"/>
-                                <constraint firstItem="iE8-uA-F5o" firstAttribute="top" secondItem="JoS-rs-b1G" secondAttribute="top" constant="20" id="izO-Nj-gKR"/>
                             </constraints>
                         </view>
                     </subviews>
@@ -191,6 +186,6 @@
         </view>
     </objects>
     <resources>
-        <image name="jong_suk" width="800" height="533"/>
+        <image name="ic_person" width="24" height="24"/>
     </resources>
 </document>

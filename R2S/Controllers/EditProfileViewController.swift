@@ -83,9 +83,20 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         
         if user?.imageUrl != "" {
             self.editProfileView.profPicUIImageView.kf.indicatorType = .activity
-            let processor = RoundCornerImageProcessor(cornerRadius: 2500)
-            self.editProfileView.profPicUIImageView.kf.setImage(with:  URL(string: (user?.imageUrl)!), placeholder: nil, options: [.processor(processor)])
+            self.editProfileView.profPicUIImageView.contentMode = .scaleAspectFill
+            self.editProfileView.profPicUIImageView.layer.cornerRadius = 62.958897898
+            self.editProfileView.profPicUIImageView.clipsToBounds = true
+            self.editProfileView.profPicUIImageView.kf.setImage(with: URL(string:  (user?.imageUrl)!), placeholder: nil, options: [.transition(.fade(0.2))])
+            
+        }else {
+ 
+            self.editProfileView.profPicUIImageView.contentMode = .scaleAspectFill
+            self.editProfileView.profPicUIImageView.layer.cornerRadius = 62.958897898
+            self.editProfileView.profPicUIImageView.clipsToBounds = true
+            self.editProfileView.profPicUIImageView.kf.setImage(with: URL(string: "http://theblackpanthers.com/s/photogallery/img/no-image-available.jpg"), options: [.transition(.fade(0.2))])
+            
         }
+        
         imageAction = ["Camera", "Photos", "Cancel"]
         
         

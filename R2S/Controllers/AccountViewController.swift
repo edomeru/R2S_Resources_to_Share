@@ -208,6 +208,9 @@ class AccountViewController: BaseViewController {
         self.accountView.frame = CGRect(x: 0, y: 0 , width: self.view.frame.width, height: self.screenHeight)
         self.view = self.accountView
         print("initUILayout")
+        
+        
+        
         settings = ["Edit Profile", "Change Password", "App Settings", "Raise Support Ticket"]
         
         
@@ -343,6 +346,12 @@ extension AccountViewController: UITableViewDataSource{
         headerView.phoneNumberHeaderUILabel.text = (Me?.landlineNumber)
         headerView.companyHeaderUILabel.text = Me?.company?.name
         
+        if UserHelper.getRole()! == "PIONEER"{
+            headerView.pioneerLabelUILabel.isHidden = false
+        }else{
+            headerView.pioneerLabelUILabel.isHidden = true
+        }
+        
         if Me?.imageUrl != "" {
             
             headerView.profileHeaderPIcUImageView.kf.indicatorType = .activity
@@ -357,8 +366,19 @@ extension AccountViewController: UITableViewDataSource{
             headerView.phoneNumberLabelUILabel.isHidden = false
             headerView.phoneNumberIconUIImageView.isHidden = false
         }
-        print("USERDAODFEF",Utility.stringToDate(dateString: Me?.createdDate))
-        headerView.usernameHeaderUILabel.text = "Joined " + (Me?.createdDate)!
+        
+        
+        let dateFormatter1 = DateFormatter()
+        dateFormatter1.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ" //Your date format
+        dateFormatter1.timeZone = TimeZone(abbreviation: "GMT+4:00") //Current time zone
+        let date1 = dateFormatter1.date(from: (Me?.createdDate)!) //according to date format your date string
+        print("date",date1)
+        
+        dateFormatter1.dateFormat = "d MMM yyyy"
+        let singaporeFormat1 =  dateFormatter1.string(from: date1!)
+        
+        print("USERDAODFEF", singaporeFormat1)
+        headerView.usernameHeaderUILabel.text = "Joined " + singaporeFormat1
         headerView.settingsHeaderUIButton.addTarget(self, action: Selector("settingsTapped"), for: UIControlEvents.editingDidBegin)
         
         

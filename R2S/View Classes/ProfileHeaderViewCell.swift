@@ -18,6 +18,7 @@ class ProfileHeaderViewCell: UITableViewCell {
         
     }
     @IBOutlet weak var profileHeaderPIcUImageView: UIImageView!
+    @IBOutlet weak var pioneerLabelUILabel: UILabel!
 
     @IBOutlet weak var usernameHeaderUILabel: UILabel!
     override func setSelected(_ selected: Bool, animated: Bool) {

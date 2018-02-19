@@ -53,6 +53,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         
         activityIndicator.startAnimating()
         user = UserDao.getOneBy(id: UserHelper.getId()!)
+    
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
             activityIndicator.stopAnimating()
         
@@ -80,6 +81,12 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         self.editProfileView.landlineUITextField.text = user?.landlineNumber
         self.editProfileView.designationUITextField.text = user?.designation
         self.editProfileView.bioUITextView.text = user?.descriptionText
+        print("UserHelper.getRole()",UserHelper.getRole()!)
+        if UserHelper.getRole()! == "PIONEER"{
+        self.editProfileView.companyUITextField.isUserInteractionEnabled = true
+        }else{
+        self.editProfileView.companyUITextField.isUserInteractionEnabled = false
+        }
         
         if user?.imageUrl != "" {
             self.editProfileView.profPicUIImageView.kf.indicatorType = .activity

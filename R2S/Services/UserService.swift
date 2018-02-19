@@ -17,7 +17,7 @@ class UserService {
     //      Network / API Related Services
     //
     /////////////////////////////////////////////////////////////
-
+    
     static func register(_ user: User,business_reg_num: String, company_name: String, onCompletion: @escaping (Int?, String?) -> Void) {
         var message = ""
         var params: [String: AnyObject] = [:]
@@ -39,9 +39,9 @@ class UserService {
         })
     }
     
-   
     
-
+    
+    
     static func login(email: String, password: String, onCompletion: @escaping (Int?, String?) -> Void) {
         var message = ""
         var params: [String: AnyObject] = [:]
@@ -49,6 +49,7 @@ class UserService {
         params["password"] = password as AnyObject?
         UserRemote.login(params, onCompletion: { jsonData, statusCode in
             if statusCode == 200 {
+                let defaults = UserDefaults.standard
                 print("jsonDataUSER",jsonData)
                 message = "Login successful."
                 let user = User()
@@ -73,20 +74,24 @@ class UserService {
                 let cmpy = jsonData["company"]
                 let company = Company()
                 company.name = cmpy["name"].stringValue
-               
-                
-                
                 
                 user.company = company
                 
                 
+                for (_, role):(String, JSON) in jsonData["roles"] {
+                    print("ROLES",role)
+                    if role == "PIONEER" {
+                        user.role = "PIONEER"
+                    }else {
+                        user.role = "USER"
+                    }
+                }
                 
-                
-                
+                 print("user.roleROLES",user.role)
                 
                 KeychainWrapper.standard.set(password, forKey: "password")
                 
-                let defaults = UserDefaults.standard
+                
                 defaults.setValue(user.accountId, forKey: "accountId")
                 defaults.setValue(user.id, forKey: "id")
                 defaults.setValue(user.firstName, forKey: "firstName")
@@ -100,6 +105,7 @@ class UserService {
                 defaults.setValue(user.imageUrl, forKey: "imageUrl")
                 defaults.setValue(user.createdDate, forKey: "createdDate")
                 defaults.setValue(user.updatedDate, forKey: "updatedDate")
+                defaults.setValue(user.role, forKey: "role")
                 defaults.setValue(true, forKey: "isLoggedIn")
                 UserDao.add(user)
             } else {
@@ -112,7 +118,7 @@ class UserService {
     
     static func createTransaction(_ params: [String: Any], onCompletion: @escaping (Int?, String?) -> Void) {
         var message = ""
-      
+        
         
         TransactionRemote.create(params: params, onCompletion: { jsonData, statusCode in
             if statusCode == 201 {

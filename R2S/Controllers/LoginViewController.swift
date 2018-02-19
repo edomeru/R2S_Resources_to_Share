@@ -41,8 +41,8 @@ class LoginViewController: BaseViewController {
         self.loginView.delegate = self
         self.loginView.emailTextField.delegate = self
         self.loginView.passwordTextField.delegate = self
-        self.loginView.emailTextField.text = "clarissa@tirsolutions.com"
-        self.loginView.passwordTextField.text = "Clang.23"
+        self.loginView.emailTextField.text = "edmer_alarte@yahoo.com"
+        self.loginView.passwordTextField.text = "password"
     }
     
     // MARK: - Private Functions

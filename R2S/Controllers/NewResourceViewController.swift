@@ -240,8 +240,8 @@ class NewResourceViewController: BaseViewController, UIImagePickerControllerDele
         action = ["Camera", "Photos", "Cancel"]
         self.newResourceView.rateUITextField.addTarget(self, action: #selector(NewResourceViewController.rateTapped), for: UIControlEvents.editingDidBegin)
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        self.newResourceView.isUserInteractionEnabled = true
-        self.newResourceView.addGestureRecognizer(tapGestureRecognizer)
+        self.newResourceView.addPhotoUIImageView.isUserInteractionEnabled = true
+        self.newResourceView.addPhotoUIImageView.addGestureRecognizer(tapGestureRecognizer)
         
         self.newResourceView.subCategoryUItextField.addTarget(self, action: Selector("subCatSearchTextField"), for: UIControlEvents.editingDidBegin)
         

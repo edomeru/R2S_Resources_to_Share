@@ -29,6 +29,7 @@ class AccountViewController: BaseViewController {
     var settings = [String]()
     var setingsSelected: String?
     var Me: User?
+    var selectedResourceId: Int!
     //var reloadView:Bool?
     
     override func viewDidLoad() {
@@ -155,7 +156,7 @@ class AccountViewController: BaseViewController {
                     
                     
                     self.Me =  UserDao.getOneBy(id: UserHelper.getId()! )
-                    
+                    print("NEW_DAO",self.Me?.company?.name)
                     self.initUILayout()
                     
                     self.accountView.profileTableView.delegate = self
@@ -272,6 +273,9 @@ class AccountViewController: BaseViewController {
                 let destinationVC = segue.destination as! WelcomeViewController
             case Constants.segue.profileToChangePasswordSegue:
                 let destinationVC = segue.destination as! ChangePasswordViewController
+             case Constants.segue.profileToChangePasswordSegue:
+                let destinationVC = segue.destination as! ResourceViewController
+                destinationVC.selectedResourceId = selectedResourceId
                 
             default:
                 print("default");
@@ -343,7 +347,7 @@ extension AccountViewController: UITableViewDataSource{
         
         headerView.profileHeaderNameUImageView.text = (Me?.firstName)! + " " + (Me?.lastName)!
         headerView.emailHeaderUILabel.text = (Me?.email)
-        headerView.phoneNumberHeaderUILabel.text = (Me?.landlineNumber)
+        
         headerView.companyHeaderUILabel.text = Me?.company?.name
         
         if UserHelper.getRole()! == "PIONEER"{
@@ -358,13 +362,18 @@ extension AccountViewController: UITableViewDataSource{
             let processor = RoundCornerImageProcessor(cornerRadius: 20)
             headerView.profileHeaderPIcUImageView.kf.setImage(with:  URL(string: (Me?.imageUrl)!), placeholder: nil, options: [.processor(processor)])
         }
-        print("LANDLAND",Me?.landlineNumber)
-        if Me?.landlineNumber != nil {
-            headerView.phoneNumberLabelUILabel.isHidden = true
-            headerView.phoneNumberIconUIImageView.isHidden = true
-        }else {
+        
+      if let landline =  Me?.landlineNumber {
+        print("LANDLAND",landline)
+        if landline != "" {
+            headerView.phoneNumberHeaderUILabel.text = (Me?.landlineNumber)
             headerView.phoneNumberLabelUILabel.isHidden = false
             headerView.phoneNumberIconUIImageView.isHidden = false
+        }else {
+            headerView.phoneNumberHeaderUILabel.isHidden = true
+            headerView.phoneNumberLabelUILabel.isHidden = true
+            headerView.phoneNumberIconUIImageView.isHidden = true
+        }
         }
         
         
@@ -398,6 +407,22 @@ extension AccountViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 338
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let resource = myResource[indexPath.item]
+        if let cell = tableView.cellForRow(at: indexPath) {
+            
+            //         let favIcon = cell.viewWithTag(1000) as! UIImageView
+            //            if  favoriteOrNot {
+            //
+            //
+            //            }
+            
+            selectedResourceId  = resource.id
+            // print (resource.id)
+            performSegue(withIdentifier: "profileToResourceDetailSegue", sender: self)
+        }
     }
     
 }
@@ -446,13 +471,7 @@ extension AccountViewController: CZPickerViewDelegate, CZPickerViewDataSource {
     }
     
     func czpickerView(_ pickerView: CZPickerView!, didConfirmWithItemAtRow row: Int){
-        
-        
-        
-        
-        
-        
-        
+ 
         
         print("FRUITS didConfirmWithItemAtRow", settings[row])
         

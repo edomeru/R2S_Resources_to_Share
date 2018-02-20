@@ -48,6 +48,7 @@ class ChatViewController: BaseViewController, UITextFieldDelegate {
         activityIndicator.hidesWhenStopped = true
         self.view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
+        print("CHAT_ID",selectedChatId!)
         ConversationService.getMessages(messageId: selectedChatId! , onCompletion: { statusCode, message in
             
             

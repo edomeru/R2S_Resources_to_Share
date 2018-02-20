@@ -11,13 +11,13 @@ import RealmSwift
 import SwiftSpinner
 import Kingfisher
 import MIBadgeButton_Swift
-import Floaty
+//import Floaty
 
 class HomeViewController: BaseViewController {
     var roundButton = UIButton()
     var homeView = HomeView()
     var featuredPageControl = UIPageControl()
-    var floaty = Floaty()
+    //var floaty = Floaty()
     var screenSize: CGRect!
     var screenWidth: CGFloat!
     var screenHeight: CGFloat!
@@ -55,13 +55,13 @@ class HomeViewController: BaseViewController {
         self.homeView.homeTableView.delegate = self
         self.homeView.homeTableView.dataSource = self
         
-        floaty.fabDelegate = self
-        floaty.addItem(title: "Hello, World!")
-        floaty.buttonColor = UIColor(hexString: Constants.color.primaryDark)!
-        floaty.buttonImage = UIImage(named: "ic_event_available_white")
+//        floaty.fabDelegate = self
+//        floaty.addItem(title: "Hello, World!")
+//        floaty.buttonColor = UIColor(hexString: Constants.color.primaryDark)!
+//        floaty.buttonImage = UIImage(named: "ic_event_available_white")
         
         
-        self.homeView.addSubview(floaty)
+        //self.homeView.addSubview(floaty)
         
 //        self.roundButton = UIButton(type: .custom)
 //        self.roundButton.setTitleColor(UIColor.orange, for: .normal)
@@ -260,29 +260,29 @@ extension HomeViewController: UICollectionViewDataSource {
     }
 }
 
-extension HomeViewController: FloatyDelegate {
-    
-    
-    func floatyWillOpen(_ floaty: Floaty) {
-        print("Floaty Will Open")
-        
-        performSegue(withIdentifier: Constants.segue.HomeViewToSearchViewSegue, sender: self)
-    }
-    
-    func floatyDidOpen(_ floaty: Floaty) {
-        print("Floaty Did Open")
-        self.floaty.close()
-        
-    }
-    
-    func floatyWillClose(_ floaty: Floaty) {
-        print("Floaty Will Close")
-    }
-    
-    func floatyDidClose(_ floaty: Floaty) {
-        print("Floaty Did Close")
-    }
-    
-    
-    
-}
+//extension HomeViewController: FloatyDelegate {
+//    
+//    
+//    func floatyWillOpen(_ floaty: Floaty) {
+//        print("Floaty Will Open")
+//        
+//        performSegue(withIdentifier: Constants.segue.HomeViewToSearchViewSegue, sender: self)
+//    }
+//    
+//    func floatyDidOpen(_ floaty: Floaty) {
+//        print("Floaty Did Open")
+//        self.floaty.close()
+//        
+//    }
+//    
+//    func floatyWillClose(_ floaty: Floaty) {
+//        print("Floaty Will Close")
+//    }
+//    
+//    func floatyDidClose(_ floaty: Floaty) {
+//        print("Floaty Did Close")
+//    }
+//    
+//    
+//    
+//}

@@ -39,6 +39,10 @@ class ResourceViewController: BaseViewController {
                 let destinationVC = segue.destination as! ScheduleBookingViewController
                 destinationVC.selectedResourceId = selectedResourceId
                 
+            case "resourceViewToChatSegue" :
+                let destinationVC = segue.destination as! ChatViewController
+                destinationVC.selectedChatId = selectedResourceId
+                
             default:
                 print("default");
             }
@@ -66,23 +70,7 @@ class ResourceViewController: BaseViewController {
     
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
     {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .alert)
-        let textView = UITextView()
-        textView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        
-        let controller = UIViewController()
-        
-        textView.frame = controller.view.frame
-        controller.view.addSubview(textView)
-        
-        alert.setValue(controller, forKey: "contentViewController")
-        
-        let height: NSLayoutConstraint = NSLayoutConstraint(item: alert.view, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: view.frame.height * 0.8)
-        alert.view.addConstraint(height)
-        
-        present(alert, animated: true, completion: nil)
-        
-        // Your action
+       performSegue(withIdentifier: "resourceViewToChatSegue", sender: self)
     }
     
     private func fillUiWithData(){
@@ -134,7 +122,7 @@ class ResourceViewController: BaseViewController {
                 self.resourceView.phoneLabel.text  = resourceDetail.account?.mobile_number
                     
                 }
-                
+             
                 self.resourceView.emailLabel.text  = resourceDetail.account?.email
                 self.resourceView.titleSubLabel.text  = resourceDetail.name
             }

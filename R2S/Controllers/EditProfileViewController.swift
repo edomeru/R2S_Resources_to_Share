@@ -16,6 +16,7 @@ import Photos
 import SwiftyJSON
 import SwiftDate
 import DatePickerDialog
+import SwiftValidator
 
 class EditProfileViewController: BaseViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -31,6 +32,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
     var newDate:String?
     var  startDate: Date?
     var startDateString: String?
+     let validator = Validator()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -58,7 +60,7 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
             activityIndicator.stopAnimating()
         
             self.initUILayout()
-            
+            self.setupValidator()
         })
     
     }
@@ -72,6 +74,15 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         
         self.view.addSubview(self.editProfileView)
         self.editProfileView.delegate = self
+        
+        self.editProfileView.firstNameUITextField.delegate = self
+        self.editProfileView.lastNameUITextField.delegate = self
+        self.editProfileView.companyUITextField.delegate = self
+        self.editProfileView.birthdayUITextField.delegate = self
+        self.editProfileView.mobileUITextField.delegate = self
+        self.editProfileView.landlineUITextField.delegate = self
+        self.editProfileView.designationUITextField.delegate = self
+       
         
         self.editProfileView.firstNameUITextField.text = user?.firstName
         self.editProfileView.lastNameUITextField.text = user?.lastName
@@ -112,6 +123,15 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         editProfileView.profPicUIImageView.addGestureRecognizer(tapGestureRecognizer)
         
         self.editProfileView.birthdayUITextField.addTarget(self, action: Selector("datePickerBdate"), for: UIControlEvents.editingDidBegin)
+        
+    }
+    
+    private func setupValidator() {
+        self.validator.registerField(self.editProfileView.firstNameUITextField, rules: [RequiredRule()])
+        self.validator.registerField(self.editProfileView.lastNameUITextField, rules: [RequiredRule()])
+        self.validator.registerField(self.editProfileView.designationUITextField, rules: [RequiredRule()])
+        self.validator.registerField(self.editProfileView.birthdayUITextField, rules: [RequiredRule()])
+        self.validator.registerField(self.editProfileView.companyUITextField, rules: [RequiredRule()])
         
     }
     
@@ -441,10 +461,10 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
         updatedUser.updatedDate = (user?.updatedDate)!
         updatedUser.deletedDate = (user?.deletedDate)!
         
-        //Account
+        //Accountupdated
         let cmpy = user?.company
         let company = Company()
-        company.name = (cmpy?.name)!
+        company.name = self.editProfileView.companyUITextField.text!
         updatedUser.company = company
         print("DAOUSER",updatedUser)
         UserDao.add(updatedUser)
@@ -500,61 +520,10 @@ class EditProfileViewController: BaseViewController, UIImagePickerControllerDele
 // MARK: - LoginViewDelegate
 extension EditProfileViewController: EditProfileViewDelegate {
     func submitButtonPressed(sender: AnyObject) {
-        //        self.loginView.endEditing(true)
-        //        self.validator.validate(self)
-        
-        print("IMG_URL", self.img_url)
-        
-        if self.img_url != nil {
-            params["image_url"] = self.img_url
-        }
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-mm-dd" //Your date format
-        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+4:00") //Current time zone
-        let date = dateFormatter.date(from: self.editProfileView.birthdayUITextField.text!) //according to date format your date string
-        print("date",date)
-        
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
-        newDate =  dateFormatter.string(from: date!)
-        print("newDate",newDate)
-        print("self.editProfileView.birthdayUITextField.text!",self.editProfileView.birthdayUITextField.text!)
-        
-        //        let rome = Region(tz: TimeZoneName.asiaSingapore, cal: CalendarName.current, loc: )
-        //
-        //        let date1 = DateInRegion(string: self.editProfileView.birthdayUITextField.text!, format: .iso8601Auto, fromRegion: rome)!
-        //
-        //            print("date1",date1)
-        
-        params["first_name"] = self.editProfileView.firstNameUITextField.text
-        params["last_name"] = self.editProfileView.lastNameUITextField.text
-        params["email"] = user?.email
-        params["mobile_number"] = self.editProfileView.mobileUITextField.text
-        params["landline_number"] =  self.editProfileView.landlineUITextField.text
-        params["birth_date"] = newDate
-        
-        print("PARAMS",params)
-        SwiftSpinner.show("Please wait...")
-        AccountService.update(params: params  , onCompletion: { statusCode, message in
-            print("\(statusCode!)" + " EditProfileViewController"  )
-            print("\(message!)" + " EditProfileViewController"  )
-            SwiftSpinner.hide()
-            if statusCode == 202 {
-                
-                let updatedDao = self.saveToLocal()
-                
-                NotificationCenter.default.post(name: Notification.Name(rawValue:"pass"), object: updatedDao , userInfo: nil)
-                self.navigationController?.popViewController(animated: true)
-                Utility.showSnackBAr(messege: message!, bgcolor: UIColor(hexString: Constants.color.greenSnackBar)!)
-                
-            } else  {
-                Utility.showAlert(title: "Error " + "\(statusCode!)" , message: message!, targetController: self)
-                
-            }
-            
-        })
-        
+                self.editProfileView.endEditing(true)
+                self.validator.validate(self)
     }
+    
 }
 
 extension EditProfileViewController: CZPickerViewDelegate, CZPickerViewDataSource {
@@ -625,5 +594,124 @@ extension EditProfileViewController: CZPickerViewDelegate, CZPickerViewDataSourc
     
     func czpickerViewDidClickCancelButton(_ pickerView: CZPickerView!) {
         
+    }
+}
+
+//MARK - ValidationDelegate
+extension EditProfileViewController: ValidationDelegate {
+    func validationSuccessful() {
+        if Reachability.isConnectedToNetwork() {
+            SwiftSpinner.show("Please wait...")
+            
+            
+            /////START
+            print("IMG_URL", self.img_url)
+            
+            if self.img_url != nil {
+                params["image_url"] = self.img_url
+            }
+            
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-mm-dd" //Your date format
+            dateFormatter.timeZone = TimeZone(abbreviation: "GMT+4:00") //Current time zone
+            let date = dateFormatter.date(from: self.editProfileView.birthdayUITextField.text!) //according to date format your date string
+            print("date",date)
+            
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ"
+            newDate =  dateFormatter.string(from: date!)
+            print("newDate",newDate)
+            print("self.editProfileView.birthdayUITextField.text!",self.editProfileView.birthdayUITextField.text!)
+            
+            //        let rome = Region(tz: TimeZoneName.asiaSingapore, cal: CalendarName.current, loc: )
+            //
+            //        let date1 = DateInRegion(string: self.editProfileView.birthdayUITextField.text!, format: .iso8601Auto, fromRegion: rome)!
+            //
+            //            print("date1",date1)
+            
+            params["first_name"] = self.editProfileView.firstNameUITextField.text
+            params["last_name"] = self.editProfileView.lastNameUITextField.text
+            params["email"] = user?.email
+            params["mobile_number"] = self.editProfileView.mobileUITextField.text
+            params["landline_number"] =  self.editProfileView.landlineUITextField.text
+            params["birth_date"] = newDate
+            params["designation"] = self.editProfileView.designationUITextField.text
+            params["name"] = self.editProfileView.companyUITextField.text
+            
+            print("PARAMS",params)
+            SwiftSpinner.show("Please wait...")
+            AccountService.update(params: params  , onCompletion: { statusCode, message in
+                print("\(statusCode!)" + " EditProfileViewController"  )
+                print("\(message!)" + " EditProfileViewController"  )
+                SwiftSpinner.hide()
+                if statusCode == 202 {
+                    
+                    let updatedDao = self.saveToLocal()
+                    
+                    NotificationCenter.default.post(name: Notification.Name(rawValue:"pass"), object: updatedDao , userInfo: nil)
+                    self.navigationController?.popViewController(animated: true)
+                    Utility.showSnackBAr(messege: message!, bgcolor: UIColor(hexString: Constants.color.greenSnackBar)!)
+                    
+                } else  {
+                    Utility.showAlert(title: "Error " + "\(statusCode!)" , message: message!, targetController: self)
+                    
+                }
+                
+            })
+
+            ////END
+            
+            
+        } else {
+            Utility.showAlert(title: "", message: "No internet connection.", targetController: self)
+        }
+        
+        
+        
+        
+    }
+    
+    func validationFailed(_ errors: [(Validatable, ValidationError)]) {
+        for (field, _) in errors {
+            if let field =  field as? UITextField {
+                switch field {
+                    
+                case self.editProfileView.firstNameUITextField:
+                    self.editProfileView.firstNameBorderView.backgroundColor = UIColor.red
+                case self.editProfileView.lastNameUITextField:
+                    self.editProfileView.lastNameBorderView.backgroundColor = UIColor.red
+                case self.editProfileView.companyUITextField:
+                    self.editProfileView.companyNameBorderView.backgroundColor = UIColor.red
+                case self.editProfileView.birthdayUITextField:
+                    self.editProfileView.birthDayBorderView.backgroundColor = UIColor.red
+
+                case self.editProfileView.designationUITextField:
+                    self.editProfileView.designationBorderView.backgroundColor =  UIColor.red
+                
+                default:
+                    print("default")
+                }
+            }
+        }
+    }
+}
+
+// MARK: - UITextFieldDelegate
+extension EditProfileViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        switch textField {
+        case self.editProfileView.firstNameUITextField:
+            self.editProfileView.firstNameBorderView.backgroundColor = UIColor(hex: Constants.color.white)
+        case self.editProfileView.lastNameUITextField:
+            self.editProfileView.lastNameBorderView.backgroundColor = UIColor(hex: Constants.color.white)
+        case self.editProfileView.birthdayUITextField:
+            self.editProfileView.birthDayBorderView.backgroundColor = UIColor(hex: Constants.color.white)
+        case self.editProfileView.designationUITextField:
+            self.editProfileView.designationBorderView.backgroundColor = UIColor(hex: Constants.color.white)
+        case self.editProfileView.companyUITextField:
+            self.editProfileView.companyNameBorderView.backgroundColor = UIColor(hex: Constants.color.white)
+
+        default:
+            print("default")
+        }
     }
 }

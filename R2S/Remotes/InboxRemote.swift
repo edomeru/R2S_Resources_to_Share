@@ -11,6 +11,8 @@ import SwiftyJSON
 
 class InboxRemote {
     static func fetchAll(id: Int , onCompletion: @escaping (JSON, Int?) -> Void) {
+        var urlString = Constants.api.user.inbox.replacingOccurrences(of: "{id}", with: String(describing: UserHelper.getId()!))
+        print("LINK",urlString)
         ApiRequestManager.sharedInstance.doGetRequest(urlString: Constants.api.user.inbox.replacingOccurrences(of: "{id}", with: String(describing: id )), headers: Utility.getHeadersWithAuth(), onCompletion: { jsonData, statusCode in
             onCompletion(jsonData, statusCode)
         })

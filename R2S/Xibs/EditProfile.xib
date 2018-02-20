@@ -148,8 +148,33 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
                                 </view>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KaD-rR-lEy">
+                                    <rect key="frame" x="8" y="405" width="359" height="2"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </view>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="brD-Om-yJx">
+                                    <rect key="frame" x="8" y="453" width="359" height="2"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </view>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zbc-oy-T0T">
+                                    <rect key="frame" x="8" y="504" width="359" height="2"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </view>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9lv-uy-8ff">
+                                    <rect key="frame" x="8" y="552" width="359" height="2"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </view>
+                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uda-31-I1N">
+                                    <rect key="frame" x="8" y="598" width="359" height="2"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </view>
                             </subviews>
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="850" id="LcB-DJ-u39"/>
                             </constraints>
@@ -173,11 +198,16 @@
             </constraints>
             <connections>
                 <outlet property="bioUITextView" destination="Gqw-ZT-eJk" id="Qqh-Uw-1s1"/>
+                <outlet property="birthDayBorderView" destination="uda-31-I1N" id="8Y5-P5-jSj"/>
                 <outlet property="birthdayUITextField" destination="sjs-Hr-Fmr" id="9bH-5y-dwL"/>
+                <outlet property="companyNameBorderView" destination="zbc-oy-T0T" id="NPY-m1-X4Q"/>
                 <outlet property="companyUITextField" destination="env-HP-X99" id="Bb3-qp-2jH"/>
+                <outlet property="designationBorderView" destination="9lv-uy-8ff" id="2zW-hR-ESA"/>
                 <outlet property="designationUITextField" destination="1IG-RE-kW0" id="Ezd-2Z-Azb"/>
+                <outlet property="firstNameBorderView" destination="KaD-rR-lEy" id="ctw-cs-Fde"/>
                 <outlet property="firstNameUITextField" destination="9J1-4r-9yr" id="09b-WO-NF5"/>
                 <outlet property="landlineUITextField" destination="zxR-my-xts" id="dHV-V1-NFK"/>
+                <outlet property="lastNameBorderView" destination="brD-Om-yJx" id="Aw8-qq-iGe"/>
                 <outlet property="lastNameUITextField" destination="3yJ-c9-nYs" id="uo4-ch-PYi"/>
                 <outlet property="mobileUITextField" destination="Hbg-jq-0Cg" id="ISP-jk-0c0"/>
                 <outlet property="profPicUIImageView" destination="iE8-uA-F5o" id="yhR-wt-3ch"/>

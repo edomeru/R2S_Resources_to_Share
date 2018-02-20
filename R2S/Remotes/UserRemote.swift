@@ -17,6 +17,8 @@ class UserRemote {
     }
     
     static func login(_ params: [String: AnyObject], onCompletion: @escaping (JSON, Int?) -> Void) {
+        print("LOGIN_SERVICE_URL",Constants.api.user.login)
+        print("Login_PARAM",params)
         ApiRequestManager.sharedInstance.doPostRequestNoAuth(urlString: Constants.api.user.login, params: params, headers: Utility.getHeaders(), onCompletion: { jsonData, statusCode in
             onCompletion(jsonData, statusCode)
         })

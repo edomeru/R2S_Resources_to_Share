@@ -223,6 +223,7 @@ class NewResourceViewController: BaseViewController, UIImagePickerControllerDele
         
         
         self.newResourceView = self.loadFromNibNamed(nibNamed: Constants.xib.NewResourceView) as! NewResourceView
+        self.newResourceView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         self.view = self.newResourceView
         self.newResourceView.delegate = self
         

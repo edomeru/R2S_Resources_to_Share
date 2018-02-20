@@ -79,6 +79,8 @@ class ChatViewController: BaseViewController, UITextFieldDelegate {
         self.chatView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         self.view = self.chatView
        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
         
         self.chatView.chatUICollectionView.register(UINib(nibName: Constants.xib.chatCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: "chatCollectionViewCell")
         
@@ -98,6 +100,11 @@ class ChatViewController: BaseViewController, UITextFieldDelegate {
         
         print("CONVERSATIONCOUNT",self.conversation)
         
+    }
+    
+    func dismissKeyboard() {
+      
+        view.endEditing(true)
     }
     
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)

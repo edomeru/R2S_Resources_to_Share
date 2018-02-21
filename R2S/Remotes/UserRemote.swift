@@ -22,6 +22,15 @@ class UserRemote {
         })
     }
     
+    static func forgot(_ params: [String: AnyObject], onCompletion: @escaping (JSON, Int?) -> Void) {
+        print(Constants.api.user.forgotPassword)
+        print(params)
+        
+        ApiRequestManager.sharedInstance.doPostRequestNoAuth(urlString: Constants.api.user.forgotPassword, params: params, headers: Utility.getHeaders(), onCompletion: { jsonData, statusCode in
+            onCompletion(jsonData, statusCode)
+        })
+    }
+    
     static func resources(id: String, onCompletion: @escaping (JSON, Int?) -> Void) {
         ApiRequestManager.sharedInstance.doGetRequest(urlString: Constants.api.user.resources.replacingOccurrences(of: "{id}", with: String(describing: id )), headers: Utility.getHeadersWithAuth(), onCompletion: { jsonData, statusCode in
             onCompletion(jsonData, statusCode)

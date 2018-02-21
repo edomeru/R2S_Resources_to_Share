@@ -115,6 +115,24 @@ class UserService {
         })
     }
     
+    static func forgot(email: String, onCompletion: @escaping (Int?, String?) -> Void) {
+        var message = ""
+        var params: [String: AnyObject] = [:]
+        params["email"] = email as AnyObject?
+        
+        UserRemote.forgot(params, onCompletion: { jsonData, statusCode in
+            if statusCode == 200 {
+                print("jsonDataUSER",jsonData)
+                message = "We have emailed your password reset link. Please check your email and follow the instructions."
+            } else {
+                print("forgotPassword failed")
+                message = jsonData["message"].stringValue
+            }
+            onCompletion(statusCode, message)
+        })
+    }
+
+    
     
     static func createTransaction(_ params: [String: Any], onCompletion: @escaping (Int?, String?) -> Void) {
         var message = ""

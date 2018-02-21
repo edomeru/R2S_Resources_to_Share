@@ -28,12 +28,9 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
     var wishList = [WishListTags]()
     var myArray:[[String : Any]] = [[ : ]]
     var a = NSMutableArray()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
-        
         
         initUILayout()
         self.setupValidator()
@@ -69,18 +66,11 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
         
         //self.wishlistAdd.categoryUITextField.delegate = self
         
-        self.wishlistAdd.categorySearchTextField.addTarget(self, action: Selector("configureSimpleSearchTextField"), for: UIControlEvents.editingDidBegin)
+        self.wishlistAdd.categorySearchTextField.addTarget(self, action: #selector(WishlistAddViewController.getSubCatSuggestions), for: UIControlEvents.editingDidBegin)
         
-        self.wishlistAdd.mainCategory.addTarget(self, action: Selector("configureSimpleSearchTextField"), for: UIControlEvents.editingDidBegin)
-        
-        
+        self.wishlistAdd.mainCategory.addTarget(self, action: #selector(WishlistAddViewController.getMainCatSuggestions), for: UIControlEvents.editingDidBegin)
         
         self.wishlistAdd.CategoryTagListView.delegate = self
-        
-        
-        
-        
-        
         
         self.wishlistAdd.CategoryTagListView.cornerRadius = 5.5
         
@@ -93,9 +83,9 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
         
     }
     
-    func configureSimpleSearchTextField() {
+    func getMainCatSuggestions() {
         
-       
+        
         
         // Start visible even without user's interaction as soon as created - Default: false
         self.wishlistAdd.categorySearchTextField.startVisibleWithoutInteraction = true
@@ -113,40 +103,21 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
         self.wishlistAdd.categorySearchTextField.showLoadingIndicator()
         
         let categoryTuples = self.getAllCscsid()
-        print("categories configureSimpleSearchTextField", categoryTuples?.main)
+        print(categoryTuples)
+        print(categoryTuples?.sub)
+        print(categoryTuples?.main)
+        // TODO:
+        // add Main category, no select event
+        // main category, subcategory group
         
-        if checkboxCheck == false {
-            self.wishlistAdd.categorySearchTextField.filterStrings((categoryTuples?.sub)!)
+        
+        print("MAIN vjcgjcc")
+        self.wishlistAdd.mainCategory.filterStrings((categoryTuples?.main)!)
+        
+        self.wishlistAdd.mainCategory.itemSelectionHandler = { filteredResults, itemPosition in
+            let item = filteredResults[itemPosition]
+            self.wishlistAdd.mainCategory.text = item.title
             
-            self.wishlistAdd.categorySearchTextField.itemSelectionHandler = { filteredResults, itemPosition in
-                // Just in case you need the item position
-                let item = filteredResults[itemPosition]
-                print("Item at position \(itemPosition): \(item.title)")
-                
-                // Do whatever you want with the picked item
-                self.wishlistAdd.CategoryTagListView.addTag(item.title)
-                
-                
-                // self.wishlistAdd.categorySearchTextField.addSubview(tagView)
-                
-                //self.wishlistAdd.CategoryTagListView.frame = self.wishlistAdd.categorySearchTextField.frame
-                
-                
-            }
-        }else {
-            
-            print("MAIN vjcgjcc")
-            self.wishlistAdd.mainCategory.filterStrings((categoryTuples?.main)!)
-            
-            self.wishlistAdd.mainCategory.itemSelectionHandler = { filteredResults, itemPosition in
-                // Just in case you need the item position
-                let item = filteredResults[itemPosition]
-                print("Item at position \(itemPosition): \(item.title)")
-                
-                self.wishlistAdd.mainCategory.text = item.title
-                
-                
-            }
         }
         
         // Stop loading indicator
@@ -156,7 +127,55 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
         
         
         
-       
+        
+        
+        
+    }
+    
+    
+    func getSubCatSuggestions() {
+        
+        
+        
+        // Start visible even without user's interaction as soon as created - Default: false
+        self.wishlistAdd.categorySearchTextField.startVisibleWithoutInteraction = true
+        self.wishlistAdd.mainCategory.startVisibleWithoutInteraction = true
+        // Set data source
+        self.wishlistAdd.categorySearchTextField.startVisible = true
+        
+        
+        
+        self.wishlistAdd.categorySearchTextField.theme.bgColor = UIColor.white
+        self.wishlistAdd.mainCategory.theme.bgColor = UIColor.white
+        
+        
+        // Show loading indicator
+        self.wishlistAdd.categorySearchTextField.showLoadingIndicator()
+        
+        let categoryTuples = self.getAllCscsid()
+        print(categoryTuples)
+        print(categoryTuples?.sub)
+        print(categoryTuples?.main)
+        // TODO:
+        // add Main category, no select event
+        // main category, subcategory group
+        self.wishlistAdd.categorySearchTextField.filterStrings((categoryTuples?.sub)!)
+        
+        self.wishlistAdd.categorySearchTextField.itemSelectionHandler = { filteredResults, itemPosition in
+            let item = filteredResults[itemPosition]
+            self.wishlistAdd.CategoryTagListView.addTag(item.title)
+            
+            
+        }
+        
+        // Stop loading indicator
+        self.wishlistAdd.categorySearchTextField.stopLoadingIndicator()
+        
+        
+        
+        
+        
+        
         
         
     }
@@ -165,7 +184,7 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
         
         
         let categories =  CategoryService.getCategories()
-         self.wishlistAdd.categorySearchTextField.showLoadingIndicator()
+        self.wishlistAdd.categorySearchTextField.showLoadingIndicator()
         for category in categories {
             print("CATEGORIES IDS",category.id)
             print("CATEGORIES NAME",category.name)
@@ -177,7 +196,6 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
                 
                 subcategoryNames.append(subcategory.name)
                 
-                
                 let wishlistTags =  WishListTags()
                 wishlistTags.id = IncrementaID()
                 wishlistTags.main_category_name = (subcategory.parentCategory?.name)!
@@ -187,9 +205,7 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
                 
                 WishListDao.addWishListFromTags(wishlistTags)
                 
-                
             }
-            
             
         }
         
@@ -257,11 +273,9 @@ extension WishlistAddViewController: WishlistAddViewDelegate {
 extension WishlistAddViewController: ValidationDelegate {
     func validationSuccessful() {
         if Reachability.isConnectedToNetwork() {
-           
+            
             let name = self.wishlistAdd.Name.text!
             let desc = self.wishlistAdd.Description.text!
-            
-            
             
             //print("PRINT TAGLABEL",self.wishlistAdd.CategoryTagListView.tagViews.first?.titleLabel?.text)
             print("self.wishlistAdd.CategoryTagListView.tagViews.count",self.wishlistAdd.CategoryTagListView.tagViews.count)
@@ -269,12 +283,11 @@ extension WishlistAddViewController: ValidationDelegate {
                 
                 print("index",wish.titleLabel?.text)
                 
-                
                 print( "Metal Cutter SUB",WishListDao.getWishListFromTags(subcategory_name: "Metal Cutter"))
                 print("TAGVIEWS",self.wishlistAdd.CategoryTagListView.tagViews.last?.titleLabel?.text)
                 let selctedCategories =  WishListDao.getWishListFromTags(subcategory_name: (wish.titleLabel?.text)!)
                 
-                 let wishAdd = WishListTags()
+                let wishAdd = WishListTags()
                 for  categories  in selctedCategories {
                     
                     // selectedTags["main_category_name"] = categories.main_category_name as AnyObject
@@ -284,7 +297,7 @@ extension WishlistAddViewController: ValidationDelegate {
                     //selectedTags["subcategory_name"] = categories.subcategory_name as AnyObject
                     //wishAdd.subcategory_id = categories.subcategory_id
                     
-                   // wishList.append(wishAdd)
+                    // wishList.append(wishAdd)
                     
                     
                 }
@@ -299,18 +312,18 @@ extension WishlistAddViewController: ValidationDelegate {
                 
                 print("STATUS CODE",statusCode)
                 if statusCode! == 201 {
-//                    WishListService.getAllWishList(onCompletion: { statusCode, message in
-                         SwiftSpinner.hide()
-//                        print("STATUS CODE2",statusCode)
-//                         if statusCode! == 200 {
-                   // let wishList = WishListDao.get()
+                    //                    WishListService.getAllWishList(onCompletion: { statusCode, message in
+                    SwiftSpinner.hide()
+                    //                        print("STATUS CODE2",statusCode)
+                    //                         if statusCode! == 200 {
+                    // let wishList = WishListDao.get()
                     //                    self.performSegue(withIdentifier: Constants.segue.loginToHome, sender: self)
-                   // print("WISHLIST ADDED SUCCESSFULLY", wishList)
+                    // print("WISHLIST ADDED SUCCESSFULLY", wishList)
                     NotificationCenter.default.post(name: Notification.Name(rawValue:"pass"), object: nil, userInfo: nil)
                     self.navigationController?.popViewController(animated: true)
-//                        }
-//                    }
-//                    )
+                    //                        }
+                    //                    }
+                    //                    )
                 } else {
                     Utility.showAlert(title: "Login Error", message: message!, targetController: self)
                 }

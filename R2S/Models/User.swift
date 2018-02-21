@@ -20,12 +20,15 @@ class User: Object {
     dynamic var imageUrl = ""
     dynamic var landlineNumber = ""
     dynamic var mobileNumber = ""
+    dynamic var designation = ""
+    dynamic var descriptionText = ""
     dynamic var password = ""
     dynamic var status = ""
-    let roles = List<UserRole>()
     dynamic var createdDate = ""
     dynamic var updatedDate = ""
     dynamic var deletedDate = ""
+    dynamic var role = ""
+    dynamic var company: Company?
     
     override static func primaryKey() -> String? {
         return "id"

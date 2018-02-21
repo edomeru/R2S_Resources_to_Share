@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryTableCell" rowHeight="217" id="Pxd-gE-6rh" customClass="CategoryTableViewCell" customModule="R2S" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="217"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pxd-gE-6rh" id="ATb-Kg-fZh">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="216.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="q0Y-wz-Cax">
+                        <rect key="frame" x="8" y="8" width="359" height="201"/>
+                        <color key="backgroundColor" red="0.94117647058823528" green="0.93725490196078431" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="cNf-Fu-7rN">
+                            <size key="itemSize" width="150" height="150"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
+                </subviews>
+                <color key="backgroundColor" red="0.94117647059999998" green="0.93725490199999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <constraints>
+                    <constraint firstAttribute="bottomMargin" secondItem="q0Y-wz-Cax" secondAttribute="bottom" id="Snf-Eq-mN2"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="q0Y-wz-Cax" secondAttribute="trailing" id="hE2-aF-jVw"/>
+                    <constraint firstItem="q0Y-wz-Cax" firstAttribute="top" secondItem="ATb-Kg-fZh" secondAttribute="topMargin" id="jw9-jO-Yv8"/>
+                    <constraint firstItem="q0Y-wz-Cax" firstAttribute="leading" secondItem="ATb-Kg-fZh" secondAttribute="leadingMargin" id="kbP-2y-yWc"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.29803921570000003" green="0.29803921570000003" blue="0.29803921570000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="categoryCollectionViewCell" destination="q0Y-wz-Cax" id="hBC-MB-Dgg"/>
+            </connections>
+            <point key="canvasLocation" x="-419" y="156"/>
+        </tableViewCell>
+    </objects>
+</document>

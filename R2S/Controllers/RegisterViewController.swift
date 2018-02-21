@@ -20,6 +20,14 @@ class RegisterViewController: BaseViewController {
         
         self.initUILayout()
         self.setupValidator()
+        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
+    }
+    
+    func dismissKeyboard() {
+        //Causes the view (or one of its embedded text fields) to resign the first responder status.
+        view.endEditing(true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -33,13 +41,18 @@ class RegisterViewController: BaseViewController {
     // MARK: - Private Functions
     private func initUILayout() {
         self.registerView = self.loadFromNibNamed(nibNamed: Constants.xib.register) as! RegisterView
+        self.registerView.frame = CGRect(x: 0, y: Constants.navbarHeight, width: self.registerView.frame.width, height: self.registerView.frame.height)
         self.view = self.registerView
+            
         self.title = "Registration"
         self.registerView.delegate = self
         self.registerView.firstNameTextField.delegate = self
         self.registerView.lastNameTextField.delegate = self
         self.registerView.emailTextField.delegate = self
         self.registerView.passwordTextField.delegate = self
+        self.registerView.confirmPasswordTextField.delegate = self
+        self.registerView.businessREgNumberTextField.delegate = self
+        self.registerView.companyNameTextField.delegate = self
     }
     
     private func setupValidator() {
@@ -47,10 +60,13 @@ class RegisterViewController: BaseViewController {
         self.validator.registerField(self.registerView.lastNameTextField, rules: [RequiredRule()])
         self.validator.registerField(self.registerView.emailTextField, rules: [RequiredRule()])
         self.validator.registerField(self.registerView.passwordTextField, rules: [RequiredRule()])
+        self.validator.registerField(self.registerView.confirmPasswordTextField, rules: [RequiredRule()])
+        self.validator.registerField(self.registerView.businessREgNumberTextField, rules: [RequiredRule()])
+        self.validator.registerField(self.registerView.companyNameTextField, rules: [RequiredRule()])
     }
     
     private func configureNavBar() {
-        self.navigationItem.hidesBackButton = true
+        self.navigationItem.hidesBackButton = false
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }
@@ -61,10 +77,7 @@ extension RegisterViewController: RegisterViewDelegate {
         self.registerView.endEditing(true)
         self.validator.validate(self)
     }
-    
-    func cancelButtonPressed(sender: AnyObject) {
-        _ = navigationController?.popViewController(animated: true)
-    }
+
 }
 
 // MARK: - ValidationDelegate
@@ -77,12 +90,16 @@ extension RegisterViewController: ValidationDelegate {
             user.firstName = self.registerView.firstNameTextField.text!
             user.lastName = self.registerView.lastNameTextField.text!
             user.password = self.registerView.passwordTextField.text!
+            user.company?.name = self.registerView.companyNameTextField.text!
+            user.company?.business_reg_number = self.registerView.businessREgNumberTextField.text!
+            print("businessREgNumberTextField", self.registerView.businessREgNumberTextField.text!)
+              print("companyNameTextField", self.registerView.companyNameTextField.text!)
             if self.registerView.subscribeCheckbox.checkState == .checked {
                 user.isSubscribed = true
             } else if self.registerView.subscribeCheckbox.checkState == .unchecked {
                 user.isSubscribed = false
             }
-            UserService.register(user, onCompletion: { statusCode, message in
+            UserService.register(user, business_reg_num: self.registerView.businessREgNumberTextField.text!,company_name: self.registerView.companyNameTextField.text!,onCompletion: { statusCode, message in
                 SwiftSpinner.hide()
                 if statusCode == 201 {
                     Utility.showAlert(title: message!.capitalized, message: "Please check your email for the activation link and verify your account.", targetController: self)
@@ -97,8 +114,24 @@ extension RegisterViewController: ValidationDelegate {
     
     func validationFailed(_ errors: [(Validatable, ValidationError)]) {
         for (field, _) in errors {
-            if let field = field as? UITextField {
-                field.addBorder(width: 1.0, color: UIColor.red.cgColor)
+            if let field =  field as? UITextField {
+                switch field {
+                case self.registerView.firstNameTextField:
+                    self.registerView.firstNameBorderView.backgroundColor = UIColor.red
+                case self.registerView.lastNameTextField:
+                    self.registerView.lastNameBorderView.backgroundColor = UIColor.red
+                case self.registerView.emailTextField:
+                    self.registerView.emailBorderView.backgroundColor = UIColor.red
+                case self.registerView.passwordTextField:
+                    self.registerView.passwordBorderView.backgroundColor = UIColor.red
+                case self.registerView.confirmPasswordTextField:
+                    self.registerView.confirmPasswordBorderView.backgroundColor =  UIColor.red
+                case self.registerView.companyNameTextField:
+                    self.registerView.companyBorderView.backgroundColor =  UIColor.red                case self.registerView.businessREgNumberTextField:
+                    self.registerView.busnessRegBorderView.backgroundColor = UIColor.red
+                default:
+                    print("default")
+                }
             }
         }
     }
@@ -107,7 +140,23 @@ extension RegisterViewController: ValidationDelegate {
 // MARK: - UITextFieldDelegate
 extension RegisterViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.addBorder(width: 0.0, radius: 0.0)
-        self.activeTextField = textField
+        switch textField {
+        case self.registerView.firstNameTextField:
+            self.registerView.firstNameBorderView.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
+        case self.registerView.lastNameTextField:
+            self.registerView.lastNameBorderView.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
+        case self.registerView.emailTextField:
+            self.registerView.emailBorderView.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
+        case self.registerView.passwordTextField:
+            self.registerView.passwordBorderView.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
+        case self.registerView.confirmPasswordTextField:
+            self.registerView.confirmPasswordBorderView.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
+        case self.registerView.companyNameTextField:
+            self.registerView.companyBorderView.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
+        case self.registerView.businessREgNumberTextField:
+            self.registerView.busnessRegBorderView.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
+        default:
+            print("default")
+        }
     }
 }

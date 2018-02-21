@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Realm
 import RealmSwift
 
 class UserDao {
@@ -36,6 +35,13 @@ class UserDao {
         let realm = try! Realm()
         try! realm.write {
             realm.delete(user)
+        }
+    }
+    
+    static func clear(){
+        let realm = try! Realm()
+        try! realm.write {
+            realm.deleteAll()
         }
     }
 }

@@ -60,4 +60,7 @@ class UserHelper {
     static func getIsLoggedIn() -> Bool? {
         return UserHelper.defaults.bool(forKey: "isLoggedIn")
     }
+    static func getRole() -> String? {
+        return UserHelper.defaults.string(forKey: "role")
+    }
 }

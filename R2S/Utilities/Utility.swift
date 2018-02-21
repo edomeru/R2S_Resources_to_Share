@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import TTGSnackbar
 
 class Utility {
     class func showAlert(title: String, message: String, targetController: UIViewController) {
@@ -37,8 +38,17 @@ class Utility {
         return headers
     }
     
+    class func getHeadersForImage() -> HTTPHeaders {
+        let headers: HTTPHeaders = [
+            "Accept": "application/json",
+            "Content-Type": "application/json"
+        ]
+        
+        return headers
+    }
+    
     class func getHeadersWithAuth() -> HTTPHeaders {
-        let username = UserHelper.getUsername()!
+        let username = UserHelper.getEmail()!
         let password = UserHelper.getPassword()!
         let loginString = String(format: "%@:%@", username, password)
         let loginData = loginString.data(using: String.Encoding.utf8)!
@@ -47,4 +57,61 @@ class Utility {
         headersWithAuth["Authorization"] = "Basic \(base64LoginString)"
         return headersWithAuth
     }
+    
+    class func generateBoundary() -> String {
+    return "Boundary-\(NSUUID().uuidString)"
+    }
+    
+    class func getHeadersWithAuthForImage() -> HTTPHeaders {
+       
+        var headersWithAuth = getHeadersWithAuth()
+     let boundary = generateBoundary()
+        print("boundary",boundary)
+        headersWithAuth["Content-Type"] = "multipart/form-data; boundary=\(boundary)"
+        return headersWithAuth
+    }
+    
+    
+    class func stringToDate(dateString: String?) -> Date {
+        if dateString != ""{
+            let dateFormatter = DateFormatter()
+            // dateFormatter.timeZone = TimeZone(abbreviation: "UTC")!
+            dateFormatter.dateFormat = "dd/M/yyyy, H:mm a"
+            let date = dateFormatter.date(from: dateString!)
+            
+            
+            /////TEST
+            
+            let calendar = NSCalendar.current
+            if let dateTriggered = date {
+                let components = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second], from: dateTriggered)
+                let finalDate = calendar.date(from:components)
+                
+                print("INSIDE DATE FUNCTION",finalDate!)
+                return date!
+            }
+            return Date()
+        }
+        return Date()
+    }
+    
+    class func dateToString(dateString: Date?) -> String {
+        if dateString != nil{
+            let dateFormatter = DateFormatter()
+            // dateFormatter.timeZone = NSTimeZone(name: "UTC") as! TimeZone
+            
+            dateFormatter.dateFormat = "dd/M/yyyy, H:mm a"
+            let stringDate = dateFormatter.string(from: dateString!)
+            
+            return stringDate
+        }
+        return String()
+    }
+    
+    class func showSnackBAr(messege: String, bgcolor: UIColor){
+        let snackbar = TTGSnackbar(message: messege, duration: .long)
+        snackbar.backgroundColor = bgcolor
+        snackbar.show()
+    }
+    
 }

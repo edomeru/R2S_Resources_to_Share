@@ -8,14 +8,27 @@
 
 import UIKit
 
-class ForgotPasswordView: BaseUIView {
+protocol ForgotPassworViewDelegate: class {
+    func submitBtnPressed(sender: UIButton)
+}
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+class ForgotPasswordView: BaseUIView {
+    weak var delegate: ForgotPassworViewDelegate?
+    
+    @IBOutlet weak var emailField: UITextField!
+    
+    @IBOutlet weak var emailBorderView: UIView!
+    
+    @IBOutlet weak var emailErrorMsg: UILabel!
+    @IBOutlet weak var submitBtn: UIButton!
+    
+    
+    @IBAction func submitBtnPressed(_ sender: UIButton) {
+        if (delegate != nil) {
+            delegate?.submitBtnPressed(sender: sender)
+        }
+        
     }
-    */
+
 
 }

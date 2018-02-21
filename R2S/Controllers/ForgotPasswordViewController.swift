@@ -53,32 +53,37 @@ extension ForgotPasswordViewController: ForgotPassworViewDelegate {
     
     
     func submitBtnPressed(sender: UIButton) {
-        
-        let email = self.forgotPasswordView.emailField.text
-        
-        // VALIDATE
-        if (!isValidEmail(testStr: email)) {
-            self.forgotPasswordView.emailErrorMsg.text = "Invalid email."
-            self.forgotPasswordView.emailBorderView.backgroundColor = UIColor.red
-            return
-        }
-        
-        // SEND REQUEST
-        UserService.forgot(email: email!, onCompletion: { statusCode, message in
-            SwiftSpinner.hide()
-            if statusCode == 200 {
-                Utility.showAlert(title: "Success!", message: message!, targetController: self)
-            } else {
-                self.forgotPasswordView.emailErrorMsg.text = message
+        if Reachability.isConnectedToNetwork() {
+            let email = self.forgotPasswordView.emailField.text
+            
+            // VALIDATE
+            if (!isValidEmail(testStr: email)) {
+                self.forgotPasswordView.emailErrorMsg.text = "Invalid email."
                 self.forgotPasswordView.emailBorderView.backgroundColor = UIColor.red
+                return
             }
+            
+            // SEND REQUEST
+            UserService.forgot(email: email!, onCompletion: { statusCode, message in
+                SwiftSpinner.hide()
+                if statusCode == 200 {
+                    self.forgotPasswordView.emailErrorMsg.text = ""
+                    Utility.showAlert(title: "Success!", message: message!, targetController: self)
+                } else {
+                    self.forgotPasswordView.emailErrorMsg.text = message
+                    self.forgotPasswordView.emailBorderView.backgroundColor = UIColor.red
+                }
+                SwiftSpinner.hide()
+                sender.isEnabled = true
+            })
+            // SET DISABLED
+            sender.isEnabled = false
+            // SET PROGRESS
+            SwiftSpinner.show("Please wait...")
+        } else {
+            self.forgotPasswordView.emailErrorMsg.text = "No internet connection."
             SwiftSpinner.hide()
-            sender.isEnabled = true
-        })
-        // SET DISABLED
-        sender.isEnabled = false
-        // SET PROGRESS
-        SwiftSpinner.show("Please wait...")
+        }
         
     }
 }

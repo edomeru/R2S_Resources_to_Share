@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gyt-qp-uPB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16G29" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="gyt-qp-uPB">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -12,7 +12,7 @@
         <scene sceneID="5gd-tc-SuB">
             <objects>
                 <navigationController id="gyt-qp-uPB" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="V3o-gx-w46">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="V3o-gx-w46">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -68,11 +68,30 @@
                     </navigationItem>
                     <connections>
                         <segue destination="fm7-mE-T4Z" kind="show" identifier="LoginToHomeSegue" animates="NO" id="Gng-5l-VT9"/>
+                        <segue destination="3vn-p4-kd7" kind="show" identifier="LoginToForgotPasswordSegue" id="iDY-xB-Lyc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RKK-Jh-ak7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1878" y="742"/>
+        </scene>
+        <!--Forgot Password View Controller-->
+        <scene sceneID="jB9-vJ-vx2">
+            <objects>
+                <viewController id="3vn-p4-kd7" customClass="ForgotPasswordViewController" customModule="R2S" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="wEb-iw-AZq"/>
+                        <viewControllerLayoutGuide type="bottom" id="MRo-NT-hYo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="yUi-is-rPc">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="beJ-r6-2VZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1879" y="1561"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="sz1-Yx-9Iw">
@@ -520,9 +539,9 @@
         <image name="ic_person" width="24" height="24"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="xPI-oA-IOK"/>
-        <segue reference="dJd-mu-kYQ"/>
-        <segue reference="OKF-L6-CNk"/>
         <segue reference="JZv-gu-VcQ"/>
+        <segue reference="OKF-L6-CNk"/>
+        <segue reference="Gng-5l-VT9"/>
+        <segue reference="dJd-mu-kYQ"/>
     </inferredMetricsTieBreakers>
 </document>

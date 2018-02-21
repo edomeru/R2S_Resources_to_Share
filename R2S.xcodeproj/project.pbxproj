@@ -24,6 +24,9 @@
 		2CF06DD11EFBF0E30073C844 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF06DD01EFBF0E30073C844 /* ActivityViewController.swift */; };
 		2CF06DD31EFBF1090073C844 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF06DD21EFBF1090073C844 /* ActivityView.swift */; };
 		548A6074C3188468E31693E6 /* Pods_R2S.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E60C07BE5101947A43207D /* Pods_R2S.framework */; };
+		5FADDAB0203D1C5500706B46 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FADDAAE203D1C5500706B46 /* ForgotPasswordViewController.swift */; };
+		5FADDAB1203D1C5500706B46 /* ForgotPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FADDAAF203D1C5500706B46 /* ForgotPasswordView.xib */; };
+		5FADDAB3203D1DB100706B46 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FADDAB2203D1DB100706B46 /* ForgotPasswordView.swift */; };
 		9B13E3751F99ADDD00D72FB7 /* ResourceSubcategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B13E3741F99ADDD00D72FB7 /* ResourceSubcategory.swift */; };
 		9B1F86CE1FD6B329005C575E /* InboxView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B1F86CD1FD6B329005C575E /* InboxView.xib */; };
 		9B1F86D11FD6B38B005C575E /* InboxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B1F86D01FD6B38B005C575E /* InboxView.swift */; };
@@ -222,6 +225,9 @@
 		2CF06DD01EFBF0E30073C844 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityViewController.swift; path = Controllers/ActivityViewController.swift; sourceTree = "<group>"; };
 		2CF06DD21EFBF1090073C844 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityView.swift; path = "View Classes/ActivityView.swift"; sourceTree = "<group>"; };
 		33DE7660843E508F233330F3 /* Pods-R2S.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R2S.release.xcconfig"; path = "Pods/Target Support Files/Pods-R2S/Pods-R2S.release.xcconfig"; sourceTree = "<group>"; };
+		5FADDAAE203D1C5500706B46 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordViewController.swift; path = Controllers/ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		5FADDAAF203D1C5500706B46 /* ForgotPasswordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForgotPasswordView.xib; path = Controllers/ForgotPasswordView.xib; sourceTree = "<group>"; };
+		5FADDAB2203D1DB100706B46 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordView.swift; path = "View Classes/ForgotPasswordView.swift"; sourceTree = "<group>"; };
 		9B13E3741F99ADDD00D72FB7 /* ResourceSubcategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ResourceSubcategory.swift; path = Models/ResourceSubcategory.swift; sourceTree = "<group>"; };
 		9B1F86CD1FD6B329005C575E /* InboxView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = InboxView.xib; path = Xibs/InboxView.xib; sourceTree = "<group>"; };
 		9B1F86D01FD6B38B005C575E /* InboxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InboxView.swift; path = "View Classes/InboxView.swift"; sourceTree = "<group>"; };
@@ -652,16 +658,17 @@
 			isa = PBXGroup;
 			children = (
 				9B740C6B1FD8FA5F003372DF /* WishList */,
+				B9E267831E7A363B00BB9900 /* Tab Bar */,
+				9B95E8682004B2D300612323 /* EditProfileViewController.swift */,
 				9B3ED5481FD2C8D700627679 /* FavoritesViewController.swift */,
 				B99151AF1E77F55600949529 /* BaseViewController.swift */,
 				B99151B11E77F67E00949529 /* LoginViewController.swift */,
 				B9E2677D1E79416A00BB9900 /* RegisterViewController.swift */,
 				B9E267DA1E7D467800BB9900 /* WelcomeViewController.swift */,
-				B9E267831E7A363B00BB9900 /* Tab Bar */,
-				9B95E8682004B2D300612323 /* EditProfileViewController.swift */,
 				9B95E86A2004B30700612323 /* ChangePasswordViewController.swift */,
 				9B95E86C2004B32100612323 /* AppSettingsViewController.swift */,
 				9B95E86E2004B33A00612323 /* RaiseSupportTicketViewController.swift */,
+				5FADDAAE203D1C5500706B46 /* ForgotPasswordViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -671,19 +678,20 @@
 			children = (
 				9B5E23871FD3F32600A59FFF /* WishList */,
 				9B3ED5571FD2CE3400627679 /* Favorites */,
-				B99151B41E77F6C600949529 /* BaseUIView.swift */,
-				B99151B61E77F6E300949529 /* LoginView.swift */,
-				B9E2677F1E79419900BB9900 /* RegisterView.swift */,
-				B9E267DC1E7D48D600BB9900 /* WelcomeView.swift */,
 				B9E267A41E7AC70200BB9900 /* CollectionView Cells */,
 				B9E267971E7A86C100BB9900 /* Scroll Views */,
 				B9E2678A1E7A7A1B00BB9900 /* Tab Bar */,
 				B9E267931E7A846600BB9900 /* TableView Cells */,
+				B99151B61E77F6E300949529 /* LoginView.swift */,
+				B99151B41E77F6C600949529 /* BaseUIView.swift */,
+				B9E2677F1E79419900BB9900 /* RegisterView.swift */,
+				B9E267DC1E7D48D600BB9900 /* WelcomeView.swift */,
 				9BFDB3711F97289700D430D4 /* ResourceView.swift */,
 				9B95E8782004B48300612323 /* RaiseSupportTicketView.swift */,
 				9B95E87A2004B4AD00612323 /* EditProfileView.swift */,
 				9B95E87C2004B4D100612323 /* AppSettingsView.swift */,
 				9B95E87E2004B4EF00612323 /* ChangePasswordView.swift */,
+				5FADDAB2203D1DB100706B46 /* ForgotPasswordView.swift */,
 			);
 			name = "View Classes";
 			sourceTree = "<group>";
@@ -693,12 +701,13 @@
 			children = (
 				9B5E23841FD3F28300A59FFF /* WishList */,
 				9B3ED5541FD2CCF100627679 /* Favorites */,
-				B99151B91E77F71200949529 /* LoginView.xib */,
-				B9E267811E79421000BB9900 /* RegisterView.xib */,
-				B9E267DE1E7D490100BB9900 /* WelcomeView.xib */,
 				B9E267A71E7AC74600BB9900 /* CollectionView Cell */,
 				B9E267961E7A86B800BB9900 /* Scroll Views */,
 				B9E2678D1E7A7A4E00BB9900 /* Tab Bar */,
+				5FADDAAF203D1C5500706B46 /* ForgotPasswordView.xib */,
+				B99151B91E77F71200949529 /* LoginView.xib */,
+				B9E267811E79421000BB9900 /* RegisterView.xib */,
+				B9E267DE1E7D490100BB9900 /* WelcomeView.xib */,
 				9B95E8702004B3AC00612323 /* EditProfile.xib */,
 				9B95E8722004B41700612323 /* ChangePasswordView.xib */,
 				9B95E8742004B42F00612323 /* AppSettingsView.xib */,
@@ -1023,12 +1032,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0820;
-				LastUpgradeCheck = 0820;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Total Integrated Resources";
 				TargetAttributes = {
 					B9FE3FE21E77E32A003CDE74 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = U363493FZ8;
 						ProvisioningStyle = Automatic;
 					};
 					B9FE3FF61E77E32B003CDE74 = {
@@ -1098,6 +1106,7 @@
 				9B95E8772004B45600612323 /* RaiseSupportTicketView.xib in Resources */,
 				B9E267D11E7D41CA00BB9900 /* CategoryCollectionViewCell.xib in Resources */,
 				9B26A33820202DD0008F1561 /* SearchTableViewCell.xib in Resources */,
+				5FADDAB1203D1C5500706B46 /* ForgotPasswordView.xib in Resources */,
 				9B95E8712004B3AC00612323 /* EditProfile.xib in Resources */,
 				9B36BB6F201EEEDC00819137 /* SearchView.xib in Resources */,
 				9B1F86CE1FD6B329005C575E /* InboxView.xib in Resources */,
@@ -1156,7 +1165,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		B9E277E8BAD7167895A6EC83 /* [CP] Copy Pods Resources */ = {
@@ -1215,6 +1224,7 @@
 				B9E267BF1E7BB7EF00BB9900 /* Subcategory.swift in Sources */,
 				9B5E23931FD4570E00A59FFF /* WishListDetailedViewController.swift in Sources */,
 				9BFDB3721F97289700D430D4 /* ResourceView.swift in Sources */,
+				5FADDAB3203D1DB100706B46 /* ForgotPasswordView.swift in Sources */,
 				9B456F371F8F638D001F4C32 /* ResourceRemote.swift in Sources */,
 				9B8E8BBC202E0A3D00748E0E /* MessageParam.swift in Sources */,
 				B9E267AB1E7B945700BB9900 /* Category.swift in Sources */,
@@ -1248,6 +1258,7 @@
 				B9FE3FE71E77E32A003CDE74 /* AppDelegate.swift in Sources */,
 				9BDD2C341FDE21FD00F8DC55 /* WishListTags.swift in Sources */,
 				9BCCD5FD1FD13F37001A9507 /* NewResourceViewController.swift in Sources */,
+				5FADDAB0203D1C5500706B46 /* ForgotPasswordViewController.swift in Sources */,
 				9BE9AF1E200600B700A7E5F3 /* AccountService.swift in Sources */,
 				9B26A33A20202F9F008F1561 /* SearchTableViewCell.swift in Sources */,
 				B9E267B71E7BAEA600BB9900 /* BrowseView.swift in Sources */,
@@ -1464,8 +1475,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 23814817D62CF9D3116467B7 /* Pods-R2S.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = U363493FZ8;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = R2S/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1479,8 +1491,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 33DE7660843E508F233330F3 /* Pods-R2S.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = U363493FZ8;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = R2S/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

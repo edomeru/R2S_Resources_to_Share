@@ -30,6 +30,8 @@ class Constants {
             static let forgot = api.baseUrl + "/forgot"
             static let forgotCode = api.baseUrl + "/forgot/code"
             static let change = users + "/password"
+            // forgot password POST
+            static let forgotPassword = user.base + "/password/forgot/mobile"
             
             // MARK: - Transaction
             static let transactions = base + "/{id}/transactions"
@@ -88,6 +90,7 @@ class Constants {
     struct xib {
         static let welcome = "WelcomeView"
         static let login = "LoginView"
+        static let forgotPassword = "ForgotPasswordView"
         static let register = "RegisterView"
         static let homeView = "HomeView"
         static let activityView = "ActivityView"
@@ -168,6 +171,7 @@ class Constants {
         static let HomeViewToSearchViewSegue = "HomeViewToSearchViewSegue"
         static let SearchToResourceSegue = "SearchToResourceSegue"
         static let InboxToChatSegue = "InboxToChatSegue"
+        static let LoginToForgotPasswordSegue = "LoginToForgotPasswordSegue"
         
     }
 }

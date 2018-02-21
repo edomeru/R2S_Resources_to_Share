@@ -276,6 +276,7 @@ class AccountViewController: BaseViewController {
              case Constants.segue.profileToChangePasswordSegue:
                 let destinationVC = segue.destination as! ResourceViewController
                 destinationVC.selectedResourceId = selectedResourceId
+                destinationVC.status = "edit"
                 
             default:
                 print("default");

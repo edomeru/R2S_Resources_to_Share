@@ -18,6 +18,7 @@ class ResourceViewController: BaseViewController {
     
     var resourceView = ResourceView()
     var selectedResourceId: Int = 0
+    var status:String?
     var floaty = Floaty()
     
     override func viewDidLoad() {

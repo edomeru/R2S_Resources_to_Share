@@ -259,6 +259,7 @@ class BrowseViewController: BaseViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destinationVC = segue.destination as! ResourceViewController
         destinationVC.selectedResourceId = selectedResourceId
+        destinationVC.status = "book"
     }
 }
 

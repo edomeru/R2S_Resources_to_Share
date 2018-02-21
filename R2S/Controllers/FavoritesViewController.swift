@@ -116,6 +116,7 @@ class FavoritesViewController: BaseViewController {
             case "FavoritesToDetailSegue":
                 let destinationVC = segue.destination as! ResourceViewController
                 destinationVC.selectedResourceId = selectedCategoryId
+                destinationVC.status = "book"
                 
             default:
                 print("default");

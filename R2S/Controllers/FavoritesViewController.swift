@@ -50,6 +50,7 @@ class FavoritesViewController: BaseViewController {
             let favorites = FavoritesDao.get()
             
             self.favorites = favorites
+                print("favorites",self.favorites)
             self.initUILayout()
                 
                 })
@@ -122,63 +123,171 @@ class FavoritesViewController: BaseViewController {
         }
     }
     
+//    func myFunction(gesture: UITapGestureRecognizer) {
+//        if let v = gesture.view {
+//        print("it worked",v.tag)
+//             let param:[String : AnyObject] = ["resource_id" : v.tag as AnyObject]
+//            ResourceService.removeFavoriteObject(params:param){ (statusCode, message) in
+//                print("FAV_STAT_CODE",statusCode)
+//                if let statCode = statusCode {
+//                if statCode == 202 {
+//            
+//          let favObject = FavoritesDao.getOneBy(id: v.tag)
+//            FavoritesDao.delete(favObject!)
+//                    self.favoritesView.FavoritesTableView.reloadData()
+//                    
+//                    let snackbar = TTGSnackbar(message: "Item" + " has been removed ", duration: .short)
+//                    snackbar.backgroundColor = UIColor.blue
+//                    snackbar.show()
+//                    
+//                    
+//                    let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+//                    activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
+//                    activityIndicator.activityIndicatorViewStyle = .gray
+//                    activityIndicator.center = self.view.center
+//                    activityIndicator.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
+//                    activityIndicator.center = self.view.center
+//                    activityIndicator.hidesWhenStopped = true
+//                    self.view.addSubview(activityIndicator)
+//                    activityIndicator.startAnimating()
+//                    ResourceService.getFavorites(id: UserHelper.getId()! , onCompletion: { statusCode, message in
+//                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+//                            activityIndicator.stopAnimating()
+//                            
+//                            let favorites = FavoritesDao.get()
+//                            
+//                         
+//                            
+//                        })
+//                        
+//                    })
+//                    
+//                    
+//                    
+//                    
+//                    
+//                    
+//                    
+//                    
+//                    
+//                    
+//                    
+//                    
+//                }
+//              }
+//           }
+//        }
+//        
+//    }
+
     func myFunction(gesture: UITapGestureRecognizer) {
         if let v = gesture.view {
-        print("it worked",v.tag)
-             let param:[String : AnyObject] = ["resource_id" : v.tag as AnyObject]
-            ResourceService.removeFavoriteObject(params:param){ (statusCode, message) in
-                //print("FAV STAT CODE",statusCode)
-                if let statCode = statusCode {
-                if statCode == 202 {
+            // print("it worked",v.tag)
+            v.isUserInteractionEnabled = false
+            let resource = ResourceDao.getOneBy(id: v.tag)
             
-          let favObject = FavoritesDao.getOneBy(id: v.tag)
-            FavoritesDao.delete(favObject!)
-                    self.favoritesView.FavoritesTableView.reloadData()
-                    
-                    let snackbar = TTGSnackbar(message: "Item" + " has been removed ", duration: .short)
-                    snackbar.backgroundColor = UIColor.blue
-                    snackbar.show()
-                    
-                    
-                    let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
-                    activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
-                    activityIndicator.activityIndicatorViewStyle = .gray
-                    activityIndicator.center = self.view.center
-                    activityIndicator.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
-                    activityIndicator.center = self.view.center
-                    activityIndicator.hidesWhenStopped = true
-                    self.view.addSubview(activityIndicator)
-                    activityIndicator.startAnimating()
-                    ResourceService.getFavorites(id: UserHelper.getId()! , onCompletion: { statusCode, message in
-                        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
-                            activityIndicator.stopAnimating()
-                            
-                            let favorites = FavoritesDao.get()
-                            
-                         
-                            
-                        })
+            // print("RESOURCE_ID",resource?.id)
+            
+            let param:[String : AnyObject] = ["account_id" : UserHelper.getId() as AnyObject]
+            ResourceService.addToFavorites(resource_id: (resource?.id)!, params:param){ (statusCode, message) in
+                //print("FAV STAT CODE",statusCode)
+                //print("STATUSCODE",statusCode)
+                //print("MSG",message)
+                if let statCode = statusCode {
+                    if statCode == 202 {
+                        // print("PRINT_THISFAV", self.favoriteOrNot!)
                         
-                    })
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
+                        
+                        
+                        if message! != "Successfully updated" {
+                            
+                            
+                            let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+                            activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
+                            activityIndicator.activityIndicatorViewStyle = .gray
+                            activityIndicator.center = self.view.center
+                            activityIndicator.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
+                            activityIndicator.center = self.view.center
+                            activityIndicator.hidesWhenStopped = true
+                            self.view.addSubview(activityIndicator)
+                            activityIndicator.startAnimating()
+                            let favorite = FavoritesDao.getOneBy(id: (resource?.id)!)
+                            
+                            FavoritesDao.delete(favorite!)
+                            let fb =  FavoritesDao.get()
+                            
+                            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
+                                activityIndicator.stopAnimating()
+                                
+                                self.favoritesView.FavoritesTableView.reloadData()
+                                
+                                let snackbar = TTGSnackbar(message: "Removed from favorites ", duration: .short)
+                                snackbar.backgroundColor = UIColor.blue
+                                snackbar.show()
+                                v.isUserInteractionEnabled = true
+                                //self.favoriteOrNot!  = false
+                                
+                            })
+                            
+                        }  else  {
+                            
+                            
+                            
+                            
+                            
+                            
+                            let activityIndicator: UIActivityIndicatorView = UIActivityIndicatorView()
+                            activityIndicator.frame = CGRect(x: 0.0, y: 0.0, width: 20.0, height: 20.0)
+                            activityIndicator.activityIndicatorViewStyle = .gray
+                            activityIndicator.center = self.view.center
+                            activityIndicator.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin]
+                            activityIndicator.center = self.view.center
+                            activityIndicator.hidesWhenStopped = true
+                            self.view.addSubview(activityIndicator)
+                            activityIndicator.startAnimating()
+                            ResourceService.getFavorites(id: UserHelper.getId()! , onCompletion: { statusCode, message in
+                                DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
+                                    activityIndicator.stopAnimating()
+                                    
+                                    let favorites = FavoritesDao.get()
+                                    
+                                    // print("FAV CONTROLLER", favorites )
+                                    self.favoritesView.FavoritesTableView.reloadData()
+                                    let snackbar = TTGSnackbar(message: "Item" + " has been added to Favorites ", duration: .short)
+                                    snackbar.backgroundColor = UIColor.green
+                                    snackbar.show()
+                                    v.isUserInteractionEnabled = true
+                                   // self.favoriteOrNot!  = true
+                                    
+                                    
+                                })
+                                
+                            })
+                            
+                            
+                            
+                            
+                            
+                        }
+                        
+                        
+                        
+                    }
                 }
-              }
-           }
+            }
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
         }
-        
     }
-
+    
    
 }
 

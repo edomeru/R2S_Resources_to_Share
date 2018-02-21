@@ -249,15 +249,22 @@ extension ChatViewController: UICollectionViewDataSource {
             
             
             cell.dateUILabel.text = singaporeFormat1
-            
+            print("CELL_IMAGE",self.conversation[indexPath.item].account_image_url)
             if  self.conversation[indexPath.item].account_image_url  != "" {
-                cell.imageUICollectionView.contentMode = .scaleAspectFill
-                cell.imageUICollectionView.layer.cornerRadius = 16.958897898
-                cell.imageUICollectionView.clipsToBounds = true
+                
                 cell.imageUICollectionView.kf.setImage(with: URL(string: (conversation[indexPath.item].account_image_url)), options: [.transition(.fade(0.2))])
                
                 
+            }else {
+            
+                cell.imageUICollectionView.kf.setImage(with: URL(string: "http://theblackpanthers.com/s/photogallery/img/no-image-available.jpg"), options: [.transition(.fade(0.2))])
             }
+            
+            cell.imageUICollectionView.kf.indicatorType = .activity
+            cell.imageUICollectionView.contentMode = .scaleAspectFill
+            cell.imageUICollectionView.layer.cornerRadius = 16.958897898
+            cell.imageUICollectionView.clipsToBounds = true
+            
             
             if case let messageText = conversation[indexPath.item].message {
                 let size = CGSize(width: 250, height: 1000)

@@ -223,6 +223,7 @@ class NewResourceViewController: BaseViewController, UIImagePickerControllerDele
         
         
         self.newResourceView = self.loadFromNibNamed(nibNamed: Constants.xib.NewResourceView) as! NewResourceView
+        self.newResourceView.frame = CGRect(x: 0, y: Constants.navbarHeight, width: self.view.frame.width, height: self.view.frame.height)
         self.view = self.newResourceView
         self.newResourceView.delegate = self
         
@@ -240,8 +241,8 @@ class NewResourceViewController: BaseViewController, UIImagePickerControllerDele
         action = ["Camera", "Photos", "Cancel"]
         self.newResourceView.rateUITextField.addTarget(self, action: #selector(NewResourceViewController.rateTapped), for: UIControlEvents.editingDidBegin)
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(imageTapped(tapGestureRecognizer:)))
-        self.newResourceView.isUserInteractionEnabled = true
-        self.newResourceView.addGestureRecognizer(tapGestureRecognizer)
+        self.newResourceView.addPhotoUIImageView.isUserInteractionEnabled = true
+        self.newResourceView.addPhotoUIImageView.addGestureRecognizer(tapGestureRecognizer)
         
         self.newResourceView.subCategoryUItextField.addTarget(self, action: Selector("subCatSearchTextField"), for: UIControlEvents.editingDidBegin)
         

@@ -41,6 +41,7 @@ class LoginViewController: BaseViewController {
         self.loginView.delegate = self
         self.loginView.emailTextField.delegate = self
         self.loginView.passwordTextField.delegate = self
+
         self.loginView.emailTextField.text = ""
         self.loginView.passwordTextField.text = ""
     }

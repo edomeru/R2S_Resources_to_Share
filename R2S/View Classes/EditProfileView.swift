@@ -18,6 +18,7 @@ class EditProfileView: BaseUIView {
     
     @IBOutlet weak var profPicUIImageView: UIImageView!
     
+    @IBOutlet weak var firstNameBorderView: UIView!
     @IBOutlet weak var bioUITextView: UITextView!
     
     @IBOutlet weak var firstNameUITextField: UITextField!
@@ -33,6 +34,15 @@ class EditProfileView: BaseUIView {
     @IBOutlet weak var mobileUITextField: UITextField!
     
     @IBOutlet weak var landlineUITextField: UITextField!
+    
+    @IBOutlet weak var lastNameBorderView: UIView!
+    
+    @IBOutlet weak var companyNameBorderView: UIView!
+    
+    @IBOutlet weak var designationBorderView: UIView!
+    
+    @IBOutlet weak var birthDayBorderView: UIView!
+    
     
     @IBAction func saveUIButton(_ sender: AnyObject) {
         delegate?.submitButtonPressed(sender: sender)

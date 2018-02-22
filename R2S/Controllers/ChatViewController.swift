@@ -48,6 +48,7 @@ class ChatViewController: BaseViewController, UITextFieldDelegate {
         activityIndicator.hidesWhenStopped = true
         self.view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
+        print("CHAT_ID",selectedChatId!)
         ConversationService.getMessages(messageId: selectedChatId! , onCompletion: { statusCode, message in
             
             
@@ -78,6 +79,8 @@ class ChatViewController: BaseViewController, UITextFieldDelegate {
         self.chatView.frame = CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height)
         self.view = self.chatView
        
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        view.addGestureRecognizer(tap)
         
         self.chatView.chatUICollectionView.register(UINib(nibName: Constants.xib.chatCollectionViewCell, bundle: nil), forCellWithReuseIdentifier: "chatCollectionViewCell")
         
@@ -97,6 +100,11 @@ class ChatViewController: BaseViewController, UITextFieldDelegate {
         
         print("CONVERSATIONCOUNT",self.conversation)
         
+    }
+    
+    func dismissKeyboard() {
+      
+        view.endEditing(true)
     }
     
     func imageTapped(tapGestureRecognizer: UITapGestureRecognizer)
@@ -241,15 +249,22 @@ extension ChatViewController: UICollectionViewDataSource {
             
             
             cell.dateUILabel.text = singaporeFormat1
-            
+            print("CELL_IMAGE",self.conversation[indexPath.item].account_image_url)
             if  self.conversation[indexPath.item].account_image_url  != "" {
-                cell.imageUICollectionView.contentMode = .scaleAspectFill
-                cell.imageUICollectionView.layer.cornerRadius = 16.958897898
-                cell.imageUICollectionView.clipsToBounds = true
+                
                 cell.imageUICollectionView.kf.setImage(with: URL(string: (conversation[indexPath.item].account_image_url)), options: [.transition(.fade(0.2))])
                
                 
+            }else {
+            
+                cell.imageUICollectionView.kf.setImage(with: URL(string: "http://theblackpanthers.com/s/photogallery/img/no-image-available.jpg"), options: [.transition(.fade(0.2))])
             }
+            
+            cell.imageUICollectionView.kf.indicatorType = .activity
+            cell.imageUICollectionView.contentMode = .scaleAspectFill
+            cell.imageUICollectionView.layer.cornerRadius = 16.958897898
+            cell.imageUICollectionView.clipsToBounds = true
+            
             
             if case let messageText = conversation[indexPath.item].message {
                 let size = CGSize(width: 250, height: 1000)

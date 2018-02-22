@@ -259,6 +259,7 @@
                     <size key="freeformSize" width="375" height="770"/>
                     <connections>
                         <segue destination="u3U-Dh-K8j" kind="show" identifier="resourceViewToScheduleBookingSegue" id="BmQ-p6-1bU"/>
+                        <segue destination="9wW-PI-8hZ" kind="show" identifier="resourceViewToChatSegue" id="4Nc-oJ-HeM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VAa-4I-0fT" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -303,6 +304,7 @@
                         <segue destination="o58-5i-PpW" kind="show" identifier="profileToAppSettingsSegue" id="IQA-O9-oT4"/>
                         <segue destination="so9-Yr-cBu" kind="show" identifier="profileToRaiseSupportTicketSegue" id="hvJ-vT-0Ut"/>
                         <segue destination="wKB-et-l9i" kind="show" identifier="profileToEditProfileSegue" id="g34-q6-fpl"/>
+                        <segue destination="ZMt-9q-k3G" kind="show" identifier="profileToResourceDetailSegue" id="6qf-dx-RU2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="by0-9X-XqV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -543,5 +545,10 @@
         <segue reference="OKF-L6-CNk"/>
         <segue reference="Gng-5l-VT9"/>
         <segue reference="dJd-mu-kYQ"/>
+        <segue reference="xPI-oA-IOK"/>
+        <segue reference="dJd-mu-kYQ"/>
+        <segue reference="6qf-dx-RU2"/>
+        <segue reference="4Nc-oJ-HeM"/>
+        <segue reference="OKF-L6-CNk"/>
     </inferredMetricsTieBreakers>
 </document>

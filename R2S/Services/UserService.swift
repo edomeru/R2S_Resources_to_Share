@@ -106,6 +106,7 @@ class UserService {
                 defaults.setValue(user.createdDate, forKey: "createdDate")
                 defaults.setValue(user.updatedDate, forKey: "updatedDate")
                 defaults.setValue(user.role, forKey: "role")
+                defaults.setValue(user.company?.name, forKey: "company_name")
                 defaults.setValue(true, forKey: "isLoggedIn")
                 UserDao.add(user)
             } else {

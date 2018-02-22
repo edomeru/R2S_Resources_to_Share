@@ -12,48 +12,66 @@ import SwiftValidator
 import SwiftSpinner
 import Foundation
 import TagListView
-
-
+import SearchTextField
 
 class WishlistAddViewController: BaseViewController, TagListViewDelegate {
     
     var selectedTags = [String : AnyObject]()
     var wishlistAdd = WishlistAdd()
+    
+    // suggest category bool
     var checkboxCheck: Bool = false
     let validator = Validator()
+    
+    // search suggestions fill
     var subcategoryNames = [String]()
     var mainCategoryNames = [String]()
+    // main + sub
+    var allCategoryNames = [SearchTextFieldItem]()
+    
+    
     var someDict = [String : AnyObject]()
     var subCategoryDictionary = [String : AnyObject]()
     var wishList = [WishListTags]()
     var myArray:[[String : Any]] = [[ : ]]
     var a = NSMutableArray()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         
         initUILayout()
         self.setupValidator()
         self.title = "Add New Wishlist"
+        
         self.wishlistAdd.delegate = self
         
-        //               someDict["main_category_name"] = "Industrial Spaces" as AnyObject
-        //                someDict["main_category_id"] = 4 as AnyObject
-        //                someDict["subcategory_name"] = "Container Yard" as AnyObject
-        //                someDict["subcategory_id"] = 23 as AnyObject
-        //
-        //                WishListService.createWishlist(category: someDict , name: "Lizard", description: "black") { statusCode, message in
-        //                    print("WISH CODE",statusCode)
-        //                    print("WISH MSG",message)
-        //
-        //                }
-        
-        self.wishlistAdd.mainCategory.isHidden = true
-        self.wishlistAdd.subCategoryCustom.isHidden = true
+        // TODO: create func for this -  toggle custom category mode
+        self.showDefaultCategoryForm(bool: true)
         
         
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // prepopulate suggestions
+        self.wishlistAdd.categorySearchTextField.showLoadingIndicator()
+        self.getAllCscsid()
+        self.wishlistAdd.categorySearchTextField.stopLoadingIndicator()
+    }
+    
+    func showDefaultCategoryForm(bool: Bool) {
+        self.wishlistAdd.mainCategory.isHidden = bool
+        self.wishlistAdd.subCategoryCustom.isHidden = bool
+        checkboxCheck = !bool
+        self.wishlistAdd.categorySearchTextField.isHidden = !bool
+        self.wishlistAdd.CategoryTagListView.isHidden = !bool
+    }
+    
     
     private func initUILayout() {
         self.wishlistAdd = self.loadFromNibNamed(nibNamed: Constants.xib.wishlistAddView) as! WishlistAdd
@@ -63,24 +81,17 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
         self.wishlistAdd.Description.delegate = self
         self.wishlistAdd.Name.delegate = self
         
+        self.wishlistAdd.categorySearchTextField.addTarget(self, action: #selector(WishlistAddViewController.getSubCatWithHeadersSuggestions), for: UIControlEvents.allTouchEvents)
         
-        //self.wishlistAdd.categoryUITextField.delegate = self
+        self.wishlistAdd.categorySearchTextField.theme.font = UIFont.systemFont(ofSize: 14)
         
-        self.wishlistAdd.categorySearchTextField.addTarget(self, action: #selector(WishlistAddViewController.getSubCatWithHeadersSuggestions), for: UIControlEvents.editingDidBegin)
-        
-        self.wishlistAdd.mainCategory.addTarget(self, action: #selector(WishlistAddViewController.getMainCatOnlySuggestions), for: UIControlEvents.editingDidBegin)
+        self.wishlistAdd.mainCategory.addTarget(self, action: #selector(WishlistAddViewController.getMainCatOnlySuggestions), for: UIControlEvents.allTouchEvents)
         
         self.wishlistAdd.CategoryTagListView.delegate = self
         
         self.wishlistAdd.CategoryTagListView.cornerRadius = 5.5
         
         self.wishlistAdd.checkboxUICCheckbox.delegate = self
-        
-        
-        
-        
-        
-        
     }
     
     func getMainCatOnlySuggestions() {
@@ -99,23 +110,8 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
         self.wishlistAdd.mainCategory.theme.bgColor = UIColor.white
         
         
-        // Show loading indicator
-        self.wishlistAdd.categorySearchTextField.showLoadingIndicator()
         
-        
-        // TODO: optimize
-        let categoryTuples = self.getAllCscsid()
-        print("ALL SUGGESTIONS", categoryTuples)
-        print("SUB SUGGESTIONS", categoryTuples?.sub)
-        print("MAIN SUGGESTIONS", categoryTuples?.main)
-
-        // TODO:
-        // add Main category, no select event
-        // main category, subcategory group
-        
-        
-        print("MAIN vjcgjcc")
-        self.wishlistAdd.mainCategory.filterStrings((categoryTuples?.main)!)
+        self.wishlistAdd.mainCategory.filterStrings(mainCategoryNames)
         
         self.wishlistAdd.mainCategory.itemSelectionHandler = { filteredResults, itemPosition in
             let item = filteredResults[itemPosition]
@@ -125,14 +121,6 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
         
         // Stop loading indicator
         self.wishlistAdd.categorySearchTextField.stopLoadingIndicator()
-        
-        
-        
-        
-        
-        
-        
-        
     }
     
     
@@ -143,53 +131,67 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
         // Set data source
         self.wishlistAdd.categorySearchTextField.startVisible = true
         
-        
-        
         self.wishlistAdd.categorySearchTextField.theme.bgColor = UIColor.white
         self.wishlistAdd.mainCategory.theme.bgColor = UIColor.white
         
         
-        // Show loading indicator
-        self.wishlistAdd.categorySearchTextField.showLoadingIndicator()
-        
-        // TODO optimize
-        let categoryTuples = self.getAllCscsid()
-        print("ALL SUGGESTIONS", categoryTuples)
-        print("SUB SUGGESTIONS", categoryTuples?.sub)
-        print("MAIN SUGGESTIONS", categoryTuples?.main)
-        // TODO:
-        // add Main category, no select event
-        // main category, subcategory group
-        self.wishlistAdd.categorySearchTextField.filterStrings((categoryTuples?.sub)!)
+        self.wishlistAdd.categorySearchTextField.filterItems(allCategoryNames)
         
         self.wishlistAdd.categorySearchTextField.itemSelectionHandler = { filteredResults, itemPosition in
-            
-            // TODO: check skip if main cat
-            
             let item = filteredResults[itemPosition]
-            self.wishlistAdd.CategoryTagListView.addTag(item.title)
             
+            // subcat is clicked
+            if (item.subtitle != nil && (item.subtitle?.characters.count)! > 0) {
+                
+                // TODO filter duplicates
+                if (self.hasDuplicate(item: item.subtitle!)) {
+                    self.toast(message: "Already exists")
+                } else {
+                    self.wishlistAdd.CategoryTagListView.addTag(item.subtitle!)
+                    self.wishlistAdd.categorySearchTextField.text = ""
+                    
+                }
+                
+                
+                // main cat is clicked -  void
+            } else {
+                // TODO: retain focus and suggestion list
+            }
             
         }
         
         // Stop loading indicator
         self.wishlistAdd.categorySearchTextField.stopLoadingIndicator()
-        
     }
-    // TODO
-    fileprivate func getAllCscsid() -> (main: [String], sub: [String], combined: [String])? {
-        
+    
+    func hasDuplicate(item: String) -> Bool {
+        for tagView in self.wishlistAdd.CategoryTagListView.tagViews {
+            // TODO
+            print("tagView", tagView.currentTitle)
+            if (tagView.currentTitle?.lowercased() ==  item.lowercased()) {
+                return true
+            }
+        }
+        return false
+    }
+    
+    
+    
+    fileprivate func getAllCscsid() {
         
         let categories =  CategoryService.getCategories()
-        self.wishlistAdd.categorySearchTextField.showLoadingIndicator()
+        
         for category in categories {
-            print("CATEGORIES IDS",category.id)
-            print("CATEGORIES NAME",category.name)
             mainCategoryNames.append(category.name)
             
+            self.allCategoryNames.append(SearchTextFieldItem(title: category.name, subtitle: nil, image: nil))
+            
+            
             let subcategories =  CategoryService.getSubcategoriesBy(categoryId: category.id)
+            
             for subcategory in subcategories {
-                print("SUBCATEGORIES" + "\(subcategory.name )" + "\(subcategory.id)" + " " + "\(subcategory.parentCategory?.name)" + "\(subcategory.parentCategory?.id)" )
+                let searchItem = SearchTextFieldItem(title: "", subtitle: category.name, image: nil)
+                self.allCategoryNames.append(searchItem)
                 
                 subcategoryNames.append(subcategory.name)
                 
@@ -203,10 +205,7 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
                 WishListDao.addWishListFromTags(wishlistTags)
                 
             }
-            
         }
-        
-        return (mainCategoryNames, subcategoryNames)
     }
     
     //Increment ID
@@ -228,14 +227,12 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
     
     // MARK: TagListViewDelegate
     func tagPressed(_ title: String, tagView: TagView, sender: TagListView) {
-        print("Tag pressed: \(title), \(sender)")
         tagView.isSelected = !tagView.isSelected
         self.wishlistAdd.CategoryTagListView.removeTagView(tagView)
         
     }
     
     func tagRemoveButtonPressed(_ title: String, tagView: TagView, sender: TagListView) {
-        print("Tag Remove pressed: \(title), \(sender)")
         sender.removeTagView(tagView)
     }
     
@@ -254,14 +251,13 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
 extension WishlistAddViewController: WishlistAddViewDelegate {
     func submitButtonOnPressed(sender: AnyObject){
         
-        print("HELLLLOOOOOOOOO")
         self.wishlistAdd.endEditing(true)
         self.validator.validate(self)
         
         
     }
     func checkBoxTicked(sender: AnyObject){
-        print("checkBoxTicked")
+        
         
     }
 }
@@ -287,15 +283,8 @@ extension WishlistAddViewController: ValidationDelegate {
                 let wishAdd = WishListTags()
                 for  categories  in selctedCategories {
                     
-                    // selectedTags["main_category_name"] = categories.main_category_name as AnyObject
                     selectedTags["main_category_id"] = categories.main_category_id as AnyObject
                     selectedTags["subcategory_id"] = categories.subcategory_id as AnyObject
-                    //wishAdd.main_category_id = categories.main_category_id
-                    //selectedTags["subcategory_name"] = categories.subcategory_name as AnyObject
-                    //wishAdd.subcategory_id = categories.subcategory_id
-                    
-                    // wishList.append(wishAdd)
-                    
                     
                 }
                 
@@ -309,18 +298,12 @@ extension WishlistAddViewController: ValidationDelegate {
                 
                 print("STATUS CODE",statusCode)
                 if statusCode! == 201 {
-                    //                    WishListService.getAllWishList(onCompletion: { statusCode, message in
+                    
                     SwiftSpinner.hide()
-                    //                        print("STATUS CODE2",statusCode)
-                    //                         if statusCode! == 200 {
-                    // let wishList = WishListDao.get()
-                    //                    self.performSegue(withIdentifier: Constants.segue.loginToHome, sender: self)
-                    // print("WISHLIST ADDED SUCCESSFULLY", wishList)
+                    
                     NotificationCenter.default.post(name: Notification.Name(rawValue:"pass"), object: nil, userInfo: nil)
                     self.navigationController?.popViewController(animated: true)
-                    //                        }
-                    //                    }
-                    //                    )
+                    
                 } else {
                     Utility.showAlert(title: "Login Error", message: message!, targetController: self)
                 }
@@ -359,7 +342,6 @@ extension WishlistAddViewController: UITextFieldDelegate {
             print("wishlistAdd.Neme")
             self.wishlistAdd.Name.backgroundColor = UIColor(hex: Constants.color.grayUnderline)
             self.wishlistAdd.Name.backgroundColor = UIColor.white
-            
         default:
             print("default")
         }
@@ -367,7 +349,6 @@ extension WishlistAddViewController: UITextFieldDelegate {
     
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {   //delegate method
-        print("textFieldShouldReturn")
         performAction()
         textField.resignFirstResponder()
         return true
@@ -378,14 +359,8 @@ extension WishlistAddViewController: CheckboxDelegate {
     func didSelect(_ checkbox: CCheckbox) {
         switch checkbox {
         case self.wishlistAdd.checkboxUICCheckbox:
-            print("checkbox one selected")
-            checkboxCheck = true
-            self.wishlistAdd.categorySearchTextField.isHidden = true
-            self.wishlistAdd.CategoryTagListView.isHidden = true
-            self.wishlistAdd.mainCategory.isHidden = false
-            self.wishlistAdd.subCategoryCustom.isHidden = false
+            self.showDefaultCategoryForm(bool: false)
             break
-            
         default:
             break
         }
@@ -394,14 +369,8 @@ extension WishlistAddViewController: CheckboxDelegate {
     func didDeselect(_ checkbox: CCheckbox) {
         switch checkbox {
         case self.wishlistAdd.checkboxUICCheckbox:
-            print("checkbox one deselected")
-            checkboxCheck = false
-            self.wishlistAdd.categorySearchTextField.isHidden = false
-            self.wishlistAdd.CategoryTagListView.isHidden = false
-            self.wishlistAdd.mainCategory.isHidden = true
-            self.wishlistAdd.subCategoryCustom.isHidden = true
+            self.showDefaultCategoryForm(bool: true)
             break
-            
         default:
             break
         }

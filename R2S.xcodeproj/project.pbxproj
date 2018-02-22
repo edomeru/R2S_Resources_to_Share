@@ -24,6 +24,7 @@
 		2CF06DD11EFBF0E30073C844 /* ActivityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF06DD01EFBF0E30073C844 /* ActivityViewController.swift */; };
 		2CF06DD31EFBF1090073C844 /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF06DD21EFBF1090073C844 /* ActivityView.swift */; };
 		548A6074C3188468E31693E6 /* Pods_R2S.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26E60C07BE5101947A43207D /* Pods_R2S.framework */; };
+		5F160EA5203E828B001CB42D /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F160EA4203E828B001CB42D /* UIViewController.swift */; };
 		5FADDAB0203D1C5500706B46 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FADDAAE203D1C5500706B46 /* ForgotPasswordViewController.swift */; };
 		5FADDAB1203D1C5500706B46 /* ForgotPasswordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5FADDAAF203D1C5500706B46 /* ForgotPasswordView.xib */; };
 		5FADDAB3203D1DB100706B46 /* ForgotPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5FADDAB2203D1DB100706B46 /* ForgotPasswordView.swift */; };
@@ -225,6 +226,7 @@
 		2CF06DD01EFBF0E30073C844 /* ActivityViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityViewController.swift; path = Controllers/ActivityViewController.swift; sourceTree = "<group>"; };
 		2CF06DD21EFBF1090073C844 /* ActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ActivityView.swift; path = "View Classes/ActivityView.swift"; sourceTree = "<group>"; };
 		33DE7660843E508F233330F3 /* Pods-R2S.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-R2S.release.xcconfig"; path = "Pods/Target Support Files/Pods-R2S/Pods-R2S.release.xcconfig"; sourceTree = "<group>"; };
+		5F160EA4203E828B001CB42D /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewController.swift; path = Extensions/UIViewController.swift; sourceTree = "<group>"; };
 		5FADDAAE203D1C5500706B46 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordViewController.swift; path = Controllers/ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		5FADDAAF203D1C5500706B46 /* ForgotPasswordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ForgotPasswordView.xib; path = Controllers/ForgotPasswordView.xib; sourceTree = "<group>"; };
 		5FADDAB2203D1DB100706B46 /* ForgotPasswordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ForgotPasswordView.swift; path = "View Classes/ForgotPasswordView.swift"; sourceTree = "<group>"; };
@@ -773,6 +775,7 @@
 				B9E2676B1E78F75100BB9900 /* UITableView.swift */,
 				B9E2676D1E78F76900BB9900 /* UITextField.swift */,
 				B9E2676F1E78F78000BB9900 /* UIView.swift */,
+				5F160EA4203E828B001CB42D /* UIViewController.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1288,6 +1291,7 @@
 				B9E267871E7A57DF00BB9900 /* UserManager.swift in Sources */,
 				9B456F391F8F6C32001F4C32 /* Favorites.swift in Sources */,
 				9B7EDC42200F27BC00169963 /* ScheduleBookingViewController.swift in Sources */,
+				5F160EA5203E828B001CB42D /* UIViewController.swift in Sources */,
 				9B3FDC981FD6934200091E10 /* Inbox.swift in Sources */,
 				9B4E5CD51FFE0EAF009C6767 /* TransactionView.swift in Sources */,
 				B9E267761E790FEE00BB9900 /* UserHelper.swift in Sources */,

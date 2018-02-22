@@ -66,9 +66,9 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
         
         //self.wishlistAdd.categoryUITextField.delegate = self
         
-        self.wishlistAdd.categorySearchTextField.addTarget(self, action: #selector(WishlistAddViewController.getSubCatSuggestions), for: UIControlEvents.editingDidBegin)
+        self.wishlistAdd.categorySearchTextField.addTarget(self, action: #selector(WishlistAddViewController.getSubCatWithHeadersSuggestions), for: UIControlEvents.editingDidBegin)
         
-        self.wishlistAdd.mainCategory.addTarget(self, action: #selector(WishlistAddViewController.getMainCatSuggestions), for: UIControlEvents.editingDidBegin)
+        self.wishlistAdd.mainCategory.addTarget(self, action: #selector(WishlistAddViewController.getMainCatOnlySuggestions), for: UIControlEvents.editingDidBegin)
         
         self.wishlistAdd.CategoryTagListView.delegate = self
         
@@ -83,7 +83,7 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
         
     }
     
-    func getMainCatSuggestions() {
+    func getMainCatOnlySuggestions() {
         
         
         
@@ -102,10 +102,13 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
         // Show loading indicator
         self.wishlistAdd.categorySearchTextField.showLoadingIndicator()
         
+        
+        // TODO: optimize
         let categoryTuples = self.getAllCscsid()
-        print(categoryTuples)
-        print(categoryTuples?.sub)
-        print(categoryTuples?.main)
+        print("ALL SUGGESTIONS", categoryTuples)
+        print("SUB SUGGESTIONS", categoryTuples?.sub)
+        print("MAIN SUGGESTIONS", categoryTuples?.main)
+
         // TODO:
         // add Main category, no select event
         // main category, subcategory group
@@ -133,10 +136,7 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
     }
     
     
-    func getSubCatSuggestions() {
-        
-        
-        
+    func getSubCatWithHeadersSuggestions() {
         // Start visible even without user's interaction as soon as created - Default: false
         self.wishlistAdd.categorySearchTextField.startVisibleWithoutInteraction = true
         self.wishlistAdd.mainCategory.startVisibleWithoutInteraction = true
@@ -152,16 +152,20 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
         // Show loading indicator
         self.wishlistAdd.categorySearchTextField.showLoadingIndicator()
         
+        // TODO optimize
         let categoryTuples = self.getAllCscsid()
-        print(categoryTuples)
-        print(categoryTuples?.sub)
-        print(categoryTuples?.main)
+        print("ALL SUGGESTIONS", categoryTuples)
+        print("SUB SUGGESTIONS", categoryTuples?.sub)
+        print("MAIN SUGGESTIONS", categoryTuples?.main)
         // TODO:
         // add Main category, no select event
         // main category, subcategory group
         self.wishlistAdd.categorySearchTextField.filterStrings((categoryTuples?.sub)!)
         
         self.wishlistAdd.categorySearchTextField.itemSelectionHandler = { filteredResults, itemPosition in
+            
+            // TODO: check skip if main cat
+            
             let item = filteredResults[itemPosition]
             self.wishlistAdd.CategoryTagListView.addTag(item.title)
             
@@ -171,16 +175,9 @@ class WishlistAddViewController: BaseViewController, TagListViewDelegate {
         // Stop loading indicator
         self.wishlistAdd.categorySearchTextField.stopLoadingIndicator()
         
-        
-        
-        
-        
-        
-        
-        
     }
-    
-    fileprivate func getAllCscsid() -> (main: [String], sub: [String])? {
+    // TODO
+    fileprivate func getAllCscsid() -> (main: [String], sub: [String], combined: [String])? {
         
         
         let categories =  CategoryService.getCategories()
